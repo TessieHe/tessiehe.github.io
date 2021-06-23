@@ -126,11 +126,22 @@
 <p>重启以下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 <p>到这里我的公式一部分能显示，一部分不能显示。继续查了查，发现别人也有这个情况，比如多行公式的时候显示不了，是因为不能出现连续的大括号<code>&#123;&#123;</code>​。我怀疑我的也是类似的问题，于是试了一下在我的<code>:公式</code>的结构中，把冒号删了，居然所有公式都正常显示了，然后我又把冒号加回去，还是都可以显示！！！不知道上面那堆设置需要时间起作用还是我的修改触发了什么，总之问题解决了。</p>
+<p>操作完这套后，<a target="_blank" rel="noopener" href="http://localhost:4000/可以正常显示公式，但github.io上却不行（有可能是我clean&amp;generate没有放在最后一步），我又参考[博客](https://www.cnblogs.com/zhyantao/p/10424874.html)增加了一些操作。">http://localhost:4000/可以正常显示公式，但github.io上却不行（有可能是我clean&amp;generate没有放在最后一步），我又参考[博客](https://www.cnblogs.com/zhyantao/p/10424874.html)增加了一些操作。</a></p>
+<p>打开<code>node_modules/hexo-renderer-mathjax/mathjax.html</code>，将 <code>&lt;script&gt;</code> 改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>打开<code>node_modules/hexo-renderer-kramed/lib/renderer.js</code>，将</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Change inline math rule</span><br><span class="line">function formatText(text) &#123;</span><br><span class="line">  // Fit kramed&#x27;s rule: $$ + \1 + $$</span><br><span class="line">  return text.replace(/`\$(.*?)\$`/g, &#x27;$$$$$1$$$$&#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Change inline math rule</span><br><span class="line">function formatText(text) &#123;</span><br><span class="line">    return text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打开<code>node_modules/hexo-renderer-mathjax/mathjax.html</code>，将 <code>&lt;script&gt;</code> 改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>最后再重启一次</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangdongdong122.github.io/2021/06/23/2021-06-23-%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" data-id="ckq9ow6700003noppgyel1dyt" data-title="搭建hexo博客" class="article-share-link">分享</a>
+      <a data-url="http://wangdongdong122.github.io/2021/06/23/2021-06-23-%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" data-id="ckqa3tuxo000gvkpp1m367xea" data-title="搭建hexo博客" class="article-share-link">分享</a>
       
       
       
@@ -168,7 +179,6 @@
       
         <p>Self-Attention谁先提出的，各文章里写的不一样吗，<a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention Is All You Need</a>中说是<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1606.01933.pdf">Jakob et al.2016</a>年提出的，<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1904.02874.pdf">An Attentive Survey of Attention Models</a>中说是<a target="_blank" rel="noopener" href="https://www.aclweb.org/anthology/N16-1174.pdf">Yang et al. 2016</a>，本篇介绍前者。</p>
 <p>Abstract：simpler and more lightweight，比之前的模型参数少一个数量级，而且不依赖与任何词的顺序信息</p>
-<p>本文的Decomposable是指其将自然语言中的三个类型的任务分解了，一共是 </p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>近年来，Natural language inference(NLI)领域中提出的模型都数据量巨大，计算成本非常高。但实际上NLI中，往往是只需要少量的局域信息，然后将这些局域信息汇总起来进行预测即可。</p>
 <h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p><strong>模型结构</strong></p>
 <p>  <img src="../images/Decomposable-Attention.images/1624336820545_src" alt="img" style="zoom: 67%;" /> </p>
@@ -192,7 +202,8 @@ training\ data&:&\{ \textbf{a}^{(n)},\textbf{b}^{(n)},\textbf{y}^{(n)} \}^N_{n=1
 test\ data&:&(\textbf{a},\textbf{b})
 
 \end{eqnarray*}</script><p>$\textbf{a}$和$\textbf{b}$可以做一些变换之后再输入模型，标准版模型就输入$\textbf{a}$和$\textbf{b}$了。</p>
-<h3 id="Attend"><a href="#Attend" class="headerlink" title="Attend"></a>Attend</h3><p>首先要计算相关性权重</p>
+<h3 id="Attend"><a href="#Attend" class="headerlink" title="Attend"></a>Attend</h3><p>这一步是用attention，让两个句子$(\textbf{a},\textbf{b})$相互表示对方，得到$(\boldsymbol\beta,\boldsymbol\alpha)$,$\boldsymbol\beta$是$\boldsymbol b$表示出来的$\boldsymbol a$。</p>
+<p>首先要计算相关性权重</p>
 <script type="math/tex; mode=display">
 e_{ij}:=F^{'}{(a_i,b_j)}
 
@@ -230,13 +241,13 @@ f_{ij}:=F_{intra}(a_i)^TF_{intra}(a_j),
 \\
 a^{'}_i=\sum^{l_a}_{j=1}\frac{exp(f_{ij}+d_{i-j})}{exp(f_{ik}+d_{i-k})}a_j
 \\\\</script><p>其中，$F<em>{intra}$是一个全连接，$f</em>{ij}$就表示$a<em>i$和$a_j$的相似程度。$d</em>{i-j}$是距离敏感度偏置项，作用是不让某个词的权重过小。</p>
-<p>学点巴洛克风格的词</p>
+<p><strong>学点巴洛克风格的词</strong></p>
 <p>vanilla version：The “<strong>vanilla</strong> <strong>version</strong>“ is generally the version that has no customisation applied - it is the “regular”,  “ordinary” or “plain old” version. For a lot of consumer based software - this would be the only version. You would not build custom versions for every user.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangdongdong122.github.io/2021/06/22/2021-06-22-Decomposable-Attention/" data-id="ckq9ow66u0001nopp4xkt87jz" data-title="A Decomposable Attention Model for Natural Language Inference" class="article-share-link">分享</a>
+      <a data-url="http://wangdongdong122.github.io/2021/06/22/2021-06-22-Decomposable-Attention/" data-id="ckqa3tuxn000fvkppamcxb79t" data-title="A Decomposable Attention Model for Natural Language Inference" class="article-share-link">分享</a>
       
       
       
@@ -344,7 +355,7 @@ L &=& -\sum_{d}{log\ p_{dj}}
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangdongdong122.github.io/2021/06/21/2021-06-21-Hierarchical-Attention/" data-id="ckq9ow66q0000noppdcla3z2e" data-title="Hierarchical Attention Networks for Document Classification" class="article-share-link">分享</a>
+      <a data-url="http://wangdongdong122.github.io/2021/06/21/2021-06-21-Hierarchical-Attention/" data-id="ckqa3tuxb0000vkpp88bodil1" data-title="Hierarchical Attention Networks for Document Classification" class="article-share-link">分享</a>
       
       
       
