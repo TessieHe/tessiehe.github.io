@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wangdongdong122.github.io/2021/06/21/images/Hierarchical-Attention.images/1624323245414_src-1624427147187">
 <meta property="article:published_time" content="2021-06-21T01:26:17.000Z">
-<meta property="article:modified_time" content="2021-06-23T09:48:53.500Z">
+<meta property="article:modified_time" content="2021-06-24T22:51:02.829Z">
 <meta property="article:author" content="Dongdong Wang">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="Attention">
@@ -123,12 +123,12 @@
 </ul>
 <h4 id="Word-Encoder"><a href="#Word-Encoder" class="headerlink" title="Word Encoder"></a>Word Encoder</h4><p>先embedding，过双向GRU，将隐层concatenate起来</p>
 <ol>
-<li>word embedding: $W<em>e$, $x</em>{ij}=W<em>ew</em>{ij}$</li>
-<li>forward GRU: $\overset{\rightarrow}{h<em>{it}}=\overset{\rightarrow}{GRU}(x</em>{it}),\ t ∈ [1, T]$</li>
-<li>backward GRU:  $\overset{\leftarrow}{h<em>{it}}=\overset{\leftarrow}{GRU}(x</em>{it}),\ t ∈ [T, 1]$</li>
-<li>concatenate:  $h<em>{it}=[\overset{\rightarrow}{h</em>{it}},\overset{\leftarrow}{h_{it}}]$</li>
+<li>word embedding: $W_e$, $x_{ij}=W_ew_{ij}$</li>
+<li>forward GRU: $\overset{\rightarrow}{h_{it}}=\overset{\rightarrow}{GRU}(x_{it}),\ t ∈ [1, T]$</li>
+<li>backward GRU:  $\overset{\leftarrow}{h_{it}}=\overset{\leftarrow}{GRU}(x_{it}),\ t ∈ [T, 1]$</li>
+<li>concatenate:  $h_{it}=[\overset{\rightarrow}{h_{it}},\overset{\leftarrow}{h_{it}}]$</li>
 </ol>
-<h4 id="Word-Attention"><a href="#Word-Attention" class="headerlink" title="Word Attention"></a>Word Attention</h4><p>将对句子含义起重要作用的词提取出来，聚合成一个句子向量。先将所有的（$t ∈ [1, T]$）$h<em>{it}$过全连接得到Key: $u</em>{it}$；然后和随机变量的query: $u<em>w$求相似度分布: $\alpha$；最后将最开始的  $h</em>{it}$作为Value，加权得到sentence vector: $s<em>i$。所有信息都是从$h</em>{it}$中得到。</p>
+<h4 id="Word-Attention"><a href="#Word-Attention" class="headerlink" title="Word Attention"></a>Word Attention</h4><p>将对句子含义起重要作用的词提取出来，聚合成一个句子向量。先将所有的（$t ∈ [1, T]$）$h_{it}$过全连接得到Key: $u_{it}$；然后和随机变量的query: $u_w$求相似度分布: $\alpha$；最后将最开始的  $h_{it}$作为Value，加权得到sentence vector: $s_i$。所有信息都是从$h_{it}$中得到。</p>
 <script type="math/tex; mode=display">
 \begin{eqnarray*}
 u_{it} &=& tanh(W_wh_{it}+b_w) \tag{FC layer}  \\                 
@@ -142,12 +142,12 @@ s_i &=& \sum_{t}{\alpha_{it}h_{it}}
 
 
 \end{eqnarray*}</script><p>其中$ u_w$(word context vector)是随机初始化，然后在训练过程中学习的，可以当做是一个固定的query，用来表示这个句子中重要的信息。</p>
-<p>维度信息：每个句子只产生一个向量$s<em>i$，其长度和单个词的BiGRU隐层concat之后的向量$h</em>{it}$长度相同（不一定等于词向量$w_{it}$的长度）。</p>
+<p>维度信息：每个句子只产生一个向量$s_i$，其长度和单个词的BiGRU隐层concat之后的向量$h_{it}$长度相同（不一定等于词向量$w_{it}$的长度）。</p>
 <h4 id="Sentence-Encoder"><a href="#Sentence-Encoder" class="headerlink" title="Sentence Encoder"></a>Sentence Encoder</h4><p>句子的encoder也和词的类似，先过bidirectional GRU然后concatenate。</p>
 <ol>
-<li>forward GRU：$\overset{\rightarrow}{h<em>{i}}=\overset{\rightarrow}{GRU}(s</em>{i}),\ i ∈ [1, L]$</li>
-<li>backward GRU: $\overset{\leftarrow}{h<em>{i}}=\overset{\leftarrow}{GRU}(s</em>{i}),\ i ∈ [L, 1]$</li>
-<li>concatenate: $h<em>{i}=[\overset{\rightarrow}{h</em>{i}},\overset{\leftarrow}{h_{i}}]$</li>
+<li>forward GRU：$\overset{\rightarrow}{h_{i}}=\overset{\rightarrow}{GRU}(s_{i}),\ i ∈ [1, L]$</li>
+<li>backward GRU: $\overset{\leftarrow}{h_{i}}=\overset{\leftarrow}{GRU}(s_{i}),\ i ∈ [L, 1]$</li>
+<li>concatenate: $h_{i}=[\overset{\rightarrow}{h_{i}},\overset{\leftarrow}{h_{i}}]$</li>
 </ol>
 <h4 id="Sentence-Attention"><a href="#Sentence-Attention" class="headerlink" title="Sentence Attention"></a>Sentence Attention</h4><p>这部分也和Word Attention部分一样，只是换了个层次</p>
 <script type="math/tex; mode=display">
@@ -180,7 +180,7 @@ L &=& -\sum_{d}{log\ p_{dj}}
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangdongdong122.github.io/2021/06/21/2021-06-21-Hierarchical-Attention/" data-id="ckqbhq6nx00007opphulm8pnz" data-title="Hierarchical Attention Networks for Document Classification" class="article-share-link">分享</a>
+      <a data-url="http://wangdongdong122.github.io/2021/06/21/2021-06-21-Hierarchical-Attention/" data-id="ckqbii8l20000fgpp9hw3c2i4" data-title="Hierarchical Attention Networks for Document Classification" class="article-share-link">分享</a>
       
       
       
@@ -323,6 +323,6 @@ L &=& -\sum_{d}{log\ p_{dj}}
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
