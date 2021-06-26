@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangdongdong122.github.io/2021/06/21/2021-06-21-Hierarchical-Attention/</loc>
+    
+    <lastmod>2021-06-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangdongdong122.github.io/2021/06/26/2021-06-26-hexo%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2021-06-26</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangdongdong122.github.io/2021/06/23/2021-06-23-%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2021-06-26</lastmod>
@@ -11,14 +25,7 @@
   <url>
     <loc>http://wangdongdong122.github.io/2021/06/22/2021-06-22-Decomposable-Attention/</loc>
     
-    <lastmod>2021-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangdongdong122.github.io/2021/06/21/2021-06-21-Hierarchical-Attention/</loc>
-    
-    <lastmod>2021-06-24</lastmod>
+    <lastmod>2021-06-26</lastmod>
     
   </url>
   
@@ -82,6 +89,13 @@
   
   <url>
     <loc>http://wangdongdong122.github.io/tags/bug/</loc>
+    <lastmod>2021-06-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wangdongdong122.github.io/tags/hexo-bug/</loc>
     <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
