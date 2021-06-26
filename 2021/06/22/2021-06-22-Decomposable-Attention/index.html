@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wangdongdong122.github.io/2021/06/22/images/Decomposable-Attention.images/1624336820545_src">
 <meta property="article:published_time" content="2021-06-22T01:29:17.000Z">
-<meta property="article:modified_time" content="2021-06-24T23:01:04.532Z">
+<meta property="article:modified_time" content="2021-06-24T23:04:39.770Z">
 <meta property="article:author" content="Dongdong Wang">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="Attention">
@@ -148,7 +148,7 @@ e_{ij}:=F^{'}{(a_i,b_j)}
 \\
 \alpha_j:=\sum^{l_a}_{i=1}
 \frac{exp(e_{ij})}{\sum^{l_a}_{k=1}exp(e_{kj})}a_i
-\end{eqnarray*}</script><h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p>接下来，$\{A\}$分别比较$     \{(a_i,\beta_i)\}^{l_a}_{i=1}$和$\{(b_j,\alpha_j)\}^{l_b}_{j=1}$中每个pair，也就是看看用$\textbf{b}$表示出来的$a_i$，即$\beta_i$和真正的$a_i$有多像，如果很像（反映在$\textbf{v}_{1,i}$中），则证明句子$\textbf{b}$中有$a_i$的信息。</p>
+\end{eqnarray*}</script><h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p>接下来，分别比较$\{(a_i,\beta_i)\}^{l_a}_{i=1}$和$\{(b_j,\alpha_j)\}^{l_b}_{j=1}$中每个pair，也就是看看用$\textbf{b}$表示出来的$a_i$，即$\beta_i$和真正的$a_i$有多像，如果很像（反映在$\textbf{v}_{1,i}$中），则证明句子$\textbf{b}$中有$a_i$的信息。</p>
 <script type="math/tex; mode=display">
 \begin{eqnarray*}
 \textbf{v}_{1,i}:=G([a_i,\beta_i])
@@ -178,7 +178,7 @@ a^{'}_i=\sum^{l_a}_{j=1}\frac{exp(f_{ij}+d_{i-j})}{exp(f_{ik}+d_{i-k})}a_j
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangdongdong122.github.io/2021/06/22/2021-06-22-Decomposable-Attention/" data-id="ckqbii8l50001fgpp02qubtc1" data-title="A Decomposable Attention Model for Natural Language Inference" class="article-share-link">分享</a>
+      <a data-url="http://wangdongdong122.github.io/2021/06/22/2021-06-22-Decomposable-Attention/" data-id="ckqd0slk6000184pp1coz34bi" data-title="A Decomposable Attention Model for Natural Language Inference" class="article-share-link">分享</a>
       
       
       
@@ -326,6 +326,6 @@ a^{'}_i=\sum^{l_a}_{j=1}\frac{exp(f_{ij}+d_{i-j})}{exp(f_{ik}+d_{i-k})}a_j
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
