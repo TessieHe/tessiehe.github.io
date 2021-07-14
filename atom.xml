@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangdongdong122.github.io/"/>
-  <updated>2021-06-26T14:26:11.303Z</updated>
+  <updated>2021-07-14T14:12:06.444Z</updated>
   <id>http://wangdongdong122.github.io/</id>
   
   <author>
@@ -15,6 +15,188 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>熵</title>
+    <link href="http://wangdongdong122.github.io/2021/07/10/2021-07-10-%E7%86%B5/"/>
+    <id>http://wangdongdong122.github.io/2021/07/10/2021-07-10-熵/</id>
+    <published>2021-07-10T01:30:35.000Z</published>
+    <updated>2021-07-14T14:12:06.444Z</updated>
+    
+    <content type="html"><![CDATA[<p>熵是信息论中的概念，在机器学习中也被广泛应用，比如<strong>交叉熵</strong>、<strong>KL散度</strong>等。本文总结一下各种熵有关的概念，并总结他们的各种形式变种。</p><span id="more"></span><h2 id="热力学中的熵"><a href="#热力学中的熵" class="headerlink" title="热力学中的熵"></a>热力学中的熵</h2><p>直观理解上，熵可以理解为混乱度，混乱度越高，熵越大。熵是来自于热力学的概念，先对这个概念做初步的了解。</p><h3 id="热力学熵"><a href="#热力学熵" class="headerlink" title="热力学熵"></a>热力学熵</h3><p>1856年，克劳修斯推导出的公式：</p><script type="math/tex; mode=display">\Delta S = \frac{\Delta Q}{T}</script><p>其中，S表示熵，Q表示热量，T表示温度，$  \Delta$表示增量。这个公式可以视作“熵”这个字的来源，1924年，我国物理学家胡刚复在翻译德语“entropie”时，创造出来的，在“商”字左边加个“火”，取“热量与温度之商”的意思。该公式有两个问题</p><ol><li>只给了熵的增量的定义，没有给出一个锚点。</li><li>难以直观理解。</li></ol><h3 id="统计熵"><a href="#统计熵" class="headerlink" title="统计熵"></a>统计熵</h3><p>1877年，玻尔兹曼从统计力学角度给出的定义:</p><script type="math/tex; mode=display">S = k_b ln W</script><p>其中，S表示熵，$k_b$是玻尔兹曼常量，W表示微观状态数，即某个系统所处的某个特定的宏观状态，W是符合该系统状态的微观状态总数。所谓宏观状态和微观状态指的是啥？系统的宏观状态有温度、体积、压强、浓度等；微观变量有分子的动量、动能、速度、质量等。</p><h3 id="吉布斯熵"><a href="#吉布斯熵" class="headerlink" title="吉布斯熵"></a>吉布斯熵</h3><p>玻尔兹曼的定义假设了“各微观状态出现的概率相等”，美国物理学家吉布斯在其基础上定义了一般情况下的熵，被称为吉布斯熵：</p><script type="math/tex; mode=display">S = -k_b\sum_i p_i ln\ p_i</script><p>其中$p_i$表示各微观状态出现的概率。</p><h2 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h2><h3 id="量化信息的基本思想"><a href="#量化信息的基本思想" class="headerlink" title="量化信息的基本思想"></a>量化信息的基本思想</h3><ul><li>发生概率很大的事件，信息量较少，一定发生的事件则没有信息量</li><li>发生概率很小的事件，信息量较高</li><li>独立事件具有增量的信息</li></ul><p>其实从这些基本的定量关系，我们就能够大概做出一些推导。首先是信息量（用$h(·)$表示）与概率（$p(·)$）相关，概率越小，信息量越大：$h(A)=f(p(A))$，其中$f(·)$是个单调递减函数。</p><p>另外，两个独立事件的信息量等于两个事件的信息量之和：</p><script type="math/tex; mode=display">h(A,B)=h(A)+h(B)=f(p(A))+f(p(B))</script><p>由$h(A)$的定义和独立事件的联合概率等于各自概率乘积可知：</p><script type="math/tex; mode=display">h(A,B) = f(p(A,B))=f(p(A)·p(B)))</script><p>从上面两个式子可知</p><script type="math/tex; mode=display">f(p(A))+f(p(B))=f(p(A)·p(B)))</script><p>不难发现$f(a+b)=f(ab),a&gt;0,b&gt;0$，满足该式子的一定是对数函数（<a href="https://math.stackexchange.com/questions/98673/examples-of-functions-where-fab-fafb">证明</a>）。令$g(x)=f(e^x)$，则</p><script type="math/tex; mode=display">g(x+y)=f(e^{x+y})=f(e^xe^y)=f(e^x)+f(e^y)=g(x)+g(y)</script><p>如果$f(·)$是连续的，则$g$也是连续的，则$g$必然满足：$g(x)=cx$，$c$为某个常数（柯西方程）。因此，</p><script type="math/tex; mode=display">f(e^x)=cx\\f(x)=c\ ln(x)</script><p>即，<strong>如果想让两个独立事件的信息量等于他们的信息量之和，则信息量的计算形式必然是对数函数</strong>。</p><h3 id="自信息"><a href="#自信息" class="headerlink" title="自信息"></a>自信息</h3><p>事件$X=x$的自信息（self-information），公式中的$x$指                        的是$X=x$这个事件</p><script type="math/tex; mode=display">I(x)=-log\ p(x)</script><p>取值区间：$p(x)=1$时，事件一定发生，自信息为0；$p(x)=0$时，事件不可能发生，自信息为无穷大；</p><p>其物理含义为：</p><ul><li>当底数为2时，其单位为比特（bit）或者香农（shannons）时，1 bit（shannons）是以$\frac{1}{2}$的概率观测到一个事件时获得的信息量</li><li>当底数为e时，其单位为莱特（nats）时，1 nats是以$\frac{1}{e}$的概率观测到一个事件时获得的信息量</li></ul><p>其编码含义：</p><h3 id="信息熵-1"><a href="#信息熵-1" class="headerlink" title="信息熵"></a>信息熵</h3><p>给定某个概率分布，其香农熵（Shannon Entropy）,量化不确定性。</p><script type="math/tex; mode=display">H(X)=E_{X\sim p(x)}[I(x)]=-E_{X\sim p(x)}[log\ p(x)]</script><p>其含义：</p><ul><li>在事件发生后，表示平均每个事件（或符号）所提供的信息量</li><li>在事件发生前，表示随机变量取值的平均不确定性</li><li>表示随机变量的随机性大小，熵越大，随机性越大</li><li>当事件发生后，其不确定性就被解除，熵是解除随机变量不确定性平均所需信息量。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;熵是信息论中的概念，在机器学习中也被广泛应用，比如&lt;strong&gt;交叉熵&lt;/strong&gt;、&lt;strong&gt;KL散度&lt;/strong&gt;等。本文总结一下各种熵有关的概念，并总结他们的各种形式变种。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="基础知识" scheme="http://wangdongdong122.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+      <category term="交叉熵" scheme="http://wangdongdong122.github.io/tags/%E4%BA%A4%E5%8F%89%E7%86%B5/"/>
+    
+      <category term="KL散度" scheme="http://wangdongdong122.github.io/tags/KL%E6%95%A3%E5%BA%A6/"/>
+    
+      <category term="熵" scheme="http://wangdongdong122.github.io/tags/%E7%86%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>最大似然与常见的损失函数</title>
+    <link href="http://wangdongdong122.github.io/2021/07/07/2021-07-07-%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%B8%8E%E5%B8%B8%E8%A7%81%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/"/>
+    <id>http://wangdongdong122.github.io/2021/07/07/2021-07-07-最大似然与常见损失函数/</id>
+    <published>2021-07-07T13:56:44.000Z</published>
+    <updated>2021-07-11T23:08:44.026Z</updated>
+    
+    <content type="html"><![CDATA[<p>最大似然估计是机器学习的核心组件之一，承上启下，和大量知识相关。通过<strong>EM算法</strong>可以求解某些复杂情况下的MLE<sup>[1]</sup>；MLE可以视为<strong>GMM</strong>的一种特例；通过负对数似然是定义在训练集上的经验分布与定义在模型分布上的概率分布之间的<strong>交叉熵</strong>，如<strong>均方误差</strong>是经验分布和高斯分布之间的交叉熵。</p><span id="more"></span><h2 id="最大似然估计基本介绍"><a href="#最大似然估计基本介绍" class="headerlink" title="最大似然估计基本介绍"></a>最大似然估计基本介绍</h2><h3 id="MLE的基本流程"><a href="#MLE的基本流程" class="headerlink" title="MLE的基本流程"></a>MLE的基本流程</h3><ol><li>列出似然函数$L(\boldsymbol \theta)$</li><li>取对数$ln(L(\boldsymbol \theta))$</li><li>令其导数为0</li><li>估计参数$\boldsymbol {\hat\theta}$</li></ol><h3 id="似然函数"><a href="#似然函数" class="headerlink" title="似然函数"></a>似然函数</h3><p>设总体的概率函数为$P(\boldsymbol X;\boldsymbol \theta), \boldsymbol \theta \in \boldsymbol \Theta$，其中$\boldsymbol \theta$是未知参数向量，$\boldsymbol \Theta$是参数空间。$\boldsymbol x_1,…,\boldsymbol x_n$是来自该总体的样本。</p><p>将样本的联合概率分布函数看成$\boldsymbol \theta$的函数：$L(\boldsymbol \theta;\boldsymbol x_1,…,\boldsymbol x_n)$，记为$L(\boldsymbol \theta)$，称为样本的似然函数：</p><script type="math/tex; mode=display">L(\boldsymbol \theta)=p(\boldsymbol x_1;\boldsymbol \theta)p(\boldsymbol x_2;\boldsymbol \theta)...p(\boldsymbol x_n;\boldsymbol \theta)</script><h3 id="最大似然估计"><a href="#最大似然估计" class="headerlink" title="最大似然估计"></a>最大似然估计</h3><p>若$ \hat{\boldsymbol \theta} =\hat{\boldsymbol \theta} (\boldsymbol x_1,…,\boldsymbol x_n)$满足下式，则成$\hat{\boldsymbol \theta}$是$\boldsymbol \theta$的<strong>最大似然估计MLE</strong>(Maximum Likelihood Estimate)。</p><script type="math/tex; mode=display">\begin{eqnarray*}L(\hat{\boldsymbol \theta}) &=& {arg\underset {\boldsymbol \theta \in \boldsymbol \Theta}{\operatorname {max} }}\ L(\boldsymbol \theta)\\\\&=&{arg\underset {\boldsymbol \theta \in \boldsymbol \Theta}{\operatorname {max} }}\prod^m_{i=1}P_{model}(\boldsymbol x_i,\boldsymbol \theta)\end{eqnarray*}</script><p>最大化<strong>对数</strong>似然函数$ln\ L(\boldsymbol \theta)$与最大化$ L(\boldsymbol \theta)$等价。</p><h3 id="用分布表示"><a href="#用分布表示" class="headerlink" title="用分布表示"></a>用分布表示</h3><script type="math/tex; mode=display">\hat{\boldsymbol \theta}={arg\underset {\boldsymbol \theta \in \boldsymbol \Theta}{\operatorname {max} }} \ E_{\boldsymbol X \sim \hat p_{data}}[log\ p_{model}(\boldsymbol X;\boldsymbol \theta)]</script><p>其含义也可以理解为：<strong>最小化经验分布和模型分布之间的交叉熵</strong></p><p>备注</p><ul><li>$ L(\boldsymbol \theta)$可微时，求导是MLE最常用的方法，对$ln\ L(\boldsymbol \theta)$求导更简单，但并不是所有场合求导都有效</li><li>不变性：若$\hat{\boldsymbol \theta}$是$\boldsymbol \theta$的最大似然估计MLE，则对于任意函数$g(\boldsymbol \theta)$，其最大似然估计是$g(\hat{\boldsymbol \theta})$</li></ul><h2 id="推导损失函数"><a href="#推导损失函数" class="headerlink" title="推导损失函数"></a>推导损失函数</h2><p>负对数似然函数等价于交叉熵损失函数，</p><h2 id="与EM"><a href="#与EM" class="headerlink" title="与EM"></a>与EM</h2><h2 id="与GMM"><a href="#与GMM" class="headerlink" title="与GMM"></a>与GMM</h2><h2 id="推广至MAP"><a href="#推广至MAP" class="headerlink" title="推广至MAP"></a>推广至MAP</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最大似然估计是机器学习的核心组件之一，承上启下，和大量知识相关。通过&lt;strong&gt;EM算法&lt;/strong&gt;可以求解某些复杂情况下的MLE&lt;sup&gt;[1]&lt;/sup&gt;；MLE可以视为&lt;strong&gt;GMM&lt;/strong&gt;的一种特例；通过负对数似然是定义在训练集上的经验分布与定义在模型分布上的概率分布之间的&lt;strong&gt;交叉熵&lt;/strong&gt;，如&lt;strong&gt;均方误差&lt;/strong&gt;是经验分布和高斯分布之间的交叉熵。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="基础知识" scheme="http://wangdongdong122.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+      <category term="代价函数" scheme="http://wangdongdong122.github.io/tags/%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0/"/>
+    
+      <category term="MLE" scheme="http://wangdongdong122.github.io/tags/MLE/"/>
+    
+      <category term="最大似然" scheme="http://wangdongdong122.github.io/tags/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>代价函数与输出单元</title>
+    <link href="http://wangdongdong122.github.io/2021/07/01/2021-07-01-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%B8%8E%E8%BE%93%E5%87%BA%E5%8D%95%E5%85%83/"/>
+    <id>http://wangdongdong122.github.io/2021/07/01/2021-07-01-激活函数与输出单元/</id>
+    <published>2021-07-01T13:56:44.000Z</published>
+    <updated>2021-07-07T15:11:01.258Z</updated>
+    
+    <content type="html"><![CDATA[<p>代价函数和输出单元的选择密切相关，两者都需要根据输出的分布确定。如何选择输出单元，要看预测值的分布，这跟指数族分布和广义线性回归中的结论一致。如何选择代价函数，大多数时候，可以简单地使用<strong>数据分布和模型分布间的交叉熵</strong>，这实际上<strong>等同于最大似然</strong>。本文的主要内容参考花书的第6章。</p><span id="more"></span><h2 id="线性单元-amp-均方误差"><a href="#线性单元-amp-均方误差" class="headerlink" title="线性单元&amp;均方误差"></a>线性单元&amp;均方误差</h2><p>线性单元</p><script type="math/tex; mode=display">\hat {\boldsymbol  y} =\boldsymbol W^T\boldsymbol h + \boldsymbol b</script><p>对应损失函数为均方误差</p><script type="math/tex; mode=display">\begin{eqnarray*}Loss &=& \frac{1}{N} \sum^N_{i=1}(y_i-\hat y_i)^2\\\\&=&\frac{1}{N}||\boldsymbol y-\hat{\boldsymbol y}||^2_2\end{eqnarray*}</script><p>常用来预测高斯分布的均值</p><script type="math/tex; mode=display">\boldsymbol y|\boldsymbol x \sim N(\boldsymbol y;\hat{\boldsymbol y},\boldsymbol I)</script><h2 id="sigmoid单元"><a href="#sigmoid单元" class="headerlink" title="sigmoid单元"></a>sigmoid单元</h2><p>sigmoid单元</p><script type="math/tex; mode=display">\begin{eqnarray*}\hat y &=& \sigma (\boldsymbol W^T\boldsymbol h + \boldsymbol b)\\\\&=& \frac{ 1 }{ 1+e^{−(\boldsymbol W^T\boldsymbol h + \boldsymbol b)} }\end{eqnarray*}</script><p>对应损失函数为<strong>交叉熵</strong></p><script type="math/tex; mode=display">Loss = -\sum^N_{i=1}log\ y_i \hat y_i</script><p>常用来预测Bernoulli分布的概率$p$</p><script type="math/tex; mode=display">y|\boldsymbol x\sim b(1,\hat y|\boldsymbol x)</script><h2 id="softmax单元"><a href="#softmax单元" class="headerlink" title="softmax单元"></a>softmax单元</h2><p>softmax单元</p><script type="math/tex; mode=display">\begin{eqnarray*}\hat {\boldsymbol  y} &=& softmax(\boldsymbol z)\\\\softmax(\boldsymbol z)_k  &=& \frac{exp(z_k)}{\sum_jexp(z_j)}\end{eqnarray*}</script><p>对应损失函数为<strong>交叉熵</strong></p><script type="math/tex; mode=display">loss = -\sum^N_{i=1}\sum^K_{k=1} y_{ik} log(\hat y_{ik})</script><p>其中，N为样本个数，K为类别数。</p><p>用来预测Multinoulli分布的各个类别概率。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;代价函数和输出单元的选择密切相关，两者都需要根据输出的分布确定。如何选择输出单元，要看预测值的分布，这跟指数族分布和广义线性回归中的结论一致。如何选择代价函数，大多数时候，可以简单地使用&lt;strong&gt;数据分布和模型分布间的交叉熵&lt;/strong&gt;，这实际上&lt;strong&gt;等同于最大似然&lt;/strong&gt;。本文的主要内容参考花书的第6章。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="基础知识" scheme="http://wangdongdong122.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+      <category term="激活函数" scheme="http://wangdongdong122.github.io/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
+    
+      <category term="sigmoid" scheme="http://wangdongdong122.github.io/tags/sigmoid/"/>
+    
+      <category term="代价函数" scheme="http://wangdongdong122.github.io/tags/%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0/"/>
+    
+      <category term="softmax" scheme="http://wangdongdong122.github.io/tags/softmax/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>激活函数</title>
+    <link href="http://wangdongdong122.github.io/2021/06/30/2021-06-30-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
+    <id>http://wangdongdong122.github.io/2021/06/30/2021-06-30-激活函数/</id>
+    <published>2021-06-29T16:20:53.000Z</published>
+    <updated>2021-07-01T13:54:57.483Z</updated>
+    
+    <content type="html"><![CDATA[<p>在深度学习中，激活函数提供了非线性变换的能力，提高了神经网络的表达能力。根据万能近似定理，这种非线性表达能力赋予了神经网络拟合一切函数的能力！当然也让大多数我们感兴趣的代价函数都变得非凸。</p><span id="more"></span><h2 id="激活函数基本性质"><a href="#激活函数基本性质" class="headerlink" title="激活函数基本性质"></a>激活函数基本性质</h2><p>关于激活函数的一些问题</p><ol><li><p>激活函数的作用</p><p>激活函数是用来加入非线性因素的，提高神经网络对模型的表达能力，解决线性模型所不能解决的问题</p></li><li><p>激活函数一般需要具有的几个性质</p><ul><li>有界</li><li>容易求导</li><li>单调(容易进行凸优化)</li><li>处理简单(计算方面)</li></ul></li></ol><p>参考</p><p><a href="https://www.jiqizhixin.com/articles/2017-10-10-3">机器之心：26种神经网络激活函数可视化</a></p><p><a href="http://arxiv.org/abs/1811.03378v1">Activation Functions: Comparison of trends in Practice and Research for Deep Learning</a></p><h2 id="常见的激活函数"><a href="#常见的激活函数" class="headerlink" title="常见的激活函数"></a>常见的激活函数</h2><img src="/2021/06/30/2021-06-30-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/%E5%87%A0%E7%A7%8D%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0" class="%E5%87%A0%E7%A7%8D%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><h3 id="sigmoid"><a href="#sigmoid" class="headerlink" title="sigmoid"></a>sigmoid</h3><p><strong>函数形式</strong></p><script type="math/tex; mode=display">\begin{eqnarray*}sigmoid(z) &=& \frac{ 1 }{ 1+e^{−z} }\\\\sigmoid′(z) &=& \frac { e^{-z} } { (1+e^{-z})^2 } = sigmoid(z)(1-sigmoid(z)) \tag{一阶导数}\end{eqnarray*}</script><p>经常用$\sigma (·)$表示。</p><p><strong>函数形状</strong></p><p>sigmoid函数形状</p><img src="/2021/06/30/2021-06-30-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/5561420171010093434.png" class="" title="sigmoid及其梯度"><p><strong>作为激活的特点</strong></p><p>输出是0~1之间</p><p>因此，在LSTM的三个门中使用的激活函数就是sigmoid。</p><p><strong>作为激活函数的缺点</strong></p><ol><li>因为sigmoid函数的梯度最大值是0.25，容易梯度消失</li><li>不是0均值，<a href="https://arxiv.org/pdf/1811.03378.pdf">0均值有什么作用</a></li></ol><p><strong>关于sigmoid函数的起源</strong></p><h3 id="tanh函数"><a href="#tanh函数" class="headerlink" title="tanh函数"></a>tanh函数</h3><p><strong>函数形式</strong></p><script type="math/tex; mode=display">\begin{eqnarray*}tanh(x)&=&\frac{e^x-e^{-x}}{e^x+e^{-x}}\\\\tanh^{\prime}(x)&=&\frac{(e^x+e^{-x})(e^x+e^{-x})-(e^x-e^{-x})(e^x-e^{-x})}{(e^x+e^{-x})^2}\\\\&=& 1- \frac{(e^x-e^{-x})^2}{(e^x+e^{-x})^2}\\\\&=& 1- tanh^2(x)\end{eqnarray*}</script><p><strong>函数形状</strong></p><img src="/2021/06/30/2021-06-30-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/8940520171010093544.png" class="" title="img"><p><strong>函数的特点</strong></p><ul><li>优点：0均值</li><li>缺点：梯度消失</li><li>曾应用广泛</li></ul><h3 id="Relu函数"><a href="#Relu函数" class="headerlink" title="Relu函数"></a>Relu函数</h3><p><strong>函数形式</strong></p><script type="math/tex; mode=display">Relu(x) = max(0,x)</script><p><strong>函数形状</strong></p><img src="/2021/06/30/2021-06-30-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/4217520171010093357.png" class="" title="relu及其导数"><p>修正线性单元（Rectified linear unit，ReLU）</p><p><strong>特点</strong></p><ul><li>优点：计算速度快，稀疏，梯度消失缓解</li><li>缺点：神经元会死亡</li><li>应用广泛</li></ul><h3 id="Leaky-Relu"><a href="#Leaky-Relu" class="headerlink" title="Leaky Relu"></a>Leaky Relu</h3><p>带泄露修正线性单元（Leaky ReLU）</p><p><strong>函数形式</strong></p><script type="math/tex; mode=display">\begin{eqnarray*}f(x)&=&\left\{\begin{array}{ll}x&\text{for $x \geq 0$}\\0.01x &\text{for $x<0$}.\end{array}\right.\\ \\f^{\prime}(x)&=&\left\{\begin{array}{ll}1&\text{for $x \geq 0$}\\0.01 &\text{for $x<0$}.\end{array}\right.\end{eqnarray*}</script><p><strong>函数形状</strong></p><img src="/2021/06/30/2021-06-30-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/1601520171010093621.png" class="" title="LeakyReLU"><p><strong>特点</strong></p><ul><li>ReLU的一个变体，减少神经元死亡</li><li>应用较广</li></ul><h3 id="ELU"><a href="#ELU" class="headerlink" title="ELU"></a>ELU</h3><p>指数线性单元（Exponential Linear Unit，ELU）</p><p><strong>函数形式</strong></p><script type="math/tex; mode=display">\begin{eqnarray*}f(x)&=&\left\{\begin{array}{ll}x&\text{for $x \geq 0$}\\a(e^x-1) &\text{for $x<0$}.\end{array}\right.\\ \\f^{\prime}(x)&=&\left\{\begin{array}{ll}1&\text{for $x \geq 0$}\\f(x)+a=ae^x &\text{for $x<0$}.\end{array}\right.\end{eqnarray*}</script><p><strong>函数形状</strong></p><img src="/2021/06/30/2021-06-30-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/0169720171010094120.png" class="" title="img"><p><strong>特点</strong></p><ul><li>类似于Leaky ReLU</li><li>计算量稍大</li><li>不会有Dead ReLU问题</li><li>均值接近于0</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在深度学习中，激活函数提供了非线性变换的能力，提高了神经网络的表达能力。根据万能近似定理，这种非线性表达能力赋予了神经网络拟合一切函数的能力！当然也让大多数我们感兴趣的代价函数都变得非凸。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="基础知识" scheme="http://wangdongdong122.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+      <category term="激活函数" scheme="http://wangdongdong122.github.io/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
+    
+      <category term="sigmoid" scheme="http://wangdongdong122.github.io/tags/sigmoid/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>威尔逊置信区间</title>
+    <link href="http://wangdongdong122.github.io/2021/06/27/2021-06-27-%E5%A8%81%E5%B0%94%E9%80%8A%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4/"/>
+    <id>http://wangdongdong122.github.io/2021/06/27/2021-06-27-威尔逊置信区间/</id>
+    <published>2021-06-27T12:52:53.000Z</published>
+    <updated>2021-06-28T15:40:02.688Z</updated>
+    
+    <content type="html"><![CDATA[<p>二项分布的概率$p$的置信区间、置信度和样本量之间的关系，可以用正态区间来统计，但在样本量较小是正态置信区间往往有准确性较差。因此在小样本下可以用威尔逊置信区间。</p><span id="more"></span><h2 id="正态置信区间"><a href="#正态置信区间" class="headerlink" title="正态置信区间"></a>正态置信区间</h2><p>$p$是伯努利实验的成功率（样本正例比例），$n$是样本数量或实验次数。$z$表示对应某个置信水平的$z$统计量，一般情况下，在95%的置信水平下，$z$统计量的值为1.96</p><div class="table-container"><table><thead><tr><th><strong>置信度</strong></th><th><strong>z分数</strong></th></tr></thead><tbody><tr><td>99%</td><td>2.576</td></tr><tr><td>98%</td><td>2.326</td></tr><tr><td>95%</td><td>1.96</td></tr><tr><td>90%</td><td>1.645</td></tr></tbody></table></div><p>可以看到，当$n$的值足够大时，这个下限值会趋向$\hat p$。如果n非常小（投票人很少），这个下限值会大大小于$\hat p$。</p><script type="math/tex; mode=display">\left[\hat{p}-z\sqrt{\frac{\hat{p}(1-\hat{p})}{n}},\ \ \ \hat{p}+z\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\right]</script><p>但是，它只适用于样本较多的情况（np &gt; 5 且 n(1 − p) &gt; 5），对于小样本，它的准确性很差</p><h2 id="威尔逊区间"><a href="#威尔逊区间" class="headerlink" title="威尔逊区间"></a>威尔逊区间</h2><p>1927年，美国数学家 Edwin Bidwell Wilson提出了一个修正公式，被称为<a href="http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval">“威尔逊区间”</a>，很好地解决了小样本的准确性问题。</p><script type="math/tex; mode=display">\frac{1}{1+\frac{z^2}{n}}\left[\hat p +\frac{z^2}{2n} \pmz \sqrt{\frac{\hat p (1-\hat p)}{n}+\frac{z^2}{4n^2}}\right]</script><blockquote><p><a href="http://www.evanmiller.org/how-not-to-sort-by-average-rating.html">实际代码</a></p></blockquote><h3 id="应用1特征修正"><a href="#应用1特征修正" class="headerlink" title="应用1特征修正"></a>应用1特征修正</h3><p>在线性模型中，有手工处理特征的条件时，可以使用威尔逊置信区间的下界作为修正后的特征值（实际上是降低置信度低的case的影响）</p><script type="math/tex; mode=display">\frac{1}{1+\frac{z^2}{n}}\left[\hat p +\frac{z^2}{2n} -z \sqrt{\frac{\hat p (1-\hat p)}{n}+\frac{z^2}{4n^2}}\right]</script><p>代码：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line">p=np.arange(<span class="number">0</span>,<span class="number">1</span>,<span class="number">0.01</span>)</span><br><span class="line">n=np.arange(<span class="number">1</span>, <span class="number">100</span>, <span class="number">1</span>)</span><br><span class="line">z=<span class="number">1.96</span></span><br><span class="line">n,p=np.meshgrid(n,p)</span><br><span class="line">y=(p+z**<span class="number">2</span>/(<span class="number">2</span>*n)-z*np.sqrt(p*(<span class="number">1</span>-p)/n + z**<span class="number">2</span>/(<span class="number">4</span>*n**<span class="number">2</span>)))/(<span class="number">1</span>+z/n)</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = Axes3D(fig)</span><br><span class="line">ax.plot_surface(n,p,y,cmap=<span class="string">&#x27;rainbow&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p>参考：</p><blockquote><p><a href="http://typename.net/statistics/wilson-confidence-interval/">知乎排名算法</a><br><a href="http://www.ruanyifeng.com/blog/2012/03/ranking_algorithm_wilson_score_interval.html">基于用户投票的排名算法</a></p></blockquote><h3 id="应用2评估样本量"><a href="#应用2评估样本量" class="headerlink" title="应用2评估样本量"></a>应用2评估样本量</h3><p>威尔逊置信区间可以在给定数据量n、置信度参数z、统计值$\widehat{p}$ 的情况下给出置信区间。同样的，在给定统计值和能接受的置信度、置信区间的情况下，我们可以评估我们需要的样本量n。</p><script type="math/tex; mode=display">\begin{eqnarray*}\frac {1} {1+ \frac{z^2}{n}} \left[   \widehat{p} + \frac{z^2}{2n} -z     \sqrt{ \frac{\widehat{p}(1-\widehat{p})}{n} + \frac{z^2}{4n^2}}  \right]  = R \cdot \widehat{p}\end{eqnarray*}</script><script type="math/tex; mode=display">\begin{eqnarray*} z     \sqrt{ \frac{\widehat{p}(1-\widehat{p})}{n} + \frac{z^2}{4n^2}}  = R \cdot \widehat{p}\end{eqnarray*}</script><p>其中，$R$为对应设定的置信区间（$R\cdot\widehat{p}$为置信区间下界），z对应设定置信度，$\widehat{p}$ 为统计值，n为需要的样本量，给定$R,z,\widehat{p}$ 时，可以求出 $n=f(R,z,\widehat{p})$（一元二次方程）：</p><script type="math/tex; mode=display">x = \frac{-b \pm \sqrt{\Delta}}{2a} =\frac{-b \pm \sqrt{b^2 -4ac}}{2a}</script><p>需要注意的是，和正态分布置信区间不同，<strong>威尔逊置信区间并不关于 $\widehat{p}$ 对称</strong>。中心点为：</p><script type="math/tex; mode=display">\begin{eqnarray*}\frac {\widehat{p} + \frac{z^2}{2n}} {1+ \frac{z^2}{n}}= \widehat{p} + \frac{ \frac{z^2}{n} \cdot (\frac12 - \widehat{p})}{1+ \frac{z^2}{n}}\end{eqnarray*}</script><p>但 $ \widehat{p}<0.5$ 时，中心位置大于 $ \widehat{p}$ ；当 $ \widehat{p}>0.5$ 时，中心位置小于 $ \widehat{p}$ 。即：<strong>中心会先0.5靠近</strong>。</p><p>因此 $ R \cdot \widehat{p}$并不意味着置信区间为$[R \cdot \widehat{p},(2-R) \cdot \widehat{p}]$</p><blockquote><p>威尔逊置信区间的中心位置是否等同于增加了先验（p=0.5）的map？</p><p>威尔逊置信区间是否相当于贝叶斯</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;二项分布的概率$p$的置信区间、置信度和样本量之间的关系，可以用正态区间来统计，但在样本量较小是正态置信区间往往有准确性较差。因此在小样本下可以用威尔逊置信区间。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="基础知识" scheme="http://wangdongdong122.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+      <category term="数理统计" scheme="http://wangdongdong122.github.io/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二分类评估指标</title>
+    <link href="http://wangdongdong122.github.io/2021/06/27/2021-06-27-%E4%BA%8C%E5%88%86%E7%B1%BB%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87/"/>
+    <id>http://wangdongdong122.github.io/2021/06/27/2021-06-27-二分类评估指标/</id>
+    <published>2021-06-27T06:12:09.000Z</published>
+    <updated>2021-06-29T14:35:25.195Z</updated>
+    
+    <content type="html"><![CDATA[<p>介绍ROC、KS、AUC等二分类评估指标</p><span id="more"></span><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><p><strong>TP, FP, FN, TN</strong></p><div class="table-container"><table><thead><tr><th></th><th>预测1</th><th>预测0</th><th>合计</th></tr></thead><tbody><tr><td>真实1</td><td>True Positive (TP)</td><td>False Negative (FN)</td><td>Actual   Positive(TP+FN)</td></tr><tr><td>真实0</td><td>False Positive (FP)</td><td>True Negative(TN)</td><td>Actual   Negative(FP+TN)</td></tr><tr><td>合计</td><td>Predicted   Positive(TP+FP)</td><td>Predicted   Negative(FN+TN)</td><td>TP+FP+FN+TN</td></tr></tbody></table></div><ul><li>True Positive Rate（TPR），计算公式为TPR=TP/(TP+FN)；所有真实的“1”中，有多少被模型成功选出</li><li>False Positive Rate（FPR），计算公式为FPR=FP/(FP+TN)；所有真实的“0”中，有多少被模型误判为1了；</li><li>Precision=TP/(TP+FP)，或2TP/((TP+FN)+(TP+FP))。所有判为1的用户，判对的比例</li><li>好的模型：TPR尽量高而FPR尽量低</li></ul><h2 id="ROC"><a href="#ROC" class="headerlink" title="ROC"></a>ROC</h2><ul><li><p>ROC(Receiver Operating Characteristic Curve):接受者操作特征曲线。</p></li><li><p>ROC曲线：设定不同的阀值，计算不同的点(FPR,TPR)，连成曲线</p></li><li><p>ROC曲线确定阈值的方法：</p><ul><li>给出ROC曲线的拟合函数表达式，然后计算出最优的阀值，这个目前通过软件实现难度不大：如何给出最优拟合函数，计算数学上有很多方法；</li><li>计算出ΔTPR≈ΔFPR的点即为最优的阀值；</li><li>从业务上给出最优的阀值。</li></ul></li></ul><img src="/2021/06/27/2021-06-27-%E4%BA%8C%E5%88%86%E7%B1%BB%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87/R448aa8872ff9c0a9620a48c7eb613aaa" class="" title="ROC"><h2 id="AUC"><a href="#AUC" class="headerlink" title="AUC"></a>AUC</h2><ul><li>AUC：ROC曲线下方的面积Area Under the ROC      Curve，简称为AUC。这是评价模型的另一个方法，AUC值越大，说明模型的分辨效果越好</li><li>gini系数：在SAS的评分模型输出中，常用来判断收入分配公平程度，此时gini=2*AUC-1</li></ul><p>XGB中</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> sum_pospair = <span class="number">0.0</span>;</span><br><span class="line"><span class="keyword">double</span> sum_npos = <span class="number">0.0</span>, sum_nneg = <span class="number">0.0</span>, buf_pos = <span class="number">0.0</span>, buf_neg = <span class="number">0.0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">size_t</span> j = <span class="number">0</span>; j &lt; rec.<span class="built_in">size</span>(); ++j) &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">float</span> wt = info.<span class="built_in">GetWeight</span>(rec[j].second);</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">float</span> ctr = info.labels[rec[j].second];</span><br><span class="line">  <span class="comment">// keep bucketing predictions in same bucket</span></span><br><span class="line">  <span class="keyword">if</span> (j != <span class="number">0</span> &amp;&amp; rec[j].first != rec[j - <span class="number">1</span>].first) &#123; <span class="comment">// 遍历所有的预测值</span></span><br><span class="line">    sum_pospair += buf_neg * (sum_npos + buf_pos *<span class="number">0.5</span>); <span class="comment">// 逐个梯形计算</span></span><br><span class="line">    sum_npos += buf_pos;</span><br><span class="line">    sum_nneg += buf_neg;</span><br><span class="line">    buf_neg = buf_pos = <span class="number">0.0f</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  buf_pos += ctr * wt; <span class="comment">// 累计加权TP</span></span><br><span class="line">  buf_neg += (<span class="number">1.0f</span> - ctr) * wt; <span class="comment">// 累计加权FP</span></span><br><span class="line">&#125;</span><br><span class="line">sum_pospair += buf_neg * (sum_npos + buf_pos *<span class="number">0.5</span>);</span><br><span class="line">sum_npos += buf_pos;</span><br><span class="line">sum_nneg += buf_neg;</span><br><span class="line"><span class="comment">// check weird conditions</span></span><br><span class="line">utils::<span class="built_in">Check</span>(sum_npos &gt; <span class="number">0.0</span> &amp;&amp; sum_nneg &gt; <span class="number">0.0</span>,</span><br><span class="line">             <span class="string">&quot;AUC: the dataset only contains pos or neg samples&quot;</span>);</span><br><span class="line"><span class="comment">// this is the AUC</span></span><br><span class="line">sum_auc += sum_pospair / (sum_npos*sum_nneg);<span class="comment">// 计算AUC</span></span><br></pre></td></tr></table></figure><p>R语言中的计算方法</p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> (y_pred, y_true) </span><br><span class="line">&#123;</span><br><span class="line">rank &lt;- rank(y_pred) <span class="comment"># rank[i] 为 y_pred[i]从小到大的排序号，最小为1,两个数并列第5，则都为5.5</span></span><br><span class="line">n_pos &lt;- <span class="built_in">sum</span>(y_true == <span class="number">1</span>)</span><br><span class="line">n_neg &lt;- <span class="built_in">sum</span>(y_true == <span class="number">0</span>)</span><br><span class="line">AUC &lt;- (<span class="built_in">sum</span>(rank[y_true == <span class="number">1</span>]) - n_pos * (n_pos + <span class="number">1</span>)/<span class="number">2</span>)/(n_pos * </span><br><span class="line">n_neg)</span><br><span class="line"><span class="built_in">return</span>(AUC)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>简化计算公式</p><script type="math/tex; mode=display">AUC = \frac{\sum_{i \in PositiveClass} rank_i -\frac{M(M+1)}{2} }{M × N}</script><p>原因：</p><h2 id="KS"><a href="#KS" class="headerlink" title="KS"></a>KS</h2><ul><li><p>K-S曲线：它和ROC曲线的画法异曲同工。以Logistic模型为例，首先把Logistic模型输出的概率从大到小排序，然后取10%的值（也就是概率值）作为阀值，同理把10%*k（k=1,2,3,…,9）处的值作为阀值，计算出不同的FPR和TPR值，以10%*k（k=1,2,3,…,9）为横坐标，分别以TPR和FPR的值为纵坐标，就可以画出两个曲线，这就是K-S曲线。</p></li><li><p>KS值：KS=max(TPR-FPR)，即是两条曲线之间的最大间隔距离。当(TPR-FPR)最大时，也就是ΔTPR-ΔFPR=0，这和ROC曲线上找最优阀值的条件ΔTPR=ΔFPR是一样的。从这点也可以看出，ROC曲线、K-S曲线、KS值的本质是相同的。</p><img src="/2021/06/27/2021-06-27-%E4%BA%8C%E5%88%86%E7%B1%BB%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87/6c9cd5825bc443459b66f7b20b6f8588_th.jpg" class="" title="KS曲线"></li><li><p>K-S曲线能直观地找出模型中差异最大的一个分段，比如评分模型就比较适合用KS值进行评估；</p></li><li><p>KS值只能反映出哪个分段是区分度最大的，不能反映出所有分段的效果。</p></li></ul><p>因此，在实际应用中，模型评价一般需要将ROC曲线、K-S曲线、KS值、AUC指标结合起来使用。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;介绍ROC、KS、AUC等二分类评估指标&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="评估指标" scheme="http://wangdongdong122.github.io/tags/%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87/"/>
+    
+      <category term="KS" scheme="http://wangdongdong122.github.io/tags/KS/"/>
+    
+      <category term="AUC" scheme="http://wangdongdong122.github.io/tags/AUC/"/>
+    
+      <category term="ROC" scheme="http://wangdongdong122.github.io/tags/ROC/"/>
+    
+      <category term="基础知识" scheme="http://wangdongdong122.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>理解贝叶斯</title>
+    <link href="http://wangdongdong122.github.io/2021/06/27/2021-06-27-%E7%90%86%E8%A7%A3%E8%B4%9D%E5%8F%B6%E6%96%AF/"/>
+    <id>http://wangdongdong122.github.io/2021/06/27/2021-06-27-理解贝叶斯/</id>
+    <published>2021-06-26T16:17:42.000Z</published>
+    <updated>2021-06-29T16:21:22.555Z</updated>
+    
+    <content type="html"><![CDATA[<p>人们对概率的认识不断变化，也有很多<a href="https://www.zhihu.com/question/26895086/answer/175050065">派系</a>，相应地有不同的概念和术语，大家学习的时候常常混为一谈，导致理解难度增大。理解贝叶斯派的概念时需要注意两点，第一，在贝叶斯派中，概率是<strong>信念的强度</strong>，其会随认识（条件）的改变而变化；第二是要<strong>和因果区分开</strong>，在贝叶斯的语境中并不真的有因果关系。注：本文中有大量自己的民科理解，其中观点都有可能是错的。</p><span id="more"></span><h2 id="主观概率"><a href="#主观概率" class="headerlink" title="主观概率"></a>主观概率</h2><p>贝叶斯派：用<strong>信念</strong>的强度定义概率。用户点击广告的概率到底是多少？随我们掌握的信息逐渐增加，这个概率会由平均概率不断变化。</p><p>所谓<strong>置信度、倾向性得分、信念</strong>，都是不同学派对概率的不同的称呼。</p><h2 id="与因果的区分"><a href="#与因果的区分" class="headerlink" title="与因果的区分"></a>与因果的区分</h2><p>其相关的概念是从<strong>推理过程</strong>来理解的。贝叶斯相关的文章或书里常常也将“证据→假设”的关系说成是“果→因”的关系，这导致了读者理解的混乱，仿佛因和果不存在客观上的区别，将贝叶斯推断的变量互换就可以随意颠倒因和果。贝叶斯推断过程只是数学公式，并不真正涉及物理世界的因果，其表示的是一个推理过程，由一件事（证据）推理另一件事（假设）。<strong>所谓贝叶斯可以“由果推因”，更准确的说法应该是“由证据推假设”</strong>。但由于现实世界中往往由因到果的概率$P(果|因)$比较容易得到，而由果到因的概率$P(因|果)$更需要贝叶斯法则。</p><p><strong>举个例子</strong></p><p>女士做了癌症检查，结果为阳性，她应该多大程度上相信自己得了癌症。</p><ul><li>假设D（疾病）：她得了癌症</li><li>证据T（检测）：检测结果为阳性</li></ul><p><strong>按照贝叶斯法则</strong></p><script type="math/tex; mode=display">\begin{eqnarray*}P(D|T) &=& \frac{P(T|D)P(D)}{P(T)}   \\                 \\后验&=&\frac{似然·先验}{证据}=似然比·先验  \end{eqnarray*}</script><p><strong>涉及概念</strong></p><p>likelihood（似然）</p><ul><li>给出某个假设D后，其依据（证据）T发生概率，$P(T|D)$</li><li>给定某一假设后，其某一参数值的可能性</li><li>给定患癌症的结论后，其检测呈阳性的概率</li></ul><p>likelihood ratio（似然比）</p><ul><li>给定结果D后，证据T发生概率会高出多少倍，$P(T|D)/P(T)$</li></ul><script type="math/tex; mode=display">\begin{eqnarray*}癌症 &→& 检测结果为阳 \tag{箭头表示物理规律} \\因 &→& 果    \tag{箭头表示物理规律}\\假设 &←& 证据  \tag{箭头表示推理方向}\end{eqnarray*}</script><h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><p><strong>条件概率问题</strong></p><p>条件概率其实是个很容易让人混淆的问题。$P(A|B)$表示给定$B$，后$A$发生的概率，而“给定$B$”实际上指的是观测到$B$，而不是干预。比如给定$B$：“小孩的衣服size很小”，则$A$：“小孩年龄很小”的概率会增大，即$P(A|B)&gt;P(A)$，这个含义是你观测到小孩穿的衣服小，对他年龄很小的信念会提升（贝叶斯派的描述方式），但并不代表给小孩换个小的衣服，会使其年龄小的概率增大。</p><p><strong>事件的概率</strong></p><p>由于符号的误用，大家在表示概率时常常看见一个大写字母就喜欢加上个概率，常常会把自己绕进去。最常见的比如$P(X),P(Y),P(W)$,分别代表着变量$X,Y,W$的分布，在机器学习中，一般指特征分布、标签分布、模型参数的分布。其完整含义是$P(X=x)$，表示成条件概率时，$P(Y|X)$实际上是指$P(Y=y|X=x)$,这是一个二元函数，画出图来是个曲面。</p><p>比如，在MAP中</p><script type="math/tex; mode=display">P(W|X,Y) = \frac {P(X,Y|W) × P(W)} {P(X,Y)}</script><p>实际上表示的是</p><script type="math/tex; mode=display">P(W=w|X，Y)|</script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;人们对概率的认识不断变化，也有很多&lt;a href=&quot;https://www.zhihu.com/question/26895086/answer/175050065&quot;&gt;派系&lt;/a&gt;，相应地有不同的概念和术语，大家学习的时候常常混为一谈，导致理解难度增大。理解贝叶斯派的概念时需要注意两点，第一，在贝叶斯派中，概率是&lt;strong&gt;信念的强度&lt;/strong&gt;，其会随认识（条件）的改变而变化；第二是要&lt;strong&gt;和因果区分开&lt;/strong&gt;，在贝叶斯的语境中并不真的有因果关系。注：本文中有大量自己的民科理解，其中观点都有可能是错的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="基础知识" scheme="http://wangdongdong122.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+      <category term="概率" scheme="http://wangdongdong122.github.io/tags/%E6%A6%82%E7%8E%87/"/>
+    
+      <category term="概率论" scheme="http://wangdongdong122.github.io/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/"/>
+    
+      <category term="长期更新" scheme="http://wangdongdong122.github.io/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/"/>
+    
+      <category term="因果推断" scheme="http://wangdongdong122.github.io/tags/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo图片路径配置</title>
@@ -95,7 +277,7 @@
     <link href="http://wangdongdong122.github.io/2021/06/21/2021-06-21-Hierarchical-Attention/"/>
     <id>http://wangdongdong122.github.io/2021/06/21/2021-06-21-Hierarchical-Attention/</id>
     <published>2021-06-21T01:26:17.000Z</published>
-    <updated>2021-06-26T14:24:54.071Z</updated>
+    <updated>2021-06-27T02:17:56.439Z</updated>
     
     <content type="html"><![CDATA[<p>Self-Attention谁先提出的，各文章里写的不一样，<a href="https://papers.nips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention Is All You Need</a>中说是<a href="https://arxiv.org/pdf/1606.01933.pdf">Jakob.2016</a>年提出的，<a href="https://arxiv.org/pdf/1904.02874.pdf">An Attentive Survey of Attention Models</a>中说是<a href="https://www.aclweb.org/anthology/N16-1174.pdf">Yang et al. 2016</a>，本篇介绍后者。</p><span id="more"></span><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>核心思路：</p><ol><li>分层（hierarchical structure）：先构建“词 → 句子”级的表达，再聚合到文档级，即“句子 → 文档”</li><li>Attention：不同的词和句子包含的信息和重要程度都依赖于上下文，为了将其考虑进来，所以作者用两层的Attention</li></ol><p>作者没有提self-attention，应该是还没意识到这一点的牛逼之处。</p><h2 id="Hierarchical-Attention-Networks"><a href="#Hierarchical-Attention-Networks" class="headerlink" title="Hierarchical Attention Networks"></a>Hierarchical Attention Networks</h2><h3 id="encoder"><a href="#encoder" class="headerlink" title="encoder"></a>encoder</h3><p>encoder采用GRU产生，原理及结构省略</p><h3 id="Hierarchical-Attention"><a href="#Hierarchical-Attention" class="headerlink" title="Hierarchical Attention"></a>Hierarchical Attention</h3><p>数据表达</p><ul><li>sentences $\vec{s_i}$ ,$i=1,2,…L$</li><li>words represents: $w_{it}$, $t ∈ [1, T]$,   $\vec{s_i}$ contains $T$ words</li></ul><h4 id="Word-Encoder"><a href="#Word-Encoder" class="headerlink" title="Word Encoder"></a>Word Encoder</h4><p>先embedding，过双向GRU，将隐层concatenate起来</p><ol><li>word embedding: $W_e$, $x_{ij}=W_ew_{ij}$</li><li>forward GRU: $\overset{\rightarrow}{h_{it}}=\overset{\rightarrow}{GRU}(x_{it}),\ t ∈ [1, T]$</li><li>backward GRU:  $\overset{\leftarrow}{h_{it}}=\overset{\leftarrow}{GRU}(x_{it}),\ t ∈ [T, 1]$</li><li>concatenate:  $h_{it}=[\overset{\rightarrow}{h_{it}},\overset{\leftarrow}{h_{it}}]$</li></ol><h4 id="Word-Attention"><a href="#Word-Attention" class="headerlink" title="Word Attention"></a>Word Attention</h4><p>将对句子含义起重要作用的词提取出来，聚合成一个句子向量。先将所有的（$t ∈ [1, T]$）$h_{it}$过全连接得到Key: $u_{it}$；然后和随机变量的query: $u_w$求相似度分布: $\alpha$；最后将最开始的  $h_{it}$作为Value，加权得到sentence vector: $s_i$。所有信息都是从$h_{it}$中得到。</p><script type="math/tex; mode=display">\begin{eqnarray*}u_{it} &=& tanh(W_wh_{it}+b_w) \tag{FC layer}  \\                 \\\alpha_{it} &=& \frac{exp(u^{T}_{it}u_w)}{\sum_{t}{exp(u^{T}_{it}u_w)}}  \tag{measure similarity & normalize}\\\\s_i &=& \sum_{t}{\alpha_{it}h_{it}}\tag{weighted sum}\end{eqnarray*}</script><p>其中$ u_w$(word context vector)是随机初始化，然后在训练过程中学习的，可以当做是一个固定的query，用来表示这个句子中重要的信息。</p><p>维度信息：每个句子只产生一个向量$s_i$，其长度和单个词的BiGRU隐层concat之后的向量$h_{it}$长度相同（不一定等于词向量$w_{it}$的长度）。</p><h4 id="Sentence-Encoder"><a href="#Sentence-Encoder" class="headerlink" title="Sentence Encoder"></a>Sentence Encoder</h4><p>句子的encoder也和词的类似，先过bidirectional GRU然后concatenate。</p><ol><li>forward GRU：$\overset{\rightarrow}{h_{i}}=\overset{\rightarrow}{GRU}(s_{i}),\ i ∈ [1, L]$</li><li>backward GRU: $\overset{\leftarrow}{h_{i}}=\overset{\leftarrow}{GRU}(s_{i}),\ i ∈ [L, 1]$</li><li>concatenate: $h_{i}=[\overset{\rightarrow}{h_{i}},\overset{\leftarrow}{h_{i}}]$</li></ol><h4 id="Sentence-Attention"><a href="#Sentence-Attention" class="headerlink" title="Sentence Attention"></a>Sentence Attention</h4><p>这部分也和Word Attention部分一样，只是换了个层次</p><script type="math/tex; mode=display">\begin{eqnarray*}u_{i} &=& tanh(W_sh_{i}+b_s)  \tag{FC layer}   \\                  \\ \alpha_{i} &=& \frac{exp(u^{T}_{i}u_s)}{\sum_{i}{exp(u^{T}_{i}u_s)}}   \tag{measure similarity & normalize} \\ \\ v &=& \sum_{i}{\alpha_{i}h_{i}} \tag{weighted sum} \end{eqnarray*}</script><p>这里就将一个文档表示成一个向量$v$， 其长度和单个句子的BiGRU隐层concat之后的向量$h_{i}$长度相同。</p><h3 id="Document-Classification"><a href="#Document-Classification" class="headerlink" title="Document Classification"></a>Document Classification</h3><p>这部分很简单，文档向量$v$过softmax，然后用log loss训练。</p><script type="math/tex; mode=display">\begin{eqnarray*}p &=& softmax(W_cv+b_c)  \tag{softmax}   \\                  \\L &=& -\sum_{d}{log\ p_{dj}} \tag{log loss} \end{eqnarray*}</script><p>其中，$j$是文档$d$的标签，只对正确标签计算loss。</p><h2 id="Results-and-analysis"><a href="#Results-and-analysis" class="headerlink" title="Results and analysis"></a>Results and analysis</h2><p>  Yelp 2013上的两个文档，左边是给出了5星好评的，右边是0星差评的。模型可以捕捉到那些词重要。</p><img src="/2021/06/21/2021-06-21-Hierarchical-Attention/1624323245414_src-1624427147187.JPG" class="" title="显示">]]></content>
     

@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="基础知识,概率,概率论,长期更新,因果推断," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="凛冬将至" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="人们对概率的认识不断变化，也有很多派系，相应地有不同的概念和术语，大家学习的时候常常混为一谈，导致理解难度增大。理解贝叶斯派的概念时需要注意两点，第一，在贝叶斯派中，概率是信念的强度，其会随认识（条件）的改变而变化；第二是要和因果区分开，在贝叶斯的语境中并不真的有因果关系。注：本文中有大量自己的民科理解，其中观点都有可能是错的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解贝叶斯">
+<meta property="og:url" content="http://wangdongdong122.github.io/2021/06/27/2021-06-27-%E7%90%86%E8%A7%A3%E8%B4%9D%E5%8F%B6%E6%96%AF/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="人们对概率的认识不断变化，也有很多派系，相应地有不同的概念和术语，大家学习的时候常常混为一谈，导致理解难度增大。理解贝叶斯派的概念时需要注意两点，第一，在贝叶斯派中，概率是信念的强度，其会随认识（条件）的改变而变化；第二是要和因果区分开，在贝叶斯的语境中并不真的有因果关系。注：本文中有大量自己的民科理解，其中观点都有可能是错的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-26T16:17:42.000Z">
+<meta property="article:modified_time" content="2021-06-29T16:21:22.555Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="基础知识">
+<meta property="article:tag" content="概率">
+<meta property="article:tag" content="概率论">
+<meta property="article:tag" content="长期更新">
+<meta property="article:tag" content="因果推断">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangdongdong122.github.io/2021/06/27/2021-06-27-理解贝叶斯/"/>
+
+
+
+
+
+  <title>理解贝叶斯 | 凛冬将至</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凛冬将至</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">冬天的故事</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/06/27/2021-06-27-%E7%90%86%E8%A7%A3%E8%B4%9D%E5%8F%B6%E6%96%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">理解贝叶斯</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-06-27T00:17:42+08:00">
+                2021-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>人们对概率的认识不断变化，也有很多<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/26895086/answer/175050065">派系</a>，相应地有不同的概念和术语，大家学习的时候常常混为一谈，导致理解难度增大。理解贝叶斯派的概念时需要注意两点，第一，在贝叶斯派中，概率是<strong>信念的强度</strong>，其会随认识（条件）的改变而变化；第二是要<strong>和因果区分开</strong>，在贝叶斯的语境中并不真的有因果关系。注：本文中有大量自己的民科理解，其中观点都有可能是错的。</p>
+<span id="more"></span>
+<h2 id="主观概率"><a href="#主观概率" class="headerlink" title="主观概率"></a>主观概率</h2><p>贝叶斯派：用<strong>信念</strong>的强度定义概率。用户点击广告的概率到底是多少？随我们掌握的信息逐渐增加，这个概率会由平均概率不断变化。</p>
+<p>所谓<strong>置信度、倾向性得分、信念</strong>，都是不同学派对概率的不同的称呼。</p>
+<h2 id="与因果的区分"><a href="#与因果的区分" class="headerlink" title="与因果的区分"></a>与因果的区分</h2><p>其相关的概念是从<strong>推理过程</strong>来理解的。贝叶斯相关的文章或书里常常也将“证据→假设”的关系说成是“果→因”的关系，这导致了读者理解的混乱，仿佛因和果不存在客观上的区别，将贝叶斯推断的变量互换就可以随意颠倒因和果。贝叶斯推断过程只是数学公式，并不真正涉及物理世界的因果，其表示的是一个推理过程，由一件事（证据）推理另一件事（假设）。<strong>所谓贝叶斯可以“由果推因”，更准确的说法应该是“由证据推假设”</strong>。但由于现实世界中往往由因到果的概率$P(果|因)$比较容易得到，而由果到因的概率$P(因|果)$更需要贝叶斯法则。</p>
+<p><strong>举个例子</strong></p>
+<p>女士做了癌症检查，结果为阳性，她应该多大程度上相信自己得了癌症。</p>
+<ul>
+<li>假设D（疾病）：她得了癌症</li>
+<li>证据T（检测）：检测结果为阳性</li>
+</ul>
+<p><strong>按照贝叶斯法则</strong></p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+P(D|T) &=& \frac{P(T|D)P(D)}{P(T)}   \\                 
+\\
+后验&=&\frac{似然·先验}{证据}=似然比·先验  
+
+\end{eqnarray*}</script><p><strong>涉及概念</strong></p>
+<p>likelihood（似然）</p>
+<ul>
+<li>给出某个假设D后，其依据（证据）T发生概率，$P(T|D)$</li>
+<li>给定某一假设后，其某一参数值的可能性</li>
+<li>给定患癌症的结论后，其检测呈阳性的概率</li>
+</ul>
+<p>likelihood ratio（似然比）</p>
+<ul>
+<li>给定结果D后，证据T发生概率会高出多少倍，$P(T|D)/P(T)$</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+癌症 &→& 检测结果为阳 \tag{箭头表示物理规律} \\
+因 &→& 果    \tag{箭头表示物理规律}\\
+假设 &←& 证据  \tag{箭头表示推理方向}
+\end{eqnarray*}</script><h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><p><strong>条件概率问题</strong></p>
+<p>条件概率其实是个很容易让人混淆的问题。$P(A|B)$表示给定$B$，后$A$发生的概率，而“给定$B$”实际上指的是观测到$B$，而不是干预。比如给定$B$：“小孩的衣服size很小”，则$A$：“小孩年龄很小”的概率会增大，即$P(A|B)&gt;P(A)$，这个含义是你观测到小孩穿的衣服小，对他年龄很小的信念会提升（贝叶斯派的描述方式），但并不代表给小孩换个小的衣服，会使其年龄小的概率增大。</p>
+<p><strong>事件的概率</strong></p>
+<p>由于符号的误用，大家在表示概率时常常看见一个大写字母就喜欢加上个概率，常常会把自己绕进去。最常见的比如$P(X),P(Y),P(W)$,分别代表着变量$X,Y,W$的分布，在机器学习中，一般指特征分布、标签分布、模型参数的分布。其完整含义是$P(X=x)$，表示成条件概率时，$P(Y|X)$实际上是指$P(Y=y|X=x)$,这是一个二元函数，画出图来是个曲面。</p>
+<p>比如，在MAP中</p>
+<script type="math/tex; mode=display">
+P(W|X,Y) = \frac {P(X,Y|W) × P(W)} {P(X,Y)}</script><p>实际上表示的是</p>
+<script type="math/tex; mode=display">
+P(W=w|X，Y)|</script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># 基础知识</a>
+          
+            <a href="/tags/%E6%A6%82%E7%8E%87/" rel="tag"># 概率</a>
+          
+            <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag"># 概率论</a>
+          
+            <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" rel="tag"># 长期更新</a>
+          
+            <a href="/tags/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD/" rel="tag"># 因果推断</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/06/26/2021-06-26-hexo%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E9%85%8D%E7%BD%AE/" rel="next" title="hexo图片路径配置">
+                <i class="fa fa-chevron-left"></i> hexo图片路径配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/06/27/2021-06-27-%E4%BA%8C%E5%88%86%E7%B1%BB%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87/" rel="prev" title="二分类评估指标">
+                二分类评估指标 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A7%82%E6%A6%82%E7%8E%87"><span class="nav-number">1.</span> <span class="nav-text">主观概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8E%E5%9B%A0%E6%9E%9C%E7%9A%84%E5%8C%BA%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">与因果的区分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">其他问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="基础知识,数理统计," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="凛冬将至" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="二项分布的概率$p$的置信区间、置信度和样本量之间的关系，可以用正态区间来统计，但在样本量较小是正态置信区间往往有准确性较差。因此在小样本下可以用威尔逊置信区间。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="威尔逊置信区间">
+<meta property="og:url" content="http://wangdongdong122.github.io/2021/06/27/2021-06-27-%E5%A8%81%E5%B0%94%E9%80%8A%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="二项分布的概率$p$的置信区间、置信度和样本量之间的关系，可以用正态区间来统计，但在样本量较小是正态置信区间往往有准确性较差。因此在小样本下可以用威尔逊置信区间。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-27T12:52:53.000Z">
+<meta property="article:modified_time" content="2021-06-28T15:40:02.688Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="基础知识">
+<meta property="article:tag" content="数理统计">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangdongdong122.github.io/2021/06/27/2021-06-27-威尔逊置信区间/"/>
+
+
+
+
+
+  <title>威尔逊置信区间 | 凛冬将至</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凛冬将至</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">冬天的故事</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/06/27/2021-06-27-%E5%A8%81%E5%B0%94%E9%80%8A%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">威尔逊置信区间</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-06-27T20:52:53+08:00">
+                2021-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>二项分布的概率$p$的置信区间、置信度和样本量之间的关系，可以用正态区间来统计，但在样本量较小是正态置信区间往往有准确性较差。因此在小样本下可以用威尔逊置信区间。</p>
+<span id="more"></span>
+<h2 id="正态置信区间"><a href="#正态置信区间" class="headerlink" title="正态置信区间"></a>正态置信区间</h2><p>$p$是伯努利实验的成功率（样本正例比例），$n$是样本数量或实验次数。$z$表示对应某个置信水平的$z$统计量，一般情况下，在95%的置信水平下，$z$统计量的值为1.96</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>置信度</strong></th>
+<th><strong>z分数</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>99%</td>
+<td>2.576</td>
+</tr>
+<tr>
+<td>98%</td>
+<td>2.326</td>
+</tr>
+<tr>
+<td>95%</td>
+<td>1.96</td>
+</tr>
+<tr>
+<td>90%</td>
+<td>1.645</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>可以看到，当$n$的值足够大时，这个下限值会趋向$\hat p$。如果n非常小（投票人很少），这个下限值会大大小于$\hat p$。</p>
+<script type="math/tex; mode=display">
+\left[
+\hat{p}-z\sqrt{\frac{\hat{p}(1-\hat{p})}{n}},\ \ \ 
+\hat{p}+z\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+\right]</script><p>但是，它只适用于样本较多的情况（np &gt; 5 且 n(1 − p) &gt; 5），对于小样本，它的准确性很差</p>
+<h2 id="威尔逊区间"><a href="#威尔逊区间" class="headerlink" title="威尔逊区间"></a>威尔逊区间</h2><p>1927年，美国数学家 Edwin Bidwell Wilson提出了一个修正公式，被称为<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval">“威尔逊区间”</a>，很好地解决了小样本的准确性问题。</p>
+<script type="math/tex; mode=display">
+\frac{1}{1+\frac{z^2}{n}}
+
+\left[
+\hat p +
+\frac{z^2}{2n} \pm
+z \sqrt{\frac{\hat p (1-\hat p)}{n}+\frac{z^2}{4n^2}}
+\right]</script><blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.evanmiller.org/how-not-to-sort-by-average-rating.html">实际代码</a></p>
+</blockquote>
+<h3 id="应用1特征修正"><a href="#应用1特征修正" class="headerlink" title="应用1特征修正"></a>应用1特征修正</h3><p>在线性模型中，有手工处理特征的条件时，可以使用威尔逊置信区间的下界作为修正后的特征值（实际上是降低置信度低的case的影响）</p>
+<script type="math/tex; mode=display">
+\frac{1}{1+\frac{z^2}{n}}
+
+\left[
+\hat p +
+\frac{z^2}{2n} -
+z \sqrt{\frac{\hat p (1-\hat p)}{n}+\frac{z^2}{4n^2}}
+\right]</script><p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line">p=np.arange(<span class="number">0</span>,<span class="number">1</span>,<span class="number">0.01</span>)</span><br><span class="line">n=np.arange(<span class="number">1</span>, <span class="number">100</span>, <span class="number">1</span>)</span><br><span class="line">z=<span class="number">1.96</span></span><br><span class="line">n,p=np.meshgrid(n,p)</span><br><span class="line">y=(p+z**<span class="number">2</span>/(<span class="number">2</span>*n)-z*np.sqrt(p*(<span class="number">1</span>-p)/n + z**<span class="number">2</span>/(<span class="number">4</span>*n**<span class="number">2</span>)))/(<span class="number">1</span>+z/n)</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = Axes3D(fig)</span><br><span class="line">ax.plot_surface(n,p,y,cmap=<span class="string">&#x27;rainbow&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>参考：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://typename.net/statistics/wilson-confidence-interval/">知乎排名算法</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2012/03/ranking_algorithm_wilson_score_interval.html">基于用户投票的排名算法</a></p>
+</blockquote>
+<h3 id="应用2评估样本量"><a href="#应用2评估样本量" class="headerlink" title="应用2评估样本量"></a>应用2评估样本量</h3><p>威尔逊置信区间可以在给定数据量n、置信度参数z、统计值$\widehat{p}$ 的情况下给出置信区间。同样的，在给定统计值和能接受的置信度、置信区间的情况下，我们可以评估我们需要的样本量n。</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+\frac {1} {1+ \frac{z^2}{n}} \left[ 
+  \widehat{p} + \frac{z^2}{2n} -z 
+    \sqrt{ \frac{\widehat{p}(1-\widehat{p})}{n} + \frac{z^2}{4n^2}}
+  \right]
+  = R \cdot \widehat{p}
+\end{eqnarray*}</script><script type="math/tex; mode=display">
+\begin{eqnarray*} 
+z 
+    \sqrt{ \frac{\widehat{p}(1-\widehat{p})}{n} + \frac{z^2}{4n^2}}
+  = R \cdot \widehat{p}
+\end{eqnarray*}</script><p>其中，$R$为对应设定的置信区间（$R\cdot\widehat{p}$为置信区间下界），z对应设定置信度，$\widehat{p}$ 为统计值，n为需要的样本量，给定$R,z,\widehat{p}$ 时，可以求出 $n=f(R,z,\widehat{p})$（一元二次方程）：</p>
+<script type="math/tex; mode=display">
+x = \frac{-b \pm \sqrt{\Delta}}{2a} =
+
+\frac{-b \pm \sqrt{b^2 -4ac}}{2a}</script><p>需要注意的是，和正态分布置信区间不同，<strong>威尔逊置信区间并不关于 $\widehat{p}$ 对称</strong>。中心点为：</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+\frac {\widehat{p} + \frac{z^2}{2n}} {1+ \frac{z^2}{n}}
+= \widehat{p} + \frac{ \frac{z^2}{n} \cdot (\frac12 - \widehat{p})}{1+ \frac{z^2}{n}}
+\end{eqnarray*}</script><p>但 $ \widehat{p}<0.5$ 时，中心位置大于 $ \widehat{p}$ ；当 $ \widehat{p}>0.5$ 时，中心位置小于 $ \widehat{p}$ 。即：<strong>中心会先0.5靠近</strong>。</p>
+<p>因此 $ R \cdot \widehat{p}$并不意味着置信区间为$[R \cdot \widehat{p},(2-R) \cdot \widehat{p}]$</p>
+<blockquote>
+<p>威尔逊置信区间的中心位置是否等同于增加了先验（p=0.5）的map？</p>
+<p>威尔逊置信区间是否相当于贝叶斯</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># 基础知识</a>
+          
+            <a href="/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" rel="tag"># 数理统计</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/06/27/2021-06-27-%E4%BA%8C%E5%88%86%E7%B1%BB%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87/" rel="next" title="二分类评估指标">
+                <i class="fa fa-chevron-left"></i> 二分类评估指标
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/06/30/2021-06-30-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/" rel="prev" title="激活函数">
+                激活函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">正态置信区间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A8%81%E5%B0%94%E9%80%8A%E5%8C%BA%E9%97%B4"><span class="nav-number">2.</span> <span class="nav-text">威尔逊区间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A81%E7%89%B9%E5%BE%81%E4%BF%AE%E6%AD%A3"><span class="nav-number">2.1.</span> <span class="nav-text">应用1特征修正</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A82%E8%AF%84%E4%BC%B0%E6%A0%B7%E6%9C%AC%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">应用2评估样本量</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
