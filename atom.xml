@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangdongdong122.github.io/"/>
-  <updated>2021-07-14T14:12:06.444Z</updated>
+  <updated>2021-07-14T14:42:32.643Z</updated>
   <id>http://wangdongdong122.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>搭建hexo博客</title>
+    <link href="http://wangdongdong122.github.io/2021/07/14/2021-07-14-hexo%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
+    <id>http://wangdongdong122.github.io/2021/07/14/2021-07-14-hexo疑难杂症/</id>
+    <published>2021-07-14T14:34:05.000Z</published>
+    <updated>2021-07-14T14:42:32.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录一下博客使用过程中遇到的问题及解决方案。</p><h2 id="翻页按钮错误"><a href="#翻页按钮错误" class="headerlink" title="翻页按钮错误"></a>翻页按钮错误</h2><p><strong>问题</strong>：翻页按钮显示为<code>&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;/i&gt;</code>和<code>&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt;</code></p><p><strong>解决办法</strong>：</p><p>打开<code>next &gt; layout &gt; _partials &gt; pagination.swig</code> ，将错误的HTML代码改为‘下一页’和‘上一页’即可！</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.prev or page.next %&#125;</span><br><span class="line">  &lt;nav class=&quot;pagination&quot;&gt;</span><br><span class="line">    &#123;&#123;</span><br><span class="line">      paginator(&#123;</span><br><span class="line">        prev_text: &#x27;上一页&#x27;,</span><br><span class="line">        next_text: &#x27;下一页&#x27;,</span><br><span class="line">        mid_size: 1</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;&#125;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;记录一下博客使用过程中遇到的问题及解决方案。&lt;/p&gt;
+&lt;h2 id=&quot;翻页按钮错误&quot;&gt;&lt;a href=&quot;#翻页按钮错误&quot; class=&quot;headerlink&quot; title=&quot;翻页按钮错误&quot;&gt;&lt;/a&gt;翻页按钮错误&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：翻页按钮
+      
+    
+    </summary>
+    
+    
+      <category term="bug" scheme="http://wangdongdong122.github.io/tags/bug/"/>
+    
+      <category term="hexo" scheme="http://wangdongdong122.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>熵</title>
     <link href="http://wangdongdong122.github.io/2021/07/10/2021-07-10-%E7%86%B5/"/>
     <id>http://wangdongdong122.github.io/2021/07/10/2021-07-10-熵/</id>
     <published>2021-07-10T01:30:35.000Z</published>
-    <updated>2021-07-14T14:12:06.444Z</updated>
+    <updated>2021-07-14T14:43:21.512Z</updated>
     
     <content type="html"><![CDATA[<p>熵是信息论中的概念，在机器学习中也被广泛应用，比如<strong>交叉熵</strong>、<strong>KL散度</strong>等。本文总结一下各种熵有关的概念，并总结他们的各种形式变种。</p><span id="more"></span><h2 id="热力学中的熵"><a href="#热力学中的熵" class="headerlink" title="热力学中的熵"></a>热力学中的熵</h2><p>直观理解上，熵可以理解为混乱度，混乱度越高，熵越大。熵是来自于热力学的概念，先对这个概念做初步的了解。</p><h3 id="热力学熵"><a href="#热力学熵" class="headerlink" title="热力学熵"></a>热力学熵</h3><p>1856年，克劳修斯推导出的公式：</p><script type="math/tex; mode=display">\Delta S = \frac{\Delta Q}{T}</script><p>其中，S表示熵，Q表示热量，T表示温度，$  \Delta$表示增量。这个公式可以视作“熵”这个字的来源，1924年，我国物理学家胡刚复在翻译德语“entropie”时，创造出来的，在“商”字左边加个“火”，取“热量与温度之商”的意思。该公式有两个问题</p><ol><li>只给了熵的增量的定义，没有给出一个锚点。</li><li>难以直观理解。</li></ol><h3 id="统计熵"><a href="#统计熵" class="headerlink" title="统计熵"></a>统计熵</h3><p>1877年，玻尔兹曼从统计力学角度给出的定义:</p><script type="math/tex; mode=display">S = k_b ln W</script><p>其中，S表示熵，$k_b$是玻尔兹曼常量，W表示微观状态数，即某个系统所处的某个特定的宏观状态，W是符合该系统状态的微观状态总数。所谓宏观状态和微观状态指的是啥？系统的宏观状态有温度、体积、压强、浓度等；微观变量有分子的动量、动能、速度、质量等。</p><h3 id="吉布斯熵"><a href="#吉布斯熵" class="headerlink" title="吉布斯熵"></a>吉布斯熵</h3><p>玻尔兹曼的定义假设了“各微观状态出现的概率相等”，美国物理学家吉布斯在其基础上定义了一般情况下的熵，被称为吉布斯熵：</p><script type="math/tex; mode=display">S = -k_b\sum_i p_i ln\ p_i</script><p>其中$p_i$表示各微观状态出现的概率。</p><h2 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h2><h3 id="量化信息的基本思想"><a href="#量化信息的基本思想" class="headerlink" title="量化信息的基本思想"></a>量化信息的基本思想</h3><ul><li>发生概率很大的事件，信息量较少，一定发生的事件则没有信息量</li><li>发生概率很小的事件，信息量较高</li><li>独立事件具有增量的信息</li></ul><p>其实从这些基本的定量关系，我们就能够大概做出一些推导。首先是信息量（用$h(·)$表示）与概率（$p(·)$）相关，概率越小，信息量越大：$h(A)=f(p(A))$，其中$f(·)$是个单调递减函数。</p><p>另外，两个独立事件的信息量等于两个事件的信息量之和：</p><script type="math/tex; mode=display">h(A,B)=h(A)+h(B)=f(p(A))+f(p(B))</script><p>由$h(A)$的定义和独立事件的联合概率等于各自概率乘积可知：</p><script type="math/tex; mode=display">h(A,B) = f(p(A,B))=f(p(A)·p(B)))</script><p>从上面两个式子可知</p><script type="math/tex; mode=display">f(p(A))+f(p(B))=f(p(A)·p(B)))</script><p>不难发现$f(a+b)=f(ab),a&gt;0,b&gt;0$，满足该式子的一定是对数函数（<a href="https://math.stackexchange.com/questions/98673/examples-of-functions-where-fab-fafb">证明</a>）。令$g(x)=f(e^x)$，则</p><script type="math/tex; mode=display">g(x+y)=f(e^{x+y})=f(e^xe^y)=f(e^x)+f(e^y)=g(x)+g(y)</script><p>如果$f(·)$是连续的，则$g$也是连续的，则$g$必然满足：$g(x)=cx$，$c$为某个常数（柯西方程）。因此，</p><script type="math/tex; mode=display">f(e^x)=cx\\f(x)=c\ ln(x)</script><p>即，<strong>如果想让两个独立事件的信息量等于他们的信息量之和，则信息量的计算形式必然是对数函数</strong>。</p><h3 id="自信息"><a href="#自信息" class="headerlink" title="自信息"></a>自信息</h3><p>事件$X=x$的自信息（self-information），公式中的$x$指                        的是$X=x$这个事件</p><script type="math/tex; mode=display">I(x)=-log\ p(x)</script><p>取值区间：$p(x)=1$时，事件一定发生，自信息为0；$p(x)=0$时，事件不可能发生，自信息为无穷大；</p><p>其物理含义为：</p><ul><li>当底数为2时，其单位为比特（bit）或者香农（shannons）时，1 bit（shannons）是以$\frac{1}{2}$的概率观测到一个事件时获得的信息量</li><li>当底数为e时，其单位为莱特（nats）时，1 nats是以$\frac{1}{e}$的概率观测到一个事件时获得的信息量</li></ul><p>其编码含义：</p><h3 id="信息熵-1"><a href="#信息熵-1" class="headerlink" title="信息熵"></a>信息熵</h3><p>给定某个概率分布，其香农熵（Shannon Entropy）,量化不确定性。</p><script type="math/tex; mode=display">H(X)=E_{X\sim p(x)}[I(x)]=-E_{X\sim p(x)}[log\ p(x)]</script><p>其含义：</p><ul><li>在事件发生后，表示平均每个事件（或符号）所提供的信息量</li><li>在事件发生前，表示随机变量取值的平均不确定性</li><li>表示随机变量的随机性大小，熵越大，随机性越大</li><li>当事件发生后，其不确定性就被解除，熵是解除随机变量不确定性平均所需信息量。</li></ul>]]></content>
     
