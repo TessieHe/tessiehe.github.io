@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangdongdong122.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本篇为学习强化学习笔记，主要是学习李宏毅老师的课程的笔记。内容是强化学习的简单介绍，了解一下框架。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强化学习简介">
+<meta property="og:url" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="本篇为学习强化学习笔记，主要是学习李宏毅老师的课程的笔记。内容是强化学习的简单介绍，了解一下框架。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Scenario-of-Reinforcement-Learning.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Looking-for-a-Function.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Playing-Video-Game.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/RL-Outline.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Neural-network-as-Actor.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Goodness-of-Actor.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Problem-statement.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/policy-gredient-define.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/gradient-of-log-p-1627997683506.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/gradient-of-R.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/classify-data.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/classify-task.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Add-a-Baseline.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/sai.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Monte-Carlo-based-approach.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Temporal-difference-approach.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/MC-vs-TD-1.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/MC-vs-TD-2.png">
+<meta property="article:published_time" content="2021-07-29T13:56:44.000Z">
+<meta property="article:modified_time" content="2021-08-07T07:17:40.390Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="强化学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Scenario-of-Reinforcement-Learning.png">
+
+<link rel="canonical" href="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>强化学习简介 | 凛冬将至</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凛冬将至</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">从简单的例子开始</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          强化学习简介
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-29 21:56:44" itemprop="dateCreated datePublished" datetime="2021-07-29T21:56:44+08:00">2021-07-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-07 15:17:40" itemprop="dateModified" datetime="2021-08-07T15:17:40+08:00">2021-08-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本篇为学习强化学习笔记，主要是学习李宏毅老师的<a target="_blank" rel="noopener" href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML20.html">课程</a>的笔记。内容是强化学习的简单介绍，了解一下框架。</p>
+<span id="more"></span>
+<h2 id="场景描述"><a href="#场景描述" class="headerlink" title="场景描述"></a>场景描述</h2><p>强化学习的基本场景是Agent和Environment之间交互，Environment给出一个state，Agent看到了这个state（等同于observation，更好理解）并根据这个state做出某个Action，这个Action会影响Environment，state会发生改变，同时Environment会反馈一个Reward。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Scenario-of-Reinforcement-Learning.png" class="" title="Scenario-of-Reinforcement-Learning">
+<p>强化学习的目的，就是找到一个Actor或者叫Policy，让Reward最大，其输入使observation，输出是Action。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Looking-for-a-Function.png" class="" title="Looking-for-a-Function">
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>以玩游戏为例。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Playing-Video-Game.png" class="" title="Playing-Video-Game">
+<p>有以下概念：</p>
+<ul>
+<li>state: observation</li>
+<li>玩一局游戏称为一个episode</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>根据是否需要建模模拟环境，可以分为Model-free Approach（不需要对环境建模）和Model-based Approach，前者不需要对环境建模，后者需要。</p>
+<p>Model-free Approach中，可以直接学习什么Actor(policy)最好，即Policy-based。也可以学习一个评估函数，来判断不同决策的价值是多少，即可得到每一步最好的Action。如果将两者结合起来则可以综合两方面的优势。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/RL-Outline.png" class="" title="RL-Outline">
+<h2 id="Policy-based-Approach"><a href="#Policy-based-Approach" class="headerlink" title="Policy-based Approach"></a>Policy-based Approach</h2><h3 id="问题介绍"><a href="#问题介绍" class="headerlink" title="问题介绍"></a>问题介绍</h3><p>前面介绍了Policy-based Approach 就是要学习一个Actor，它会根据看到的情况来判断下一步动作，即输入是state（等同于observation），输出是Action。将神经网络的模型作为一个actor。以上面的游戏为例，其输入就是当前游戏画面，输出是需要进行的游戏操作，用$\pi_{\theta}(s)$来表示。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Neural-network-as-Actor.png" class="" title="Neural-network-as-Actor">
+<p>要训练这个神经网络模型，关键的问题是，它的训练目标是什么？强化学习的目标就是得到最多的奖励，所以应该用一个Actor所能得到的期望奖励作为评估其好坏的依据，可以通过蒙特卡洛法，多次实验用平均值作为期望值的矩估计。展开一个游戏过程来看，可以将游戏得分作为奖励，同一个Actor玩了很多局游戏，则用每局游戏奖励的平均值<strong>$\overline R_{\theta}$作为评估Actor $\pi_{\theta}(s)$好坏的依据</strong>。所以我们的只要将$\overline R_{\theta}$用$\theta$表示，最大化$\overline R_{\theta}$就可以。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Goodness-of-Actor.png" class="" title="Goodness-of-Actor">
+<h3 id="Policy-Gradient"><a href="#Policy-Gradient" class="headerlink" title="Policy Gradient"></a>Policy Gradient</h3><p>将上面的问题抽象一下，就是找最优$\theta$，最大化$\overline R_{\theta}$。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Problem-statement.png" class="" title="Problem-statement">
+<p>梯度怎么求呢？这里$\overline R_{\theta}$是由episode的奖励$R(\tau)$和其概率$p(\tau|\theta)$决定，前者和Actor无关。这里对求导做了个变换，目的是为了把概率提出来，这样就可以表示成期望，然后利用蒙特卡洛来用均值代替。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/policy-gredient-define.png" class="" title="policy-gredient-define">
+<p>注：这里通过乘$p(\tau|\theta)$后再除$p(\tau|\theta)$可以让该项可以表示成期望，但同时也将原来的$\nabla p(\tau|\theta)$变成了$\nabla log\ p(\tau|\theta)$，这会产生什么影响呢？$\nabla log\ p(\tau|\theta)$后面的求导中，还是会变成$1/p(\tau|\theta)$乘$\nabla p(\tau|\theta)$。原本更新$\theta$，按照$p(\tau|\theta)$的梯度反向传导，再用$R(\tau)$作为权重就可以了，前面这个$1/p(\tau|\theta)$是干啥的呢？是为了平衡样本偏差，本来应该完全按照$\tau$所带来的奖励决定其最终的概率，但现在样本是按照$p(\tau|\theta)$采样出来的，所以可能导致一个好的$\tau$在样本里极少出现，而未能对$\theta$的优化产生多大影响，所以$1/p(\tau|\theta)$就刚好是来解决这个问题。即：乘$p(\tau|\theta)$导致了偏差问题，再除$p(\tau|\theta)$有可以解决该问题。</p>
+<p>$\nabla log\ p(\tau|\theta)$怎么求呢？将一局游戏(episode)拆开，可以表示为$\tau =\{s_1,a_1,r_1,s_2,a_2,r_2,···,s_T,a_T,r_T \}$，其似然为给定actor时产生该$\tau$的概率：$P(\tau|\theta)$。对其展开，整个游戏过程可以看做：给定了一个初始的状态$s_1$之后，Actor根据其观测到状态$s_t$和自身参数$\theta$产生一个动作$a_t$，环境根据状态$s_t$和Actore做出的动作$a_t$给出奖励$r_t$和下一各状态$s_{t+1}$。</p>
+<p>$p(s_1)$表示初始状态是$s_1$的概率，由环境决定，不受Actor影响；$p(a_t|s_t,\theta)$表示其观测到状态$s_t$和自身参数$\theta$产生一个动作$a_t$的概率；$p(r_t,s_{t+1}|s_t,a_t)$表示Actor在$s_t$状态下做出动作$a_t$之后，得到的这局游戏中实际观测到的奖励$r_t$和下一个状态$s_{t+1}$的概率，这个概率也由环境决定，不受actor影响。所以<strong>似然中，只有$p(a_t|s_t,\theta)$与要优化的Actor相关</strong>。</p>
+
+<p>将$p(\tau|\theta)$的计算公式代入$\nabla log\ p(\tau|\theta)$，其中只有$p(a_t|s_t,\theta)$与Actor相关。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/gradient-of-log-p-1627997683506.png" class="" title="gradient-of-log-p">
+<p>代入$\nabla\overline R_{\theta}$中，得到更新公式</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/gradient-of-R.png" class="" title="gradient-of-R">
+<h3 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h3><p>Actor的学习，就是要解决以下问题，我这里用期望代替均值，感觉表述更加准确。</p>
+<script type="math/tex; mode=display">
+\theta ^* = arg\ \underset{\theta}{max}\ E[R_{\theta}]</script><p>其中$E[R_{\theta}]$可以表示为</p>
+<script type="math/tex; mode=display">
+E[R_{\theta}] = \sum_{\tau} R(\tau) P(\tau|\theta)</script><p>其导数为</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+
+\nabla E[R_{\theta}] 
+&=&  \nabla\sum_{\tau} R(\tau) P(\tau|\theta) 
+\\
+\\
+&=& \sum_{\tau} R(\tau) \nabla P(\tau|\theta)
+\tag{$R(\tau)$与$\theta$无关}
+\\
+\\
+&=& \sum_{\tau} R(\tau)P(\tau|\theta) \frac{\nabla P(\tau|\theta)}{P(\tau|\theta)}
+\tag{增加$P(\tau|\theta)$凑为期望}
+\\
+\\
+&=& \sum_{\tau}P(\tau|\theta) R(\tau) \nabla log P(\tau|\theta)
+\tag{换为log导数}
+\\
+\\
+&\approx& \frac{1}{N}\sum^N_{n=1}R(\tau^n)\nabla log P(\tau^n|\theta)
+\tag{期望用均值代替}
+\end{eqnarray*}</script><p>其中$P(\tau|\theta)$可以展开其生成过程，并对其展开，并求解一下</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+P(\tau|\theta) &=& p(s_1)\prod ^T_{t=1}p(a_t|s_t,\theta)p(r_t,s_{t+1}|s_t,a_t)
+\\
+\\
+log\ P(\tau|\theta) &=& log\ p(s_1) + \sum ^T_{t=1}\left [log\ p(a_t|s_t,\theta) + log \ p(r_t,s_{t+1}|s_t,a_t)\right ]
+\\
+\\
+\nabla log P(\tau|\theta) &=& \sum ^T_{t=1}\nabla log p(a_t|s_t,\theta)
+
+\end{eqnarray*}</script><p>因此</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+
+\nabla E[R_{\theta}] 
+
+
+&\approx& \frac{1}{N}\sum^N_{n=1}R(\tau^n)\nabla log P(\tau^n|\theta)
+\\
+\\
+&=& 
+\frac{1}{N}\sum^N_{n=1}\sum ^{T_n}_{t=1}R(\tau^n)\nabla log p(a^n_t|s^n_t,\theta)
+\tag{仅$p(a_t|s_t,\theta)$与$\theta$相关}
+\\
+\\
+
+\end{eqnarray*}</script><h3 id="视作多分类"><a href="#视作多分类" class="headerlink" title="视作多分类"></a>视作多分类</h3><p>这其实和多分类问题相同。如果将学习Actor看做一个多分类问题，数据就是在每局游戏中Actor实际根据状态做出的动作。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/classify-data.png" class="" title="classify-data">
+<p>其中每个$(s,a)$对中，$s$作为输入，$a$作为输出，对应episode的$R(\tau)$作为权重。</p>
+<p>多分类交叉熵为</p>
+<script type="math/tex; mode=display">
+J_{CE}(\theta)  = -\frac1N \sum^{N}_{i=1}log(\hat y_{iy_i})</script><img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/classify-task.png" class="" title="classify-task">
+<p>此处的$y_{i}$指的就是对应的$a$，$\hat y_{iy_i}$即$p(a^n_t|s^n_t,\theta)$，总样本数量为$N×T$个，权重为$R(\tau)$，则</p>
+<script type="math/tex; mode=display">
+J(\theta) =-\frac{1}{N×T}\sum^N_{n=1}\sum ^{T}_{t=1}R(\tau^n) log\ p(a^n_t|s^n_t,\theta)</script><p>这里全面的求平均是除$N×T$（实际上这样表示不准确，因为每个episode不一定都是T步），和上面Actor的公式有一点不一样，因为Actor是最大化的一次episode的联合概率，这里是拆解成动作，最大化每个动作的概率。</p>
+<h3 id="BaseLine"><a href="#BaseLine" class="headerlink" title="BaseLine"></a>BaseLine</h3><p>在这个案例中，奖励$R(\tau)$永远是正的，在数据量非常大的时候这样也没什么问题，因为Actor一次做出各种动作的概率和为1，即使较差的动作对应的权重$R(\tau)$也是正的，但应该没有较好的动作权重高，因此最终差的动作概率还是会下降。但实际训练中，数据是采样得到的，有可能真正好的动作没有采样到（下图的a），这样就会导致优秀的动作a的概率下降，差一点的b,c概率上升。解决这个问题，可以给奖励，加一个baseline，低于base line奖励为负。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Add-a-Baseline.png" class="" title="Add-a-Baseline">
+<h2 id="Value-based-Approach"><a href="#Value-based-Approach" class="headerlink" title="Value-based Approach"></a>Value-based Approach</h2><p>Value-based方法指学习一个Critic来判断Actor的好坏。Critic不决定Action，但可以从Critic得到一个最优的Actor。Critic分为两种：</p>
+<ol>
+<li>$V^{\pi}(s)$ ：在看见状态$s$后，使用Actor $\pi$产生的累积奖励的期望值</li>
+<li>$Q^{\pi}(s,a)$：在看见状态$s$后，先采取Action $a$，然后使用Actor $\pi$产生的累积奖励的期望值</li>
+</ol>
+<p>比如说阿光在下棋的时候，旁边佐为会告诉他，现在的他能驾驭大马步飞了，下大马步飞是好棋，以前太弱不能这么下。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/sai.png" class="" title="sai">
+<h3 id="estimate-V-pi-s"><a href="#estimate-V-pi-s" class="headerlink" title="estimate $V^{\pi}(s)$"></a>estimate $V^{\pi}(s)$</h3><p>估计$V^{\pi}(s)$ 有两种方法：蒙特卡洛法和差分法</p>
+<h4 id="Monte-Carlo-based-approach"><a href="#Monte-Carlo-based-approach" class="headerlink" title="Monte-Carlo based approach"></a>Monte-Carlo based approach</h4><p>蒙特卡洛法就是让Actor $\pi$玩游戏，产生episode，来训练critic。在看见状态$s_a$之后，直到游戏结束产生的累积奖励为$G_a$。这里的$G$和之前每个episode的总奖赏$R$不同，$G$表示转态$s_a$之后的累计奖励。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Monte-Carlo-based-approach.png" class="" title="Monte-Carlo-based-approach">
+<h4 id="Temporal-difference-approach"><a href="#Temporal-difference-approach" class="headerlink" title="Temporal-difference approach"></a>Temporal-difference approach</h4><p>差分法，策略$\pi$下产生的episode，相邻状态$s_t$和$s_{t+1}$下的$V$值相差$r_t$，可以以此为目标训练$V^{\pi}(s)$ 。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/Temporal-difference-approach.png" class="" title="Temporal-difference-approach">
+<h4 id="MC-vs-TD"><a href="#MC-vs-TD" class="headerlink" title="MC vs TD"></a>MC vs TD</h4><p>第一点是目标值的方差和偏差的不同。MC法直接预测的是累积奖励$G_a$，方差会更大。而TD法，标签值是单步的$r$，方差相对小，但其用到了$V^{\pi}(s_{t+1})$，这个值一定准。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/MC-vs-TD-1.png" class="" title="MC-vs-TD-1">
+<p>第二点是基于的假设不同。在下面的数据中，一共有8个episode，不管我们用哪个方法，很明显都能得到$V^{\pi}(s_{b})=3/4$，那么$V^{\pi}(s_{a})$应该等于多少呢。按照MC方法，$V^{\pi}(s_{a})=0$（只有一条数据）；按照TD方法，$V^{\pi}(s_{a})=V^{\pi}(s_{b})+0=3/4$。MC的假设下状态前后之间可能有相互影响。</p>
+<img src="/2021/07/29/2021-07-29-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/MC-vs-TD-2.png" class="" title="MC-vs-TD-2">
+<p><strong>问题</strong>：</p>
+<ol>
+<li><p>看起来针对不同的Actor $\pi$有一个模型$V^{\pi}(s)$， Actor如果更新了，V要重新训练吗？</p>
+</li>
+<li><p>得到这个V之后如何使用？</p>
+</li>
+<li><p>MC和TD之间的假设差异如何理解？</p>
+</li>
+</ol>
+<h3 id="Q-Learning"><a href="#Q-Learning" class="headerlink" title="Q-Learning"></a>Q-Learning</h3><p>Q-Learning一样可以用MC和TD方法。学习的目标是$Q^{\pi}(s,a)$</p>
+<h2 id="Actor-Critic"><a href="#Actor-Critic" class="headerlink" title="Actor-Critic"></a>Actor-Critic</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+              <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag"># 强化学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/29/2021-07-29-win10%E9%85%8D%E7%BD%AETensorFlow/" rel="prev" title="win10配置TensorFlow.md">
+      <i class="fa fa-chevron-left"></i> win10配置TensorFlow.md
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/30/2021-07-30-win10%E9%85%8D%E7%BD%AEGPU%E7%89%88TensorFlow/" rel="next" title="win10配置GPU版TensorFlow.md">
+      win10配置GPU版TensorFlow.md <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">场景描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Policy-based-Approach"><span class="nav-number">4.</span> <span class="nav-text">Policy-based Approach</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BB%8B%E7%BB%8D"><span class="nav-number">4.1.</span> <span class="nav-text">问题介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Policy-Gradient"><span class="nav-number">4.2.</span> <span class="nav-text">Policy Gradient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B"><span class="nav-number">4.3.</span> <span class="nav-text">总结一下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E4%BD%9C%E5%A4%9A%E5%88%86%E7%B1%BB"><span class="nav-number">4.4.</span> <span class="nav-text">视作多分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BaseLine"><span class="nav-number">4.5.</span> <span class="nav-text">BaseLine</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Value-based-Approach"><span class="nav-number">5.</span> <span class="nav-text">Value-based Approach</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#estimate-V-pi-s"><span class="nav-number">5.1.</span> <span class="nav-text">estimate $V^{\pi}(s)$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Monte-Carlo-based-approach"><span class="nav-number">5.1.1.</span> <span class="nav-text">Monte-Carlo based approach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Temporal-difference-approach"><span class="nav-number">5.1.2.</span> <span class="nav-text">Temporal-difference approach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MC-vs-TD"><span class="nav-number">5.1.3.</span> <span class="nav-text">MC vs TD</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-Learning"><span class="nav-number">5.2.</span> <span class="nav-text">Q-Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Actor-Critic"><span class="nav-number">6.</span> <span class="nav-text">Actor-Critic</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dongdong Wang</p>
+  <div class="site-description" itemprop="description">从爪印判断，这是头雄狮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
