@@ -393,7 +393,7 @@ AUC = \frac{\sum_{i \in PositiveClass} rank_i -\frac{M(M+1)}{2} }{M × N}</scrip
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -446,7 +446,6 @@ AUC = \frac{\sum_{i \in PositiveClass} rank_i -\frac{M(M+1)}{2} }{M × N}</scrip
   </div>
 
 
-
         
 
 
@@ -492,6 +491,19 @@ AUC = \frac{\sum_{i \in PositiveClass} rank_i -\frac{M(M+1)}{2} }{M × N}</scrip
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   

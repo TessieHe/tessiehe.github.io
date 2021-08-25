@@ -243,8 +243,8 @@
       <i class="fa fa-chevron-left"></i> GPU使用中的问题
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/08/06/2021-08-06-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AF%95%E4%B8%80%E4%B8%8B/" rel="next" title="">
-       <i class="fa fa-chevron-right"></i>
+    <a href="/2021/08/08/2021-08-08-%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD-the-book-of-why/" rel="next" title="因果推断：the book of why">
+      因果推断：the book of why <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -317,7 +317,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -370,7 +370,6 @@
   </div>
 
 
-
         
 
 
@@ -416,6 +415,19 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   

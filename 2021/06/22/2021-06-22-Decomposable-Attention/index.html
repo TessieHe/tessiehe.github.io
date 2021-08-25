@@ -385,7 +385,7 @@ a^{'}_i=\sum^{l_a}_{j=1}\frac{exp(f_{ij}+d_{i-j})}{exp(f_{ik}+d_{i-k})}a_j
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -438,7 +438,6 @@ a^{'}_i=\sum^{l_a}_{j=1}\frac{exp(f_{ij}+d_{i-j})}{exp(f_{ik}+d_{i-k})}a_j
   </div>
 
 
-
         
 
 
@@ -484,6 +483,19 @@ a^{'}_i=\sum^{l_a}_{j=1}\frac{exp(f_{ij}+d_{i-j})}{exp(f_{ik}+d_{i-k})}a_j
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
