@@ -47,7 +47,7 @@
 <meta property="og:image" content="http://wangdongdong122.github.io/2021/08/08/2021-08-08-%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD-the-book-of-why/image-20210809220700019.png">
 <meta property="og:image" content="http://wangdongdong122.github.io/2021/08/08/2021-08-08-%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD-the-book-of-why/image-20210809001807145.png">
 <meta property="article:published_time" content="2021-08-08T01:30:35.000Z">
-<meta property="article:modified_time" content="2021-08-25T16:33:08.120Z">
+<meta property="article:modified_time" content="2021-11-09T12:43:52.455Z">
 <meta property="article:author" content="Dongdong Wang">
 <meta property="article:tag" content="因果推断">
 <meta property="article:tag" content="因果之书">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-26 00:33:08" itemprop="dateModified" datetime="2021-08-26T00:33:08+08:00">2021-08-26</time>
+                <time title="修改时间：2021-11-09 20:43:52" itemprop="dateModified" datetime="2021-11-09T20:43:52+08:00">2021-11-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -248,11 +248,11 @@
 <p>​    </p>
 <p>看一下哲学家给出过的定义</p>
 <ul>
-<li>亚里士多德：“质料因”“形式因”“动力因”“目的因”</li>
+<li>亚里士多德：“质料因”，“形式因”，“动力因”，“目的因”</li>
 <li>休谟：我们可以给一个因下定义说，它是<strong>先行于</strong>、接近于另一个对象的一个对象，而且在这里，凡与前一个对象类似的一切对象都和与后一个对象类似的那些对象处在类似的先行关系和接近关系中。或者，换言之，<strong>假如</strong>没有前一个对象，那么后一个对象就不可能存在。</li>
 </ul>
 <p>​    </p>
-<p><strong>时间先后</strong>的引入可以避免很多问题。很多地方也引入这个约束，比如在信号与系统里，对因果系统的定义是：”零状态响应不出现在激励之前的系统为因果系统”，简单说就是，输入引起的响应不出现在输入之前。因此当时间只能单向流动的规则被打破之后，因果关系开始模糊，变得难以理解。比如星际穿越中，未来的人类掌握了五维空间的黑洞，时间变成一个维度，可以在其中移动。未来的人类放了一个五维黑洞，所以现在的人类可以继续研究，生存下来才会有未来的人类。</p>
+<p><strong>时间先后</strong>的引入可以避免很多问题。很多地方也引入这个约束，比如在信号与系统里，对因果系统的定义是：”零状态响应不出现在激励之前的系统为因果系统”，简单说就是，输入引起的响应不出现在输入之前。但当时间只能单向流动的规则被打破之后，因果关系开始模糊，变得难以理解。比如星际穿越中，未来的人类掌握了五维空间的黑洞，时间变成一个维度，可以在其中移动。然后未来的人类放了一个五维黑洞，让现在的人类可以继续研究如何拯救人类，现在的人类生存下来才有了未来的人类。这里又很难区分因和果。</p>
 <p>不过本文不讨论<strong>因果发现问题</strong>，只讨论在给定因果关系的假设下，<strong>因果效应的量化</strong>问题和<strong>潜在结果</strong>的计算。</p>
 <p>近年来，因果推断越来越火，相关方向的paper越来越多，业界也开始有越来越多相关的方向。</p>
 <img src="/2021/08/08/2021-08-08-%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD-the-book-of-why/image-20210807163727974-1628325552533.png" class="" title="学术热度">
@@ -362,8 +362,11 @@ p(\boldsymbol x)=\prod_{k=1}^K p(x_k|pa_k)</script><p>其中，$p(x)$表示所�
 <img src="/2021/08/08/2021-08-08-%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD-the-book-of-why/image-20210808145736231.png" class="" title="辛普森悖论-数据">
 <p>因果图：</p>
 <img src="/2021/08/08/2021-08-08-%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD-the-book-of-why/image-20210808145524642.png" class="" title="辛普森悖论">
-<p>解释：男女患病风险不同，对服药的票号也不同。</p>
-<p>扩展：辛普森悖论反映的是整体的统计结果和分层的统计结果可能相反。那么是整体统计结果正确还是分层结果正确呢？不同情况下不一样，需要根据具体研究的问题和因果图来判断。</p>
+<p>解释：男女患病风险不同，对服药的偏好也不同。</p>
+<p>扩展：辛普森悖论反映的是整体的统计结果和分层的统计结果可能相反。那么是整体统计结果正确还是分层结果正确呢？</p>
+<ul>
+<li>不同情况下不一样，需要根据具体研究的问题和因果图来判断。</li>
+</ul>
 <p>​    </p>
 <h4 id="伯克利大学招生悖论"><a href="#伯克利大学招生悖论" class="headerlink" title="伯克利大学招生悖论"></a>伯克利大学招生悖论</h4><p>悖论：1973年，有学者发现伯克利大学招生的时候男女录取比例不一样，男生录取率明显高于女生，男生44%，女生35%。当时公众很关注男女歧视问题，怎么办，伯克利大学的招生是各个系自己定的，所以挨个系查。但是查完就懵了，因为每个系的招生：都有利于女生，实际结果也都是女生录取比例比男生高。</p>
 <p>因果图：</p>
@@ -551,7 +554,8 @@ C(性别) --> B
 C(性别) --> D{院系}
 D{院系} --> B</pre>
 
-<p>或者，在土壤和肥料的案例虽然做了随机测试，土地和肥料对产量的影响之间有交叉的，</p>
+<p>问题1：控制院系后，不存在后门偏倚，但仍然无法得到直接因果效应，因为这切断了性别→ 院系的路径，但性别、院系、州三者之间是交叉影响结果的。</p>
+<p>问题2：这种多阶交叉下的因果效应，看起来是否控制州对判断性别→录取的因果效应没有影响，但实际上结论可能完全相反</p>
 <p>​      </p>
 <p><strong>参考信息</strong></p>
 <p>[1] 《高级计量经济学及Stata应用》,（第二版），P136</p>
@@ -577,7 +581,10 @@ D{院系} --> B</pre>
     <a href="/2021/08/05/2021-08-05-TensorFlow2.0%E4%BD%BF%E7%94%A8/" rel="prev" title="tf.function的使用">
       <i class="fa fa-chevron-left"></i> tf.function的使用
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/05/2021-09-05-%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD%E5%9C%A8%E4%B8%9A%E7%95%8C%E5%BA%94%E7%94%A8/" rel="next" title="因果推断在业界的应用">
+      因果推断在业界的应用 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -650,20 +657,20 @@ D{院系} --> B</pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">63</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -701,7 +708,7 @@ D{院系} --> B</pre>
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

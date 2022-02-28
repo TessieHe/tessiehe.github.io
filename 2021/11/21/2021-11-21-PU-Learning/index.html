@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangdongdong122.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Positive-unlabeled learning是半监督学习的一个研究方向，指在只有正类和大量无标注数据的情况下，学习模型，本文主要内容的参考是20年的一篇survey。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PU-Learning介绍">
+<meta property="og:url" content="http://wangdongdong122.github.io/2021/11/21/2021-11-21-PU-Learning/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="Positive-unlabeled learning是半监督学习的一个研究方向，指在只有正类和大量无标注数据的情况下，学习模型，本文主要内容的参考是20年的一篇survey。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wangdongdong122.github.io/2021/11/21/2021-11-21-PU-Learning/pu-nt.png">
+<meta property="article:published_time" content="2021-11-21T09:59:45.000Z">
+<meta property="article:modified_time" content="2021-12-05T07:40:05.855Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="半监督学习">
+<meta property="article:tag" content="PU-Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangdongdong122.github.io/2021/11/21/2021-11-21-PU-Learning/pu-nt.png">
+
+<link rel="canonical" href="http://wangdongdong122.github.io/2021/11/21/2021-11-21-PU-Learning/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>PU-Learning介绍 | 凛冬将至</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凛冬将至</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">从简单的例子开始</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/11/21/2021-11-21-PU-Learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PU-Learning介绍
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-21 17:59:45" itemprop="dateCreated datePublished" datetime="2021-11-21T17:59:45+08:00">2021-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-05 15:40:05" itemprop="dateModified" datetime="2021-12-05T15:40:05+08:00">2021-12-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Positive-unlabeled learning是半监督学习的一个研究方向，指在只有正类和大量无标注数据的情况下，学习模型，本文主要内容的参考是20年的一篇<a target="_blank" rel="noopener" href="https://link.springer.com/content/pdf/10.1007/s10994-020-05877-5.pdf">survey</a>。</p>
+<span id="more"></span>
+<h2 id="PU-Learning介绍"><a href="#PU-Learning介绍" class="headerlink" title="PU-Learning介绍"></a>PU-Learning介绍</h2><p>PU-Learning指训练数据是由正样本和无标签样本构成的学习算法。PU-Learning的概念在2000年之后才开始被出现，可以视作半监督算法的一个方向。</p>
+<p>​    </p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>对于小概率事件，数据往往只记录其发生的情况（信息量大），并且无法全部记载，因此产生PU场景。在一些存在数据选择偏差的场景中也可以视作PU-Learning的问题。</p>
+<p><strong>医药领域</strong>：医学的记录一般只记载查出来有病的，没检查的病或者查了没得的病是不会记录的</p>
+<p><strong>商业应用</strong></p>
+<ul>
+<li>推荐系统中，点击用户是正样本，但不点击未必是负样本，可能是因为展示位置偏等因素导致用户未点击</li>
+<li>反欺诈中，欺诈用户可以通过一些手段打标为坏人，却难以得到无偏的好人</li>
+<li>知识图谱中，训练数据一般是有连接的节点对</li>
+<li>拒绝推断中，被拒绝用户可以看做未打标用户</li>
+</ul>
+<p><strong>安全与信号处理</strong>：卫星图片的分类，只要少量的数据是被标注过类别的，其他大量的图片标签未知</p>
+<p>​    </p>
+<h3 id="关键问题"><a href="#关键问题" class="headerlink" title="关键问题"></a>关键问题</h3><p>PU-Learning中研究的关键问题，可以总结为以下几点：</p>
+<ol>
+<li>怎么将从PU data中学习的问题抽象为数学形式？</li>
+<li>为了设计学习算法，我们应该对PU data做哪些假设？</li>
+<li>怎么从PU data中预估类别的先验概率($P(y=1)$)，估出来为什么有用？</li>
+<li>怎么从PU data中学习模型？</li>
+<li>在PU-Learning场景中，怎么评估模型的效果？</li>
+<li>现实应用场景中什么时候会产生，以及为什么会产生PU data？</li>
+<li>PU-Learning和其他机器学习领域有什么关系？</li>
+</ol>
+<p>​    </p>
+<h2 id="准备知识"><a href="#准备知识" class="headerlink" title="准备知识"></a>准备知识</h2><h3 id="PU-learning"><a href="#PU-learning" class="headerlink" title="PU  learning"></a>PU  learning</h3><p>本文所使用的符号</p>
+<img src="/2021/11/21/2021-11-21-PU-Learning/pu-nt.png" class="" title="pu-nt">
+<p>​    </p>
+<h3 id="打标机制"><a href="#打标机制" class="headerlink" title="打标机制"></a>打标机制</h3><p>样本是通过某个概率的机制决定是否打上标签的，这个机制可以通过倾向性得分 $e(x)$ 来表示。在PU-Learning中可以表示为：</p>
+<script type="math/tex; mode=display">
+e(x)=P(s=1|y=1,x)</script><p>这里的倾向性得分的定义和其他场景中有一点差异，由于PU场景中只会给正样本打标，所以也只看正样本的倾向性。</p>
+<p>​    </p>
+<h3 id="class-prior和label-frequency的关系"><a href="#class-prior和label-frequency的关系" class="headerlink" title="class prior和label frequency的关系"></a>class prior和label frequency的关系</h3><p>class prior $\alpha$ 和 label frequency $c$之间有紧密的关系，给定一个PU数据集，则其中一个已知就可推出另一个：</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+c &=& P(s=1|y=1)
+\\
+\\
+ &=& \frac {P(s=1,y=1)}{P(y=1)}
+\\
+\\
+ &=& \frac {P(s=1)}{\alpha}
+
+\end{eqnarray*}</script><p>​    </p>
+<h2 id="相关假设"><a href="#相关假设" class="headerlink" title="相关假设"></a>相关假设</h2><p>PU-Learning一般需要对打标机制(labeling mechanism)和类别分布(class distributions in the data)中至少一个做出假设。</p>
+<p>​    </p>
+<h3 id="打标机制-1"><a href="#打标机制-1" class="headerlink" title="打标机制"></a>打标机制</h3><h4 id="Selected-Completely-At-Random-SCAR"><a href="#Selected-Completely-At-Random-SCAR" class="headerlink" title="Selected Completely At Random (SCAR)"></a>Selected Completely At Random (SCAR)</h4><p>SCAR定义：<strong>打标样本是从正样本中完全随机选择的</strong>，和样本本身的属性无关。此时任意一个正样本被打标的概率都相等，即propensity score满足：</p>
+<script type="math/tex; mode=display">
+e(x)= P(s = 1|x, y = 1)= P(s = 1|y = 1)= c</script><p>这个假设下，可以通过倾向性得分来得到正确的预测概率，任意一个样本被打标的概率就等于其为正例的概率乘标签频率：</p>
+<script type="math/tex; mode=display">
+P(s=1|x)=P(s = 1|x, y = 1)·P(y=1|x) = c·P(y=1|x)</script><p>​    </p>
+<h4 id="Selected-At-Random-SAR"><a href="#Selected-At-Random-SAR" class="headerlink" title="Selected At Random (SAR)"></a>Selected At Random (SAR)</h4><p>SAR定义：<strong>选择正样本打标的概率依赖于其属性值</strong>。此时，打标的正样本相对于所有正样本是有偏的，但这是<strong>更为现实</strong>的情况，比如病人是否去医院检查病情和其经济情况和病情相关，因此在所有的患病人群（正例）中，是否被医生确诊和病人自身的属性相关。此时倾向性得分：</p>
+<script type="math/tex; mode=display">
+e(x)=P(s=1|x,y=1)</script><p>​    </p>
+<h4 id="Probabilistic-gap-PU-PGPU"><a href="#Probabilistic-gap-PU-PGPU" class="headerlink" title="Probabilistic gap PU (PGPU)"></a>Probabilistic gap PU (PGPU)</h4><p>需要先定义什么是Probabilistic gap：$𝛥P(x)=P(y=1|x)−P(y=0|x)$，即一个样本属于正类和负类的概率之差。</p>
+<p>PGPU定义：<strong>Probabilistic gap越大的正样本被打标的概率越大</strong>。即：</p>
+<script type="math/tex; mode=display">
+e(x)=f(𝛥P(x))=f(P(y=1|x)−P(y=0|x)),\ \frac{d}{dt}f(t)>0</script><p>定义The  observed  probabilistic  gap为$𝛥\widetilde{P}(x)=P(s=1|x)−P(s=0|x)$，则有以下性质：</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+
+𝛥\widetilde{P}(x)&=&e(x)(𝛥P(x)+1)-1
+\\
+\\
+𝛥\widetilde{P}(x)&\leq& 𝛥P(x)
+\tag{上式去掉$e$}
+\\
+\\
+𝛥\widetilde{P}(x_1)= 𝛥\widetilde{P}(x_2) &\Leftrightarrow& 𝛥P(x_1)= 𝛥P(x_2) 
+\\
+𝛥\widetilde{P}(x_1)< 𝛥\widetilde{P}(x_2) &\Leftrightarrow& 𝛥P(x_1)< 𝛥P(x_2)
+\end{eqnarray*}</script><p>​    </p>
+<h3 id="数据假设"><a href="#数据假设" class="headerlink" title="数据假设"></a>数据假设</h3><h4 id="Negativity"><a href="#Negativity" class="headerlink" title="Negativity"></a>Negativity</h4><p>定义：简单粗暴地假设没打标的都属于负样本。虽然假设很难成立，但实际做的时候经常是这么做的。</p>
+<p>​    </p>
+<h4 id="Separability"><a href="#Separability" class="headerlink" title="Separability"></a>Separability</h4><p>定义：正负样本是分离的。这个假设下，理论上是存在分类器将正负样本完全分开的。</p>
+<p>​    </p>
+<h4 id="Smoothness"><a href="#Smoothness" class="headerlink" title="Smoothness"></a>Smoothness</h4><p>定义：越相似的样本，属于同一类别的概率越高。在这个假设下，可以将离正例远的样本当做可靠的负样本。</p>
+<p>​    </p>
+<h3 id="Identifiable-class-prior"><a href="#Identifiable-class-prior" class="headerlink" title="Identifiable class prior"></a>Identifiable class prior</h3><p>class prior$P(y=1)$一般都有用，但由于SCAR假设一般都不满足，所以无法求出class prior，为了其可求，需要做额外的假设，常见的假设如下（从强到弱）：</p>
+<ol>
+<li>Separable Classes/Non-overlapping distributions：正负样本的分布是没有重叠的</li>
+<li>Positive subdomain/anchor set：</li>
+<li>Positive function/separability</li>
+<li>Irreducibility</li>
+</ol>
+<p>​    </p>
+<h2 id="效果度量"><a href="#效果度量" class="headerlink" title="效果度量"></a>效果度量</h2><h3 id="Metrics-for-PU-data"><a href="#Metrics-for-PU-data" class="headerlink" title="Metrics for PU data"></a>Metrics for PU data</h3><p>最常用的评估指标是基于$F_1$score（$F_1(\hat {\boldsymbol y}) = \frac{2pr}{p+r}$）的，其中的召回率$r$在<strong>SCAR假设</strong>下可以算出来，但准确率$p$却算不出来。PU<br>Learning中可以用下面这个指标</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+\frac{p·r}{P(\boldsymbol y=1)} &=& \frac{p·r^2}{r·P(\boldsymbol y=1)}
+\\
+\\
+&=& \frac{P(\boldsymbol y=1|\hat {\boldsymbol y}=1)·r^2}{P(\hat {\boldsymbol y}=1|\boldsymbol y=1)·P(\boldsymbol y=1)}
+\\
+\\
+&=& \frac{P(\boldsymbol y=1|\hat {\boldsymbol y}=1)·r^2}{P(\hat {\boldsymbol y}=1,\boldsymbol y=1)}
+\\
+\\
+&=& \frac{r^2}{P(\hat {\boldsymbol y}=1)}
+\end{eqnarray*}</script><p>这个指标也是召回和准确率越高越好。其他的还有假设检验等方法也可以度量效果，就不再展开了。</p>
+<p>​    </p>
+<h2 id="常用算法"><a href="#常用算法" class="headerlink" title="常用算法"></a>常用算法</h2><h3 id="Two-step-techniques"><a href="#Two-step-techniques" class="headerlink" title="Two-step techniques"></a>Two-step techniques</h3><p>一个古老的方法，这个方法基于的假设有：<strong>separability &amp; smoothness</strong>，具体分为两步：</p>
+<p>step1：先从未标注的样本找出可靠的负样本</p>
+<p>step2：用传统的分类器做分类</p>
+<p>​    </p>
+<p><strong>step1的典型方法</strong>有：</p>
+<p>spy：先拿出一部分打标的小样本作为间谍；拿其余打标样本作为正样本，未打标样本作为负样本用来训练一个朴素贝叶斯分类器；对间谍样本和无标样本打分，将<strong>无标样本中评分低于所有间谍样本</strong>的作为可信赖的负样本。这个方法需要足够多的打标样本，要不间谍样本就少了。</p>
+<p>1-DNF：先用一些学习算法找到在正例中出现频率 高于无标数据的特征，作为强正向的特征；没有足够强正向特征的就作为可信赖的负样本。这个方法对“强正向特征”的要求条件太低了，可能会找出很多，这就会导致找到的可信负样本太少。为解决这个问题，又有研究人员提出通过增加出现频率的阈值作为条件，筛除一批强正向特征（1-DNFII）。</p>
+<p><strong>step2的典型方法</strong>有：这里其实任何一个有监督的二分类方法都可以，典型的有SVM、LR、Naive Bayes (NB)等。</p>
+<p>​    </p>
+<h3 id="biased-learning"><a href="#biased-learning" class="headerlink" title="biased learning"></a>biased learning</h3><p>这个方法将<strong>无标数据看做是负样本和类别标签噪声</strong>，因此会将无标签样本当做负样本，同时对噪声问题带来的bias做一些纠正（对错误分类增加更高的惩罚，使loss更小）。这个噪声被当做一个常数，因此<strong>SCAR假设</strong>成立。这个方法在分类、聚类、矩阵补全等场景都可以用，这里只介绍分类场景的方法。</p>
+<p><strong>biased SVM</strong>：在标准SVM的基础上，给正负样本的误判加不同的惩罚。比如无标签样本越像是负样本就给越大的权重，实际做法可以将其<strong>距离任意一个正样本的最小距离</strong>作为其误判的惩罚权重。</p>
+<p><strong>Bagging SVM</strong>：训练很多个biased SVM，每个biased SVM用所有的正例和<strong>一部分无标样本</strong>当做负样本（占比K为重要超参）训练，然后将所有的biased SVM求均值。 这个方法可推广为PU-Bagging，现在应用比较广。 </p>
+<p>​    </p>
+<h3 id="class-prior-incorporation"><a href="#class-prior-incorporation" class="headerlink" title="class prior incorporation"></a>class prior incorporation</h3><p>在SCAR假设下，利用class prior来辅助分类。有三种类型的方法：① 后处理：先直接将无标数据当做负样本，然后利用class prior做调整；② 预处理：先用class prior调整数据集，再训练模型；③ 算法调整：结合class prior，调整算法。</p>
+<p>​    </p>
+<h4 id="后处理方法"><a href="#后处理方法" class="headerlink" title="后处理方法"></a>后处理方法</h4><p>在SCAR假设中给出过公式，样本被打标的概率与其为正例的概率成正比，系数就是label frequency $c$。</p>
+<script type="math/tex; mode=display">
+P(s=1|x)=c·P(y=1|x)</script><p>于是可以得到</p>
+<script type="math/tex; mode=display">
+P(y=1|x) = \frac{p(s=1|x)}{c}</script><p>根据这个公式，可以给出算法(<a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Charles-Elkan/publication/221654469_Learning_classifiers_from_only_positive_and_unlabeled_data/links/02bfe513e19296c331000000/Learning-classifiers-from-only-positive-and-unlabeled-data.pdf">Elkan and Noto 2008</a>)：</p>
+<p>step①：训练一个分类器，预测样本被标记的概率，$P(s=1|x)$</p>
+<p>step②：使用①中训练的分类器预测正例被标记的概率，$P(s=1|y=1)$，得到均值$c$</p>
+<p>step③：对于任意一个样本k，使用①中分类器预测其打标概率，$P(s=1|k)$</p>
+<p>step④：计算样本k是正的概率$P(s=1|k)/c$</p>
+<p>或者，也可以通过<strong>修改分类的阈值</strong>来矫正bias，如果正常情况下阈值为$\tau$，则在PU数据中，阈值应该改为：$\tau^{pu}=c\tau$。</p>
+<p>​    </p>
+<h4 id="预处理方法"><a href="#预处理方法" class="headerlink" title="预处理方法"></a>预处理方法</h4><p>这个方法通过创造一个新的数据集来解决问题。刚才讲了可以通过改变判断类别的阈值来矫正bias，也可以通过<strong>改变样本的权重</strong>做到类似的效果。这里详细介绍一下<strong>Empirical-Risk-Minimization Based Methods</strong>。首先回顾一下两个背景知识：</p>
+<p><strong>二分类样本的数据分布</strong>可以表示为：</p>
+<script type="math/tex; mode=display">
+\boldsymbol x \sim p(x) \sim \alpha p_+(x)+(1-\alpha)p_-(x)
+\tag{1}</script><p>其中，class prior $\alpha=P(Y=1)$，$p,p_+,p_-$分别表示真实分布、正样本分布、负样本分布，（可以理解为$p(y=1)p(x|y=1)+p(y=0)p(x|y=0)$）。</p>
+<p>PU data中<strong>打标数据的分布</strong>可以表示为：</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+p_l(x) &=& p(x|s=1)
+\\
+\\
+&=& p(x|s=1,y=1)
+\tag{PU definition}
+\\
+\\
+&=& \frac{p(s=1|x,y=1)}{p(s=1|y=1)} p(x|y=1)
+\tag{Bayes' rule}
+\\
+\\
+&=&
+\frac{e(x)}{c}p_+(x)
+\tag{2}
+\end{eqnarray*}</script><p>在经验风险最小方法中，我们可以将loss函数表示为<strong>正负样本各自的风险期望加权求和</strong>，到样本级别，其实就是每个样本的loss和：</p>
+<script type="math/tex; mode=display">
+R(g) = 
+\alpha E_{p+} 
+  \left [
+    L^+(g(x))
+  \right ]
++
+(1- \alpha) E_{p_-}
+  \left [
+    L^-(g(x))
+  \right ]</script><p>在PU场景中，我们可以根据前面的推导，将这个loss做一个转化：</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+R(g) &=& \alpha E_{p+}  \left [  L^+(g(x)) \right ]
++
+(1- \alpha) E_{p_-} \left [  L^-(g(x))\right ]
+\\
+\\
+ &=& \alpha E_{p+}  \left [  L^+(g(x)) \right ]
++ E_p \left [  L^-(g(x))\right ]
+- \alpha E_{p_+} \left [  L^-(g(x))\right ] 
+\tag{公式(1)}
+\\
+\\
+ &=& \alpha E_{p+}  \left [  L^+(g(x)) -   L^-(g(x)) \right ]
++ E_p \left [  L^-(g(x))\right ]
+\tag{合并}
+\\
+\\
+ &=& \alpha E_{l}  \left [\frac{c}{e(x)} \left( L^+(g(x)) -   L^-(g(x)) \right ) \right ]
++ E_p \left [  L^-(g(x))\right ]
+\tag{公式(2)}
+
+\end{eqnarray*}</script><p>按这个新的计算方法，只需要：打标的数据分布、倾向性得分就可以计算了。</p>
+<p>​    </p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/82556263">知乎：学习笔记3-PU learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Kristen-Jaskie/publication/337503578_Positive_And_Unlabeled_Learning_Algorithms_And_Applications_A_Survey/links/609b0124458515d31513c2e9/Positive-And-Unlabeled-Learning-Algorithms-And-Applications-A-Survey.pdf">Jaskie K, Spanias A. Positive and unlabeled learning algorithms and applications: A survey[C]//2019 10th International Conference on Information, Intelligence, Systems and Applications (IISA). IEEE, 2019: 1-8.</a></li>
+<li><a target="_blank" rel="noopener" href="https://link.springer.com/content/pdf/10.1007/s10994-020-05877-5.pdf">Bekker J, Davis J. Learning from positive and unlabeled data: A survey[J]. Machine Learning, 2020, 109(4): 719-760.</a></li>
+<li><a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2016/file/be3159ad04564bfb90db9e32851ebf9c-Paper.pdf">Niu, Gang, et al. “Theoretical Comparisons of Positive-Unlabeled Learning against Positive-Negative Learning.” NIPS’16 Proceedings of the 30th International Conference on Neural Information Processing Systems, vol. 29, 2016, pp. 1207–1215.</a></li>
+<li><a target="_blank" rel="noopener" href="https://epubs.siam.org/doi/pdf/10.1137/1.9781611972795.23">Li X L, Yu P S, Liu B, et al. Positive unlabeled learning for data stream classification[C]//Proceedings of the 2009 SIAM international conference on data mining. Society for Industrial and Applied Mathematics, 2009: 259-270.</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.scielo.org.mx/pdf/cys/v18n3/v18n3a5.pdf">Li H, Chen Z, Liu B, et al. Spotting fake reviews via collective positive-unlabeled learning[C]//2014 IEEE international conference on data mining. IEEE, 2014: 899-904.</a></li>
+<li><a target="_blank" rel="noopener" href="http://proceedings.mlr.press/v37/hsiehb15.pdf">Hsieh C J, Natarajan N, Dhillon I. PU learning for matrix completion[C]//International conference on machine learning. PMLR, 2015: 2445-2453.</a></li>
+<li><a target="_blank" rel="noopener" href="https://riunet.upv.es/bitstream/handle/10251/64736/IPM%20Autor.pdf?sequence=4">Fusilier D H, Montes-y-Gómez M, Rosso P, et al. Detecting positive and negative deceptive opinions using PU-learning[J]. Information processing &amp; management, 2015, 51(4): 433-443.</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" rel="tag"># 半监督学习</a>
+              <a href="/tags/PU-Learning/" rel="tag"># PU-Learning</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/21/2021-11-21-%E5%B8%B8%E7%94%A8%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E5%AE%9A%E7%90%86/" rel="prev" title="常用概率统计定理">
+      <i class="fa fa-chevron-left"></i> 常用概率统计定理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/11/24/2021-11-24-%E9%BB%91%E7%9B%92%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98/" rel="next" title="黑盒优化问题">
+      黑盒优化问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PU-Learning%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">PU-Learning介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">关键问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text">准备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PU-learning"><span class="nav-number">2.1.</span> <span class="nav-text">PU  learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E6%A0%87%E6%9C%BA%E5%88%B6"><span class="nav-number">2.2.</span> <span class="nav-text">打标机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-prior%E5%92%8Clabel-frequency%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">2.3.</span> <span class="nav-text">class prior和label frequency的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%81%87%E8%AE%BE"><span class="nav-number">3.</span> <span class="nav-text">相关假设</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E6%A0%87%E6%9C%BA%E5%88%B6-1"><span class="nav-number">3.1.</span> <span class="nav-text">打标机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Selected-Completely-At-Random-SCAR"><span class="nav-number">3.1.1.</span> <span class="nav-text">Selected Completely At Random (SCAR)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Selected-At-Random-SAR"><span class="nav-number">3.1.2.</span> <span class="nav-text">Selected At Random (SAR)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Probabilistic-gap-PU-PGPU"><span class="nav-number">3.1.3.</span> <span class="nav-text">Probabilistic gap PU (PGPU)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%81%87%E8%AE%BE"><span class="nav-number">3.2.</span> <span class="nav-text">数据假设</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Negativity"><span class="nav-number">3.2.1.</span> <span class="nav-text">Negativity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Separability"><span class="nav-number">3.2.2.</span> <span class="nav-text">Separability</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Smoothness"><span class="nav-number">3.2.3.</span> <span class="nav-text">Smoothness</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Identifiable-class-prior"><span class="nav-number">3.3.</span> <span class="nav-text">Identifiable class prior</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%88%E6%9E%9C%E5%BA%A6%E9%87%8F"><span class="nav-number">4.</span> <span class="nav-text">效果度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Metrics-for-PU-data"><span class="nav-number">4.1.</span> <span class="nav-text">Metrics for PU data</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">常用算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Two-step-techniques"><span class="nav-number">5.1.</span> <span class="nav-text">Two-step techniques</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#biased-learning"><span class="nav-number">5.2.</span> <span class="nav-text">biased learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-prior-incorporation"><span class="nav-number">5.3.</span> <span class="nav-text">class prior incorporation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8E%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="nav-number">5.3.1.</span> <span class="nav-text">后处理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="nav-number">5.3.2.</span> <span class="nav-text">预处理方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dongdong Wang</p>
+  <div class="site-description" itemprop="description">从爪印判断，这是头雄狮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

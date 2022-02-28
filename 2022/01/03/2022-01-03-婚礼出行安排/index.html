@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangdongdong122.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="黑盒优化问题介绍。 天琪家婚礼疫情政策">
+<meta property="og:type" content="article">
+<meta property="og:title" content="婚礼出行安排">
+<meta property="og:url" content="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="黑盒优化问题介绍。 天琪家婚礼疫情政策">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/image-20220103153045552.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/image-20220103153300291.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/image-20220103153454324.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/2020020907000930.jpg">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/p1.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/image-20220103153758345.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/image-20220103162400758.png">
+<meta property="article:published_time" content="2022-01-03T12:42:43.000Z">
+<meta property="article:modified_time" content="2022-01-04T23:19:04.000Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="日常事务">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/image-20220103153045552.png">
+
+<link rel="canonical" href="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>婚礼出行安排 | 凛冬将至</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凛冬将至</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">从简单的例子开始</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          婚礼出行安排
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-03 20:42:43" itemprop="dateCreated datePublished" datetime="2022-01-03T20:42:43+08:00">2022-01-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-05 07:19:04" itemprop="dateModified" datetime="2022-01-05T07:19:04+08:00">2022-01-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>黑盒优化问题介绍。</p>
+<p>天琪家婚礼疫情政策</p>
+<span id="more"></span>
+<p>​    </p>
+<h2 id="出行政策"><a href="#出行政策" class="headerlink" title="出行政策"></a>出行政策</h2><h3 id="抵达北京市提醒"><a href="#抵达北京市提醒" class="headerlink" title="抵达北京市提醒"></a>抵达北京市提醒</h3><p>根据2021年11月17日、11月13日、10月24日北京市人民政府官网消息：</p>
+<p>1、自2021年11月17日零时起，进（返）京人员须持==48小时内核酸检测阴性证明和“北京健康宝”绿码==，==14日内有1例以上（含1例）本土新冠病毒感染者所在县（市、区、旗）旅居史人员严格限制进（返）京==，民航将加强远端登机进京查验。<a target="_blank" rel="noopener" href="http://www.beijing.gov.cn/fuwu/bmfw/bmzt/yqzt/jfj/202110/t20211029_2523905.html">链接</a></p>
+<p>2、环京地区通勤人员，在该措施执行后首次进(返)京须持48小时内核酸检测阴性证明，此后每次进(返)京持14日内核酸检测阴性证明即可。</p>
+<p>3、==14日内有陆路边境口岸所在县(市、区、旗)旅居史人员非必须不进(返)京==。<a target="_blank" rel="noopener" href="http://www.beijing.gov.cn/ywdt/zwzt/yqfk/jfj/202111/t20211118_2539890.html">链接</a></p>
+<p>4、对其他口岸入境进京人员，须在入境口岸所在地隔离观察满21天。</p>
+<p>更多详细信息，请务必登录北京市人民政府官网，查看《核酸检测阴性证明起始时间、环京地区通勤人员身份如何认定，官方解读》、《11月17日零时起进返京须持48小时内核酸阴性证明+绿码》、《北京对进京人员实施管控》，按照官方通知为准。</p>
+<p>（来源：2021年11月17日、11月13日、10月24日北京市人民政府官网）</p>
+<p><strong>问题</strong>：</p>
+<ol>
+<li><p>“14日内”如何定义？</p>
+<p>出入京时间算起，14天。</p>
+</li>
+<li><p>“14日内有1例以上（含1例）本土新冠病毒感染者所在县（市、区、旗）旅居史人员严格限制进（返）京”，如果是省会城市，是不是只要对应区没有本土病例就行？</p>
+<p>县级市直接看市，地级市指区（未确认）。</p>
+</li>
+<li><p>“14日内有陆路边境口岸所在县(市、区、旗)旅居史人员非必须不进(返)京”，怎么才算必须，回京需要检查什么？</p>
+<p>登记的有7个省66个边境口岸，其中云南省19个县，其中有腾冲市，需要执行暂缓进京政策，就是没有办法进京（由北京疾控中心确认）。师兄说，会直接无法查看健康码。</p>
+<p>附：对7个省（自治区）51个陆路边境口岸所在县（市、区、旗）执行限制进（返）京管控措施，具体是：</p>
+<ul>
+<li>吉林省（1县）：珲春市；</li>
+<li>黑龙江省（10县）：密山市、虎林市、绥芬河市、东宁市、饶河县、同江市、抚远市、萝北县、爱辉区、逊克县；</li>
+<li>内蒙古自治区（9县）：满洲里市、额尔古纳市、新巴尔虎左旗、二连浩特市、东乌珠穆沁旗、乌拉特中旗、额济纳旗、达尔罕茂明安联合旗、阿尔山市；</li>
+<li>新疆自治区（12县）：巴里坤哈萨克自治县、奇台县、青河县、福海县、阿拉山口市、霍尔果斯市、察布查尔锡伯自治县、塔城市、吉木乃县、乌恰县、阿合奇县、塔什库尔干塔吉克自治县；</li>
+<li>西藏自治区（3县）：吉隆县、聂拉木县、普兰县；</li>
+<li>云南省（10县）：江城哈尼族彝族自治县、勐腊县、勐海县、耿马县、瑞丽市、==腾冲市==、文山市、马关县、河口瑶族自治县、金平县；</li>
+<li>广西自治区（6县）：东兴市、凭祥市、宁明县、龙州县、靖西市、那坡县。</li>
+</ul>
+</li>
+</ol>
+<p>​    </p>
+<h3 id="抵达腾冲市提醒"><a href="#抵达腾冲市提醒" class="headerlink" title="抵达腾冲市提醒"></a>抵达腾冲市提醒</h3><p>根据2021年7月6日腾冲疾控动态微信公众号最新消息：</p>
+<p>全市居民非必要不前往瑞丽市等边境县市及国内疫情中、高风险地区，确须前往的，需经属地指挥部批准报备，返腾时提供72小时内核酸检测阴性证明。</p>
+<p>更多详细信息，请务必登录腾冲疾控动态微信公众号，查看《腾冲市应对新冠肺炎疫情工作领导小组指挥部关于进一步强化疫情防控工作的通告》，按照官方通知为准。</p>
+<p>（来源：2021年7月6日腾冲疾控动态微信公众号）</p>
+<p>​    </p>
+<h3 id="腾冲出行提醒"><a href="#腾冲出行提醒" class="headerlink" title="腾冲出行提醒"></a>腾冲出行提醒</h3><p>根据2021年12月24日腾冲机场消息：</p>
+<p>1、从腾冲机场乘机出行需要提供==48小时内核酸检测阴性证明==（电子和纸质都可以）、==检验行程码和健康码双码正常才能出行==。另外：如果是腾冲本地人员还需提供通行证明。</p>
+<p>2、请在出行前务必联系腾冲机场确认当前疫情管控政策。</p>
+<p>​    </p>
+<h3 id="抵达云南省提醒"><a href="#抵达云南省提醒" class="headerlink" title="抵达云南省提醒"></a>抵达云南省提醒</h3><p>一、根据云南省卫生服务热线防控要求：</p>
+<p>1、近14天内有本土疫情的城市旅居史人员来（返）云南需要持48小时内核酸检测阴性报告。</p>
+<p>2、请在出行前务必联系云南省卫生服务热线确认当前核酸检测报告的时限要求以及落地后疫情管控政策。</p>
+<p>二、根据2021年7月30日云南疾控微信公众号消息：</p>
+<p>1、近14天内有国内高风险地区旅居史及云南健康码为红码的人员，请立即向居住地社区或防疫部门报告，并自觉配合做好14天（时间以离开当地开始计算）集中隔离医学观察，期间开展4次（第1、4、7、14天）核酸检测。</p>
+<p>2、近14天内有国内中风险地区旅居史及云南健康码为黄码的人员，请立即向居住地社区或防疫部门报告，自觉进行7天居家健康监测，期间开展3次（每次至少间隔24小时）核酸检测。</p>
+<p>更多详细信息，请务必联系云南省卫生服务热线或登录云南疾控微信公众号，查看《关注云南省疾控中心发布疫情防控紧急提醒》，按照官方通知为准。</p>
+<p>（来源：云南省卫生服务热线，2021年7月30日云南疾控微信公众号）</p>
+<p>​    </p>
+<h3 id="昆明出行提醒"><a href="#昆明出行提醒" class="headerlink" title="昆明出行提醒"></a>昆明出行提醒</h3><p>根据2021年10月25日昆明市疾病预防控制中心微信公众号消息：</p>
+<p>所有离昆人员，在离昆前==48小时内，主动完成一次核酸检测==。</p>
+<p>更多详细信息，请务必登录昆明市疾病预防控制中心微信公众号，查看《昆明市疾控中心温馨提示》，按照官方通知为准。</p>
+<p>（来源：2021年10月25日昆明市疾病预防控制中心微信公众号）</p>
+<p>​    </p>
+<h3 id="抵达安庆市提醒"><a href="#抵达安庆市提醒" class="headerlink" title="抵达安庆市提醒"></a>抵达安庆市提醒</h3><p>根据2021年12月9日、7月29日安庆市人民政府发布微信公众号消息：</p>
+<p>1、省外来(返)宜人员需提供==48小时内核酸检测阴性证明==，并主动向所在社区(村)、单位或入住酒店报告，抵宜后至少开展1次核酸检测。</p>
+<p>2、14天内有高风险地区或已实行封控封闭管理区域旅居史的，请配合做好14天的集中隔离医学观察措施；==有中风险地区旅居史的，请配合做好14天的居家隔离医学观察==，无居家隔离条件的实行集中隔离医学观察(从离开中高风险地区算起)。</p>
+<p>更多详细信息，请务必登录安庆市人民政府发布微信公众号，查看《安庆疾控中心发布疫情防控提醒 非必要不出省 科学防护不松懈》、《紧急扩散安庆发布最新通告：这些人需14天集中隔离医学观察》，按照官方通知为准。</p>
+<p>（来源：2021年12月9日、7月29日安庆市人民政府发布微信公众号）</p>
+<h3 id="抵达黄山市提醒"><a href="#抵达黄山市提醒" class="headerlink" title="抵达黄山市提醒"></a>抵达黄山市提醒</h3><p>根据2021年12月28日黄山发布微信公众号消息：</p>
+<p>1、对近14天以来有中高风险地区所在地级市其他县旅居史人员，3日内有本土疫情发生、但未调整风险等级的地级市其他县（市、区）旅居史人员,非必要不来黄,确需来（返）黄的，查验登机前48小时内核酸检测阴性证明，在抵黄后立即开展1次核酸检测，并进行14天自我健康监测。</p>
+<p>2、对自安徽省外来（返）黄人员：建议携带登机==前48小时内核酸检测阴性证明，或抵黄后就地开展一次核酸检测==。</p>
+<p>3、对近14天以来有中高风险地区旅居史人员，限制来（返）黄；已经抵黄的，实施14天集中隔离医学观察。</p>
+<p>4、对近14天以来有中高风险地区所在县（市、区）及3日内有本土疫情发生、但未调整风险等级的县（市、区）旅居史人员，限制来（返）黄。已经抵黄的，按照“三天两检”（间隔24小时以上）落实核酸检测，在第二次核酸检测阴性结果未出前，落实居家健康监测；解除居家健康监测后，进行11天自我健康监测。</p>
+<p>5、对入境来（返）黄人员继续实施“入境地14天集中隔离+7天目的地集中隔离+7天居家健康监测+4周健康随访”管理措施（对14天内有中国澳门旅居史的来（返）黄人员查验来黄登机前48小时内核酸检测阴性证明）。</p>
+<p>更多详细信息，请务必登录黄山发布微信公众号，查看《市疫防办重要提醒》，按照官方通知为准。</p>
+<p>（来源：2021年12月28日黄山发布微信公众号）</p>
+<h3 id="抵达上海市提醒"><a href="#抵达上海市提醒" class="headerlink" title="抵达上海市提醒"></a>抵达上海市提醒</h3><p>根据2021年10月29日上海发布微信公众号消息：</p>
+<p>1、对所有来自或途经国内疫情高风险地区的来沪返沪人员，一律实施14天集中隔离健康观察，实行4次新冠病毒核酸检测。</p>
+<p>2、对所有来自或途经国内疫情中风险地区的来沪返沪人员，一律实施14天严格的社区健康管理，实行2次新冠病毒核酸检测。</p>
+<p>更多详细信息，请务必登录上海发布微信公众号，查看《上海进一步加强对国内疫情中高风险地区来沪返沪人员健康管理》，按照官方通知为准。</p>
+<p>（来源：2021年10月29日上海发布微信公众号）</p>
+<p>​    </p>
+<h3 id="抵达安徽省提醒"><a href="#抵达安徽省提醒" class="headerlink" title="抵达安徽省提醒"></a>抵达安徽省提醒</h3><p>根据2021年11月12日安徽疾控微信公众号消息：</p>
+<p>1、近14天内发生本土疫情的城市来（返）皖人员，须提供48小时内核酸检测阴性证明。</p>
+<p>更多详细信息，请务必登录安徽疾控微信公众号，查看《新冠肺炎疫情防控重要健康提示》按照官方通知为准。</p>
+<p>（来源：2021年11月12日安徽疾控微信公众号）</p>
+<h2 id="各地风险水平"><a href="#各地风险水平" class="headerlink" title="各地风险水平"></a>各地风险水平</h2><h3 id="昆明：有风险"><a href="#昆明：有风险" class="headerlink" title="昆明：有风险"></a><a target="_blank" rel="noopener" href="https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_aladin_banner&amp;city=%E4%BA%91%E5%8D%97-%E6%98%86%E6%98%8E">昆明</a>：有风险</h3><img src="/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/image-20220103153045552.png" class="" title="image-20220103153045552">
+<p>==2021-12-27本土新增1人==。</p>
+<p>​    </p>
+<h3 id="大理：安全"><a href="#大理：安全" class="headerlink" title="大理：安全"></a><a target="_blank" rel="noopener" href="https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_aladin_banner&amp;city=%E4%BA%91%E5%8D%97-%E5%A4%A7%E7%90%86%E5%B7%9E">大理</a>：安全</h3><img src="/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/image-20220103153300291.png" class="" title="image-20220103153300291">：
+
+​    
+
+### [保山](https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_aladin_banner&city=%E4%BA%91%E5%8D%97-%E4%BF%9D%E5%B1%B1)：陆路边境口岸
+
+<img src="/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/image-20220103153454324.png" class="" title="image-20220103153454324">
+<p><strong>云南省地图</strong></p>
+<img src="/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/2020020907000930.jpg" class="" title="img">
+<img src="/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/p1.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg" class="" title="img">
+<p>保山，属于边界市，==腾冲属于陆路边境口岸所在县==。</p>
+<p>​    </p>
+<h3 id="北京：有风险"><a href="#北京：有风险" class="headerlink" title="北京：有风险"></a><a target="_blank" rel="noopener" href="https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_aladin_banner&amp;city=%E5%8C%97%E4%BA%AC-%E5%8C%97%E4%BA%AC">北京</a>：有风险</h3><img src="/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/image-20220103153758345.png" class="" title="image-20220103153758345">
+<h3 id="安庆：安全"><a href="#安庆：安全" class="headerlink" title="安庆：安全"></a><a target="_blank" rel="noopener" href="https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_aladin_banner&amp;city=%E5%AE%89%E5%BE%BD-%E5%AE%89%E5%BA%86">安庆</a>：安全</h3><img src="/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/image-20220103162400758.png" class="" title="image-20220103162400758">
+<h2 id="各方案行程"><a href="#各方案行程" class="headerlink" title="各方案行程"></a>各方案行程</h2><p>2022-01-13（周四）出发，2022-01-16（周日）婚礼，2022-01-17（周一）返京，请3天假。</p>
+<h3 id="昆明中转"><a href="#昆明中转" class="headerlink" title="昆明中转"></a>昆明中转</h3><h4 id="去程"><a href="#去程" class="headerlink" title="去程"></a>去程</h4>
+
+
+<h4 id="返程"><a href="#返程" class="headerlink" title="返程"></a>返程</h4>
+<p>​    </p>
+<h2 id="情况预案"><a href="#情况预案" class="headerlink" title="情况预案"></a>情况预案</h2><p>Tips：</p>
+<ul>
+<li>出入北京都需要向社区报备，需要记下来航班和座位号</li>
+</ul>
+<p>​    </p>
+<h3 id="情况1-怀宁本土确诊"><a href="#情况1-怀宁本土确诊" class="headerlink" title="情况1:怀宁本土确诊"></a>情况1:怀宁本土确诊</h3><p>怀宁出现本土确诊，则需要==去无确诊地区隔离14天后，可进京==。</p>
+<p>​    </p>
+<h3 id="相关咨询电话"><a href="#相关咨询电话" class="headerlink" title="相关咨询电话"></a>相关咨询电话</h3><p>北京疾控中心咨询热线：010-12320</p>
+<p>北京市民服务热线：12345</p>
+<p>北京大兴国际机场机场服务/投诉受理热线：010-96158。（北京大兴机场没有单独的防疫电话）</p>
+<p>延静寺社区报备电话：65928548。微信：延静寺社区</p>
+<p>​    </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%97%A5%E5%B8%B8%E4%BA%8B%E5%8A%A1/" rel="tag"># 日常事务</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/02/2022-01-02-Pr%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/16/2022-01-16-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" rel="next" title="线性回归">
+      线性回归 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BA%E8%A1%8C%E6%94%BF%E7%AD%96"><span class="nav-number">1.</span> <span class="nav-text">出行政策</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%B5%E8%BE%BE%E5%8C%97%E4%BA%AC%E5%B8%82%E6%8F%90%E9%86%92"><span class="nav-number">1.1.</span> <span class="nav-text">抵达北京市提醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%B5%E8%BE%BE%E8%85%BE%E5%86%B2%E5%B8%82%E6%8F%90%E9%86%92"><span class="nav-number">1.2.</span> <span class="nav-text">抵达腾冲市提醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%85%BE%E5%86%B2%E5%87%BA%E8%A1%8C%E6%8F%90%E9%86%92"><span class="nav-number">1.3.</span> <span class="nav-text">腾冲出行提醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%B5%E8%BE%BE%E4%BA%91%E5%8D%97%E7%9C%81%E6%8F%90%E9%86%92"><span class="nav-number">1.4.</span> <span class="nav-text">抵达云南省提醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%86%E6%98%8E%E5%87%BA%E8%A1%8C%E6%8F%90%E9%86%92"><span class="nav-number">1.5.</span> <span class="nav-text">昆明出行提醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%B5%E8%BE%BE%E5%AE%89%E5%BA%86%E5%B8%82%E6%8F%90%E9%86%92"><span class="nav-number">1.6.</span> <span class="nav-text">抵达安庆市提醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%B5%E8%BE%BE%E9%BB%84%E5%B1%B1%E5%B8%82%E6%8F%90%E9%86%92"><span class="nav-number">1.7.</span> <span class="nav-text">抵达黄山市提醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%B5%E8%BE%BE%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%8F%90%E9%86%92"><span class="nav-number">1.8.</span> <span class="nav-text">抵达上海市提醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%B5%E8%BE%BE%E5%AE%89%E5%BE%BD%E7%9C%81%E6%8F%90%E9%86%92"><span class="nav-number">1.9.</span> <span class="nav-text">抵达安徽省提醒</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%84%E5%9C%B0%E9%A3%8E%E9%99%A9%E6%B0%B4%E5%B9%B3"><span class="nav-number">2.</span> <span class="nav-text">各地风险水平</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%86%E6%98%8E%EF%BC%9A%E6%9C%89%E9%A3%8E%E9%99%A9"><span class="nav-number">2.1.</span> <span class="nav-text">昆明：有风险</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E7%90%86%EF%BC%9A%E5%AE%89%E5%85%A8"><span class="nav-number">2.2.</span> <span class="nav-text">大理：安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%97%E4%BA%AC%EF%BC%9A%E6%9C%89%E9%A3%8E%E9%99%A9"><span class="nav-number">2.3.</span> <span class="nav-text">北京：有风险</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%BA%86%EF%BC%9A%E5%AE%89%E5%85%A8"><span class="nav-number">2.4.</span> <span class="nav-text">安庆：安全</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%84%E6%96%B9%E6%A1%88%E8%A1%8C%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">各方案行程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%86%E6%98%8E%E4%B8%AD%E8%BD%AC"><span class="nav-number">3.1.</span> <span class="nav-text">昆明中转</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%BB%E7%A8%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">去程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%94%E7%A8%8B"><span class="nav-number">3.1.2.</span> <span class="nav-text">返程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E9%A2%84%E6%A1%88"><span class="nav-number">4.</span> <span class="nav-text">情况预案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%86%B51-%E6%80%80%E5%AE%81%E6%9C%AC%E5%9C%9F%E7%A1%AE%E8%AF%8A"><span class="nav-number">4.1.</span> <span class="nav-text">情况1:怀宁本土确诊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%92%A8%E8%AF%A2%E7%94%B5%E8%AF%9D"><span class="nav-number">4.2.</span> <span class="nav-text">相关咨询电话</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dongdong Wang</p>
+  <div class="site-description" itemprop="description">从爪印判断，这是头雄狮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
