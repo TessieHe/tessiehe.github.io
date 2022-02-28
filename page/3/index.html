@@ -163,7 +163,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/29/2021-07-29-win10%E9%85%8D%E7%BD%AETensorFlow/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/11/06/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/LDA%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -177,7 +177,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/29/2021-07-29-win10%E9%85%8D%E7%BD%AETensorFlow/" class="post-title-link" itemprop="url">win10配置TensorFlow.md</a>
+            <a href="/2020/11/06/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/LDA%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -187,23 +187,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-29 13:02:38" itemprop="dateCreated datePublished" datetime="2021-07-29T13:02:38+08:00">2021-07-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-26 00:38:35" itemprop="dateModified" datetime="2021-08-26T00:38:35+08:00">2021-08-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">环境配置</span></a>
-                </span>
+              <time title="创建时间：2020-11-06 18:03:08" itemprop="dateCreated datePublished" datetime="2020-11-06T18:03:08+08:00">2020-11-06</time>
             </span>
 
           
@@ -217,15 +201,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>尝试在win10的台式机上，配置TensorFlow。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/29/2021-07-29-win10%E9%85%8D%E7%BD%AETensorFlow/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>PLSA </p>
+<p>每篇文章有个<script type="math/tex">\theta_i</script>确定每篇文章到topic的概率分布</p>
+<p>每个topic_j有个<script type="math/tex">\phi_j</script>确定每篇文章到词的概率分布</p>
+<p>求解theta_i，phi_j</p>
+<p>LDA</p>
+<p>每篇文i章有个alpha（对每篇文章都一样，是依靠先验人工设置的） 确定的地理克雷分布确定theta_i，由theta_i确定文章i到topic的概率分布</p>
+<p>每个topic_j有个beta（对每个词都一样，是依靠先验人工设置的） 确定的地理克雷分布确定 phi_j, 由phi_j 确定topic_j到词的概率分布</p>
+<p>求解theta_i，phi_j</p>
+<h1 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h1><p>LDA</p>
+<ol>
+<li>每篇文i章有个alpha（对每篇文章都一样，是依靠先验人工设置的） 确定的地理克雷分布确定theta_i，由theta_i确定文章i到topic的概率分布</li>
+</ol>
+<script type="math/tex; mode=display">
+\theta_i=P_d(\alpha) \\
+P(j|i) = P_{mult}(\theta_i) \\
+文章i到各个topic_j的分布由\theta_i确定,其中P_d是狄利克雷分布，P_{mult}是多项式分布</script><ol>
+<li>每个topic_j有个beta（对每个词都一样，是依靠先验人工设置的） 确定的地理克雷分布确定 phi_j, 由phi_j 确定topic_j到词的概率分布</li>
+</ol>
+<script type="math/tex; mode=display">
+\phi_j=P_d(\beta) \\
+P(k|j) = P_{mult}(\phi_j) \\
+topic_j到词k的分布由\phi_j确定,其中P_d是狄利克雷分布，P_{mult}是多项式分布</script><ol>
+<li>求解theta_i，phi_j</li>
+</ol>
+<h1 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h1>
       
     </div>
 
@@ -244,7 +244,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/25/2021-07-25-%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/11/02/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/hdfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -258,7 +258,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/25/2021-07-25-%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">迁移学习简介</a>
+            <a href="/2020/11/02/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/hdfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -268,23 +268,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-25 21:56:44" itemprop="dateCreated datePublished" datetime="2021-07-25T21:56:44+08:00">2021-07-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-26 00:39:10" itemprop="dateModified" datetime="2021-08-26T00:39:10+08:00">2021-08-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A8%A1%E5%9D%97%E7%AE%80%E4%BB%8B/" itemprop="url" rel="index"><span itemprop="name">模块简介</span></a>
-                </span>
+              <time title="创建时间：2020-11-02 20:07:52" itemprop="dateCreated datePublished" datetime="2020-11-02T20:07:52+08:00">2020-11-02</time>
             </span>
 
           
@@ -298,15 +282,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>本篇为学习迁移学习笔记，主要是学习李宏毅老师的<a target="_blank" rel="noopener" href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML20.html">课程</a>的笔记，主要图片也都选自其<a target="_blank" rel="noopener" href="http://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017/Lecture/transfer.pdf">课件</a>。内容是迁移学习的简单介绍，了解一下框架。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/25/2021-07-25-%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">http://hadoop.apache.org/docs/r1.0.4/cn/hdfs_shell.html</span><br><span class="line">1.hdfs命令行</span><br><span class="line">    （1）查看帮助</span><br><span class="line">        hdfs dfs -help </span><br><span class="line">        </span><br><span class="line">    （2）查看当前目录信息</span><br><span class="line">        hdfs dfs -ls /</span><br><span class="line">        </span><br><span class="line">    （3）上传文件</span><br><span class="line">        hdfs dfs -put /本地路径 /hdfs路径</span><br><span class="line">        </span><br><span class="line">    （4）剪切文件</span><br><span class="line">        hdfs dfs -moveFromLocal a.txt /aa.txt</span><br><span class="line">        </span><br><span class="line">    （5）下载文件到本地</span><br><span class="line">        hdfs dfs -get /hdfs路径 /本地路径</span><br><span class="line">        </span><br><span class="line">    （6）合并下载</span><br><span class="line">        hdfs dfs -getmerge /hdfs路径文件夹 /合并后的文件</span><br><span class="line">        </span><br><span class="line">    （7）创建文件夹</span><br><span class="line">        hdfs dfs -mkdir /hello</span><br><span class="line">        </span><br><span class="line">    （8）创建多级文件夹</span><br><span class="line">        hdfs dfs -mkdir -p /hello/world</span><br><span class="line">        </span><br><span class="line">    （9）移动hdfs文件</span><br><span class="line">        hdfs dfs -mv /hdfs路径 /hdfs路径</span><br><span class="line">        </span><br><span class="line">    （10）复制hdfs文件</span><br><span class="line">        hdfs dfs -cp /hdfs路径 /hdfs路径</span><br><span class="line">        </span><br><span class="line">    （11）删除hdfs文件</span><br><span class="line">        hdfs dfs -rm /aa.txt</span><br><span class="line">        </span><br><span class="line">    （12）删除hdfs文件夹</span><br><span class="line">        hdfs dfs -rm -r /hello</span><br><span class="line">        </span><br><span class="line">    （13）查看hdfs中的文件</span><br><span class="line">        hdfs dfs -cat /文件</span><br><span class="line">        hdfs dfs -tail -f /文件</span><br><span class="line">        </span><br><span class="line">    （14）查看文件夹中有多少个文件</span><br><span class="line">        hdfs dfs -count /文件夹</span><br><span class="line">        </span><br><span class="line">    （15）查看hdfs的总空间</span><br><span class="line">        hdfs dfs -df /</span><br><span class="line">        hdfs dfs -df -h /</span><br><span class="line">        </span><br><span class="line">    （16）修改副本数    </span><br><span class="line">        hdfs dfs -setrep 1 /a.txt</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -325,7 +302,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/24/2021-07-24-%E5%B8%B8%E8%A7%81%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/09/29/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/JRM%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -339,7 +316,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/24/2021-07-24-%E5%B8%B8%E8%A7%81%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">常见损失函数</a>
+            <a href="/2020/09/29/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/JRM%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -349,23 +326,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-24 21:56:44" itemprop="dateCreated datePublished" datetime="2021-07-24T21:56:44+08:00">2021-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-29 14:20:21" itemprop="dateModified" datetime="2021-08-29T14:20:21+08:00">2021-08-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">基础知识</span></a>
-                </span>
+              <time title="创建时间：2020-09-29 10:14:32" itemprop="dateCreated datePublished" datetime="2020-09-29T10:14:32+08:00">2020-09-29</time>
             </span>
 
           
@@ -379,15 +340,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>总结一下常见损失函数</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/24/2021-07-24-%E5%B8%B8%E8%A7%81%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>整体流程:新建jrm应用表—审批—新建jrm表对应的dmr_c表—新建dmr_c到jrm的推送任务—配置接口&amp;接口测试</p>
+<p><img src="/Users/hetianqi/Documents/charging/notes_of_the_world/JRM接口开发流程.assets/image-20200921181028180.png" alt="image-20200921181028180"></p>
+<h1 id="新建jrm应用表"><a href="#新建jrm应用表" class="headerlink" title="新建jrm应用表"></a>新建jrm应用表</h1><p>银河—接口平台jrm—消金智能模型-应用表—新建表</p>
+<p><img src="/Users/hetianqi/Documents/charging/notes_of_the_world/JRM接口开发流程.assets/image-20200921182607916.png" alt="image-20200921182607916"></p>
+<h1 id="建5k表，表结构与jrm表一致"><a href="#建5k表，表结构与jrm表一致" class="headerlink" title="建5k表，表结构与jrm表一致"></a>建5k表，表结构与jrm表一致</h1><h1 id="建推送作业"><a href="#建推送作业" class="headerlink" title="建推送作业"></a>建推送作业</h1><p>3.1 银河-数据推送-筛选：jrm-填写相关信息</p>
+<p><img src="/Users/hetianqi/Documents/charging/notes_of_the_world/JRM接口开发流程.assets/image-20200922184307661.png" alt="image-20200922184307661"></p>
+<p>目标数据源可查看jrm表详情</p>
+<p><img src="/Users/hetianqi/Documents/charging/notes_of_the_world/JRM接口开发流程.assets/image-20200922184518931.png" alt="image-20200922184518931"></p>
+<p><img src="/Users/hetianqi/Documents/charging/notes_of_the_world/JRM接口开发流程.assets/image-20200922184453513.png" alt="image-20200922184453513"></p>
+<p>3.2 数据快车—我的推送—编辑推送配置—审批</p>
+<p><img src="/Users/hetianqi/Documents/charging/notes_of_the_world/JRM接口开发流程.assets/image-20200922184953521.png" alt="image-20200922184953521"></p>
+
       
     </div>
 
@@ -406,7 +370,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/22/2021-07-22-MAP/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/07/02/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -420,7 +384,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/22/2021-07-22-MAP/" class="post-title-link" itemprop="url">MAP</a>
+            <a href="/2020/07/02/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -430,24 +394,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-22 09:30:35" itemprop="dateCreated datePublished" datetime="2021-07-22T09:30:35+08:00">2021-07-22</time>
+              <time title="创建时间：2020-07-02 16:46:44" itemprop="dateCreated datePublished" datetime="2020-07-02T16:46:44+08:00">2020-07-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-18 22:58:23" itemprop="dateModified" datetime="2021-11-18T22:58:23+08:00">2021-11-18</time>
+                <time title="修改时间：2021-08-06 16:25:24" itemprop="dateModified" datetime="2021-08-06T16:25:24+08:00">2021-08-06</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
-            </span>
 
           
 
@@ -460,15 +415,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>MAP最大化的是后验概率：$p(\boldsymbol  \theta|\boldsymbol X)$，等同于在MLE的最大化的似然后面再乘先验：$p(\boldsymbol X|\boldsymbol  \theta)p(\boldsymbol  \theta)$。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/22/2021-07-22-MAP/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>[TOC]</p>
+<h1 id="1-好文"><a href="#1-好文" class="headerlink" title="1. 好文"></a>1. 好文</h1><p><a target="_blank" rel="noopener" href="https://borgwang.github.io/adtech/2020/12/09/adtech-buying-type.html">https://borgwang.github.io/adtech/2020/12/09/adtech-buying-type.html</a> </p>
+<h1 id="2-出价模式"><a href="#2-出价模式" class="headerlink" title="2. 出价模式"></a>2. 出价模式</h1><p>转化链路：曝光 M -&gt; 点击 C -&gt; 转化 A -&gt; 消费 P</p>
+<p> 考核出价 ： bidROI</p>
+<p><img src="/Users/hetianqi/Library/Application Support/typora-user-images/image-20210805144947093.png" alt="image-20210805144947093"></p>
+<ul>
+<li>本质上 CPM 到 CPC 的变化是计费点和出价点从 M 移动到 C，这个点之前的部分（ CTR 预估）让渡给平台去完成了，广告主只负责这个点后面的预估</li>
+<li>因为 CPA 模式按照转化计费，只要广告主不回传或只回传部分转化数据，就可以进行作弊，薅媒体平台羊毛。因此实际中 CPA 模式应用的很少。</li>
+<li>从广告主的角度，从 CPM 到 CPC 到 CPA，出价点越来越靠近广告主考核点，平台需要预估的东西越来越多，承担的风险也越来越大。到了 CPA 这种模式，由于转化数据平台无法完全控制，<strong>预估 CVR 带来的期望风险已经超过了期望收益了</strong>，因此看上去很难再继续往链路后端发展。这时 Facebook 提出了 oCPX 模式，这种模式的创新点在于<strong>分离了计费点和出价点</strong>。我们仍希望利用媒体平台的能力对 CVR 进行预估，因此将出价点往后移到 A，因为这会带来平台收益；同时将计费点保留在 M 或者 C（对应 oCPM、oCPC），仍然按照曝光或点击计费，这会降低进行预估的期望风险（广告主没有动力作弊了）。</li>
+</ul>
+<h1 id="3-oCPX的成本控制"><a href="#3-oCPX的成本控制" class="headerlink" title="3. oCPX的成本控制"></a>3. oCPX的成本控制</h1><ul>
+<li>oCPX 中的成本控制和预算控制<ul>
+<li>oCPX 是一种保转化成本的模式，即媒体平台需要在一个广告投放周期内对广告转化成本进行控制，使其尽量等于广告主设定的目标成本。因此 oCPX 中通常会有智能调价的功能，即如果前期出价出高了，比如广告主设定 80 元一个转化，前期投放下来发现一个转化要 100 元，这时候智能调价需要将出价调低，拉低其平均转化成本。最朴素的是做法就是用 PID 反馈控制出价</li>
+<li>除了成本控制之外也应该对预算进行控制，让预算在周期内以合理的节奏消耗，这个节奏通常与流量的分布差不多一致。</li>
+</ul>
+</li>
+</ul>
+<h1 id="4-计算广告中的PID成本控制"><a href="#4-计算广告中的PID成本控制" class="headerlink" title="4. 计算广告中的PID成本控制"></a>4. 计算广告中的PID成本控制</h1><p>参考资料：</p>
+<p> <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1745934">干货 | PID算法在广告成本控制领域的应用</a></p>
+<p>背景：</p>
+<ul>
+<li>在实际的广告投放系统中，会包含诸如广告主端的点击率预估模型、用户价值预估模型、竞价算法，媒体端的OCPA、OCPC出价模型，以及多方竞价、二价成交等不可控机制，最终的投放系统十分复杂，影响投放成本的因素过多，造成<strong>用户成交价与实际出价并不相等</strong>，实际投放成本难以契合广告主在投放初期所制定的预算。</li>
+<li>以信息流广告投放为例，广告主通过采买媒体平台广告位进行广告投放。在广告投放前，综合考虑投放目标以及历史投放经验等，会对广告投放预算成本进行控制，希望能够以预先规划的价格拿到广告位资源（即控制广告成交价）。但由于如前所述的广告投放系统中的出价优化模型以及二价成交机制等，<strong>广告主往往不能直接控制成交价</strong>，而需通过调整出价等方式间接控制成交价。</li>
+<li>为了能够实现控制成交价的目的，我们实时监控成交价<strong>（输出）</strong>与预算成本<strong>（目标）</strong>间关系，并通过PID控制算法来动态调整出价<strong>(输入)</strong></li>
+</ul>
+<p><img src="pics/计算广告/image-20210805152419480.png" alt="image-20210805152419480" style="zoom:50%;" /></p>
+<p><img src="pics/计算广告/image-20210805152357961.png" alt="image-20210805152357961" style="zoom:50%;" /></p>
+<p><img src="pics/计算广告/image-20210805152447320.png" alt="image-20210805152447320" style="zoom:50%;" /></p>
+<h1 id="5-其他"><a href="#5-其他" class="headerlink" title="5. 其他"></a>5. 其他</h1><h2 id="CPX与OCPX的区别"><a href="#CPX与OCPX的区别" class="headerlink" title="CPX与OCPX的区别"></a>CPX与OCPX的区别</h2><p>CPX（如CPC,CPM等）是出价点与计费点一致，oCPX_a指的是计费点在X，出价点在a。相较与CPX，相当于媒体帮助广告主预估计费点到出价点的转化率，实现出价点成本控制下的动态竞价。</p>
+<h2 id="eCPM-流量对于媒体的变现能力评估"><a href="#eCPM-流量对于媒体的变现能力评估" class="headerlink" title="eCPM 流量对于媒体的变现能力评估"></a>eCPM 流量对于媒体的变现能力评估</h2><p>eCPM的竞价模式下竞价点都是在<strong>展示</strong>,任何出价计费模式下eCPM的万能公式：</p>
+<blockquote>
+<p>eCPM =P(计费|展示) <em> bid_计费  </em> 1000   </p>
+</blockquote>
+<p>例子：</p>
+<p>eCPM = CTR <em> CPC </em> 1000  #点击出价，点击计费，即CPC模式</p>
+<p>eCPM = CPM  # 展示出价，展示计费，即CPM模式</p>
+<p>eCPM = CTR <em> P(授信|点击) </em>  bid_授信 * 1000  #授信出价，点击计费，即oCPC_a </p>
+
       
     </div>
 
@@ -487,7 +471,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/22/2021-07-22-%E5%8D%9A%E5%AE%A2%E7%AC%A6%E5%8F%B7%E8%AF%B4%E6%98%8E/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/06/16/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Learning%20to%20Rank%EF%BC%9APoint-wise%E3%80%81Pair-wise%20%E5%92%8C%20List-wise%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -501,7 +485,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/22/2021-07-22-%E5%8D%9A%E5%AE%A2%E7%AC%A6%E5%8F%B7%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">博客符号说明</a>
+            <a href="/2020/06/16/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Learning%20to%20Rank%EF%BC%9APoint-wise%E3%80%81Pair-wise%20%E5%92%8C%20List-wise%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -511,23 +495,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-22 09:30:35" itemprop="dateCreated datePublished" datetime="2021-07-22T09:30:35+08:00">2021-07-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-18 19:07:02" itemprop="dateModified" datetime="2021-12-18T19:07:02+08:00">2021-12-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">博客配置</span></a>
-                </span>
+              <time title="创建时间：2020-06-16 14:42:46" itemprop="dateCreated datePublished" datetime="2020-06-16T14:42:46+08:00">2020-06-16</time>
             </span>
 
           
@@ -541,15 +509,133 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>博客的符号统一</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/22/2021-07-22-%E5%8D%9A%E5%AE%A2%E7%AC%A6%E5%8F%B7%E8%AF%B4%E6%98%8E/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="Learning-to-Rank：Point-wise、Pair-wise-和-List-wise区别"><a href="#Learning-to-Rank：Point-wise、Pair-wise-和-List-wise区别" class="headerlink" title="Learning to Rank：Point-wise、Pair-wise 和 List-wise区别"></a>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</h1><p><img src="https://csdnimg.cn/release/phoenix/template/new_img/reprint.png" alt="img"></p>
+<p><a target="_blank" rel="noopener" href="https://me.csdn.net/weixin_34005042">weixin_34005042</a> 2018-09-29 15:19:00 <img src="https://csdnimg.cn/release/phoenix/template/new_img/articleRead.png" alt="img"> 4131 <img src="https://csdnimg.cn/release/phoenix/template/new_img/tobarCollectionActive.png" alt="img"> 已收藏 4</p>
+<p> 机器学习的 ranking 技术——learning2rank，包括 pointwise、pairwise、listwise 三大类型。</p>
+<p> <img src="https://img2018.cnblogs.com/blog/818082/201809/818082-20180929163323836-2075825354.png" alt="img"></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/17411986/what-is-the-difference-between-point-wise-and-pair-wise-ranking-in-machine-learn">【Ref-1】</a>给出的：</p>
+<Point wise ranking 类似于回归>
+
+<p>Point wise ranking is analogous to regression. Each point has an associated rank score, and you want to predict that rank score. So your labeled data set will have a feature vector and associated rank score given a query</p>
+<p>IE: {d1, r1} {d2, r2} {d3, r3} {d4, r4}</p>
+<p>where r1 &gt; r2 &gt; r3 &gt;r4</p>
+<Pairwise ranking 类似于分类>
+
+<p>Pairwise ranking is analogous to classification. Each data point is associated with another data point, and the goal is to learn a classifier which will predict which of the two is “more” relevant to a given query.</p>
+<p>IE: {d1 &gt; d2} {d2 &gt; d3} {d3 &gt; d4}</p>
+<h1 id="1、Pointwise-Approach"><a href="#1、Pointwise-Approach" class="headerlink" title="\1、Pointwise Approach**"></a><strong><em>\</em>1、Pointwise Approach**</strong></h1><h2 id="1-1-特点"><a href="#1-1-特点" class="headerlink" title="　　*\*1.1 特点****"></a>　　<strong>*\</strong>*1.1 特点**<em>**</em></h2><p>　　Pointwise 类方法，其 L2R 框架具有以下特征：</p>
+<ul>
+<li>输入空间中样本是单个 doc（和对应 query）构成的特征向量；</li>
+<li>输出空间中样本是单个 doc（和对应 query）的相关度；</li>
+<li>假设空间中样本是打分函数；</li>
+<li>损失函数评估单个 doc 的预测得分和真实得分之间差异。</li>
+</ul>
+<p>　　这里讨论下，关于人工标注标签怎么转换到 pointwise 类方法的输出空间：</p>
+<ol>
+<li>如果标注直接是相关度 s_j，则 doc x_j 的真实标签定义为 y_j=s_j</li>
+<li>如果标注是 pairwise preference s_{u,v}，则 doc x_j 的真实标签可以利用该 doc 击败了其他 docs 的频次</li>
+<li>如果标注是整体排序 π，则 doc x_j 的真实标签可以利用映射函数，如将 doc 的排序位置序号当作真实标签</li>
+</ol>
+<h2 id="1-2-根据使用的-ML-方法不同，pointwise-类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。"><a href="#1-2-根据使用的-ML-方法不同，pointwise-类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。" class="headerlink" title="　　1.2 根据使用的 ML 方法不同，pointwise 类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。"></a>　　1.2 根据使用的 ML 方法不同，pointwise 类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。</h2><p>　　（1）基于回归的算法</p>
+<p>　　　　此时，输出空间包含的是实值相关度得分。采用 ML 中传统的回归方法即可。</p>
+<p>　　（2）基于分类的算法</p>
+<p>　　　　此时，输出空间包含的是无序类别。对于二分类，SVM、LR 等均可；对于多分类，提升树等均可。</p>
+<p>　　（3）基于有序回归的算法</p>
+<p>　　　　此时，输出空间包含的是有序类别。通常是找到一个打分函数，然后用一系列阈值对得分进行分割，得到有序类别。采用 PRanking、基于 margin 的方法都可以。</p>
+<h2 id="1-3-缺陷"><a href="#1-3-缺陷" class="headerlink" title="　　1.3 缺陷"></a>　　1.3 缺陷</h2><p>　　　　回顾概述中提到的评估指标应该基于 query 和 position，</p>
+<ul>
+<li>ranking 追求的是排序结果，并不要求精确打分，只要有相对打分即可。</li>
+<li>pointwise 类方法并没有考虑同一个 query 对应的 docs 间的内部依赖性。一方面，导致输入空间内的样本不是 IID 的，违反了 ML 的基本假设，另一方面，没有充分利用这种样本间的结构性。其次，当不同 query 对应不同数量的 docs 时，整体 loss 将会被对应 docs 数量大的 query 组所支配，前面说过应该每组 query 都是等价的。</li>
+<li>损失函数也没有 model 到预测排序中的位置信息。因此，损失函数可能无意的过多强调那些不重要的 docs，即那些排序在后面对用户体验影响小的 doc。</li>
+</ul>
+<h2 id="1-4-改进"><a href="#1-4-改进" class="headerlink" title="　　1.4 改进"></a>　　1.4 改进</h2><p>　　　　如在 loss 中引入基于 query 的正则化因子的 RankCosine 方法。</p>
+<h1 id="2、Pairwise-Approach"><a href="#2、Pairwise-Approach" class="headerlink" title="2、Pairwise Approach"></a>2、Pairwise Approach</h1><h2 id="2-1-特点"><a href="#2-1-特点" class="headerlink" title="　  2.1 特点"></a>　  2.1 特点</h2><p>　　Pairwise 类方法，其 L2R 框架具有以下特征：</p>
+<ul>
+<li>输入空间中样本是（同一 query 对应的）两个 doc（和对应 query）构成的两个特征向量；</li>
+<li>输出空间中样本是 pairwise preference；</li>
+<li>假设空间中样本是二变量函数；</li>
+<li>损失函数评估 doc pair 的预测 preference 和真实 preference 之间差异。</li>
+</ul>
+<p>　　这里讨论下，关于人工标注标签怎么转换到 pairwise 类方法的输出空间：</p>
+<ol>
+<li>如果标注直接是相关度 s_j，则 doc pair (x_u,x_v) 的真实标签定义为 y_{u,v}=2*I_{s_u&gt;s_v}-1</li>
+<li>如果标注是 pairwise preference s_{u,v}，则 doc pair (x_u,x_v) 的真实标签定义为y_{u,v}=s_{u,v}</li>
+<li>如果标注是整体排序 π，则 doc pair (x_u,x_v) 的真实标签定义为y_{u,v}=2*I_{π_u,π_v}-1</li>
+</ol>
+<h2 id="2-2-基于二分类的算法"><a href="#2-2-基于二分类的算法" class="headerlink" title="　　2.2 基于二分类的算法　　"></a>　　2.2 基于二分类的算法　　</h2><p>　　Pairwise 类方法基本就是使用二分类算法即可。</p>
+<p>　　经典的算法有 基于 NN 的 SortNet，基于 NN 的 RankNet，基于 fidelity loss 的 FRank，基于 AdaBoost 的 RankBoost，基于 SVM 的 RankingSVM，基于提升树的 GBRank。</p>
+<h2 id="2-3-缺陷"><a href="#2-3-缺陷" class="headerlink" title="　　2.3 缺陷"></a>　　2.3 缺陷</h2><p>　　虽然 pairwise 类相较 pointwise 类 model 到一些 doc pair 间的相对顺序信息，但还是存在不少问题，回顾概述中提到的评估指标应该基于 query 和 position，</p>
+<ul>
+<li>如果人工标注给定的是第一种和第三种，即已包含多有序类别，那么转化成 pairwise preference 时必定会损失掉一些更细粒度的相关度标注信息。</li>
+<li>doc pair 的数量将是 doc 数量的二次，从而 pointwise 类方法就存在的 query 间 doc 数量的不平衡性将在 pairwise 类方法中进一步放大。</li>
+<li>pairwise 类方法相对 pointwise 类方法对噪声标注更敏感，即一个错误标注会引起多个 doc pair 标注错误。</li>
+<li>pairwise 类方法仅考虑了 doc pair 的相对位置，损失函数还是没有 model 到预测排序中的位置信息。</li>
+<li>pairwise 类方法也没有考虑同一个 query 对应的 doc pair 间的内部依赖性，即输入空间内的样本并不是 IID 的，违反了 ML 的基本假设，并且也没有充分利用这种样本间的结构性。</li>
+</ul>
+<h2 id="2-4-改进"><a href="#2-4-改进" class="headerlink" title="　　2.4 改进"></a>　　2.4 改进</h2><p>　　　pairwise 类方法也有一些尝试，去一定程度解决上述缺陷，比如：</p>
+<ul>
+<li>Multiple hyperplane ranker，主要针对前述第一个缺陷</li>
+<li>magnitude-preserving ranking，主要针对前述第一个缺陷</li>
+<li>IRSVM，主要针对前述第二个缺陷</li>
+<li>采用 Sigmoid 进行改进的 pairwise 方法，主要针对前述第三个缺陷</li>
+<li>P-norm push，主要针对前述第四个缺陷</li>
+<li>Ordered weighted average ranking，主要针对前述第四个缺陷</li>
+<li>LambdaRank，主要针对前述第四个缺陷</li>
+<li>Sparse ranker，主要针对前述第四个缺陷</li>
+</ul>
+<p> 　<strong><em>\</em>3、Listwise Approach**</strong></p>
+<h2 id="3-1-特点"><a href="#3-1-特点" class="headerlink" title="　　3.1 特点　　"></a>　　3.1 特点　　</h2><p>　　Listwise 类方法，其 L2R 框架具有以下特征：</p>
+<ul>
+<li>输入空间中样本是（同一 query 对应的）所有 doc（与对应的 query）构成的多个特征向量（列表）；</li>
+<li>输出空间中样本是这些 doc（和对应 query）的相关度排序列表或者排列；</li>
+<li>假设空间中样本是多变量函数，对于 docs 得到其排列，实践中，通常是一个打分函数，根据打分函数对所有 docs 的打分进行排序得到 docs 相关度的排列；</li>
+<li>损失函数分成两类，一类是直接和评价指标相关的，还有一类不是直接相关的。具体后面介绍。</li>
+</ul>
+<p>　　这里讨论下，关于人工标注标签怎么转换到 listwise 类方法的输出空间：</p>
+<ol>
+<li>如果标注直接是相关度 s_j，则 doc set 的真实标签可以利用相关度 s_j 进行比较构造出排列</li>
+<li>如果标注是 pairwise preference s_{u,v}，则 doc set 的真实标签也可以利用所有 s_{u,v} 进行比较构造出排列</li>
+<li>如果标注是整体排序 π，则 doc set 则可以直接得到真实标签</li>
+</ol>
+<h2 id="3-2-根据损失函数构造方式的不同，listwise-类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。"><a href="#3-2-根据损失函数构造方式的不同，listwise-类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。" class="headerlink" title="　　3.2 根据损失函数构造方式的不同，listwise 类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。"></a>　　3.2 根据损失函数构造方式的不同，listwise 类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。</h2><p>　　　（1）直接基于评价指标的算法</p>
+<p>　　直接取优化 ranking 的评价指标，也算是 listwise 中最直观的方法。但这并不简单，因为前面说过评价指标都是离散不可微的，具体处理方式有这么几种：</p>
+<ul>
+<li>优化基于评价指标的 ranking error 的连续可微的近似，这种方法就可以直接应用已有的优化方法，如SoftRank，ApproximateRank，SmoothRank</li>
+<li>优化基于评价指标的 ranking error 的连续可微的上界，如 SVM-MAP，SVM-NDCG，PermuRank</li>
+<li>使用可以优化非平滑目标函数的优化技术，如 AdaRank，RankGP</li>
+</ul>
+<p>　　上述方法的优化目标都是直接和 ranking 的评价指标有关。现在来考虑一个概念，informativeness。通常认为一个更有信息量的指标，可以产生更有效的排序模型。而多层评价指标（NDCG）相较二元评价（AP）指标通常更富信息量。因此，有时虽然使用信息量更少的指标来评估模型，但仍然可以使用更富信息量的指标来作为 loss 进行模型训练。</p>
+<p>　　  （2）非直接基于评价指标的算法</p>
+<p>　　这里，不再使用和评价指标相关的 loss 来优化模型，而是设计能衡量模型输出与真实排列之间差异的 loss，如此获得的模型在评价指标上也能获得不错的性能。<br>　　经典的如 ，ListNet，ListMLE，StructRank，BoltzRank。</p>
+<h2 id="3-3-缺陷"><a href="#3-3-缺陷" class="headerlink" title="　　3.3 缺陷"></a>　　3.3 缺陷</h2><p>listwise 类相较 pointwise、pairwise 对 ranking 的 model 更自然，解决了 ranking 应该基于 query 和 position 问题。</p>
+<p>listwise 类存在的主要缺陷是：一些 ranking 算法需要基于排列来计算 loss，从而使得训练复杂度较高，如 ListNet和 BoltzRank。此外，位置信息并没有在 loss 中得到充分利用，可以考虑在 ListNet 和 ListMLE 的 loss 中引入位置折扣因子。</p>
+<h2 id="3-4-改进"><a href="#3-4-改进" class="headerlink" title="　　3.4 改进"></a>　　3.4 改进</h2><p>　　　pairwise 类方法也有一些尝试，去一定程度解决上述缺陷，比如：</p>
+<ul>
+<li>Multiple hyperplane ranker，主要针对前述第一个缺陷</li>
+<li>magnitude-preserving ranking，主要针对前述第一个缺陷</li>
+<li>IRSVM，主要针对前述第二个缺陷</li>
+<li>采用 Sigmoid 进行改进的 pairwise 方法，主要针对前述第三个缺陷</li>
+<li>P-norm push，主要针对前述第四个缺陷</li>
+<li>Ordered weighted average ranking，主要针对前述第四个缺陷</li>
+<li>LambdaRank，主要针对前述第四个缺陷</li>
+<li>Sparse ranker，主要针对前述第四个缺陷</li>
+</ul>
+<p>以上，<strong>这三大类方法主要区别在于损失函数。不同的损失函数决定了不同的模型学习过程和输入输出空间。</strong></p>
+<p>rating数据集：</p>
+<p>：所以关于这个问题，是要使用topN=1的对吗？并把指标改为 AUC和 NDCG对吗？</p>
+<p>——是这样，这个是一个rating数据集。</p>
+<p>如果是按照pairwise ranking的正确率，应该是我们的oPR和oMRR，PR和MAP都是没有用的。</p>
+<p>如果不按照pairwise，（按照listwise），就是AUC和NDCG，所以我让你算那个。</p>
+<p>当然还有就是按照数值，（按照pointwise），RMSE，不过我们的没法计算RMSE。</p>
+<p>：啊这个“不按照pairwise”，没太明白，还是按照原来的思路，用的 winner 和 loser 比较对呀。尤其在这个rating数据集，是每个比较对当成一个session，这点还是不变的吧？？</p>
+<p>——这不就是pairwise吗？</p>
+<p>rating是可以按照每个用户得到一个排序的，这是listwise，也就是算出NDCG，AUC的指标。</p>
+<p>还可以按照pointwise，每个分数预测的怎么样，就是RMSE。</p>
+<p>【Reference】</p>
+<p>1、<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/17411986/what-is-the-difference-between-point-wise-and-pair-wise-ranking-in-machine-learn">What is the difference between point-wise and pair-wise ranking in machine learning</a></p>
+<p>2、<a target="_blank" rel="noopener" href="https://blog.csdn.net/lipengcn/article/details/80373744">学习排序 Learning to Rank：从 pointwise 和 pairwise 到 listwise，经典模型与优缺点</a></p>
+<p>3、<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/news/135904">基于 Pairwise 和 Listwise 的排序学习</a></p>
+
       
     </div>
 
@@ -568,7 +654,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/22/2021-07-22-%E5%B8%B8%E8%A7%81%E7%9A%84%E5%88%86%E5%B8%83/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/05/15/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%81%94%E9%82%A6%E6%A0%91%E6%A8%A1%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -582,7 +668,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/22/2021-07-22-%E5%B8%B8%E8%A7%81%E7%9A%84%E5%88%86%E5%B8%83/" class="post-title-link" itemprop="url">常见的分布</a>
+            <a href="/2020/05/15/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%81%94%E9%82%A6%E6%A0%91%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -592,23 +678,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-22 09:30:35" itemprop="dateCreated datePublished" datetime="2021-07-22T09:30:35+08:00">2021-07-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-29 14:20:02" itemprop="dateModified" datetime="2021-08-29T14:20:02+08:00">2021-08-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">基础知识</span></a>
-                </span>
+              <time title="创建时间：2020-05-15 11:35:52" itemprop="dateCreated datePublished" datetime="2020-05-15T11:35:52+08:00">2020-05-15</time>
             </span>
 
           
@@ -622,15 +692,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>总结常见的分布</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/22/2021-07-22-%E5%B8%B8%E8%A7%81%E7%9A%84%E5%88%86%E5%B8%83/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>[TOC]</p>
+<h1 id="普通XGB原理"><a href="#普通XGB原理" class="headerlink" title="普通XGB原理"></a>普通XGB原理</h1><h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><h1 id="联邦GXB"><a href="#联邦GXB" class="headerlink" title="联邦GXB"></a>联邦GXB</h1>
       
     </div>
 
@@ -649,7 +712,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/14/2021-07-14-hexo%D6%B4%D6%B9%D7%81%D7%82%D7%B0%D7%83%D7%B2%C2%A2/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/04/26/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/mac%E4%BD%BF%E7%94%A8rz%20sz/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -663,7 +726,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/14/2021-07-14-hexo%D6%B4%D6%B9%D7%81%D7%82%D7%B0%D7%83%D7%B2%C2%A2/" class="post-title-link" itemprop="url">hexo疑难杂症</a>
+            <a href="/2020/04/26/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/mac%E4%BD%BF%E7%94%A8rz%20sz/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -673,24 +736,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-14 22:34:05" itemprop="dateCreated datePublished" datetime="2021-07-14T22:34:05+08:00">2021-07-14</time>
+              <time title="创建时间：2020-04-26 16:11:40" itemprop="dateCreated datePublished" datetime="2020-04-26T16:11:40+08:00">2020-04-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-18 19:06:50" itemprop="dateModified" datetime="2021-12-18T19:06:50+08:00">2021-12-18</time>
+                <time title="修改时间：2021-09-02 11:20:03" itemprop="dateModified" datetime="2021-09-02T11:20:03+08:00">2021-09-02</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">博客配置</span></a>
-                </span>
-            </span>
 
           
 
@@ -703,15 +757,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>记录一下博客使用过程中遇到的问题及解决方案。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/14/2021-07-14-hexo%D6%B4%D6%B9%D7%81%D7%82%D7%B0%D7%83%D7%B2%C2%A2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>一、安装brew<br> <code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code><br> 二、安装iterm2<br> <code>brew cask install iterm2</code><br> 三、安装lrzsz<br> <code>sudo brew install lrzsz</code><br> 四、将下面2个脚本保存到 <code>/usr/local/bin/</code>下<br> 1.iterm2-recv-zmodem.sh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># Author: Matt Mastracci (matthew@mastracci.com)</span></span><br><span class="line"><span class="comment"># AppleScript from http://stackoverflow.com/questions/4309087/cancel-button-on-osascript-in-a-bash-script</span></span><br><span class="line"><span class="comment"># licensed under cc-wiki with attribution required </span></span><br><span class="line"><span class="comment"># Remainder of script public domain</span></span><br><span class="line"></span><br><span class="line">osascript -e <span class="string">&#x27;tell application &quot;iTerm2&quot; to version&#x27;</span> &gt; /dev/null 2&gt;&amp;1 &amp;&amp; NAME=iTerm2 || NAME=iTerm</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$NAME</span> = <span class="string">&quot;iTerm&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">    FILE=`osascript -e <span class="string">&#x27;tell application &quot;iTerm&quot; to activate&#x27;</span> -e <span class="string">&#x27;tell application &quot;iTerm&quot; to set thefile to choose folder with prompt &quot;Choose a folder to place received files in&quot;&#x27;</span> -e <span class="string">&quot;do shell script (\&quot;echo \&quot;&amp;(quoted form of POSIX path of thefile as Unicode text)&amp;\&quot;\&quot;)&quot;</span>`</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    FILE=`osascript -e <span class="string">&#x27;tell application &quot;iTerm2&quot; to activate&#x27;</span> -e <span class="string">&#x27;tell application &quot;iTerm2&quot; to set thefile to choose folder with prompt &quot;Choose a folder to place received files in&quot;&#x27;</span> -e <span class="string">&quot;do shell script (\&quot;echo \&quot;&amp;(quoted form of POSIX path of thefile as Unicode text)&amp;\&quot;\&quot;)&quot;</span>`</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$FILE</span> = <span class="string">&quot;&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> Cancelled.</span><br><span class="line">    <span class="comment"># Send ZModem cancel</span></span><br><span class="line">    <span class="built_in">echo</span> -e \\x18\\x18\\x18\\x18\\x18</span><br><span class="line">    sleep 1</span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment"># Cancelled transfer</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">cd</span> <span class="string">&quot;<span class="variable">$FILE</span>&quot;</span></span><br><span class="line">    /usr/<span class="built_in">local</span>/bin/rz -E -e -b</span><br><span class="line">    sleep 1</span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment"># Sent \-\&gt; $FILE</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>2.iterm2-send-zmodem.sh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># Author: Matt Mastracci (matthew@mastracci.com)</span></span><br><span class="line"><span class="comment"># AppleScript from http://stackoverflow.com/questions/4309087/cancel-button-on-osascript-in-a-bash-script</span></span><br><span class="line"><span class="comment"># licensed under cc-wiki with attribution required </span></span><br><span class="line"><span class="comment"># Remainder of script public domain</span></span><br><span class="line"></span><br><span class="line">osascript -e <span class="string">&#x27;tell application &quot;iTerm2&quot; to version&#x27;</span> &gt; /dev/null 2&gt;&amp;1 &amp;&amp; NAME=iTerm2 || NAME=iTerm</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$NAME</span> = <span class="string">&quot;iTerm&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">    FILE=`osascript -e <span class="string">&#x27;tell application &quot;iTerm&quot; to activate&#x27;</span> -e <span class="string">&#x27;tell application &quot;iTerm&quot; to set thefile to choose file with prompt &quot;Choose a file to send&quot;&#x27;</span> -e <span class="string">&quot;do shell script (\&quot;echo \&quot;&amp;(quoted form of POSIX path of thefile as Unicode text)&amp;\&quot;\&quot;)&quot;</span>`</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    FILE=`osascript -e <span class="string">&#x27;tell application &quot;iTerm2&quot; to activate&#x27;</span> -e <span class="string">&#x27;tell application &quot;iTerm2&quot; to set thefile to choose file with prompt &quot;Choose a file to send&quot;&#x27;</span> -e <span class="string">&quot;do shell script (\&quot;echo \&quot;&amp;(quoted form of POSIX path of thefile as Unicode text)&amp;\&quot;\&quot;)&quot;</span>`</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$FILE</span> = <span class="string">&quot;&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> Cancelled.</span><br><span class="line">    <span class="comment"># Send ZModem cancel</span></span><br><span class="line">    <span class="built_in">echo</span> -e \\x18\\x18\\x18\\x18\\x18</span><br><span class="line">    sleep 1</span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment"># Cancelled transfer</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    /usr/<span class="built_in">local</span>/bin/sz <span class="string">&quot;<span class="variable">$FILE</span>&quot;</span> -e -b</span><br><span class="line">    sleep 1</span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">    <span class="built_in">echo</span> \<span class="comment"># Received $FILE</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>五、添加iTerm2 trigger</p>
+<p>Item-profile-advanced-edit-default-add</p>
+<p><img src="/Users/hetianqi/Library/Application Support/typora-user-images/image-20200403193423571.png" alt="image-20200403193423571"></p>
+<blockquote>
+<p>注意！！！</p>
+<p>paramers一定要加绝对路径！！！</p>
+</blockquote>
+<p>配置项：</p>
+<p>Regular expression      　　Action      　　　　　　　Parameters</p>
+<p>/<em>/</em>B0100　　　　　　　　Run Silent Coprocess　　/usr/local/bin/iterm2-send-zmodem.sh</p>
+<p>/<em>/</em>B00000000000000　  Run Silent Coprocess　　/usr/local/bin/iterm2-recv-zmodem.sh</p>
+<p> 六：sudo</p>
+<p>sudo chmod 777 /usr/local/bin/iterm2-*</p>
+<p>配置完重启即可使用rz 和sz命令。</p>
+<p>作者：小黑胖_<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c23896b96b6c">https://www.jianshu.com/p/c23896b96b6c</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
       
     </div>
 
@@ -730,7 +795,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/10/2021-07-10-i%CC%80%C3%98/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/04/19/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pandas/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -744,7 +809,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/10/2021-07-10-i%CC%80%C3%98/" class="post-title-link" itemprop="url">熵</a>
+            <a href="/2020/04/19/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pandas/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -754,23 +819,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-10 09:30:35" itemprop="dateCreated datePublished" datetime="2021-07-10T09:30:35+08:00">2021-07-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-05 16:07:00" itemprop="dateModified" datetime="2021-12-05T16:07:00+08:00">2021-12-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">基础知识</span></a>
-                </span>
+              <time title="创建时间：2020-04-19 18:24:34" itemprop="dateCreated datePublished" datetime="2020-04-19T18:24:34+08:00">2020-04-19</time>
             </span>
 
           
@@ -784,15 +833,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>熵是信息论中的概念，在机器学习中也被广泛应用，比如<strong>交叉熵</strong>、<strong>KL散度</strong>等。本文总结一下各种熵有关的概念，并总结他们的各种形式变种。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/10/2021-07-10-i%CC%80%C3%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>[TOC]</p>
+<h1 id="python调用shell"><a href="#python调用shell" class="headerlink" title="python调用shell"></a>python调用shell</h1><p>在python程序中调用shell命令，是件很酷且常用的事情……</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pengdonglin137/articles/8093409.html">https://www.cnblogs.com/pengdonglin137/articles/8093409.html</a></p>
+<h2 id="os-system-command"><a href="#os-system-command" class="headerlink" title="os.system(command)"></a>os.system(command)</h2><p>  此函数会启动子进程，在子进程中执行command，并返回command命令执行完毕后的退出状态，如果command有执行内容，会在标准输出显示。这实际上是使用C标准库函数system()实现的。</p>
+<blockquote>
+<p>缺点：这个函数在执行command命令时需要重新打开一个终端，并且无法保存command命令的执行结果。<br>实例：os.system(‘ls -l *’)</p>
+<h2 id="os-popen-command-mode"><a href="#os-popen-command-mode" class="headerlink" title="os.popen(command,mode)"></a>os.popen(command,mode)</h2></blockquote>
+<p>打开一个与command进程之间的管道。这个函数的返回值是一个文件对象，可以读或者写(由mode决定，mode默认是’r’)。如果mode为’r’，可以使用此函数的返回值调用read()来获取command命令的执行结果。</p>
+<p>os.system(cmd)或os.popen(cmd)，前者返回值是脚本的退出状态码，后者的返回值是脚本执行过程中的输出内容。实际使用时视需求情况而选择。</p>
+<p>实例：tmp = os.popen(‘ls -l *’).readlines()</p>
+<h1 id="同时写入多个sheet"><a href="#同时写入多个sheet" class="headerlink" title="同时写入多个sheet"></a>同时写入多个sheet</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_excel_pd</span>(<span class="params">file, sheet, data</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    excel title: name /  age</span></span><br><span class="line"><span class="string">        df1 = &#123;</span></span><br><span class="line"><span class="string">        &#x27;name&#x27;: [1, 2, 3],</span></span><br><span class="line"><span class="string">        &#x27;age&#x27;: [1, 2, 3]</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    pandas DataFrame  write to excel</span></span><br><span class="line"><span class="string">    :param file:  file_path + file_name</span></span><br><span class="line"><span class="string">    :param sheet: type：list</span></span><br><span class="line"><span class="string">    :param data: type: list  DataFrame</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    writer = pd.ExcelWriter(file)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(sheet)):</span><br><span class="line">        df = pd.DataFrame(data[i])</span><br><span class="line">        df.to_excel(excel_writer=writer, sheet_name=sheet[i])</span><br><span class="line">    writer.save()</span><br><span class="line">    writer.close()</span><br><span class="line">    log.info(<span class="string">&#x27;写入数据完成！&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="按条件过滤行"><a href="#按条件过滤行" class="headerlink" title="按条件过滤行"></a>按条件过滤行</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[df[A] &gt; <span class="number">0</span>] <span class="comment">#选出A列&gt;0的行</span></span><br><span class="line">df[df[A]。isin([<span class="number">0</span>,<span class="number">1</span>])] <span class="comment">#选出A列中是0或1的行</span></span><br></pre></td></tr></table></figure>
+<h1 id="读入"><a href="#读入" class="headerlink" title="读入"></a>读入</h1><p>import pandas as pd<br>df=pd.read_table(‘dddd.txt’,header=0,index_col=0,error_bad_lines=False,delimiter=’\t’)</p>
+<h1 id="列名"><a href="#列名" class="headerlink" title="列名"></a>列名</h1><p>df.columns</p>
+<h1 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.drop([<span class="string">&#x27;k&#x27;</span>], axis=<span class="number">1</span>, inplace=<span class="literal">True</span>) <span class="comment">#删除k列</span></span><br></pre></td></tr></table></figure>
+<h1 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h1><p>values={}<br>with open(‘fill_na.txt’) as f:<br>    for line in f:<br>        line = line.strip().split(‘:’)<br>        values[line[0]] = int(line[1])<br>df = df.fillna(value=values)<br>df = df.dropna(axis=0,how=’any’) #删除含有NULL的行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#删除指定列有空值的行</span></span><br><span class="line">df_ios_tmp=df_ios.dropna(subset=[列名],how=<span class="string">&#x27;all&#x27;</span>,inplace=<span class="literal">False</span>) <span class="comment">#how=all 或者 any</span></span><br></pre></td></tr></table></figure>
+<h1 id="shuffle"><a href="#shuffle" class="headerlink" title="shuffle"></a>shuffle</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sample(frac=<span class="number">1</span>).reset_index(drop=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="数据检查"><a href="#数据检查" class="headerlink" title="数据检查"></a>数据检查</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#datafram 每一列值unique数</span></span><br><span class="line">data_idfa.info(verbose=<span class="literal">True</span>, null_counts=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#每一列均值 方差等</span></span><br><span class="line">data_idfa.describe()</span><br></pre></td></tr></table></figure>
+
+<h1 id="group-by"><a href="#group-by" class="headerlink" title="group by"></a>group by</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_ios.groupby([<span class="string">&#x27;y_flag&#x27;</span>], as_index=<span class="literal">False</span>)[<span class="string">&#x27;dt&#x27;</span>].count() <span class="comment">#聚合函数除了count还有sum,min,max等</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_ios.groupby([<span class="string">&#x27;dt_m&#x27;</span>,<span class="string">&#x27;y_flag&#x27;</span>], as_index=<span class="literal">False</span>)[<span class="string">&#x27;pin&#x27;</span>].count()</span><br></pre></td></tr></table></figure>
+
+<h1 id="截取时间前几位"><a href="#截取时间前几位" class="headerlink" title="截取时间前几位"></a>截取时间前几位</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_ios[<span class="string">&#x27;dt_m&#x27;</span>]=df_ios[<span class="string">&#x27;dt&#x27;</span>].<span class="built_in">str</span>[<span class="number">0</span>:<span class="number">7</span>]</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -811,7 +878,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/07/2021-07-07-%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/04/14/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -825,7 +892,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/07/2021-07-07-%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/" class="post-title-link" itemprop="url">最大似然估计</a>
+            <a href="/2020/04/14/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -835,23 +902,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-07 21:56:44" itemprop="dateCreated datePublished" datetime="2021-07-07T21:56:44+08:00">2021-07-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-29 14:19:37" itemprop="dateModified" datetime="2021-08-29T14:19:37+08:00">2021-08-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">基础知识</span></a>
-                </span>
+              <time title="创建时间：2020-04-14 16:30:10" itemprop="dateCreated datePublished" datetime="2020-04-14T16:30:10+08:00">2020-04-14</time>
             </span>
 
           
@@ -865,15 +916,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>最大似然估计是机器学习的核心组件之一，承上启下，和大量知识相关。通过<strong>EM算法</strong>可以求解某些复杂情况下的MLE<sup>[1]</sup>；MLE可以视为<strong>GMM</strong>的一种特例；通过负对数似然是定义在训练集上的经验分布与定义在模型分布上的概率分布之间的<strong>交叉熵</strong>，如<strong>均方误差</strong>是经验分布和高斯分布之间的交叉熵。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/07/2021-07-07-%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="原始问题"><a href="#原始问题" class="headerlink" title="原始问题"></a>原始问题</h1><p>$f(x),c_i(x),h_i(x)$是在$R^n$上的<code>连续可微</code>函数，考虑约束最优化问题：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+min \quad f(x) \quad st \quad c_i(x)<0,i &=1,2...k  \\, 
+h_j(x)=0,j &=1,2...l
+\end{align}</script><p>此问题我们成为原始问题。</p>
+<p>为了方便解决此问题，我们引入<strong><code>广义拉格朗日函数</code></strong>L，可证明原始问题等价于拉格朗日函数的极小极大值问题。拉格朗日函数构造如下：</p>
+<script type="math/tex; mode=display">
+L(x,\alpha_i,\beta_j)=f(x)+\sum_{i=1}^k\alpha_ic_i(x)+\sum_{j=1}^l\beta_jh_j(x)，其中 x\in R^n,\alpha_i>0,\beta_j>0</script><p>我们考虑x的函数：</p>
+<script type="math/tex; mode=display">
+\theta_p(x)=max \quad L(x,\alpha_i,\beta_j),其中 x\in R^n,\alpha_i>0,\beta_j>0</script><p>可以证明  $min(\theta_p(x)) $等价于原始问题,即约束下的优化问题转化为了广义拉格朗日的极小极大值问题。</p>
+<p>【证明】约束下的优化问题转化为了广义拉格朗日的极小极大值问题</p>
+<p>满足$c_i(x)&lt;0,i =1,2…k ,h_j(x)=0,j =1,2…l$时， $max(L(x,\alpha_i,\beta_j)) = f(x)$,即$\theta_p(x)=f(x)$。</p>
+<p>不满足$c_i(x)&lt;0,i =1,2…k ,h_j(x)=0,j =1,2…l$时，可通过设置$\alpha_i 和\beta_j$ 使得$\theta_p(x)=+\infin $</p>
+<p>所以</p>
+<script type="math/tex; mode=display">
+\theta_p=\begin{cases}f(x),x满足原始问题条件 \\ 
++\infin , x不满足原始问题条件
+\end{cases}</script>
       
     </div>
 
@@ -892,7 +953,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/01/2021-07-01-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%B8%8E%E8%BE%93%E5%87%BA%E5%8D%95%E5%85%83/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/04/14/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A%E5%AD%A6%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -906,7 +967,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/01/2021-07-01-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%B8%8E%E8%BE%93%E5%87%BA%E5%8D%95%E5%85%83/" class="post-title-link" itemprop="url">代价函数与输出单元</a>
+            <a href="/2020/04/14/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A%E5%AD%A6%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -916,24 +977,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-01 21:56:44" itemprop="dateCreated datePublished" datetime="2021-07-01T21:56:44+08:00">2021-07-01</time>
+              <time title="创建时间：2020-04-14 15:04:50" itemprop="dateCreated datePublished" datetime="2020-04-14T15:04:50+08:00">2020-04-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-29 14:19:32" itemprop="dateModified" datetime="2021-08-29T14:19:32+08:00">2021-08-29</time>
+                <time title="修改时间：2022-02-28 12:25:04" itemprop="dateModified" datetime="2022-02-28T12:25:04+08:00">2022-02-28</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">基础知识</span></a>
-                </span>
-            </span>
 
           
 
@@ -946,15 +998,64 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>代价函数和输出单元的选择密切相关，两者都需要根据输出的分布确定。如何选择输出单元，要看预测值的分布，这跟指数族分布和广义线性回归中的结论一致。如何选择代价函数，大多数时候，可以简单地使用<strong>数据分布和模型分布间的交叉熵</strong>，这实际上<strong>等同于最大似然</strong>。本文的主要内容参考花书的第6章。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/01/2021-07-01-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%B8%8E%E8%BE%93%E5%87%BA%E5%8D%95%E5%85%83/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>[TOC]</p>
+<h1 id="业务知识"><a href="#业务知识" class="headerlink" title="业务知识"></a>业务知识</h1><h2 id="广告分类"><a href="#广告分类" class="headerlink" title="广告分类"></a>广告分类</h2><p>广告的根本目的，是广告主通过媒体达到低成本的用户接触。</p>
+<p>也就是说，按某种市场意图接触相应的人群，进而影响其中的潜在用户，使他们选择广告主产品的机率增加，或者对产品性价比的苛求程度降低，才是广告的根本目的。至于短期内的转化效果，由于市场意图或媒体性质的不同，并不是直接可比。因此ROI中的产出是很难计算的</p>
+<h2 id="广告发展史"><a href="#广告发展史" class="headerlink" title="广告发展史"></a>广告发展史</h2><ul>
+<li><p>售卖模式1：合约式广告(Agreement-based Advertising)</p>
+</li>
+<li><p>广告投放方式：定向广告（Target Ad），是为了<code>拆分流量以获得更高的营收</code>，具体来说：媒体向广告主保证某个投放量，并在此基础上确定合同的总金额以及量未完成情况下的赔偿方案；<strong><code>只卖好苹果</code></strong></p>
+<blockquote>
+<p><code>博弈</code>：定向太准了可能导致尾部流量卖不出去，对媒体不利，但广告主效果好的话整个广告市场规模就会变大，对媒体有利。</p>
+</blockquote>
+</li>
+<li><p>交易方式：<code>担保式投送(Guaranteed Delivery)</code>：媒体向广告主保证某个投放量，并在此基础上确定合同的总金额以及量未完成情况下的赔偿方案<strong><code>保证交易苹果的量</code></strong></p>
+</li>
+<li><p>计费方式：按千次展示付费(Cost Per Mille, CPM)的计费方式</p>
+</li>
+</ul>
+<blockquote>
+<p>难点：一是如何有效地将流量分配到各个合约互相交叉的人群覆盖上；二是要在在线的环境下实时且经济地完成每一次展示决策。</p>
+</blockquote>
+<ul>
+<li>在线分配(Online Allocation):将各<code>合约的量</code>看做约束条件，将某种意义下的质看做目标函数，我们可以利用带约束优化(Constrained Optimization)的数学框架来探索这一问题；搜索排序以优化相关性为目的，在线分配  是以<code>优化投入产出比</code>为目标。</li>
+<li>售卖模式2：<code>竞价广告(Auction-based Advertising)</code>，抛弃量的保证，而采用最唯利是图的策略来进行广告决策，具体来说就是：供给方只向广告主保证质即单位流量的成本，但不再以合约的方式给出量的保证，换言之，对每一次展示，都基本按照收益最高的原则来决策。<strong><code>线下对每批苹果进行出价</code></strong> </li>
+</ul>
+<blockquote>
+<p>由于只能在广告网络定义好的定向标签组合上预先指定出价，而不能控制每一次展示的出价，因此，市场看起来象一个黑盒子，需求方只能靠选择合适的标签组合，以及阶段性调整出价来间接控制效果。</p>
+<p>随着人群定向越来越精准，广告主数量越来越多，一方面担保是投送难以对流量做精确的分配来保证各广告主的投放量，另一方面当同一流量满足多个合约要求时，仅仅考虑量的约束会导致本来可以卖得更高的流量的浪费。</p>
+</blockquote>
+<ul>
+<li>售卖模式3：实时竞价（real time bidding）。竞价广告是在媒体平台上用媒体已有的标签进行人群定向，并对定向人群进行出价。实时竞价是实时判断单个流量是不是自己的定向人群，并进行出价，可以实现更精准的人群定向</li>
+</ul>
+<blockquote>
+<p>所谓实时竞价，就是把拍卖的过程由广告主预先出价，变成每次展示时实时出价。只要把广告展示的上下文页面url，以及访客的cookie等信息传给需求方，它就有充分的信息来完成定制化的人群选择和出价。</p>
+</blockquote>
+<ul>
+<li>需求方平台(Demand Side Platform, DSP) ：通过实时竞价的方式，按照定制化的人群标签购买广告，这样与广告交易平台接口的产品叫做DSP。DSP可以方便的设置对于每个流量的定向于出价，并把结果返回媒体的平台，<code>DSP需要尽可能准确地估计每一次展示带来的期望价值。</code></li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>首先是<code>合约阶段</code>，广告主通过代理公司(Agency)从媒体方采买广告，而媒体方的Ad Server则负责完成和优化各个广告主的合约；</p>
+<p>然后，市场进化出了<code>竞价售卖方式</code>，从而在靠近供给方产生了广告网络(Ad Network)这样的产品形态，而需求方的代理公司为了适应这一市场变化，孵化除了对应的广告采买平台(Media Buying Platform)；</p>
+<p>最后，当市场产生了<code>实时竞价方式交易</code>时，供给方进化出了广告交易平台(Ad Exchange)，而需求方则需要用需求方平台(DSP)与其对接来出价和投送广告。</p>
+<h1 id="计算广告基础"><a href="#计算广告基础" class="headerlink" title="计算广告基础"></a>计算广告基础</h1><p>广告平台优化目标： $ 对1…T次广告选择a_{i…T} \quad s.t. \quad max \sum_i^T r(a_i,u_i,c_i)/\sum_i^Tp_i $</p>
+<p>表达式中的a,u,c三个变量，分别代表广告、用户与上下文，即广告活动的三个参与主体。<em>i</em>代表从第1次到第<em>T</em>次之间的某一次广告展示。我们优化的目标，就是在这<em>T</em>次展示上的总产出(<em>r</em>)与总投入(<em>p</em>)的比，即ROI。</p>
+<p>$eCPM(a,u,c)=r(a,u,c) =点击率<em>点击价值= ctr(a,u,c)</em>v(a,u)$</p>
+<h2 id="广告系统构架图"><a href="#广告系统构架图" class="headerlink" title="广告系统构架图"></a>广告系统构架图</h2><ol>
+<li>广告投放机（Ad Server）：调用哥哥模块返回前端结果</li>
+<li>广告检索：实时接受投放信息，搜索广告备选集</li>
+<li>广告排序，包括Click modeling和Ad ranking。关键技术是1.离线分布式计算平台上的海量数据支持的点击率预测模型的训练；2.线上高效查询用户特征并进行实时计算。在ctr的基础上简历点击价值估计模型，通常是简单的规则</li>
+<li>数据高速公路（Data highway）：将在线数据准实时的传输到离线分部式平台和流计算平台，供后续数据处理和建模</li>
+<li>用户日志生成：收集各渠道日志，整理成kv形式进行存储</li>
+<li>商业智能（Business Inteligence）：看板等对外交流平台</li>
+<li>行为定向：产生结构化标签库</li>
+<li>上下文定向：页面抓取给上下文打标签，与行为定向一起产生定向效果</li>
+<li>定制化用户：接收广告主定向需求（比如推包）</li>
+<li>在线行为反馈：利用日志或买点进行准实时任务，如实时反馈点击，用户行为标签等。在利用日志完成这些逻辑之前，必须要进行的步骤是反作弊(Anti-spam)与计价(Billing)。<code>在很多情形下，把系统信息反馈调整做得更快，比把模型预测做得更准确效果更加显著</code></li>
+<li>广告管理系统：只有这部分是面向用户的。通过广告管理系统定制和调整广告投放，并且与数据仓库交互</li>
+<li>实时竞价接口：对接DSP（竞价平台）的接口。对于媒体即平台的case，不需要</li>
+</ol>
+<p><img src="/Users/hetianqi/Documents/charging/notes_of_the_world/计算广告学笔记.assets/image-20200414143343558.png" alt="image-20200414143343558"></p>
+<h1 id="准备知识"><a href="#准备知识" class="headerlink" title="准备知识"></a>准备知识</h1><h2 id="带约束优化方法和拉格朗日乘子法"><a href="#带约束优化方法和拉格朗日乘子法" class="headerlink" title="带约束优化方法和拉格朗日乘子法"></a>带约束优化方法和拉格朗日乘子法</h2>
       
     </div>
 
@@ -972,7 +1073,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1038,20 +1139,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">62</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1162,59 +1263,6 @@ if (document.querySelectorAll('pre.mermaid').length) {
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 

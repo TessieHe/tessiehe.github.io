@@ -163,7 +163,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/01/16/2022-01-16-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/02/24/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E8%B0%83%E7%A0%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -177,7 +177,141 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/01/16/2022-01-16-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">线性回归</a>
+            <a href="/2022/02/24/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E8%B0%83%E7%A0%94/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-24 15:17:15" itemprop="dateCreated datePublished" datetime="2022-02-24T15:17:15+08:00">2022-02-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-25 15:45:08" itemprop="dateModified" datetime="2022-02-25T15:45:08+08:00">2022-02-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[TOC]</p>
+<h1 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h1><p>representation learning；data representation; Deep learning, representation learning, feature learning, unsupervised learning, Boltzmann Machine, autoencoder, neural nets</p>
+<h1 id="粗读文献笔记"><a href="#粗读文献笔记" class="headerlink" title="粗读文献笔记"></a>粗读文献笔记</h1><h2 id="Bengio，2014，Representation-Learning-A-Review-and-New-Perspectives"><a href="#Bengio，2014，Representation-Learning-A-Review-and-New-Perspectives" class="headerlink" title="Bengio，2014，Representation Learning: A Review and New Perspectives"></a>Bengio，2014，Representation Learning: A Review and New Perspectives</h2><p><strong>Index Terms</strong>:Deep learning, representation learning, feature learning, unsupervised learning, Boltzmann Machine, autoencoder, neural nets,underlying explanatory factors</p>
+<ul>
+<li>机器学习的成功依赖于数据的表征（data representation），我们假设这是因为数据的表征或多或少的揭示了数据的内在结构。当然可以采用专家经验设计表征方式，但AI的目的在于依照通用的先验（generic priors）设计表征，并通过数据实例化这个表征。</li>
+<li>“ This paper reviews recent work in the area of unsupervised feature learning and deep learning, covering advances in <strong>probabilistic models, auto-encoders, manifold learning, and deep networks.</strong> “<ul>
+<li>本文聚焦与<strong>无监督学习</strong>，实现的方式包括以上三种方式。auto-encoders是基于信息重建的算法， manifold learning是基于拓扑学的算法</li>
+</ul>
+</li>
+<li>这个工作有助于理解一个长期没有确定答案的问题：什么样的数据表征是一个好的表征？数据表征的优化目标是什么？<ul>
+<li><strong>好的特征能够解耦数据中的关键潜在影响变量，这些变量最好是通用的（例如通用的语言模型、图像模型）。特征提取的过程就是冗余信息删减聚合的过程</strong>。如果不能通用，那退一步特征最好能提取针对下游任务有区分性的潜在因子，因子和任务目标之间最好有简单关系（如线性关系）</li>
+</ul>
+</li>
+<li>“In order to expand the scope and ease of applicability of machine learning, it would be highly desirable to make learning algorithms <strong>less dependent on feature engineering</strong>, so that novel applications could be constructed faster, and more importantly, to <strong>make progress towards Artificial Intelligence</strong> (AI). An AI must fundamentally <em>understand the world around us</em>, and we argue that this can only be achieved if it can learn to identify and disentangle the underlying explanatory factors hidden in the observed milieu of <strong>low-level sensory data</strong>.” P1<ul>
+<li>借助专家经验的特征工程能一定程度描述数据的内在结构，但真正的AI应该是解耦低等级的感官数据中的影响因子，从而了解这个世界的</li>
+</ul>
+</li>
+<li>“In the case of probabilistic models, a good representation is often one that captures the posterior distribution of the <strong>underlying explanatory factors</strong> for the observed input.” P1<ul>
+<li>对于概率模型，一个好的表征能够提取观察到的输入数据中的潜在影响因子。</li>
+</ul>
+</li>
+<li>AI中的表示学习中的先验：<ul>
+<li>平滑性（smoothness): x ≈ y generally implies f(x) ≈ f(y)</li>
+<li>解耦（ Multiple explanatory factors）</li>
+<li>层次化的组织方式（A hierarchical organization of explanatory factors）：越抽象的特征处于越高层</li>
+<li>半监督（semi-supervised learning）:有一些解释X分布的因子也能解释Y的分布，基于这个假设，对于P(X)有用的表征对P(Y|X)也有用。所以note2vec的embeding才可以用于下游任务。但这个假设并不强，也就是用在下游任务不一定效果好</li>
+<li>通用性（Shared factors across tasks）：能在不同的任务中共享一些因子</li>
+<li>自然的聚集性（Natural clustering）</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chen-2018-A-Tutorial-on-Network-Embeddings"><a href="#Chen-2018-A-Tutorial-on-Network-Embeddings" class="headerlink" title="Chen,2018,A Tutorial on Network Embeddings"></a>Chen,2018,A Tutorial on Network Embeddings</h2><p>Chen, H.; Perozzi, B.; Al-Rfou, R.; Skiena, S. A Tutorial on Network Embeddings. <em>arXiv:1808.02590 [cs]</em> <strong>2018</strong>.</p>
+<ul>
+<li><p>模型分类：unsupervised NE(以deepwalk为代表的无监督方法);  attributed NE(网络结构信息+节点和边的属性学习节点表征); Heterogeneous NE(从有多类节点或边的网络中学习表征)</p>
+</li>
+<li><p>NE的应用</p>
+<ul>
+<li><p>知识图谱（Knowledge Representation）：GenVector(2015), PDF2Vec(2016)</p>
+</li>
+<li><p>推荐（recommender system）</p>
+<p>Chih-Ming Chen, Po-Chuan Chien, Yu-Ching Lin, Ming-Feng Tsai, and Yi-Hsuan Yang. Ex- ploiting latent social listening representations for music recommendations. In Proc Ninth ACM Int. Conf. Recommender Syst. Poster, 2015</p>
+<p>Chih-Ming Chen, Ming-Feng Tsai, Yu-Ching Lin, and Yi-Hsuan Yang. Query-based music recommendations via preference embedding. In Proceedings of the 10th ACM Conference on Recommender Systems, pages 79–82. ACM, 2016.</p>
+</li>
+<li><p>NLP: PLE(2016), CANE(2017),</p>
+<p>Hanyin Fang, Fei Wu, Zhou Zhao, Xinyu Duan, Yueting Zhuang, and Martin Ester. Community-based question answering via heterogeneous social network learning. In Thirtieth AAAI Conference on Artificial Intelligence, 2016.</p>
+<p>Zhou Zhao, Qifan Yang, Deng Cai, Xiaofei He, and Yueting Zhuang. Expert finding for community-based question answering via ranking metric network learning. In IJCAI, pages 3000–3006, 2016.</p>
+</li>
+<li><p>社会关系（social network analysis）</p>
+<p>Bryan Perozzi and Steven Skiena. Exact age prediction in social networks. In Proceedings of the 24th International Conference on World Wide Web, pages 91–92. ACM, 2015.</p>
+<p>Cheng Yang, Maosong Sun, Wayne Xin Zhao, Zhiyuan Liu, and Edward Y Chang. A neural network approach to joint modeling social networks and mobile trajectories. arXiv preprint arXiv:1606.08154, 2016.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="精读文献笔记"><a href="#精读文献笔记" class="headerlink" title="精读文献笔记"></a>精读文献笔记</h1><h1 id="杂七杂八的comment"><a href="#杂七杂八的comment" class="headerlink" title="杂七杂八的comment"></a>杂七杂八的comment</h1><ul>
+<li>无监督学习侧重于学习数据的内在关系、结构，比如clustering、grouping、density estimation, or anomaly detection等等，而自监督是根据数据集本身生成标签</li>
+<li>表示学习领域的会议：ICML（ International Conference on Learning Representations）</li>
+</ul>
+<h1 id="文献总结"><a href="#文献总结" class="headerlink" title="文献总结"></a>文献总结</h1><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>[1]Bengio, Y.; Courville, A.; Vincent, P. Representation Learning: A Review and New Perspectives. <em>arXiv:1206.5538 [cs]</em> <strong>2014</strong>.【done】</p>
+<p>[2] <a target="_blank" rel="noopener" href="https://www.cxyzjd.com/article/weixin_42137700/106039656">图灵奖得主Bengio和LeCun称自监督学习可使AI达到人类智力水平</a>  【done】</p>
+<p>[3] <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1523877">图灵奖得主LeCun力推无监督学习：要重视基于能量的学习方法</a> 【done】</p>
+<p><strong>[4] Weston, J.; Bengio, S.; Usunier, N. Large Scale Image Annotation: Learning to Rank with Joint Word-Image Embeddings. <em>Machine learning</em> 2010, <em>81</em> (1), 21–35.</strong> </p>
+<p><strong>[5] Srivastava, N., &amp; Salakhutdinov, R. R. (2012). Multimodal learning with deep boltzmann machines. <em>Advances in neural information processing systems</em>, <em>25</em>.</strong></p>
+<p>[6] Chen, H.; Perozzi, B.; Al-Rfou, R.; Skiena, S. A Tutorial on Network Embeddings. <em>arXiv:1808.02590 [cs]</em> <strong>2018</strong>. </p>
+<p>[7]   Bryan Perozzi, Rami Al-Rfou, and Steven Skiena. Deepwalk: Online learning of social repre- sentations. In Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining, pages 701–710. ACM, 2014.</p>
+<p>[8] Sami Abu-El-Haija, Bryan Perozzi, Rami Al-Rfou, and Alex Alemi. Watch your step: Learning graph embeddings through attention. arXiv preprint arXiv:1710.09599, 2017.</p>
+<p>[9]  Xiaofei Sun, Jiang Guo, Xiao Ding, and Ting Liu. A general framework for content-enhanced network representation learning. arXiv preprint arXiv:1610.02906, 2016.【图的节点中有文本信息作为arttibute】</p>
+<p>[][12][10]  Jifan Chen, Qi Zhang, and Xuanjing Huang. Incorporate group information to enhance network embedding. In Proceedings of the 25th ACM International on Conference on Information and Knowledge Management, pages 1901–1904. ACM, 2016.  【图中的节点有标签信息】</p>
+<p>[11]  Chih-Ming Chen, Po-Chuan Chien, Yu-Ching Lin, Ming-Feng Tsai, and Yi-Hsuan Yang. Ex- ploiting latent social listening representations for music recommendations. In Proc Ninth ACM Int. Conf. Recommender Syst. Poster, 2015. 【NE在推荐中的应用】</p>
+<p>[12]  Chih-Ming Chen, Ming-Feng Tsai, Yu-Ching Lin, and Yi-Hsuan Yang. Query-based music recommendations via preference embedding. In Proceedings of the 10th ACM Conference on Recommender Systems, pages 79–82. ACM, 2016.【NE在推荐中的应用】</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/02/24/6_%E9%AB%98%E6%95%88tips/marginnote/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/24/6_%E9%AB%98%E6%95%88tips/marginnote/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -188,16 +322,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-01-16 10:16:03 / 修改时间：14:00:56" itemprop="dateCreated datePublished" datetime="2022-01-16T10:16:03+08:00">2022-01-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
+              <time title="创建时间：2022-02-24 13:00:57 / 修改时间：15:16:23" itemprop="dateCreated datePublished" datetime="2022-02-24T13:00:57+08:00">2022-02-24</time>
             </span>
 
           
@@ -211,15 +336,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>本文总结线性回归知识。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/01/16/2022-01-16-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>导出word的大纲，用word打开，完美！</p>
+
       
     </div>
 
@@ -238,7 +356,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/02/24/6_%E9%AB%98%E6%95%88tips/Zotero%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E6%96%87%E7%8C%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -252,7 +370,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/" class="post-title-link" itemprop="url">婚礼出行安排</a>
+            <a href="/2022/02/24/6_%E9%AB%98%E6%95%88tips/Zotero%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E6%96%87%E7%8C%AE/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -262,14 +380,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-01-03 20:42:43" itemprop="dateCreated datePublished" datetime="2022-01-03T20:42:43+08:00">2022-01-03</time>
+              <time title="创建时间：2022-02-24 12:15:48" itemprop="dateCreated datePublished" datetime="2022-02-24T12:15:48+08:00">2022-02-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-05 07:19:04" itemprop="dateModified" datetime="2022-01-05T07:19:04+08:00">2022-01-05</time>
+                <time title="修改时间：2022-02-25 12:04:40" itemprop="dateModified" datetime="2022-02-25T12:04:40+08:00">2022-02-25</time>
               </span>
 
           
@@ -283,16 +401,76 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>黑盒优化问题介绍。</p>
-<p>天琪家婚礼疫情政策</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/01/03/2022-01-03-%E5%A9%9A%E7%A4%BC%E5%87%BA%E8%A1%8C%E5%AE%89%E6%8E%92/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>[TOC]</p>
+<h1 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h1><p>现在 Zotero 有两种主流的同步方式</p>
+<ul>
+<li>WebDAV 方式</li>
+<li>Zotfile+Onedriver 方式</li>
+</ul>
+<p>两种同步方式源于对文件管理的不同：</p>
+<p>第一种方式：如果直接把论文文件拖入 Zotero 中，它会在数据文件夹自动拷贝一份并建立无意义的文件夹。而 WebDAV 方式就是直接同步数据文件夹。</p>
+<p>第二种方式：由于第一种文件存储方式的原因，拷贝一份浪费空间，也不便查找。因此 Zotfile+Onedriver 同步方式是个人（强迫症）推荐的。Zotfile 用来管理文件的存储路径而 onedriver 则用来同步文件本身。</p>
+<p>两者选择一种即可，如何选择呢？</p>
+<p>如果你完全使用 Zotero 管理论文不在意本地文件夹，那么 WebDAV 方式同步论文就很方便，同时还可以支持移动端预览。如果你忽略文件夹的问题，你会发现这种方式省心省力。</p>
+<p>如果你还想使用本地文件夹管理，zotero 仅仅作为写论文时导入方便那么 Zotfile+Onedrive 的方式最合适（本人也习惯使用这种方式）</p>
+<h2 id="WebDAV-方式"><a href="#WebDAV-方式" class="headerlink" title="WebDAV 方式"></a>WebDAV 方式</h2><p>选用坚果云进行同步配置</p>
+<ul>
+<li>申请坚果云账号 www.jianguoyun.com</li>
+<li>在个人网盘页面右上角账户名找到“帐户信息”-“安全选项”</li>
+<li>在第三方应用管理中添加应用，应用名称随意</li>
+</ul>
+<p>zotero 客户端</p>
+<ul>
+<li>编辑-首选项-同步</li>
+<li>数据同步登录 zotero 账号即可</li>
+<li>文件同步中选择 WebDAV</li>
+<li>URL：使用刚刚坚果云给的服务器地址 dav.jianguoyun.com/dav</li>
+<li>用户名：使用坚果云账号</li>
+<li>密码：使用刚刚坚果云给的的应用密码</li>
+</ul>
+<h2 id="ZotFile-OneDriver"><a href="#ZotFile-OneDriver" class="headerlink" title="ZotFile+OneDriver"></a>ZotFile+OneDriver</h2><p>上文<strong>配置路径</strong>中提到由于 Zotero 下载的文件或者直接通过拖动导入的文件会随机建立文件夹管理。ZotFile 可以转换成正常文件夹。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://zotfile.com/">http://zotfile.com/</a></p>
+<p>在“工具”-“插件”中进行安装</p>
+<h3 id="配置路径"><a href="#配置路径" class="headerlink" title="配置路径"></a>配置路径</h3><p>现存的论文文件可以直接通过拖动到 zotero 中，但是 zotero 会拷贝一份论文文件到数据存储路径并且存储文件夹命名是随机字符。不方便本地管理。</p>
+<p>因此推荐使用导入文件链接的形式导入论文。在此之前</p>
+<ul>
+<li>在设置界面选择“高级”-“文件和文件夹”</li>
+<li>链接附件的根目录设定为你论文存储的最最最根目录，本人使用的是 onedrive 文件夹“E:\下载\OneDrive”。</li>
+<li>设定为相对路径（方便同步）</li>
+</ul>
+<p>设定完成之后就可以通过链接导入。</p>
+<p>如果你在另一台电脑（PC-B）上也是用 onedrive，那么论文文件就可以同步，同时由于我们使用的相对路径，只要在另一台电脑（PC-B）上 zotero 设定“链接附件的根目录”也为这台电脑（PC-B）的 onedrive 根路径，那么 zotero 中也可以直接双击打开附件。</p>
+<h3 id="分类同步配置"><a href="#分类同步配置" class="headerlink" title="分类同步配置"></a>分类同步配置</h3><ul>
+<li><strong>“工具”-“zotfile preference”</strong>打开设置界面</li>
+<li>General Setting 中第一个路径看作你将使用 zotero 下载文件或者拖动文件时的缓存路径</li>
+<li>第二个路径就是你常用的论文文件存储的根路径。（“E:\下载\OneDrive”）</li>
+<li>配置完成后可以测试随意拖动一个文件到 zetero 的分类条目中，zotero 会私自建立乱码文件夹。然后右键条目 Manage attachments-rename attachments 。Zotfile 会自动在刚才设定的根目录根据你的分类建立文件夹并且讲论文文件放置到该目录下并在条目中设定文件链接。</li>
+<li>这样就保持了你文件夹存储方式和 zotero 分类标签的同步</li>
+<li>即使你在 zotero 移动你的论文分类标签，只需要重新执行 rename attachments 就可以再次整理本地文件夹</li>
+<li>你也可以在 Renaming Rules 设定重命名的格式</li>
+</ul>
+<h3 id="几点注意"><a href="#几点注意" class="headerlink" title="几点注意"></a>几点注意</h3><ul>
+<li>如果你选用 WebDAV 方式进行同步，那么如果想在移动端（iPad,手机）查看那么使用 <strong>PaperShip</strong>可以直接同步附件文件你可以理解成移动端的 Zotero</li>
+<li>如果你使用 ZotFile+ 同步盘的方式，如果想在移动端阅读那么可以直接下载你同步盘的客户端，或者使用 zotero 的 Table 功能，移动端 PDF Expert 同步查看</li>
+</ul>
+<h1 id="协同"><a href="#协同" class="headerlink" title="协同"></a>协同</h1><h2 id="与-Word-协同"><a href="#与-Word-协同" class="headerlink" title="与 Word 协同"></a>与 Word 协同</h2><p>使用 word 书写论文配合 zotero 可以方便管理引用</p>
+<ul>
+<li>首先在 zotero 设置界面“引用”-“文字处理软件”安装 word 插件。</li>
+<li>在 word 的 zotero 插件选项卡中，在你想插入的文章位置选择 Add/Edit Citation，选择需要的论文样式，如果没有可以在线搜索。选择要引用的论文就可以了。</li>
+<li>之后在文章末尾，点击 Add/Edit Bibliography 插入参考文献具体内容。</li>
+</ul>
+<h2 id="与-GoogleScholar-协同"><a href="#与-GoogleScholar-协同" class="headerlink" title="与 GoogleScholar 协同"></a>与 GoogleScholar 协同</h2><p>有时候我们需要找一些参考文献，但是我们不需要下载文件内容只是知道引用格式即可。前提已经安装好 Zotero chrome 插件。</p>
+<ul>
+<li>在 Google Scholar 设置界面，找到“参考书目管理软件”选择显示导入 EndNotes(必须)，点击保存。</li>
+<li>我们随便搜索论文，在每个条目下面有个导入 Endnote 按钮，点击会弹出对话框就可以使用 zotero 保存这篇文章的引用了。</li>
+<li>同时你也可以点击 chrome 中的 zotero 插件图标多选保存，如果你在 zotero 设置了保存条目时自动附加 PDF 文档（常规-文字处理），他也会帮你把文件下载下来。</li>
+</ul>
+<h2 id="与-Tablet-协同"><a href="#与-Tablet-协同" class="headerlink" title="与 Tablet 协同"></a>与 Tablet 协同</h2><p>此方法是适用于 ZotFile+ 同步盘文件管理方式。</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAxNzgyMDg0MQ==&amp;mid=2650457410&amp;idx=1&amp;sn=1198b535f1624ff63ff2f544c11e801c&amp;chksm=83d1d884b4a65192a238fd3fc2b0c4241b8768c2fc4e6ab927b8b669d99dcdd185278a83b3ee&amp;scene=158#rd">https://mp.weixin.qq.com/s?__biz=MzAxNzgyMDg0MQ==&amp;mid=2650457410&amp;idx=1&amp;sn=1198b535f1624ff63ff2f544c11e801c&amp;chksm=83d1d884b4a65192a238fd3fc2b0c4241b8768c2fc4e6ab927b8b669d99dcdd185278a83b3ee&amp;scene=158#rd</a></p>
+<h2 id="与Latex协同"><a href="#与Latex协同" class="headerlink" title="与Latex协同"></a>与Latex协同</h2><p>有时候我们用word写完论文需要转为latex格式，其中引用部分很头疼。可以使用下面的工具直接从word中提取引用为bibtex格式，也可以选择在zotero选中引用论文，然后你可以将选中论文拖动到一个单独的分类下面，之后就可以用zotero自带的导出功能生成bibtex文件</p>
+<p><a target="_blank" rel="noopener" href="https://rintze.zelle.me/ref-extractor/">https://rintze.zelle.me/ref-extractor/</a></p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/104848524">https://zhuanlan.zhihu.com/p/104848524</a> </p>
+
       
     </div>
 
@@ -311,7 +489,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/01/02/2022-01-02-Pr%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/12/09/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9D%8E%E5%AE%8F%E6%AF%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -325,7 +503,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/01/02/2022-01-02-Pr%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">未命名</a>
+            <a href="/2021/12/09/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9D%8E%E5%AE%8F%E6%AF%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -335,128 +513,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-01-02 23:11:12" itemprop="dateCreated datePublished" datetime="2022-01-02T23:11:12+08:00">2022-01-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/12/18/2021-12-18-%E5%87%B8%E4%BC%98%E5%8C%96part1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/18/2021-12-18-%E5%87%B8%E4%BC%98%E5%8C%96part1/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-12-18 17:54:36" itemprop="dateCreated datePublished" datetime="2021-12-18T17:54:36+08:00">2021-12-18</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/11/24/2021-11-24-%E9%BB%91%E7%9B%92%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/24/2021-11-24-%E9%BB%91%E7%9B%92%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">黑盒优化问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-24 15:30:43" itemprop="dateCreated datePublished" datetime="2021-11-24T15:30:43+08:00">2021-11-24</time>
+              <time title="创建时间：2021-12-09 19:52:36" itemprop="dateCreated datePublished" datetime="2021-12-09T19:52:36+08:00">2021-12-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-02 23:11:34" itemprop="dateModified" datetime="2022-01-02T23:11:34+08:00">2022-01-02</time>
+                <time title="修改时间：2021-12-17 14:37:22" itemprop="dateModified" datetime="2021-12-17T14:37:22+08:00">2021-12-17</time>
               </span>
 
           
@@ -470,15 +534,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>黑盒优化问题介绍。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/24/2021-11-24-%E9%BB%91%E7%9B%92%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>[TOC]</p>
+<h1 id="PART1"><a href="#PART1" class="headerlink" title="PART1"></a>PART1</h1><p><strong>什么是强化学习</strong></p>
+<p>强化学习决策过程包括4个环节：agent观察环境（observation）—-agent做出动作（action）——动作会引起环境的变化 —- agent得到奖励（reward）—-agent再次观察环境（observation）。强化学习就是通过学习实现agent的决策序列收益（reward）最大。</p>
+<p><strong>强化学习的分类</strong></p>
+<p>policy based, grade based, model based。 这三种方式其实是不同的reward方式</p>
+<h1 id="PART-2"><a href="#PART-2" class="headerlink" title="PART 2"></a>PART 2</h1><h1 id="PART-3"><a href="#PART-3" class="headerlink" title="PART 3"></a>PART 3</h1>
       
     </div>
 
@@ -497,7 +558,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/11/21/2021-11-21-PU-Learning/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/09/28/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/tensroflow%E5%90%84%E7%A7%8D%E6%A8%A1%E5%9E%8B%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -511,7 +572,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/21/2021-11-21-PU-Learning/" class="post-title-link" itemprop="url">PU-Learning介绍</a>
+            <a href="/2021/09/28/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/tensroflow%E5%90%84%E7%A7%8D%E6%A8%A1%E5%9E%8B%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -521,24 +582,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-21 17:59:45" itemprop="dateCreated datePublished" datetime="2021-11-21T17:59:45+08:00">2021-11-21</time>
+              <time title="创建时间：2021-09-28 10:44:23" itemprop="dateCreated datePublished" datetime="2021-09-28T10:44:23+08:00">2021-09-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-05 15:40:05" itemprop="dateModified" datetime="2021-12-05T15:40:05+08:00">2021-12-05</time>
+                <time title="修改时间：2021-09-29 10:33:17" itemprop="dateModified" datetime="2021-09-29T10:33:17+08:00">2021-09-29</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
-            </span>
 
           
 
@@ -551,15 +603,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Positive-unlabeled learning是半监督学习的一个研究方向，指在只有正类和大量无标注数据的情况下，学习模型，本文主要内容的参考是20年的一篇<a target="_blank" rel="noopener" href="https://link.springer.com/content/pdf/10.1007/s10994-020-05877-5.pdf">survey</a>。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/21/2021-11-21-PU-Learning/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/128546377">https://zhuanlan.zhihu.com/p/128546377</a></p>
+<p>[TOC]</p>
+<h1 id="Tensorflow笔记：模型保存、加载和Fine-tune"><a href="#Tensorflow笔记：模型保存、加载和Fine-tune" class="headerlink" title="Tensorflow笔记：模型保存、加载和Fine-tune"></a>Tensorflow笔记：模型保存、加载和Fine-tune</h1><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/chong-yu-4-73"><img src="pics/tensroflow各种模型保存和加载/v2-da8a1fcd82fbe5f7206ac58cee088681_xs.jpg" alt="锟斤拷"></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/chong-yu-4-73">锟斤拷</a></p>
+<p>50 人赞同了该文章</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>尝试过迁移学习的同学们都知道，Tensorflow的模型保存加载有不同格式，使用方法也不一样，新手会觉得乱七八糟，所以本文做一个梳理。从模型的保存到加载，再到使用，力求理清这个流程。</p>
+<h2 id="1-保存"><a href="#1-保存" class="headerlink" title="1. 保存"></a>1. 保存</h2><p>Tensorflow的保存分为三种：1. checkpoint模式；2. pb模式；3. saved_model模式。</p>
+<h3 id="1-1-先假设有这么个模型"><a href="#1-1-先假设有这么个模型" class="headerlink" title="1.1 先假设有这么个模型"></a>1.1 先假设有这么个模型</h3><p>首先假定我们已经有了这样一个简单的线性回归网络结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">size = 10</span><br><span class="line"># 构建input</span><br><span class="line">X = tf.placeholder(name=&quot;input&quot;, shape=[None, size], dtype=tf.float32)</span><br><span class="line">y = tf.placeholder(name=&quot;label&quot;, shape=[None, 1], dtype=tf.float32)</span><br><span class="line"># 网络结构</span><br><span class="line">beta = tf.get_variable(name=&quot;beta&quot;, shape=[size, 1], initializer=tf.glorot_normal_initializer())</span><br><span class="line">bias = tf.get_variable(name=&quot;bias&quot;, shape=[1], initializer=tf.glorot_normal_initializer())</span><br><span class="line">pred = tf.add(tf.matmul(X, beta), bias, name=&quot;output&quot;)</span><br><span class="line"># 构建损失</span><br><span class="line">loss = tf.losses.mean_squared_error(y, pred)</span><br><span class="line"># 构建train_op</span><br><span class="line">train_op = tf.train.AdamOptimizer(learning_rate=0.001, beta1=0.9, beta2=0.999, epsilon=1e-8).minimize(loss)</span><br></pre></td></tr></table></figure>
+<p>我们来简单初始化，然后跑一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch_size=8的batch</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"># 先看一下pred，在训练一个step，在看一下pred是否有变化</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br><span class="line">    sess.run(train_op, feed_dict=&#123;X:feed_X, y:feed_y&#125;)</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
+<p>可以看到初始化的输出y值，以及训练1个step之后的模型输出发生了变化。</p>
+<h3 id="1-2-checkpoint模式"><a href="#1-2-checkpoint模式" class="headerlink" title="1.2 checkpoint模式"></a>1.2 checkpoint模式</h3><p>checkpoint模式将网络和变量数据分开保存，保存好的模型长这个样子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|--checkpoint_dir</span><br><span class="line">|    |--checkpoint</span><br><span class="line">|    |--test-model-550.meta</span><br><span class="line">|    |--test-model-550.data-00000-of-00001</span><br><span class="line">|    |--test-model-550.index</span><br></pre></td></tr></table></figure>
+<p>checkpoint_dir就是保存时候指定的路径，路径下会生成4个文件。其中.meta文件（其实就是pb格式文件）用来保存模型结构，.data和.index文件用来保存模型中的各种变量，而checkpoint文件里面记录了最新的checkpoint文件以及其它checkpoint文件列表，在inference时可以通过修改这个文件，指定使用哪个model。那么要如何保存呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 只有sess中有变量的值，所以保存模型的操作只能在sess内</span><br><span class="line">checkpoint_dir = &quot;./model_ckpt/&quot;</span><br><span class="line">saver = tf.train.Saver(max_to_keep=1)    # saver 不需要在sess内</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    saver.save(sess, checkpoint_dir + &quot;test-model&quot;,global_step=i, write_meta_graph=True)</span><br></pre></td></tr></table></figure>
+<p>实际就两步。执行之后就可以在checkpoint_dir下面看到前面提到的4个文件了。（这里的max_to_keep是指本次训练在checkpoint_dir这个路径下最多保存多少个模型文件，新模型会覆盖旧模型以节省空间）。</p>
+<h3 id="1-3-pb模式"><a href="#1-3-pb模式" class="headerlink" title="1.3 pb模式"></a>1.3 pb模式</h3><p>pb模式保存的模型，只有在目标路径pb_dir = “./model_pb/“下孤孤单单的一个文件”test-model.pb”，这也是它相比于其他几种方式的优势，简单明了。假设还是前面的网络结构，如果想保存成pb模式该怎么做呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 只有sess中有变量的值，所以保存模型的操作只能在sess内</span><br><span class="line">pb_dir = &quot;./model_pb/&quot;</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    graph_def = tf.get_default_graph().as_graph_def()</span><br><span class="line">    # 这里是指定要冻结并保存到pb模型中的变量</span><br><span class="line">    var_list = [&quot;input&quot;, &quot;label&quot;, &quot;beta&quot;, &quot;bias&quot;, &quot;output&quot;]   # 如果有name_scope，要写全名，如:&quot;name_scope/beta&quot; </span><br><span class="line">    constant_graph = tf.graph_util.convert_variables_to_constants(sess, graph_def, var_list)</span><br><span class="line">    with tf.gfile.FastGFile(pb_dir + &quot;test-model.pb&quot;, mode=&#x27;wb&#x27;) as f:</span><br><span class="line">        f.write(constant_graph.SerializeToString())</span><br></pre></td></tr></table></figure>
+<p>其实pb模式本质上就是把变量先冻结成常数，然后保存到图结构中。这样就可以直接加载图结构和“参数”了。</p>
+<h3 id="1-4-saved-model模式"><a href="#1-4-saved-model模式" class="headerlink" title="1.4 saved_model模式"></a>1.4 saved_model模式</h3><p>虽然saved_model也支持模型加载，并进行迁移学习。可是不得不说<strong>saved_model几乎就是为了部署而生的</strong>，因为依靠tf.Serving部署模型时要求模型格式必须是saved_model格式。除此以外saved_model还有另外一个优点就是可以跨语言读取，所以本文也介绍一下这种模式的保存于加载。<strong>本文样例的保存在参数设置上会考虑到方便部署</strong>。保存好的saved_model结构长这个样子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">|--saved_model_dir</span><br><span class="line">|    |--1</span><br><span class="line">|        |--saved_model.pb</span><br><span class="line">|        |--variables</span><br><span class="line">|            |--variables.data-00000-of-00001</span><br><span class="line">|            |--variables.index</span><br></pre></td></tr></table></figure>
+<p>保存时需要将保存路径精确到”saved_model_dir/1/ “，会在下面生成一个pb文件，以及一个variables文件夹。其中“1”文件夹是表示版本的文件夹，应该是一个整数。人为设定这个“版本文件夹”的原因是，在模型部署的时候需要将模型位置精确到saved_model_dir，tf.Serving会在saved_model_dir下搜索版本号最大的路径下的模型进行服务。模型保存的方法是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 只有sess中有变量的值，所以保存模型的操作只能在sess内</span><br><span class="line">version = &quot;1/&quot;</span><br><span class="line">saved_model_dir = &quot;./saved_model/test-model-dir/&quot;</span><br><span class="line">builder = tf.saved_model.builder.SavedModelBuilder(saved_model_dir + version)</span><br><span class="line"></span><br><span class="line"># 构建 signature</span><br><span class="line">signature = tf.saved_model.signature_def_utils.build_signature_def(</span><br><span class="line">        # 获取输入输出的信息（shape,dtype等），在部署服务后请求带来的数据会喂到inputs中，服务吐的结果会以outputs的形式返回</span><br><span class="line">        inputs=&#123;&quot;input&quot;: tf.saved_model.utils.build_tensor_info(X)&#125;,          # 获取输入tensor的信息，这个字典可以有多个key-value对</span><br><span class="line">        outputs=&#123;&quot;output&quot;: tf.saved_model.utils.build_tensor_info(pred)&#125;,     # 获取输出tensor的信息，这个字典可以有多个key-value对</span><br><span class="line">        method_name=tf.saved_model.signature_constants.PREDICT_METHOD_NAME    # 就是&#x27;tensorflow/serving/predict&#x27;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 保存到 saved_model</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    builder.add_meta_graph_and_variables(sess, </span><br><span class="line">        tags=[tf.saved_model.tag_constants.SERVING],         # 如果用来部署，就这样写。否则可以写其他，如[&quot;test-model&quot;]</span><br><span class="line">        signature_def_map=&#123;&quot;serving_default&quot;: signature&#125;,    # 如果用来部署，字典的key必须是&quot;serving_default&quot;。否则可以写其他</span><br><span class="line">    )</span><br><span class="line">    builder.save()</span><br></pre></td></tr></table></figure>
+<p>因为涉及到部署，比较复杂，这里不得不说明一下。</p>
+<p>在保存之前需要构建一个signature，用来构造signature的build_signature_def函数有三个参数：inputs、outputs、method_name。其中inputs和outputs分别用来获取输入输出向量的信息，在部署服务后来的数据会喂到inputs中，服务吐的结果会以outputs的形式返回；而method_name如果用来部署模型的话需要设置为”tensorflow/serving/predict”, “tensorflow/serving/classify”, “tensorflow/serving/regress” 中的一个。如果不是用来服务，就可以写一个其他的。</p>
+<p>在保存的时候，除了刚刚构建的signature，还需要提供一个tags 参数，如果用来部署的话需要填[tf.saved_model.tag_constants.SERVING]，否则可以填其他。另外如果用来部署模型的话，signature_def_map的key必须是”serving_default”。</p>
+<h2 id="2-加载"><a href="#2-加载" class="headerlink" title="2. 加载"></a>2. 加载</h2><p>下面说如何加载，checkpoint和pb两种模式的加载方法也不一样。下面分别说</p>
+<h3 id="2-1-checkpoint加载（略烦）"><a href="#2-1-checkpoint加载（略烦）" class="headerlink" title="2.1 checkpoint加载（略烦）"></a>2.1 checkpoint加载（略烦）</h3><p>checkpoint模式的网络结构和变量是分来保存的，加载的时候也需要分别加载。而网络结构部分你有两种选择：1. 加载.meta文件中的结构， 2. 手动重新写一遍原样结构。</p>
+<p>我们先说后一个，如果你不光有模型文件，还有源码，可以把源码构建模型那部分复制过来，然后只加载变量就好，这是手动重新搭建网络结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">size = 10</span><br><span class="line"># 构建input</span><br><span class="line">X = tf.placeholder(name=&quot;input&quot;, shape=[None, size], dtype=tf.float32)</span><br><span class="line">y = tf.placeholder(name=&quot;label&quot;, shape=[None, 1], dtype=tf.float32)</span><br><span class="line"># 网络结构</span><br><span class="line">beta = tf.get_variable(name=&quot;beta&quot;, shape=[size, 1], initializer=tf.glorot_normal_initializer())</span><br><span class="line">bias = tf.get_variable(name=&quot;bias&quot;, shape=[1], initializer=tf.glorot_normal_initializer())</span><br><span class="line">pred = tf.sigmoid(tf.matmul(X, beta) + bias, name=&quot;output&quot;)</span><br></pre></td></tr></table></figure>
+<p>然后加载变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch_size=8的batch</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"># 用加载出来的参数，跑一下pred</span><br><span class="line">saver = tf.train.Saver()</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    saver.restore(sess, tf.train.latest_checkpoint(&#x27;./model_ckpt/&#x27;))    # 加载模型中的变量</span><br><span class="line">    # sess.run(tf.global_variables_initializer())    # 重新初始化一下参数</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
+<p>所以手动构建网络结构后，只需要saver.restore一下，就可以加载模型中的参数。</p>
+<p>另外，如果将上面的sess.run(tf.global_variables_initializer())注释掉，那每次运行的结果都一样，可见此时模型中的变量确实是加载进来的变量。如果取消注释这一句，每次跑出来的结果都不同，因为加载进来的变量又被初始化函数覆盖了，所以每次都不一样。这也说明了：<strong>通过checkpoint这种模式加载进来的变量，依然是变量，而且是trainable=True的</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(tf.trainable_variables())</span><br></pre></td></tr></table></figure>
+<p>结果为：[<tf.Variable 'beta:0' shape=(10, 1) dtype=float32_ref>, <tf.Variable 'bias:0' shape=(1,) dtype=float32_ref>]</p>
+<p>那如果我懒，活着没有源码，无法手动构建网络呢？就需要从.meta文件里导入网络结构了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 不手动构建，从文件中加载网络结构</span><br><span class="line">import numpy as np</span><br><span class="line">import tensorflow as tf</span><br><span class="line">size = 10</span><br><span class="line"># 加载网络</span><br><span class="line">saver=tf.train.import_meta_graph(&#x27;./model_ckpt/test-model-0.meta&#x27;)</span><br></pre></td></tr></table></figure>
+<p>什么？这就完了？网络结构在哪呢？先别急，这种方法就是这样，网络结构已经加载进来了，那怎么用呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"># 下面我们来跑一下 pred</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    saver.restore(sess, tf.train.latest_checkpoint(&#x27;./model_ckpt/&#x27;))  # 加载模型变量</span><br><span class="line">    graph = tf.get_default_graph()</span><br><span class="line">    X = graph.get_tensor_by_name(&quot;input:0&quot;)        # 根据tensor名字获取tensor变量</span><br><span class="line">    pred = graph.get_tensor_by_name(&quot;output:0&quot;)    # 根据tensor名字获取tensor变量</span><br><span class="line">    # sess.run(tf.global_variables_initializer())  # 是否重新初始化变量</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
+<p>其实前面把网络结构加载进来之后，如果需要对某tensor进行操作的话（run、feed、concat等等）需要通过tensor的name获取成变量。同样通过sess.run(tf.global_variables_initializer())可以看出，加载进来的变量，还是变量。</p>
+<p>总结一下：手动构建网络结构的话，缺点是麻烦！优点是你想用什么变量直接用就行；而通过.meta文件来加载网络结构，优点是省事，缺点是如果想用某个变量，必须通过name获取变量。</p>
+<h3 id="2-2-pb模式加载"><a href="#2-2-pb模式加载" class="headerlink" title="2.2 pb模式加载"></a>2.2 pb模式加载</h3><p>相比之下，pb模式的加载旧没那么复杂，因为他的网络结构和数据是存在一起的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># 直接从pb获取tensor</span><br><span class="line">pb_dir = &quot;./model_pb/&quot;</span><br><span class="line">with tf.gfile.FastGFile(pb_dir + &quot;test-model.pb&quot;, &quot;rb&quot;) as f:</span><br><span class="line">    graph_def = tf.GraphDef()</span><br><span class="line">    graph_def.ParseFromString(f.read())    # 从pb文件中导入信息</span><br><span class="line">    # 从网络中通过tensor的name获取为变量</span><br><span class="line">    X, pred = tf.import_graph_def(graph_def, return_elements=[&quot;input:0&quot;, &quot;output:0&quot;])</span><br></pre></td></tr></table></figure>
+<p>现在我们就已经有了X和pred，下面来跑一个pred吧</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"># 跑一下 pred</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    # sess.run(tf.global_variables_initializer())</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
+<p>就这么简单！从pb中获取进来的“变量”就可以直接用。为什么我要给变量两个字打上引号呢？因为在pb模型里保存的其实是常量了，取消注释sess.run(tf.global_variables_initializer())后，多次运行的结果还是一样的。此时的“beta:0”和”bias:0”已经不再是variable，而是constant。<strong>这带来一个好处：读取模型中的tensor可以在Session外进行。相比之下checkpoint只能在Session内读取模型，对Fine-tune来说就比较麻烦。</strong></p>
+<h3 id="2-3-saved-model模式加载"><a href="#2-3-saved-model模式加载" class="headerlink" title="2.3 saved_model模式加载"></a>2.3 saved_model模式加载</h3><p>前两种加载方法想要获取tensor，要么需要手动搭建网络，要么需要知道tensor的name，如果用模型和训模型的不是同一个人，那在没有源码的情况下，就不方便获取每个tensor的name。好在saved_model可以通过前面提到的signature_def_map的方法获取tensor。先看一下直接通过tensor的name获取变量的加载方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch</span><br><span class="line">size = 10</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"></span><br><span class="line">saved_model_dir = &quot;./saved_model/1/&quot;</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    # tf.saved_model.tag_constants.SERVING == &quot;serve&quot;，这里load时的tags需要和保存时的tags一致</span><br><span class="line">    meta_graph_def = tf.saved_model.loader.load(sess, tags=[&quot;serve&quot;], export_dir=saved_model_dir)</span><br><span class="line">    graph = tf.get_default_graph()</span><br><span class="line">    X = graph.get_tensor_by_name(&quot;input:0&quot;)</span><br><span class="line">    pred = graph.get_tensor_by_name(&quot;output:0&quot;)</span><br><span class="line">    # sess.run(tf.global_variables_initializer())</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
+<p>这里和checkpoint的加载过程很相似，先一个load过程，然后get_tensor_by_name。这需要我们事先知道tensor的name。如果有了signature的信息就不一样了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch</span><br><span class="line">size = 10</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"></span><br><span class="line">saved_model_dir = &quot;./saved_model/1/&quot;</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    # tf.saved_model.tag_constants.SERVING == &quot;serve&quot;，这里load时的tags需要和保存时的tags一致</span><br><span class="line">    meta_graph_def = tf.saved_model.loader.load(sess, tags=[&quot;serve&quot;], export_dir=saved_model_dir)</span><br><span class="line">    signature = meta_graph_def.signature_def</span><br><span class="line">    # print(signature)    # signature 内包含了保存模型时，signature_def_map 的信息</span><br><span class="line">    X = signature[&quot;serving_default&quot;].inputs[&quot;input&quot;].name</span><br><span class="line">    pred = signature[&quot;serving_default&quot;].outputs[&quot;output&quot;].name</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
+<p>这时即使我们没有源码，也可以通过print(signature)获知关于tensor的信息，如上就展示了没有源码时，通过signature获取tensor的name，并获取tensor的过程。这里输出的signature长这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"># signature长什么样</span><br><span class="line">print(signature)</span><br><span class="line"></span><br><span class="line"># 输出</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">INFO:tensorflow:Restoring parameters from ./saved_model/1/variables/variables</span><br><span class="line">&#123;&#x27;serving_default&#x27;: inputs &#123;</span><br><span class="line">  key: &quot;input&quot;</span><br><span class="line">  value &#123;</span><br><span class="line">    name: &quot;input:0&quot;</span><br><span class="line">    dtype: DT_FLOAT</span><br><span class="line">    tensor_shape &#123;</span><br><span class="line">      dim &#123;</span><br><span class="line">        size: -1</span><br><span class="line">      &#125;</span><br><span class="line">      dim &#123;</span><br><span class="line">        size: 10</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">outputs &#123;</span><br><span class="line">  key: &quot;output&quot;</span><br><span class="line">  value &#123;</span><br><span class="line">    name: &quot;output:0&quot;</span><br><span class="line">    dtype: DT_FLOAT</span><br><span class="line">    tensor_shape &#123;</span><br><span class="line">      dim &#123;</span><br><span class="line">        size: -1</span><br><span class="line">      &#125;</span><br><span class="line">      dim &#123;</span><br><span class="line">        size: 1</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">method_name: &quot;tensorflow/serving/predict&quot;</span><br><span class="line">&#125;</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="3-Fine-tune"><a href="#3-Fine-tune" class="headerlink" title="3. Fine-tune"></a>3. Fine-tune</h2><p>最后不管保存还是加载模型，多数情况都是为了能够进行迁移学习。其实大部分无非就是将模型加载进来之后，使用某一个节点的值，作为我们后续模型的输入呗。比如我要用前面的模型结果作为特征通过一元罗辑回归去预测z，这样新的网络结构就是这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># 加载模型部分，直接从pb获取X和pred</span><br><span class="line">pb_dir = &quot;./model_pb/&quot;</span><br><span class="line">with tf.gfile.FastGFile(pb_dir + &quot;test-model.pb&quot;, &quot;rb&quot;) as f:</span><br><span class="line">    graph_def = tf.GraphDef()</span><br><span class="line">    graph_def.ParseFromString(f.read())</span><br><span class="line">    X, pred = tf.import_graph_def(graph_def, return_elements=[&quot;input:0&quot;, &quot;output:0&quot;])</span><br><span class="line"></span><br><span class="line"># 下面是 Fine-tune 部分</span><br><span class="line"># 新的 label</span><br><span class="line">z = tf.placeholder(name=&quot;new_label&quot;, shape=[None, 1], dtype=tf.float32)</span><br><span class="line"># 新的参数</span><br><span class="line">new_beta = tf.get_variable(name=&quot;new_beta&quot;, shape=[1], initializer=tf.glorot_normal_initializer())</span><br><span class="line">new_bias = tf.get_variable(name=&quot;new_bias&quot;, shape=[1], initializer=tf.glorot_normal_initializer())</span><br><span class="line"># 一元罗辑回归，通过pred去预测z</span><br><span class="line">new_pred = tf.sigmoid(new_beta * pred + new_beta)    # 这种变量不写name的习惯是不好的哦</span><br><span class="line"></span><br><span class="line"># 下面是构建模型的损失函数以及train_op</span><br><span class="line"># log_loss</span><br><span class="line">new_loss = tf.reduce_mean(tf.losses.log_loss(predictions=new_pred, labels=z))</span><br><span class="line"># train_op</span><br><span class="line">train_op = tf.train.AdamOptimizer(learning_rate=0.001, beta1=0.9, beta2=0.999, epsilon=1e-8).minimize(new_loss)</span><br></pre></td></tr></table></figure>
+<p>就是这样，把保存好的模型看作一个黑盒，喂进去X吐出来pred，然后我们直接用pred就好了。</p>
+<p>但是这里存在一个问题，就是只能通过name获取节点。比如这里的new_pred就没有name，那我想要基于这个新模型再次进行Fine-tune的时候，就不能获取这个new_pred，就无法进行Fine-tune。所以大家还是要养成一个好习惯，多给变量起名字，尤其是placeholder！要是连placeholder都没名字，别人就没法用你的模型啦。如果保存的是saved_model，建议一定要设置signature。</p>
+<p>下面来实验一下这个Fine-tune的模型吧：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_z = np.array([[1],[1],[0],[0],[1],[1],[0],[0]]).astype(np.float32)</span><br><span class="line"># 跑一下 new_pred 之后train一个step，在看看 new_pred 有没有改变</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    print(sess.run(new_pred, feed_dict=&#123;X:feed_X&#125;))</span><br><span class="line">    sess.run(train_op,  feed_dict=&#123;X:feed_X, z:feed_z&#125;)</span><br><span class="line">    print(sess.run(new_pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
+<p>这里补充一下：<strong>通过pb模式导入进来的参数其实是constants，所以在Fine-tune的时候不会变化，而通过checkpoint模式导入进来的参数是variables，在后续Fine-tune的时候是会发生变化的</strong>。具体让不让他trainable就看你的实际需要了。</p>
+<h2 id="4-其他补充"><a href="#4-其他补充" class="headerlink" title="4. 其他补充"></a>4. 其他补充</h2><p>在2.2中，加载pb模型的时候，并不需要把所有的tensor都获取到，只要“一头一尾”即可。因为头（”input:0”）是需要进行feed操作的，而尾（”output:0”）是需要输出，或者在迁移学习中要进行其他操作。至于中间哪些其他不需要进行操作的tensor，可以不获取。</p>
+<p>因为只有pb模式在加载的时候，可以在Session外进行加载，方便Fine-tune。所以个人建议，如果要进行迁移学习，先将模型转化为pb模式。</p>
+<p>其他的想起来在写</p>
+
       
     </div>
 
@@ -578,7 +686,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/11/21/2021-11-21-%E5%B8%B8%E7%94%A8%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E5%AE%9A%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/09/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/iterm%E5%A5%87%E6%B7%AB%E6%8A%80%E5%B7%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -592,7 +700,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/21/2021-11-21-%E5%B8%B8%E7%94%A8%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E5%AE%9A%E7%90%86/" class="post-title-link" itemprop="url">常用概率统计定理</a>
+            <a href="/2021/09/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/iterm%E5%A5%87%E6%B7%AB%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -603,15 +711,83 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-11-21 10:00:31 / 修改时间：16:10:46" itemprop="dateCreated datePublished" datetime="2021-11-21T10:00:31+08:00">2021-11-21</time>
+              <time title="创建时间：2021-09-01 11:41:23 / 修改时间：11:44:10" itemprop="dateCreated datePublished" datetime="2021-09-01T11:41:23+08:00">2021-09-01</time>
             </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-修改tag名称"><a href="#1-修改tag名称" class="headerlink" title="1.修改tag名称"></a>1.修改tag名称</h1><p>快捷键 ： command+i  ，修改session name。</p>
+<p><img src="pics/iterm奇淫技巧/image-20210901114300463.png" alt="image-20210901114300463" style="zoom:25%;" /></p>
+<p>右键-new tag 现在的tag就能显示自定义名称</p>
+<p><img src="pics/iterm奇淫技巧/image-20210901114353748.png" alt="image-20210901114353748" style="zoom:25%;" /></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/06/21/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/21/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/" class="post-title-link" itemprop="url">Hierarchical Attention Networks</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-21 09:26:17" itemprop="dateCreated datePublished" datetime="2021-06-21T09:26:17+08:00">2021-06-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-28 23:58:25" itemprop="dateModified" datetime="2022-02-28T23:58:25+08:00">2022-02-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">数理统计</span></a>
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">论文学习</span></a>
                 </span>
             </span>
 
@@ -626,10 +802,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>总结一些常用的数理统计定理。</p>
+          <p>Self-Attention谁先提出的，各文章里写的不一样，<a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention Is All You Need</a>中说是<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1606.01933.pdf">Jakob.2016</a>年提出的，<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1904.02874.pdf">An Attentive Survey of Attention Models</a>中说是<a target="_blank" rel="noopener" href="https://www.aclweb.org/anthology/N16-1174.pdf">Yang et al. 2016</a>，本篇介绍后者。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/11/21/2021-11-21-%E5%B8%B8%E7%94%A8%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E5%AE%9A%E7%90%86/#more" rel="contents">
+              <a class="btn" href="/2021/06/21/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -653,7 +829,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/11/21/2021-11-19-%E5%B8%B8%E7%94%A8%E4%B8%8D%E7%AD%89%E5%BC%8F%E5%AE%9A%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/06/16/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/%E5%88%9D%E8%AF%86Thrift/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -667,7 +843,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/21/2021-11-19-%E5%B8%B8%E7%94%A8%E4%B8%8D%E7%AD%89%E5%BC%8F%E5%AE%9A%E7%90%86/" class="post-title-link" itemprop="url">常用不等式定理</a>
+            <a href="/2021/06/16/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/%E5%88%9D%E8%AF%86Thrift/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -676,24 +852,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-11-21 10:00:31" itemprop="dateCreated datePublished" datetime="2021-11-21T10:00:31+08:00">2021-11-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-05 16:03:42" itemprop="dateModified" datetime="2021-12-05T16:03:42+08:00">2021-12-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">基础知识</span></a>
-                </span>
+              <time title="创建时间：2021-06-16 14:08:18 / 修改时间：19:19:05" itemprop="dateCreated datePublished" datetime="2021-06-16T14:08:18+08:00">2021-06-16</time>
             </span>
 
           
@@ -707,15 +868,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>总结一些常用的不等式定理。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/21/2021-11-19-%E5%B8%B8%E7%94%A8%E4%B8%8D%E7%AD%89%E5%BC%8F%E5%AE%9A%E7%90%86/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>[TOC]</p>
+<p>RPC（远程服务调用）</p>
+<ul>
+<li>thrift框架是什么，Thrift是一套包含序列化功能和支持服务通信的RPC（远程服务调用）框架，也是一种微服务框架。其主要特点是可以跨语言使用，这也是这个框架最吸引人的地方。</li>
+<li><p>IDL(Interface Definition Language)即接口定义语言，是CORBA规范的一部分，是跨平台开发的基础。IDL提供一套通用的数据类型，并以这些数据类型来定义更为复杂的数 据类型</p>
+</li>
+<li><p>pipline （以java为例）</p>
+</li>
+</ul>
+<ol>
+<li><p>help.thrift—-文件定义抽象service</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">namespace java tutorial</span><br><span class="line">namespace py tutorial</span><br><span class="line"></span><br><span class="line">typedef i32 int // We can use typedef to get pretty names for the types we are using</span><br><span class="line">service MultiplicationService</span><br><span class="line">&#123;</span><br><span class="line">        int multiply(1:int n1, 2:int n2),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译thrift文件得到service抽象类，类中定义了接口方法 public interface Iface</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thrift --gen java help.thrift  #生成MultiplicationService类，有虚方法 Iface</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义handler，实现（implements）service的interface（接口）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.thrift.TException;</span><br><span class="line"><span class="keyword">import</span> tutorial.MultiplicationService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiplicationHandler</span> <span class="keyword">implements</span> <span class="title">MultiplicationService</span>.<span class="title">Iface</span> </span>&#123; <span class="comment">//实现方法</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">multiply</span><span class="params">(<span class="keyword">int</span> n1, <span class="keyword">int</span> n2)</span> <span class="keyword">throws</span> TException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Multiply(&quot;</span> + n1 + <span class="string">&quot;,&quot;</span> + n2 + <span class="string">&quot;)&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> n1 * n2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义server</p>
+</li>
+</ol>
+
       
     </div>
 
@@ -734,7 +909,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/11/18/2021-11-18-EM%E0%B8%AB%E0%B9%83%E0%B8%97%E0%B8%88/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/06/15/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/anaconda+tensorflow%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -748,7 +923,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/18/2021-11-18-EM%E0%B8%AB%E0%B9%83%E0%B8%97%E0%B8%88/" class="post-title-link" itemprop="url">EM算法</a>
+            <a href="/2021/06/15/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/anaconda+tensorflow%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -758,24 +933,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-18 23:09:16" itemprop="dateCreated datePublished" datetime="2021-11-18T23:09:16+08:00">2021-11-18</time>
+              <time title="创建时间：2021-06-15 20:58:23" itemprop="dateCreated datePublished" datetime="2021-06-15T20:58:23+08:00">2021-06-15</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-21 17:58:42" itemprop="dateModified" datetime="2021-11-21T17:58:42+08:00">2021-11-21</time>
+                <time title="修改时间：2021-10-29 15:12:20" itemprop="dateModified" datetime="2021-10-29T15:12:20+08:00">2021-10-29</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
-            </span>
 
           
 
@@ -788,15 +954,82 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>EM(Expectation-Maximization)算法常用于估计隐变量。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/18/2021-11-18-EM%E0%B8%AB%E0%B9%83%E0%B8%97%E0%B8%88/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>[TOC]</p>
+<h1 id="安装pip-conda-tensorflow"><a href="#安装pip-conda-tensorflow" class="headerlink" title="安装pip,conda,tensorflow"></a>安装pip,conda,tensorflow</h1><ol>
+<li><p>安装pip</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip --version #check id exists</span><br><span class="line"></span><br><span class="line">sudo easy_install pip #安装pip</span><br></pre></td></tr></table></figure>
+<p>pip —version错误：ImportError: No module named typing</p>
+</li>
+<li><p>官网下载并安装anaconda,安装时勾选添加环境变量【非常重要，不然后续会出错】</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> anaconda path 如果忘记勾选了，要配置环境变量</span></span><br><span class="line">vim ~/.bash_proflw</span><br><span class="line">export PATH=$PATH:/Users/hetianqi/opt/anaconda3/bin/</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>cmd中确认conda安装正确</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda -V</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建新的虚拟环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">#windows 的tensorflow只支持python3以上，3.6稳定，3.7和3.8都不稳定</span></span><br><span class="line">conda create -n python3.6 python=3.6 </span><br><span class="line">conda info -e</span><br><span class="line">conda env list</span><br><span class="line">conda activate python3.6  </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装tensorflow</p>
+<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/tensorflow/">https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/tensorflow/</a> 清华镜像，可查询tensorflow版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pip+清华镜像</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tensorflow==2.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># pip+豆瓣镜像</span></span><br><span class="line">pip install -i https://pypi.douban.com/simple tensorflow==2.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># conda + </span></span><br><span class="line">conda install --channel https://conda.anaconda.org/anaconda tensorflow=2.0.0</span><br><span class="line"></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>在jupyterlab中使用tf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">source activate 环境 #激活环境</span><br><span class="line">conda install ipykernel</span><br><span class="line">conda install ipython</span><br><span class="line">conda install jupyterlab</span><br><span class="line">ipython kernelspec install-self ––user</span><br><span class="line">python -m ipykernel install --user --name 环境名称 --display-name “环境名称” </span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>安装xgboost</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple XGBoost  <span class="comment">#win10</span></span><br><span class="line">conda install py-xgboost <span class="comment">#mac</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装torch</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install torch===1.3.0 torchvision===0.4.1 -f https://download.pytorch.org/whl/torch_stable.html -i  https://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="安装scala-pyspark"><a href="#安装scala-pyspark" class="headerlink" title="安装scala,pyspark"></a>安装scala,pyspark</h1><ol>
+<li><p>安装brew</p>
+<p>在网上搜了很多brew安装方式，包括使用官网的方式都安装报错<br>Failed to connect to raw.githubusercontent.com port 443: Connection refused</p>
+<p>可使用一下源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装scala</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">brew search scala #查看可安装版本</span><br><span class="line">brew instal scala@2.12</span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改~/.bash_profile</span></span><br><span class="line">export PATH=&quot;/usr/local/opt/scala@2.11/bin:$PATH</span><br><span class="line">scala -version #check是否安装成功</span><br></pre></td></tr></table></figure>
+<p>报错： Error opening archive: Failed to open ‘/Users/hetianqi/Library/Caches/Homebrew/downloads/d1650a0762f1f057c43d5600d72a18d9aaa0c5da3cd172cac87ae9fcb6439bc0—openjdk-16.0.1.big_sur.bottle.tar.gz’</p>
+<p>解决方法：export HOMEBREW_BOTTLE_DOMAIN=’’ </p>
+<p>详细解释参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/383707713">https://zhuanlan.zhihu.com/p/383707713</a></p>
+<blockquote>
+<p>如果scala交互模式下方向键乱码，则在~/.bash_profile中添加</p>
+<p>export TERM=xterm-color</p>
+</blockquote>
+</li>
+<li><p>安装spark</p>
+<p>a) 下载安装包 <a target="_blank" rel="noopener" href="http://spark.apache.org/downloads.html">http://spark.apache.org/downloads.html</a></p>
+</li>
+</ol>
+<p><img src="pics/anaconda+tensorflow安装教程/image-20211013142113102.png" alt="image-20211013142113102" style="zoom:50%;" /></p>
+<p>​        b) 解压安装包，复制到路径 /usr/local/Cellar/</p>
+<p>​        c) 修改~/.bash_profile</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">export SPARK_HOME=/usr/local/Cellar/spark/</span><br><span class="line">export PATH=$SPARK_HOME:$SPARK_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>​        d) check是否安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spark-shell</span><br></pre></td></tr></table></figure>
+<p><img src="pics/anaconda+tensorflow安装教程/image-20211013142621551.png" alt="image-20211013142621551" style="zoom:50%;" /></p>
+<ol>
+<li>安装pyspark</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyspark</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>配置idea for scala and spark</p>
+<p>Step1：建空maven项目</p>
+<p>Step2:  建scala目录并mark as source</p>
+<p>Step3: 下载scala插件：preference —&gt; pluging —&gt;scala</p>
+<p>Step4: 增加框架支持：右击工程—&gt; add framework —&gt; scala</p>
+<p>Step5: 添加apache jars: 右击工程 —&gt; open module settings —&gt; libraries —&gt; + java —&gt; browes —&gt; /usr/local/Cellar/spark/jars  (finder看不见这个文件夹可以 commmand + shift + G)</p>
+</li>
+</ol>
+
       
     </div>
 
@@ -815,7 +1048,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/11/16/2021-11-15-%E5%A4%9A%E7%9B%AE%E6%A0%87%E5%AD%A6%E4%B9%A0/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/04/30/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -829,7 +1062,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/16/2021-11-15-%E5%A4%9A%E7%9B%AE%E6%A0%87%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">多目标学习</a>
+            <a href="/2021/04/30/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/python/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -839,14 +1072,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-16 09:06:25" itemprop="dateCreated datePublished" datetime="2021-11-16T09:06:25+08:00">2021-11-16</time>
+              <time title="创建时间：2021-04-30 15:06:04" itemprop="dateCreated datePublished" datetime="2021-04-30T15:06:04+08:00">2021-04-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-30 11:16:07" itemprop="dateModified" datetime="2021-11-30T11:16:07+08:00">2021-11-30</time>
+                <time title="修改时间：2021-09-29 11:32:40" itemprop="dateModified" datetime="2021-09-29T11:32:40+08:00">2021-09-29</time>
               </span>
 
           
@@ -860,15 +1093,105 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>多目标学习在搜广推领域很火，家家都在用。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/16/2021-11-15-%E5%A4%9A%E7%9B%AE%E6%A0%87%E5%AD%A6%E4%B9%A0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>[TOC]</p>
+<h1 id="快速安装python依赖包"><a href="#快速安装python依赖包" class="headerlink" title="快速安装python依赖包"></a>快速安装python依赖包</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># requirements.txt</span><br><span class="line">certifi==2020.4.5.1</span><br><span class="line">chardet==3.0.4</span><br><span class="line">idna==2.9</span><br><span class="line">lxml==4.5.1</span><br><span class="line">requests==2.23.0</span><br><span class="line">urllib3==1.25.9</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="importlib-动态导入包"><a href="#importlib-动态导入包" class="headerlink" title="importlib 动态导入包"></a>importlib 动态导入包</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入指定类或方法</span></span><br><span class="line"><span class="keyword">from</span> model_fn <span class="keyword">import</span> dmtTrainer</span><br><span class="line">module = importlib.import_module(FLAGS.model_fn)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dmtTrainer = module.dmtTrainer</span><br></pre></td></tr></table></figure>
+<h1 id="argparse"><a href="#argparse" class="headerlink" title="argparse"></a>argparse</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1引入模块</span></span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2建立解析对象</span></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3增加属性：给xx实例增加一个aa属性 # xx.add_argument(&quot;aa&quot;)</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;role&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">&quot;Role of this trainer in &#123;&#x27;local&#x27;, &quot;</span></span><br><span class="line">                             <span class="string">&quot;&#x27;leader&#x27;, &#x27;follower&#x27;&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4属性给与args实例： 把parser中设置的所有&quot;add_argument&quot;给返回到args子类实例当中， 那么parser中增加的属性内容都会在args实例中，使用即可。</span></span><br><span class="line">args = parser.parse_args()</span><br><span class="line">parser.parse_args()</span><br></pre></td></tr></table></figure>
+<p>运行时使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python main.py --role=&#x27;leader&#x27;</span><br></pre></td></tr></table></figure>
+<h1 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h1><p>类： 大驼峰<br>方法：小驼峰<br>变量：小写字母+下划线<br>常量：大写字母+下划线</p>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><blockquote>
+<p>内部函数调用外部变量的行为叫做闭包</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span>(<span class="params">name</span>):</span> </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">func2</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">   <span class="keyword">return</span> func2()</span><br></pre></td></tr></table></figure>
+<h1 id="dict排序"><a href="#dict排序" class="headerlink" title="dict排序"></a>dict排序</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;<span class="string">&#x27;d1&#x27;</span>:<span class="number">2</span>, <span class="string">&#x27;d2&#x27;</span>:<span class="number">4</span>, <span class="string">&#x27;d4&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;d3&#x27;</span>:<span class="number">3</span>,&#125;</span><br><span class="line">res = <span class="built_in">sorted</span>(d.items(),key=<span class="keyword">lambda</span> d:d[<span class="number">1</span>],reverse=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+<h1 id="python的u-r-b分别什么意思"><a href="#python的u-r-b分别什么意思" class="headerlink" title="python的u,r,b分别什么意思"></a>python的u,r,b分别什么意思</h1><p> u: 表示unicode字符串，默认模式，里边的特殊字符会被识别。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(u&#x27;hi\thi\thi&#x27;)</span><br></pre></td></tr></table></figure>
+<p>执行之后：<br><strong>hi hi hi</strong></p>
+<p> b: 表示二进制字符串，括号内的内容原样输出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(b&#x27;hi\thi\thi&#x27;)</span><br></pre></td></tr></table></figure>
+<p>执行之后：<br><strong>b’hi\thi\thi’</strong></p>
+<p> r：不转义字符串，要输出的内容原样输出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(r&#x27;hi\thi\thi&#x27;)</span><br></pre></td></tr></table></figure>
+<p>执行之后：<br><strong>hi\thi\thi</strong></p>
+<h1 id="dic快速保存和读取"><a href="#dic快速保存和读取" class="headerlink" title="dic快速保存和读取"></a>dic快速保存和读取</h1><blockquote>
+<pre><code>   #保存
+   dict_name = &#123;1:&#123;1:2,3:4&#125;,2:&#123;3:4,4:5&#125;&#125;
+   f = open(&#39;temp.txt&#39;,&#39;w&#39;)
+   f.write(str(dict_name))
+   f.close()
+
+   #读取
+   f = open(&#39;temp.txt&#39;,&#39;r&#39;)
+   a = f.read()
+   dict_name = eval(a)
+</code></pre></blockquote>
+<h1 id="如果不存在则创建文件"><a href="#如果不存在则创建文件" class="headerlink" title="如果不存在则创建文件"></a>如果不存在则创建文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(filename):</span><br><span class="line">    os.system(<span class="string">r&quot;touch &#123;&#125;&quot;</span>.<span class="built_in">format</span>(path))<span class="comment">#调用系统命令行来创建文件</span></span><br></pre></td></tr></table></figure>
+<h1 id="获取当前路径"><a href="#获取当前路径" class="headerlink" title="获取当前路径"></a>获取当前路径</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sys.path.append(os.getcwd()) #添加当前文件夹路径</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="built_in">print</span> (sys.argv[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(os.getcwd())</span><br></pre></td></tr></table></figure>
+<h1 id="utf-8编码"><a href="#utf-8编码" class="headerlink" title="utf-8编码"></a>utf-8编码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> sys.getdefaultencoding() != <span class="string">&#x27;utf-8&#x27;</span>:</span><br><span class="line">    reload(sys)</span><br><span class="line">    sys.setdefaultencoding(<span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data = pandas.read_table(filename,sep=<span class="string">&#x27;\t&#x27;</span>) <span class="comment">#dataframe</span></span><br><span class="line">data.to_csv(filename,sep=<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line"></span><br><span class="line">data=np.loadtxt(filename,delimiter=<span class="string">&#x27;\t&#x27;</span>) <span class="comment">#narray</span></span><br><span class="line">np.save(filename,narray)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename,<span class="string">&#x27;r&#x27;</span>.encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f: <span class="comment">#list</span></span><br><span class="line">	lines=f.readlines()</span><br></pre></td></tr></table></figure>
+<h1 id="产生随机矩阵"><a href="#产生随机矩阵" class="headerlink" title="产生随机矩阵"></a>产生随机矩阵</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=pd.DataFrame(np.random.randn(<span class="number">4</span>,<span class="number">4</span>),columns=[<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;D&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<h1 id="提取年月日"><a href="#提取年月日" class="headerlink" title="提取年月日"></a>提取年月日</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=[<span class="string">&#x27;2019-01-01 12:00:00&#x27;</span>,<span class="string">&#x27;2019-02-01 12:00:00&#x27;</span>]</span><br><span class="line">a.apply(<span class="keyword">lambda</span> x:x[<span class="number">0</span>,<span class="number">7</span>])</span><br></pre></td></tr></table></figure>
+<h1 id="百分位数"><a href="#百分位数" class="headerlink" title="百分位数"></a>百分位数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#dataframe</span></span><br><span class="line">feat_res[<span class="string">&#x27;f_p75&#x27;</span>] = X[X[feat] <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>][feat].quantile(<span class="number">0.75</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="计时"><a href="#计时" class="headerlink" title="计时"></a>计时</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">time_start=time.time()</span><br><span class="line">time.sleep(<span class="number">2</span>)</span><br><span class="line">time_end=time.time()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;totally cost &#123;:.3f&#125; s&#x27;</span>.<span class="built_in">format</span>(time_end-time_start))</span><br></pre></td></tr></table></figure>
+<h1 id="python调用shell"><a href="#python调用shell" class="headerlink" title="python调用shell"></a>python调用shell</h1><blockquote>
+<p>os.system(command) </p>
+</blockquote>
+<p>  此函数会启动子进程，在子进程中执行command，并返回command命令执行完毕后的退出状态，如果command有执行内容，会在标准输出显示。这实际上是使用C标准库函数system()实现的。</p>
+<p>​    缺点：这个函数在执行command命令时需要重新打开一个终端，并且无法保存command命令的执行结果。</p>
+<blockquote>
+<p>os.popen(command,mode)</p>
+</blockquote>
+<p>打开一个与command进程之间的管道。这个函数的返回值是一个文件对象，可以读或者写(由mode决定，mode默认是’r’)。如果mode为’r’，可以使用此函数的返回值调用read()来获取command命令的执行结果。</p>
+<p>os.system(cmd)或os.popen(cmd)，前者返回值是脚本的退出状态码，后者的返回值是脚本执行过程中的输出内容。实际使用时视需求情况而选择。</p>
+<h1 id="XGB-相关"><a href="#XGB-相关" class="headerlink" title="XGB 相关"></a>XGB 相关</h1><h2 id="xgboost-sklearn-XGBClassifier"><a href="#xgboost-sklearn-XGBClassifier" class="headerlink" title="xgboost.sklearn.XGBClassifier"></a>xgboost.sklearn.XGBClassifier</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> xgboost.sklearn <span class="keyword">import</span> XGBClassifier</span><br><span class="line"><span class="comment"># 训练模型</span></span><br><span class="line">watchlist = [(x_train, y_train), (x_test, y_test)]  <span class="comment"># [(test[res_train],y_test)]</span></span><br><span class="line">model = XGBClassifier(**params)</span><br><span class="line">model.fit(x_train, y_train, eval_set=watchlist)  </span><br><span class="line">    </span><br><span class="line"><span class="comment"># feature importance</span></span><br><span class="line">importance = model.get_booster().get_fscore()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型预测</span></span><br><span class="line"> y_test_pro = model.predict_proba(x_test)[:,<span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 模型保存</span></span><br><span class="line"><span class="comment">#法一</span></span><br><span class="line">model.get_booster().dump_model(<span class="string">&#x27;xgb.dump&#x27;</span>) <span class="comment">#该方法储存的是raw text文件，不能用于load_model，用于直观解释模型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#法二</span></span><br><span class="line">model.save_model(<span class="string">&#x27;xgb.dump&#x27;</span>) <span class="comment">#该同法一</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#法三 推荐方法</span></span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line">pickle.dump(model, <span class="built_in">open</span>(<span class="string">&quot;pima.pickle.dat&quot;</span>, <span class="string">&quot;wb&quot;</span>)) <span class="comment">#该方法储存的是二进制文件，可以load_model</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#load model</span></span><br><span class="line"><span class="comment">#法一</span></span><br><span class="line">clf = XGBClassifier()</span><br><span class="line">booster = Booster()</span><br><span class="line">booster.load_model(<span class="string">&#x27;./model.xgb&#x27;</span>)</span><br><span class="line">clf._Booster = booster</span><br><span class="line"></span><br><span class="line"><span class="comment">#法二</span></span><br><span class="line">clf.predict(...)</span><br><span class="line">loaded_model = pickle.load(<span class="built_in">open</span>(<span class="string">&quot;pima.pickle.dat&quot;</span>, <span class="string">&quot;rb&quot;</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="哈哈"><a href="#哈哈" class="headerlink" title="哈哈"></a>哈哈</h2><h1 id="dataframe-转为-DMATRIX"><a href="#dataframe-转为-DMATRIX" class="headerlink" title="dataframe 转为 DMATRIX"></a>dataframe 转为 DMATRIX</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dtrain = xgb.DMatrix(df_train[col_feat], label=df_train[&#x27;y&#x27;])</span><br></pre></td></tr></table></figure>
+<h1 id="获取叶子节点"><a href="#获取叶子节点" class="headerlink" title="获取叶子节点"></a>获取叶子节点</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">loaded_model = pickle.load(<span class="built_in">open</span>(f_xgb_model+<span class="string">&#x27;.pickle&#x27;</span>, <span class="string">&quot;rb&quot;</span>))</span><br><span class="line">dtrain = xgb.DMatrix(df_train[col_feat], label=df_train[<span class="string">&#x27;y&#x27;</span>])</span><br><span class="line">y=loaded_model.get_booster().predict(dtrain,pred_leaf=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="装饰器-decorator"><a href="#装饰器-decorator" class="headerlink" title="装饰器(decorator)"></a>装饰器(decorator)</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wolf-yasen/p/11240500.html">https://www.cnblogs.com/wolf-yasen/p/11240500.html</a></p>
+<blockquote>
+<p>本质上，decorator就是一个返回函数的高阶函数</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@a</span></span><br><span class="line"><span class="meta">@b</span></span><br><span class="line"><span class="meta">@c</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>():</span></span><br><span class="line">  <span class="keyword">pass</span></span><br><span class="line"><span class="comment">#相当于执行了  f = a(b(c(f)))</span></span><br><span class="line"><span class="comment">#调用f的时候，实际上调用的是a(b(c(f)))</span></span><br></pre></td></tr></table></figure>
+<p>装饰器（decorator）可以给函数动态加上功能</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>():</span></span><br><span class="line">        start = time.clock()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;this is a order test, if you need not it, delete it&quot;</span>) <span class="comment"># 用于测试执行顺序,可以跟着走一遍</span></span><br><span class="line">        end = time.clock()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;start:&quot;</span>, start, <span class="string">&quot; end:&quot;</span>, end)</span><br><span class="line">        <span class="keyword">return</span> func <span class="comment"># 这种获得返回值的方法可能在多层修饰器的时候有矛盾,我先用!!!标记, 等理顺后再回来修改,如果我发布之后这里依然存在...说明我忘记了...</span></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@test</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;this is a test&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;this is a return value&quot;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">#相当于执行了 foo = log(foo)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(foo())</span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># this is a test wrapper, if you need not it, delete it</span></span><br><span class="line"><span class="comment"># this is a test</span></span><br><span class="line"><span class="comment"># start: 4.44444839506524e-07  end: 1.8222238419767486e-05</span></span><br><span class="line"><span class="comment"># this is a return value</span></span><br></pre></td></tr></table></figure>
+<p><img src="/Users/hetianqi/Documents/charging/notes_of_the_world/python.assets/image-20200409175624696.png" alt="image-20200409175624696"></p>
+<h2 id="property修饰器"><a href="#property修饰器" class="headerlink" title="@property修饰器"></a>@property修饰器</h2><p>把一个getter方法变成属性，只需要加上<code>@property</code>就可以了，此时，<code>@property</code>本身又创建了另一个装饰器<code>@score.setter</code>，负责把一个setter方法变成属性赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Screen</span>(<span class="params"><span class="built_in">object</span></span>):</span>  </span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">width</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.W</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @width.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">width</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        self.W = value </span><br><span class="line">  <span class="comment"># 测试:</span></span><br><span class="line">s = Screen()</span><br><span class="line">s.width=<span class="number">10</span> </span><br><span class="line">s.width</span><br></pre></td></tr></table></figure>
+<p>代码也可改为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Screen</span>(<span class="params"><span class="built_in">object</span></span>):</span>  </span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">width</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self._width</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @width.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">width</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        self._width = value </span><br><span class="line">  <span class="comment"># 测试:</span></span><br><span class="line">s = Screen()</span><br><span class="line">s.width=<span class="number">10</span> </span><br><span class="line">s.width</span><br></pre></td></tr></table></figure>
+<h1 id="python变量中的下划线"><a href="#python变量中的下划线" class="headerlink" title="python变量中的下划线"></a>python变量中的下划线</h1><ul>
+<li>xx: 公有变量</li>
+<li>_x: 单前置下划线,私有化属性或方法，from somemodule import *禁止导入,类对象和子类可以访问</li>
+<li>__xx：双前置下划线,避免与子类中的属性命名冲突，无法在外部直接访问(名字重整所以访问不到)</li>
+<li><strong>xx</strong>:双前后下划线,用户名字空间的魔法对象或属性。例如:<strong>init</strong> , __ 不要自己发明这样的名字</li>
+<li>xx_:单后置下划线,用于避免与Python关键词的冲突</li>
+</ul>
+<h1 id="生成器（generator）"><a href="#生成器（generator）" class="headerlink" title="生成器（generator）"></a>生成器（generator）</h1><p>如果列表元素可以按照某种算法推算出来，那我们是否可以在循环的过程中不断推算出后续的元素呢？这样就不必创建完整的list，从而节省大量的空间。在Python中，这种一边循环一边计算的机制，称为生成器：generator。</p>
+<blockquote>
+<p>实例：生成斐波那契数列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;# 一般写法</span><br><span class="line">&gt;def fib1(max):</span><br><span class="line">	n, a, b = 0,0,1</span><br><span class="line">	while n&lt;max:</span><br><span class="line">			print(b)</span><br><span class="line">	    a,b = b,a+b</span><br><span class="line">	    n+=1</span><br><span class="line">	return &#x27;done&#x27;</span><br><span class="line">&gt;# 调用</span><br><span class="line">&gt;fib1(6)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="comment"># 生成器写法</span></span><br><span class="line">&gt;<span class="function"><span class="keyword">def</span> <span class="title">fib2</span>(<span class="params"><span class="built_in">max</span></span>):</span></span><br><span class="line">   n, a, b = <span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span></span><br><span class="line">   <span class="keyword">while</span> n&lt;<span class="built_in">max</span>:</span><br><span class="line">       <span class="keyword">yield</span> b</span><br><span class="line">       a,b = b,a+b</span><br><span class="line">       n+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;done&#x27;</span></span><br><span class="line"><span class="comment"># 调用</span></span><br><span class="line">&gt;<span class="keyword">for</span> i <span class="keyword">in</span> fib2(<span class="number">6</span>):</span><br><span class="line">     <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="迭代器（iterable）"><a href="#迭代器（iterable）" class="headerlink" title="迭代器（iterable）"></a>迭代器（iterable）</h1><p>我们已经知道，可以直接作用于<code>for</code>循环的数据类型有以下几种：</p>
+<p>一类是集合数据类型，如<code>list</code>、<code>tuple</code>、<code>dict</code>、<code>set</code>、<code>str</code>等；</p>
+<p>一类是<code>generator</code>，包括生成器和带<code>yield</code>的generator function。</p>
+<p>这些可以直接作用于<code>for</code>循环的对象统称为可迭代对象：<code>Iterable</code>。</p>
+<p>可以使用<code>isinstance()</code>判断一个对象是否是<code>Iterable</code>对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from collections.abc import Iterable</span><br><span class="line">&gt;&gt;&gt; isinstance([], Iterable)</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>可以被<code>next()</code>函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code>。可以使用<code>isinstance()</code>判断一个对象是否是<code>Iterator</code>对象：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from collections.abc import Iterator</span><br><span class="line">&gt;&gt;&gt; isinstance((x for x in range(10)), Iterator)</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>生成器都是<code>Iterator</code>对象，但<code>list</code>、<code>dict</code>、<code>str</code>虽然是<code>Iterable</code>，却不是<code>Iterator</code>。</p>
+<p>把<code>list</code>、<code>dict</code>、<code>str</code>等<code>Iterable</code>变成<code>Iterator</code>可以使用<code>iter()</code>函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">isinstance(iter([]), Iterator)</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>凡是可作用于<code>for</code>循环的对象都是<code>Iterable</code>类型；</p>
+<p>凡是可作用于<code>next()</code>函数的对象都是<code>Iterator</code>类型，它们表示一个惰性计算的序列；</p>
+<p>集合数据类型如<code>list</code>、<code>dict</code>、<code>str</code>等是<code>Iterable</code>但不是<code>Iterator</code>，不过可以通过<code>iter()</code>函数获得一个<code>Iterator</code>对象。</p>
+<p>Python的<code>for</code>循环本质上就是通过不断调用<code>next()</code>函数实现的，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for x in [1, 2, 3, 4, 5]:</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+<p>实际上完全等价于：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 首先获得Iterator对象:</span><br><span class="line">it = iter([1, 2, 3, 4, 5])</span><br><span class="line"># 循环:</span><br><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        # 获得下一个值:</span><br><span class="line">        x = next(it)</span><br><span class="line">    except StopIteration:</span><br><span class="line">        # 遇到StopIteration就退出循环</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -886,7 +1209,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -952,20 +1275,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">62</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
