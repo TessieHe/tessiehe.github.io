@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tessiehe.github.io/"/>
-  <updated>2022-03-01T03:59:30.985Z</updated>
+  <updated>2022-03-01T04:05:00.634Z</updated>
   <id>http://tessiehe.github.io/</id>
   
   <author>
@@ -15,6 +15,126 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>大话数据结构笔记</title>
+    <link href="http://tessiehe.github.io/2022/03/01/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/3_数理统计/大话数据结构笔记/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T04:05:00.634Z</updated>
+    
+    <content type="html"><![CDATA[<p>大话数据结构笔记</p><span id="more"></span><p>大话数据结构</p><p>[TOC]</p><h1 id="数据结构绪论"><a href="#数据结构绪论" class="headerlink" title="数据结构绪论"></a>数据结构绪论</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>数据项 -&gt; 数据元素 -&gt; 数据对象 -&gt; 数据结构</p><h2 id="逻辑结构与物理结构"><a href="#逻辑结构与物理结构" class="headerlink" title="逻辑结构与物理结构"></a>逻辑结构与物理结构</h2><blockquote><p>逻辑结构：集合，线性结构（1对1），树形结构（1对多），图形结构（多对多）</p><p>物理结构：</p><ul><li>顺序储存结构：元素放在连续的储存单元</li><li>链式储存结构：元素放在任意单元，用指针存放数据地址</li></ul></blockquote><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="算法时间复杂度"><a href="#算法时间复杂度" class="headerlink" title="算法时间复杂度"></a>算法时间复杂度</h2><h3 id="线性阶-O-n"><a href="#线性阶-O-n" class="headerlink" title="线性阶 O(n)"></a>线性阶 O(n)</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>,i&lt;n;i++)</span><br></pre></td></tr></table></figure><h3 id="对数阶-O-lodn"><a href="#对数阶-O-lodn" class="headerlink" title="对数阶 O(lodn)"></a>对数阶 O(lodn)</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (count&lt;n)</span><br><span class="line">&#123;</span><br><span class="line">    counc =count*<span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="平方阶"><a href="#平方阶" class="headerlink" title="平方阶"></a>平方阶</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i,j;</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>,i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (j=<span class="number">0</span>,j&lt;n;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        .....</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>循环的时间复杂度=循环体的时间复杂度*循环运行时的次数</strong></p><h3 id="常见时间复杂度"><a href="#常见时间复杂度" class="headerlink" title="常见时间复杂度"></a>常见时间复杂度</h3><blockquote><p>O(1)&lt;O(logn) &lt; O(n) &lt; O(n^2) &lt; O(n!) &lt;O(n^n)</p></blockquote><h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><blockquote><p>S(n)=O(f(n)) 其中f(n)是n所占空间</p></blockquote><h1 id="线性表（List）"><a href="#线性表（List）" class="headerlink" title="线性表（List）"></a>线性表（List）</h1><h2 id="顺序储存"><a href="#顺序储存" class="headerlink" title="顺序储存"></a>顺序储存</h2><p>一维数组来实现顺序储存结构</p><blockquote><p>顺序储存结构的三个属性：</p><ol><li>起始位置：数组储存的地方</li><li>线性表最大储存容量：数组长度</li><li>线性表当前长度：length（任意时刻线性表长度应小于等于数组长度）</li></ol></blockquote><ul><li>地址计算方法：储存器中每个单元都有自己的编号，且编号是连续的，这个编号称为地址，假设一个元素占用c个储存空间(一个储存空间就是一个0/1)，LOC表示获得储存位置的函数，则$LOC(a_{i+1})=LOC(a-i)+c$</li><li>存取时间复杂度是O(1) ，即跟数据规模无关；插入删除时间复杂度是O(n)</li></ul><h1 id="栈（Stack）"><a href="#栈（Stack）" class="headerlink" title="栈（Stack）"></a>栈（Stack）</h1><p>仅在表尾插入和删除元素：后进先出的线性表</p><h1 id="串（string）"><a href="#串（string）" class="headerlink" title="串（string）"></a>串（string）</h1><blockquote><p>ASCII编码：8位二进制，一共能表示256个字符</p><p>Unicode编码：16位二进制</p></blockquote><h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><blockquote><p>度（degree）:结点中子树的数目</p></blockquote><h2 id="树的储存结构"><a href="#树的储存结构" class="headerlink" title="树的储存结构"></a>树的储存结构</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;大话数据结构笔记&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数理统计" scheme="http://tessiehe.github.io/categories/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+    
+      <category term="数理统计" scheme="http://tessiehe.github.io/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>拉普拉斯矩阵映射</title>
+    <link href="http://tessiehe.github.io/2022/03/01/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E7%9F%A9%E9%98%B5%E6%98%A0%E5%B0%84/"/>
+    <id>http://tessiehe.github.io/2022/03/01/3_数理统计/拉普拉斯矩阵映射/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T04:05:05.864Z</updated>
+    
+    <content type="html"><![CDATA[<p>拉普拉斯矩阵映射</p><span id="more"></span><h1 id="专业词汇"><a href="#专业词汇" class="headerlink" title="专业词汇"></a>专业词汇</h1><ul><li><strong>边（edge）</strong>：$W_{ij}$ 特点：对称矩阵</li><li><strong>digree</strong>: $D=dig(d);d=rowSum(W_{i,j]})$ 特点：对角阵</li><li><p><strong>拉普拉斯矩阵</strong>：$L=D-W$ </p></li><li><p><strong>拉普拉斯特征映射</strong>：将处于流形上的数据，在尽量保留原数据间相似度的情况下，映射到低维下表示</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;拉普拉斯矩阵映射&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数理统计" scheme="http://tessiehe.github.io/categories/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+    
+      <category term="数理统计" scheme="http://tessiehe.github.io/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>拉格朗日乘子法</title>
+    <link href="http://tessiehe.github.io/2022/03/01/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95/"/>
+    <id>http://tessiehe.github.io/2022/03/01/3_数理统计/拉格朗日乘子法/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T04:05:10.345Z</updated>
+    
+    <content type="html"><![CDATA[<p>拉格朗日乘子法</p><span id="more"></span><h1 id="原始问题"><a href="#原始问题" class="headerlink" title="原始问题"></a>原始问题</h1><p>$f(x),c_i(x),h_i(x)$是在$R^n$上的<code>连续可微</code>函数，考虑约束最优化问题：</p><script type="math/tex; mode=display">\begin{align}min \quad f(x) \quad st \quad c_i(x)<0,i &=1,2...k  \\, h_j(x)=0,j &=1,2...l\end{align}</script><p>此问题我们成为原始问题。</p><p>为了方便解决此问题，我们引入<strong><code>广义拉格朗日函数</code></strong>L，可证明原始问题等价于拉格朗日函数的极小极大值问题。拉格朗日函数构造如下：</p><script type="math/tex; mode=display">L(x,\alpha_i,\beta_j)=f(x)+\sum_{i=1}^k\alpha_ic_i(x)+\sum_{j=1}^l\beta_jh_j(x)，其中 x\in R^n,\alpha_i>0,\beta_j>0</script><p>我们考虑x的函数：</p><script type="math/tex; mode=display">\theta_p(x)=max \quad L(x,\alpha_i,\beta_j),其中 x\in R^n,\alpha_i>0,\beta_j>0</script><p>可以证明  $min(\theta_p(x)) $等价于原始问题,即约束下的优化问题转化为了广义拉格朗日的极小极大值问题。</p><p>【证明】约束下的优化问题转化为了广义拉格朗日的极小极大值问题</p><p>满足$c_i(x)&lt;0,i =1,2…k ,h_j(x)=0,j =1,2…l$时， $max(L(x,\alpha_i,\beta_j)) = f(x)$,即$\theta_p(x)=f(x)$。</p><p>不满足$c_i(x)&lt;0,i =1,2…k ,h_j(x)=0,j =1,2…l$时，可通过设置$\alpha_i 和\beta_j$ 使得$\theta_p(x)=+\infin $</p><p>所以</p><script type="math/tex; mode=display">\theta_p=\begin{cases}f(x),x满足原始问题条件 \\ +\infin , x不满足原始问题条件\end{cases}</script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;拉格朗日乘子法&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数理统计" scheme="http://tessiehe.github.io/categories/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+    
+      <category term="数理统计" scheme="http://tessiehe.github.io/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>概率论与数理统计--浙大</title>
+    <link href="http://tessiehe.github.io/2022/03/01/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1--%E6%B5%99%E5%A4%A7/"/>
+    <id>http://tessiehe.github.io/2022/03/01/3_数理统计/概率论与数理统计--浙大/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T04:05:14.360Z</updated>
+    
+    <content type="html"><![CDATA[<p>概率论与数理统计—浙大</p><span id="more"></span><p>[TOC]</p><p>概率论与数理统计—浙大</p><h1 id="期望"><a href="#期望" class="headerlink" title="期望"></a>期望</h1><h2 id="离散期望"><a href="#离散期望" class="headerlink" title="离散期望"></a>离散期望</h2><script type="math/tex; mode=display">   E(X)=\sum_1^{\infty}x_kp_k</script><h2 id="连续数学期望"><a href="#连续数学期望" class="headerlink" title="连续数学期望"></a>连续数学期望</h2><script type="math/tex; mode=display">   E(X) = \int_{-\infty}^{\infty}xf(s)</script><h2 id="函数的数学期望"><a href="#函数的数学期望" class="headerlink" title="函数的数学期望"></a>函数的数学期望</h2><script type="math/tex; mode=display">Z=g(X<Y),二维随机变量的概率密度(X,Y)为f(x,y),则Z的期望：</script><script type="math/tex; mode=display">   E(Z) = E(g(Z)) = \int_{-\infty}^{+\infty}g(x,y)f(x,y)dxdy</script><p>   若（X，Y）为离散型随机变量，则：</p><script type="math/tex; mode=display">   E(Z) = E(g(X,Y)) = \sum_{j=1}^{\infty}\sum_{i=1}^{\infty}g(x_i,y_j)p_{ij}</script><h1 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h1><script type="math/tex; mode=display">D(X)=E([X-E(X)]^2)</script><h2 id="均方差-标准差"><a href="#均方差-标准差" class="headerlink" title="均方差/标准差"></a>均方差/标准差</h2><script type="math/tex; mode=display">   \sqrt{(D(X))}</script><h2 id="离散方差"><a href="#离散方差" class="headerlink" title="离散方差"></a>离散方差</h2><script type="math/tex; mode=display">   D(X) =\sum_{k=1}^{\infty}[x-E(x)]^2p_k</script><h2 id="连续方差"><a href="#连续方差" class="headerlink" title="连续方差"></a>连续方差</h2><script type="math/tex; mode=display">   D(X)=\int_{-\infty}^{\infty}[x-E(X)]^2f(x)dx</script><script type="math/tex; mode=display">   D(X) = E(X^2)-(E(X))^2</script><h2 id="标准化变换"><a href="#标准化变换" class="headerlink" title="标准化变换"></a>标准化变换</h2><script type="math/tex; mode=display">   X^* = \frac{X-\mu}{\sigma}</script><p>   $X^*$均值为1，方差为0，是X的标准化变量</p><h1 id="切比雪夫不等式"><a href="#切比雪夫不等式" class="headerlink" title="切比雪夫不等式"></a>切比雪夫不等式</h1><p>估计未知概率分布的变量取期望附近区间的概率，这个估计是粗糙的</p><p>对于任意正数$\epsilon$:</p><p>$P{|X-\mu|&gt;=\epsilon} &lt;=\frac{\sigma^2}{\epsilon^2}$</p><h1 id="协方差"><a href="#协方差" class="headerlink" title="协方差"></a>协方差</h1><p>   $Cov(X,Y) = E{[X-E(X)][Y-E(Y)]}$ 称为X，Y的协方差</p><p>   $\rho_{XY} = \frac{Cov(X,Y)}{\sqrt{D(X)}\sqrt{D(Y)}}$  称为X，Y的相关系数。</p><h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><p>两个随机变量X，Y相互独立的充要条件是$Cove(X,Y)\neq0$</p><ul><li>$Cov(X,X) = D(X)$</li><li>$Cov(X,Y) = E(XY) - E(X)E(Y)$</li><li>$Cov(aX,bY) = abCov(X,Y)$</li><li>$Cov(X_1+X_2,Y) = Cov(X_1,Y)+Cov(X_2,Y)$</li><li>$|\rho_{xy}|\le1$</li><li>$|\rho|=1$ 的充要条件是存在常数a,b 使得</li><li>$P\{Y=aX+b\}=1$</li></ul><h1 id="似然函数"><a href="#似然函数" class="headerlink" title="似然函数"></a>似然函数</h1><p>若总体X属于离散型，其分布规律$P\{X=x\} = p(x;\theta)$形式已知，参数未知，事件$\{X_1=x_1,X_2=x_2 …\}$的联合概率：</p><p>$L(\theta) = L(x_1,x_2…;\theta) = \prod_{i=1}^{n}p(x_1;\theta)$</p><p>$L(\theta)$为样本的似然函数</p><ul><li>若总体X属于连续型</li></ul><p>$L(\theta) = \prod_{i=1}^{n}f(x_1;\theta)$</p><ul><li><p>对数似然方程</p><p> $\frac{d}{d\theta}lnL(\theta)=0$</p></li><li><p>无偏估计</p><p> 估计值的期望和实际值期望相同</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;概率论与数理统计—浙大&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数理统计" scheme="http://tessiehe.github.io/categories/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+    
+      <category term="数理统计" scheme="http://tessiehe.github.io/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>股价问题动态规划</title>
+    <link href="http://tessiehe.github.io/2022/03/01/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%82%A1%E4%BB%B7%E9%97%AE%E9%A2%98%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <id>http://tessiehe.github.io/2022/03/01/3_数理统计/股价问题动态规划/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T04:05:20.500Z</updated>
+    
+    <content type="html"><![CDATA[<p>股价问题动态规划</p><span id="more"></span><p>很多读者抱怨股票系列问题奇技淫巧太多，如果面试真的遇到这类问题，基本不会想到那些巧妙的办法，怎么办？所以本文拒绝奇技淫巧，而是稳扎稳打，只用一种通用方法解决所用问题，以不变应万变。</p><p>这篇文章用状态机的技巧来解决，可以全部提交通过。不要觉得这个名词高大上，文学词汇而已，实际上就是 DP table，看一眼就明白了。</p><p>先随便抽出一道题，看看别人的解法：</p><p>int maxProfit(vector<int>&amp; prices) {<br>    if(prices.empty()) return 0;<br>    int s1=-prices[0],s2=INT_MIN,s3=INT_MIN,s4=INT_MIN;</p><pre><code>for(int i=1;i&lt;prices.size();++i) &#123;                s1 = max(s1, -prices[i]);    s2 = max(s2, s1+prices[i]);    s3 = max(s3, s2-prices[i]);    s4 = max(s4, s3+prices[i]);&#125;return max(0,s4);</code></pre><p>}<br>能看懂吧？会做了吗？不可能的，你看不懂，这才正常。就算你勉强看懂了，下一个问题你还是做不出来。为什么别人能写出这么诡异却又高效的解法呢？因为这类问题是有框架的，但是人家不会告诉你的，因为一旦告诉你，你五分钟就学会了，该算法题就不再神秘，变得不堪一击了。</p><p>本文就来告诉你这个框架，然后带着你一道一道秒杀。</p><p>这 6 道股票买卖问题是有共性的，我们通过对第四题（限制最大交易次数为 k）的分析一道一道解决。因为第四题是一个最泛化的形式，其他的问题都是这个形式的简化。</p><p>第一题是只进行一次交易，相当于 k = 1；第二题是不限交易次数，相当于 k = +infinity（正无穷）；第三题是只进行 2 次交易，相当于 k = 2；剩下两道也是不限次数，但是加了交易「冷冻期」和「手续费」的额外条件，其实就是第二题的变种，都很容易处理。</p><p>一、穷举框架<br>首先，还是一样的思路：如何穷举？这里的穷举思路和上篇文章递归的思想不太一样。</p><p>递归其实是符合我们思考的逻辑的，一步步推进，遇到无法解决的就丢给递归，一不小心就做出来了，可读性还很好。缺点就是一旦出错，你也不容易找到错误出现的原因。比如上篇文章的递归解法，肯定还有计算冗余，但确实不容易找到。</p><p>而这里，我们不用递归思想进行穷举，而是利用「状态」进行穷举。我们具体到每一天，看看总共有几种可能的「状态」，再找出每个「状态」对应的「选择」。我们要穷举所有「状态」，穷举的目的是根据对应的「选择」更新状态。听起来抽象，你只要记住「状态」和「选择」两个词就行，下面实操一下就很容易明白了。</p><p>for 状态1 in 状态1的所有取值：<br>    for 状态2 in 状态2的所有取值：<br>        for …<br>            dp[状态1][状态2][…] = 择优(选择1，选择2…)<br>比如说这个问题，每天都有三种「选择」：买入、卖出、无操作，我们用 buy, sell, rest 表示这三种选择。但问题是，并不是每天都可以任意选择这三种选择的，因为 sell 必须在 buy 之后，buy 必须在 sell 之后。那么 rest 操作还应该分两种状态，一种是 buy 之后的 rest（持有了股票），一种是 sell 之后的 rest（没有持有股票）。而且别忘了，我们还有交易次数 k 的限制，就是说你 buy 还只能在 k &gt; 0 的前提下操作。</p><p>很复杂对吧，不要怕，我们现在的目的只是穷举，你有再多的状态，老夫要做的就是一把梭全部列举出来。这个问题的「状态」有三个，第一个是天数，第二个是允许交易的最大次数，第三个是当前的持有状态（即之前说的 rest 的状态，我们不妨用 1 表示持有，0 表示没有持有）。然后我们用一个三维数组就可以装下这几种状态的全部组合：</p><p>dp[i][k][0 or 1]<br>0 &lt;= i &lt;= n-1, 1 &lt;= k &lt;= K<br>n 为天数，大 K 为最多交易数<br>此问题共 n × K × 2 种状态，全部穷举就能搞定。</p><p>for 0 &lt;= i &lt; n:<br>    for 1 &lt;= k &lt;= K:<br>        for s in {0, 1}:<br>            dp[i][k][s] = max(buy, sell, rest)<br>而且我们可以用自然语言描述出每一个状态的含义，比如说 dp[3][2][1] 的含义就是：今天是第三天，我现在手上持有着股票，至今最多进行 2 次交易。再比如 dp[2][3][0] 的含义：今天是第二天，我现在手上没有持有股票，至今最多进行 3 次交易。很容易理解，对吧？</p><p>我们想求的最终答案是 dp[n - 1][K][0]，即最后一天，最多允许 K 次交易，最多获得多少利润。读者可能问为什么不是 dp[n - 1][K][1]？因为 [1] 代表手上还持有股票，[0] 表示手上的股票已经卖出去了，很显然后者得到的利润一定大于前者。</p><p>记住如何解释「状态」，一旦你觉得哪里不好理解，把它翻译成自然语言就容易理解了。</p><p>二、状态转移框架<br>现在，我们完成了「状态」的穷举，我们开始思考每种「状态」有哪些「选择」，应该如何更新「状态」。只看「持有状态」，可以画个状态转移图。</p><p>通过这个图可以很清楚地看到，每种状态（0 和 1）是如何转移而来的。根据这个图，我们来写一下状态转移方程：</p><p>dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])<br>              max(   选择 rest  ,           选择 sell      )</p><p>解释：今天我没有持有股票，有两种可能：<br>要么是我昨天就没有持有，然后今天选择 rest，所以我今天还是没有持有；<br>要么是我昨天持有股票，但是今天我 sell 了，所以我今天没有持有股票了。</p><p>dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])<br>              max(   选择 rest  ,           选择 buy         )</p><p>解释：今天我持有着股票，有两种可能：<br>要么我昨天就持有着股票，然后今天选择 rest，所以我今天还持有着股票；<br>要么我昨天本没有持有，但今天我选择 buy，所以今天我就持有股票了。<br>这个解释应该很清楚了，如果 buy，就要从利润中减去 prices[i]，如果 sell，就要给利润增加 prices[i]。今天的最大利润就是这两种可能选择中较大的那个。而且注意 k 的限制，我们在选择 buy 的时候，把 k 减小了 1，很好理解吧，当然你也可以在 sell 的时候减 1，一样的。</p><p>现在，我们已经完成了动态规划中最困难的一步：状态转移方程。如果之前的内容你都可以理解，那么你已经可以秒杀所有问题了，只要套这个框架就行了。不过还差最后一点点，就是定义 base case，即最简单的情况。</p><p>dp[-1][k][0] = 0<br>解释：因为 i 是从 0 开始的，所以 i = -1 意味着还没有开始，这时候的利润当然是 0 。<br>dp[-1][k][1] = -infinity<br>解释：还没开始的时候，是不可能持有股票的，用负无穷表示这种不可能。<br>dp[i][0][0] = 0<br>解释：因为 k 是从 1 开始的，所以 k = 0 意味着根本不允许交易，这时候利润当然是 0 。<br>dp[i][0][1] = -infinity<br>解释：不允许交易的情况下，是不可能持有股票的，用负无穷表示这种不可能。<br>把上面的状态转移方程总结一下：</p><p>base case：<br>dp[-1][k][0] = dp[i][0][0] = 0<br>dp[-1][k][1] = dp[i][0][1] = -infinity</p><p>状态转移方程：<br>dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])<br>dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])<br>读者可能会问，这个数组索引是 -1 怎么编程表示出来呢，负无穷怎么表示呢？这都是细节问题，有很多方法实现。现在完整的框架已经完成，下面开始具体化。</p><p>三、秒杀题目<br>第一题，k = 1</p><p>直接套状态转移方程，根据 base case，可以做一些化简：</p><p>dp[i][1][0] = max(dp[i-1][1][0], dp[i-1][1][1] + prices[i])<br>dp[i][1][1] = max(dp[i-1][1][1], dp[i-1][0][0] - prices[i])<br>            = max(dp[i-1][1][1], -prices[i])<br>解释：k = 0 的 base case，所以 dp[i-1][0][0] = 0。</p><p>现在发现 k 都是 1，不会改变，即 k 对状态转移已经没有影响了。<br>可以进行进一步化简去掉所有 k：<br>dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])<br>dp[i][1] = max(dp[i-1][1], -prices[i])<br>直接写出代码：</p><p>int n = prices.length;<br>int[][] dp = new int[n][2];<br>for (int i = 0; i &lt; n; i++) {<br>    dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1] + prices[i]);<br>    dp[i][1] = Math.max(dp[i-1][1], -prices[i]);<br>}<br>return dp[n - 1][0];<br>显然 i = 0 时 dp[i-1] 是不合法的。这是因为我们没有对 i 的 base case 进行处理。可以这样处理：</p><p>for (int i = 0; i &lt; n; i++) {<br>    if (i - 1 == -1) {<br>        dp[i][0] = 0;<br>        // 解释：<br>        //   dp[i][0]<br>        // = max(dp[-1][0], dp[-1][1] + prices[i])<br>        // = max(0, -infinity + prices[i]) = 0<br>        dp[i][1] = -prices[i];<br>        //解释：<br>        //   dp[i][1]<br>        // = max(dp[-1][1], dp[-1][0] - prices[i])<br>        // = max(-infinity, 0 - prices[i])<br>        // = -prices[i]<br>        continue;<br>    }<br>    dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1] + prices[i]);<br>    dp[i][1] = Math.max(dp[i-1][1], -prices[i]);<br>}<br>return dp[n - 1][0];<br>第一题就解决了，但是这样处理 base case 很麻烦，而且注意一下状态转移方程，新状态只和相邻的一个状态有关，其实不用整个 dp 数组，只需要一个变量储存相邻的那个状态就足够了，这样可以把空间复杂度降到 O(1):</p><p>// k == 1<br>int maxProfit_k_1(int[] prices) {<br>    int n = prices.length;<br>    // base case: dp[-1][0] = 0, dp[-1][1] = -infinity<br>    int dp_i_0 = 0, dp_i_1 = Integer.MIN_VALUE;<br>    for (int i = 0; i &lt; n; i++) {<br>        // dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])<br>        dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);<br>        // dp[i][1] = max(dp[i-1][1], -prices[i])<br>        dp_i_1 = Math.max(dp_i_1, -prices[i]);<br>    }<br>    return dp_i_0;<br>}<br>两种方式都是一样的，不过这种编程方法简洁很多。但是如果没有前面状态转移方程的引导，是肯定看不懂的。后续的题目，我主要写这种空间复杂度 O(1) 的解法。</p><p>第二题，k = +infinity</p><p>如果 k 为正无穷，那么就可以认为 k 和 k - 1 是一样的。可以这样改写框架：</p><p>dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])<br>dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])<br>            = max(dp[i-1][k][1], dp[i-1][k][0] - prices[i])</p><p>我们发现数组中的 k 已经不会改变了，也就是说不需要记录 k 这个状态了：<br>dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])<br>dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i])<br>直接翻译成代码：</p><p>int maxProfit_k_inf(int[] prices) {<br>    int n = prices.length;<br>    int dp_i_0 = 0, dp_i_1 = Integer.MIN_VALUE;<br>    for (int i = 0; i &lt; n; i++) {<br>        int temp = dp_i_0;<br>        dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);<br>        dp_i_1 = Math.max(dp_i_1, temp - prices[i]);<br>    }<br>    return dp_i_0;<br>}<br>第三题，k = +infinity with cooldown</p><p>每次 sell 之后要等一天才能继续交易。只要把这个特点融入上一题的状态转移方程即可：</p><p>dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])<br>dp[i][1] = max(dp[i-1][1], dp[i-2][0] - prices[i])<br>解释：第 i 天选择 buy 的时候，要从 i-2 的状态转移，而不是 i-1 。<br>翻译成代码：</p><p>int maxProfit_with_cool(int[] prices) {<br>    int n = prices.length;<br>    int dp_i_0 = 0, dp_i_1 = Integer.MIN_VALUE;<br>    int dp_pre_0 = 0; // 代表 dp[i-2][0]<br>    for (int i = 0; i &lt; n; i++) {<br>        int temp = dp_i_0;<br>        dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);<br>        dp_i_1 = Math.max(dp_i_1, dp_pre_0 - prices[i]);<br>        dp_pre_0 = temp;<br>    }<br>    return dp_i_0;<br>}<br>第四题，k = +infinity with fee</p><p>每次交易要支付手续费，只要把手续费从利润中减去即可。改写方程：</p><p>dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])<br>dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i] - fee)<br>解释：相当于买入股票的价格升高了。<br>在第一个式子里减也是一样的，相当于卖出股票的价格减小了。<br>直接翻译成代码：</p><p>int maxProfit_with_fee(int[] prices, int fee) {<br>    int n = prices.length;<br>    int dp_i_0 = 0, dp_i_1 = Integer.MIN_VALUE;<br>    for (int i = 0; i &lt; n; i++) {<br>        int temp = dp_i_0;<br>        dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);<br>        dp_i_1 = Math.max(dp_i_1, temp - prices[i] - fee);<br>    }<br>    return dp_i_0;<br>}<br>第五题，k = 2</p><p>k = 2 和前面题目的情况稍微不同，因为上面的情况都和 k 的关系不太大。要么 k 是正无穷，状态转移和 k 没关系了；要么 k = 1，跟 k = 0 这个 base case 挨得近，最后也没有存在感。</p><p>这道题 k = 2 和后面要讲的 k 是任意正整数的情况中，对 k 的处理就凸显出来了。我们直接写代码，边写边分析原因。</p><p>原始的动态转移方程，没有可化简的地方<br>dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])<br>dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])<br>按照之前的代码，我们可能想当然这样写代码（错误的）：</p><p>int k = 2;<br>int[][][] dp = new int[n][k + 1][2];<br>for (int i = 0; i &lt; n; i++)<br>    if (i - 1 == -1) { /<em> 处理一下 base case</em>/ }<br>    dp[i][k][0] = Math.max(dp[i-1][k][0], dp[i-1][k][1] + prices[i]);<br>    dp[i][k][1] = Math.max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i]);<br>}<br>return dp[n - 1][k][0];<br>为什么错误？我这不是照着状态转移方程写的吗？</p><p>还记得前面总结的「穷举框架」吗？就是说我们必须穷举所有状态。其实我们之前的解法，都在穷举所有状态，只是之前的题目中 k 都被化简掉了。这道题由于没有消掉 k 的影响，所以必须要对 k 进行穷举：</p><p>int max_k = 2;<br>int[][][] dp = new int[n][max_k + 1][2];<br>for (int i = 0; i &lt; n; i++) {<br>    for (int k = max_k; k &gt;= 1; k—) {<br>        if (i - 1 == -1) {<br>            /<em> 处理 base case </em>/<br>            dp[i][k][0] = 0;<br>            dp[i][k][1] = -prices[i];<br>            continue;<br>        }<br>        dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i]);<br>        dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i]);<br>    }<br>}<br>// 穷举了 n × max_k × 2 个状态，正确。<br>return dp[n - 1][max_k][0];<br>如果你不理解，可以返回第一点「穷举框架」重新阅读体会一下。</p><p>这里 k 取值范围比较小，所以可以不用 for 循环，直接把 k = 1 和 2 的情况手动列举出来也可以：</p><p>dp[i][2][0] = max(dp[i-1][2][0], dp[i-1][2][1] + prices[i])<br>dp[i][2][1] = max(dp[i-1][2][1], dp[i-1][1][0] - prices[i])<br>dp[i][1][0] = max(dp[i-1][1][0], dp[i-1][1][1] + prices[i])<br>dp[i][1][1] = max(dp[i-1][1][1], -prices[i])</p><p>int maxProfit_k_2(int[] prices) {<br>    int dp_i10 = 0, dp_i11 = Integer.MIN_VALUE;<br>    int dp_i20 = 0, dp_i21 = Integer.MIN_VALUE;<br>    for (int price : prices) {<br>        dp_i20 = Math.max(dp_i20, dp_i21 + price);<br>        dp_i21 = Math.max(dp_i21, dp_i10 - price);<br>        dp_i10 = Math.max(dp_i10, dp_i11 + price);<br>        dp_i11 = Math.max(dp_i11, -price);<br>    }<br>    return dp_i20;<br>}<br>有状态转移方程和含义明确的变量名指导，相信你很容易看懂。其实我们可以故弄玄虚，把上述四个变量换成 a, b, c, d。这样当别人看到你的代码时就会一头雾水，大惊失色，不得不对你肃然起敬。</p><p>第六题，k = any integer</p><p>有了上一题 k = 2 的铺垫，这题应该和上一题的第一个解法没啥区别。但是出现了一个超内存的错误，原来是传入的 k 值会非常大，dp 数组太大了。现在想想，交易次数 k 最多有多大呢？</p><p>一次交易由买入和卖出构成，至少需要两天。所以说有效的限制 k 应该不超过 n/2，如果超过，就没有约束作用了，相当于 k = +infinity。这种情况是之前解决过的。</p><p>直接把之前的代码重用：</p><p>int maxProfit_k_any(int max_k, int[] prices) {<br>    int n = prices.length;<br>    if (max_k &gt; n / 2)<br>        return maxProfit_k_inf(prices);</p><pre><code>int[][][] dp = new int[n][max_k + 1][2];for (int i = 0; i &lt; n; i++)     for (int k = max_k; k &gt;= 1; k--) &#123;        if (i - 1 == -1) &#123;             /* 处理 base case */            dp[i][k][0] = 0;            dp[i][k][1] = -prices[i];            continue;        &#125;        dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i]);        dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i]);         &#125;return dp[n - 1][max_k][0];</code></pre><p>}<br>至此，6 道题目通过一个状态转移方程全部解决。</p><p>四、最后总结<br>本文给大家讲了如何通过状态转移的方法解决复杂的问题，用一个状态转移方程秒杀了 6 道股票买卖问题，现在想想，其实也不算难对吧？这已经属于动态规划问题中较困难的了。</p><p>关键就在于列举出所有可能的「状态」，然后想想怎么穷举更新这些「状态」。一般用一个多维 dp 数组储存这些状态，从 base case 开始向后推进，推进到最后的状态，就是我们想要的答案。想想这个过程，你是不是有点理解「动态规划」这个名词的意义了呢？</p><p>具体到股票买卖问题，我们发现了三个状态，使用了一个三维数组，无非还是穷举 + 更新，不过我们可以说的高大上一点，这叫「三维 DP」，怕不怕？这个大实话一说，立刻显得你高人一等，名利双收有没有。</p><p>所以，大家不要被各种高大上的名词吓到，再多的困难问题，奇技淫巧，也不过是基本套路的不断升级组合产生的。只要把住算法的底层原理，即可举一反三，逐个击破。</p><p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-l-3/">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-l-3/</a><br>来源：力扣（LeetCode）<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;股价问题动态规划&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数理统计" scheme="http://tessiehe.github.io/categories/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+    
+      <category term="数理统计" scheme="http://tessiehe.github.io/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
   
   <entry>
     <title>Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising</title>
@@ -34,9 +154,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -58,9 +178,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -82,33 +202,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Uplift Modeling</title>
-    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Uplift%20Modeling/"/>
-    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/Uplift Modeling/</id>
-    <published>2022-03-01T03:32:38.000Z</published>
-    <updated>2022-03-01T03:59:30.990Z</updated>
-    
-    <content type="html"><![CDATA[<p>Uplift Modeling</p><span id="more"></span><p>Uplift Modeling</p><h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>增量模型，用于预估某种干预对结果的因果关系（ITE，Individual Treatment Effect），即预测：</p><h1 id="基本假设"><a href="#基本假设" class="headerlink" title="基本假设"></a>基本假设</h1>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Uplift Modeling&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-    
       <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
@@ -130,9 +226,33 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
       <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
+  </entry>
+  
+  <entry>
+    <title>Uplift Modeling</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Uplift%20Modeling/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/Uplift Modeling/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.990Z</updated>
+    
+    <content type="html"><![CDATA[<p>Uplift Modeling</p><span id="more"></span><p>Uplift Modeling</p><h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>增量模型，用于预估某种干预对结果的因果关系（ITE，Individual Treatment Effect），即预测：</p><h1 id="基本假设"><a href="#基本假设" class="headerlink" title="基本假设"></a>基本假设</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Uplift Modeling&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -154,9 +274,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -178,9 +298,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -202,9 +322,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -226,9 +346,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -250,9 +370,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -274,9 +394,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -298,9 +418,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -322,9 +442,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -346,9 +466,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
@@ -370,129 +490,9 @@
       <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
       <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
-  </entry>
-  
-  <entry>
-    <title>机器学习基础</title>
-    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
-    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/机器学习基础/</id>
-    <published>2022-03-01T03:32:38.000Z</published>
-    <updated>2022-03-01T03:59:30.976Z</updated>
-    
-    <content type="html"><![CDATA[<p>机器学习基础</p><span id="more"></span><p>[TOC]</p><h1 id="Woe"><a href="#Woe" class="headerlink" title="Woe"></a>Woe</h1><p>WOE的全称是“weight of evidence”，即证据权重, WOE表示的含义即是”<strong>当前分组中响应客户占所有响应客户的比例”和”当前分组中没有响应的客户占所有没有响应客户的比例</strong>“的差异。先把分析变量进行分箱，每个分箱内的$w_{oe}$为</p><script type="math/tex; mode=display">woe_i=\frac{当前分组中响应客户占所有响应客户的比例}{当前分组中没有响应的客户占所有没有响应客户的比例}=ln\frac{P_{y_i}}{P_{n_i}}=ln\frac{y_1/y_2}{n_i/n_s}</script><script type="math/tex; mode=display">woe_i=\frac{sum(y_i)/sum(y_s)}{sum(1-y_i)/sum(1-y_s)}</script><p>该值绝对值越大说明变量区分能力越强</p><h1 id="IV"><a href="#IV" class="headerlink" title="IV"></a>IV</h1><p>IV衡量的是某一个变量的信息量，从公式来看的话，相当于是自变量WOE值的一个加权求和，其值的大小决定了自变量对于目标变量的影响程度</p><script type="math/tex; mode=display">IV_i=(P_{y_i}-P_{n_i})*woe_i</script><p>WOE 和 IV 都能表达某个分组对目标变量的预测能力。但实际中，我们通常选择 IV 而不是 WOE 的和来衡量变量预测的能力，这是为什么呢？首先，因为我们在衡量一个变量的预测能力时，我们所使用的指标值不应该是负数。从这意义上来说，IV 比 WOE 多乘以前面那个因子，就保证了它不会是负数；然后，乘以(Pyi−Pni)这个因子，体现出了变量当前分组中个体的数量占整体的比例，从而很好考虑了这个分组中样本占整体的比例，比例越低，这个分组对变量整体预测能力的贡献越低。相反，如果直接用 WOE 的绝对值加和，会因为该分组出现次数偏少的影响而得到一个很高的指标。</p><h1 id="AUC-amp-KS"><a href="#AUC-amp-KS" class="headerlink" title="AUC &amp; KS"></a>AUC &amp; KS</h1><h1 id="信息熵（information-entropy）"><a href="#信息熵（information-entropy）" class="headerlink" title="信息熵（information entropy）"></a>信息熵（information entropy）</h1><p>衡量样本纯度，熵越小越纯,样本D有K类样本，其信息熵为</p><script type="math/tex; mode=display">Ent(D)=-\sum_{k=1}^{K}p_klog_2p_k</script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;机器学习基础&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-    
       <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>李宏毅强化学习笔记</title>
-    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9D%8E%E5%AE%8F%E6%AF%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/李宏毅强化学习笔记/</id>
-    <published>2022-03-01T03:32:38.000Z</published>
-    <updated>2022-03-01T03:59:30.983Z</updated>
-    
-    <content type="html"><![CDATA[<p>李宏毅强化学习笔记</p><span id="more"></span><p>[TOC]</p><h1 id="PART1"><a href="#PART1" class="headerlink" title="PART1"></a>PART1</h1><p><strong>什么是强化学习</strong></p><p>强化学习决策过程包括4个环节：agent观察环境（observation）—-agent做出动作（action）——动作会引起环境的变化 —- agent得到奖励（reward）—-agent再次观察环境（observation）。强化学习就是通过学习实现agent的决策序列收益（reward）最大。</p><p><strong>强化学习的分类</strong></p><p>policy based, grade based, model based。 这三种方式其实是不同的reward方式</p><h1 id="PART-2"><a href="#PART-2" class="headerlink" title="PART 2"></a>PART 2</h1><h1 id="PART-3"><a href="#PART-3" class="headerlink" title="PART 3"></a>PART 3</h1>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;李宏毅强化学习笔记&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深度学习笔记</title>
-    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/深度学习笔记/</id>
-    <published>2022-03-01T03:32:38.000Z</published>
-    <updated>2022-03-01T03:59:30.989Z</updated>
-    
-    <content type="html"><![CDATA[<p>深度学习笔记</p><span id="more"></span><h1 id="深度学习笔记"><a href="#深度学习笔记" class="headerlink" title="深度学习笔记"></a>深度学习笔记</h1><h2 id="BatchNorm"><a href="#BatchNorm" class="headerlink" title="BatchNorm"></a>BatchNorm</h2><ul><li><p>基本思想：</p><p>深度网络对输入的分布式敏感的，若采用mini-batch方法训练模型，则每次样本分布式不同的。不仅第一层如此，由于非线性的变换，后面每一层的输入（即前一层的输出）的分布都是不一样的，不符合IID独立同分布假设，模型训练也会越来越困难，也就是所谓的internal covariate shift问题。所以考虑在每一层的线下变换后，非线性变化之前，将输出强制变换为0-1分布。</p><p>这样做是受图像处理中的白化（whiten）操作的启发：就是对输入数据分布变换到0均值，单位方差的正态分布</p><p>所以本质就是：<strong>对于每个隐层神经元，把逐渐向非线性函数映射后向取值区间极限饱和区靠拢的输入分布强制拉回到均值为0方差为1的比较标准的正态分布，使得非线性变换函数的输入值落入对输入比较敏感的区域，以此避免梯度消失问题。</strong> </p><p>但是，都通过BN，那么不就跟把非线性函数替换成线性函数效果相同了？这意味着什么？我们知道，如果是多层的线性函数变换其实这个深层是没有意义的，因为多层线性网络跟一层线性网络是等价的。这意味着网络的<strong>表达能力</strong>下降了，这也意味着深度的意义就没有了。<strong>所以BN为了保证非线性的获得，对变换后的满足均值为0方差为1的x又进行了scale加上shift操作(y=scale*x+shift)</strong>，每个神经元增加了两个参数scale和shift参数，这两个参数是通过训练学习到的，意思是通过scale和shift把这个值从标准正态分布左移或者右移一点并长胖一点或者变瘦一点，每个实例挪动的程度不一样，这样等价于非线性函数的值从正中心周围的线性区往非线性区动了动。核心思想应该是想找到一个线性和非线性的较好平衡点，既能享受非线性的较强表达能力的好处，又避免太靠非线性区两头使得网络收敛速度太慢。 </p></li><li><p>流程：</p><p><img src="深度学习笔记.assets\1541386887738.png" alt="1541386887738"></p></li><li><p>inference过程：</p><p>由于inference过程只有一个实例，无法获得期望和方差，可用全局方差代替。具体来说就是记住每一个mini-batch的方差和期望，然后统计出全局统计量</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;深度学习笔记&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>联邦树模型</title>
-    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%81%94%E9%82%A6%E6%A0%91%E6%A8%A1%E5%9E%8B/"/>
-    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/联邦树模型/</id>
-    <published>2022-03-01T03:32:38.000Z</published>
-    <updated>2022-03-01T03:59:30.993Z</updated>
-    
-    <content type="html"><![CDATA[<p>联邦树模型</p><span id="more"></span><p>[TOC]</p><h1 id="普通XGB原理"><a href="#普通XGB原理" class="headerlink" title="普通XGB原理"></a>普通XGB原理</h1><h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><h1 id="联邦GXB"><a href="#联邦GXB" class="headerlink" title="联邦GXB"></a>联邦GXB</h1>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;联邦树模型&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自然语言处理笔记</title>
-    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/"/>
-    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/自然语言处理笔记/</id>
-    <published>2022-03-01T03:32:38.000Z</published>
-    <updated>2022-03-01T03:59:30.990Z</updated>
-    
-    <content type="html"><![CDATA[<p>自然语言处理笔记</p><span id="more"></span><p>[TOC]</p><h1 id="文本特征提取"><a href="#文本特征提取" class="headerlink" title="文本特征提取"></a>文本特征提取</h1><h2 id="TF-IDF"><a href="#TF-IDF" class="headerlink" title="TF-IDF"></a>TF-IDF</h2><p><a href="https://blog.csdn.net/The_lastest/article/details/79093407">链接</a></p><blockquote><p>TF-IDF是传统的统计算法，用于评估一个词在一个文档集中对于某一个文档的重要程度。它与这个词在当前文档中的词频成正比，与文档集中的其他词频成反比</p></blockquote><p>x:多个文档，如多个电影评论</p><p>y:针对每个文档可以提取关键词</p><h1 id="gensim"><a href="#gensim" class="headerlink" title="gensim"></a>gensim</h1><p><a href="https://blog.csdn.net/CoderPai/article/details/80250380">https://blog.csdn.net/CoderPai/article/details/80250380</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#train</span></span><br><span class="line"><span class="keyword">from</span> gensim.test.utils <span class="keyword">import</span> common_texts, get_tmpfile</span><br><span class="line"><span class="keyword">from</span> gensim.models <span class="keyword">import</span> Word2Vec</span><br><span class="line">model_name=<span class="string">&#x27;test&#x27;</span></span><br><span class="line">path = get_tmpfile(model_name + <span class="string">&#x27;.model&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> params <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    params = &#123;</span><br><span class="line">        <span class="string">&#x27;size&#x27;</span>: <span class="number">100</span>,</span><br><span class="line">        <span class="string">&#x27;window&#x27;</span>: <span class="number">10</span>,</span><br><span class="line">        <span class="string">&#x27;min_count&#x27;</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="string">&#x27;workers&#x27;</span>: <span class="number">4</span>,</span><br><span class="line">        <span class="string">&#x27;compute_loss&#x27;</span>: <span class="literal">True</span></span><br><span class="line">    &#125;</span><br><span class="line">model = Word2Vec([[<span class="string">&#x27;我&#x27;</span>,<span class="string">&#x27;是&#x27;</span>,<span class="string">&#x27;天才&#x27;</span>],[<span class="string">&#x27;你&#x27;</span>，<span class="string">&#x27;是&#x27;</span>，<span class="string">&#x27;呵呵&#x27;</span>]] **params)  <span class="comment"># get_latest_training_loss().</span></span><br><span class="line">model.save(path)</span><br><span class="line"><span class="comment">#pred</span></span><br><span class="line">model=Word2Vec.load(path)</span><br><span class="line"> </span><br></pre></td></tr></table></figure><ul><li>size: 词向量的维度。</li><li>alpha: 模型初始的学习率。</li><li>window: 表示在一个句子中，当前词于预测词在一个句子中的最大距离。</li><li>min_count: 用于过滤操作，词频少于 min_count 次数的单词会被丢弃掉，默认值为 5。</li><li>max_vocab_size: 设置词向量构建期间的 RAM 限制。如果所有的独立单词数超过这个限定词，那么就删除掉其中词频最低的那个。根据统计，每一千万个单词大概需要 1GB 的RAM。如果我们把该值设置为 None ，则没有限制。</li><li>sample: 高频词汇的随机降采样的配置阈值，默认为 1e-3，范围是 (0, 1e-5)。</li><li>seed: 用于随机数发生器。与词向量的初始化有关。</li><li>workers: 控制训练的并行数量。</li><li>min_alpha: 随着训练进行，alpha 线性下降到 min_alpha。</li><li>sg: 用于设置训练算法。当 sg=0，使用 CBOW 算法来进行训练；当 sg=1，使用 skip-gram 算法来进行训练。</li><li>hs: 如果设置为 1 ，那么系统会采用 hierarchica softmax 技巧。如果设置为 0（默认情况），则系统会采用 negative samping 技巧。</li><li>negative: 如果这个值大于 0，那么 negative samping 会被使用。该值表示 “noise words” 的数量，一般这个值是 5 - 20，默认是 5。如果这个值设置为 0，那么 negative samping 没有使用。</li><li>cbow_mean: 如果这个值设置为 0，那么就采用上下文词向量的总和。如果这个值设置为 1 （默认情况下），那么我们就采用均值。但这个值只有在使用 CBOW 的时候才起作用。</li><li>hashfxn: hash函数用来初始化权重，默认情况下使用 Python 自带的 hash 函数。</li><li>iter: 算法迭代次数，默认为 5。</li><li>trim_rule: 用于设置词汇表的整理规则，用来指定哪些词需要被剔除，哪些词需要保留。默认情况下，如果 word count &lt; min_count，那么该词被剔除。这个参数也可以被设置为 None，这种情况下 min_count 会被使用。</li><li>sorted_vocab: 如果这个值设置为 1（默认情况下），则在分配 word index 的时候会先对单词基于频率降序排序。</li><li>batch_words: 每次批处理给线程传递的单词的数量，默认是 10000。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;自然语言处理笔记&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
