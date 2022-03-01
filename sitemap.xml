@@ -51,6 +51,27 @@
   </url>
   
   <url>
+    <loc>http://wangdongdong122.github.io/2021/06/26/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-06-26-hexo%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2021-12-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangdongdong122.github.io/2021/06/23/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-06-23-%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</loc>
+    
+    <lastmod>2021-12-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangdongdong122.github.io/2021/07/14/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-07-14-hexo%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/</loc>
+    
+    <lastmod>2021-12-18</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangdongdong122.github.io/2021/12/09/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9D%8E%E5%AE%8F%E6%AF%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2021-12-17</lastmod>
@@ -324,20 +345,6 @@
   </url>
   
   <url>
-    <loc>http://wangdongdong122.github.io/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E7%9F%A9%E9%98%B5%E6%98%A0%E5%B0%84/</loc>
-    
-    <lastmod>2019-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangdongdong122.github.io/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1--%E6%B5%99%E5%A4%A7/</loc>
-    
-    <lastmod>2019-10-11</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://wangdongdong122.github.io/2019/10/11/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E6%A8%A1%E5%9E%8B/</loc>
     
     <lastmod>2019-10-11</lastmod>
@@ -352,6 +359,20 @@
   </url>
   
   <url>
+    <loc>http://wangdongdong122.github.io/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E7%9F%A9%E9%98%B5%E6%98%A0%E5%B0%84/</loc>
+    
+    <lastmod>2019-10-11</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangdongdong122.github.io/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1--%E6%B5%99%E5%A4%A7/</loc>
+    
+    <lastmod>2019-10-11</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangdongdong122.github.io/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/VPN%E6%90%AD%E5%BB%BA/</loc>
     
     <lastmod>2019-10-11</lastmod>
@@ -359,14 +380,14 @@
   </url>
   
   <url>
-    <loc>http://wangdongdong122.github.io/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/mathtype%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/</loc>
+    <loc>http://wangdongdong122.github.io/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/numpy/</loc>
     
     <lastmod>2019-10-11</lastmod>
     
   </url>
   
   <url>
-    <loc>http://wangdongdong122.github.io/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/numpy/</loc>
+    <loc>http://wangdongdong122.github.io/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/mathtype%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2019-10-11</lastmod>
     
@@ -388,13 +409,6 @@
   
   <url>
     <loc>http://wangdongdong122.github.io/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/sklearn/</loc>
-    
-    <lastmod>2019-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangdongdong122.github.io/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2019-10-11</lastmod>
     
@@ -456,60 +470,95 @@
     
   </url>
   
+  <url>
+    <loc>http://wangdongdong122.github.io/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-10-11</lastmod>
+    
+  </url>
+  
 
   <url>
     <loc>http://wangdongdong122.github.io/</loc>
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>http://wangdongdong122.github.io/tags/bug/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wangdongdong122.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wangdongdong122.github.io/tags/hexo/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wangdongdong122.github.io/tags/Hexo/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://wangdongdong122.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangdongdong122.github.io/tags/Attention/</loc>
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangdongdong122.github.io/tags/Transformer/</loc>
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangdongdong122.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangdongdong122.github.io/tags/%E6%AF%8F%E6%97%A5%E8%AE%BA%E6%96%87/</loc>
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangdongdong122.github.io/tags/%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangdongdong122.github.io/tags/NLP/</loc>
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -517,8 +566,15 @@
 
   
   <url>
+    <loc>http://wangdongdong122.github.io/categories/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://wangdongdong122.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-02-28</lastmod>
+    <lastmod>2022-03-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

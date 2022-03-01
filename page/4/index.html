@@ -163,6 +163,285 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/04/19/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pandas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/19/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pandas/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-19 18:24:34" itemprop="dateCreated datePublished" datetime="2020-04-19T18:24:34+08:00">2020-04-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[TOC]</p>
+<h1 id="python调用shell"><a href="#python调用shell" class="headerlink" title="python调用shell"></a>python调用shell</h1><p>在python程序中调用shell命令，是件很酷且常用的事情……</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pengdonglin137/articles/8093409.html">https://www.cnblogs.com/pengdonglin137/articles/8093409.html</a></p>
+<h2 id="os-system-command"><a href="#os-system-command" class="headerlink" title="os.system(command)"></a>os.system(command)</h2><p>  此函数会启动子进程，在子进程中执行command，并返回command命令执行完毕后的退出状态，如果command有执行内容，会在标准输出显示。这实际上是使用C标准库函数system()实现的。</p>
+<blockquote>
+<p>缺点：这个函数在执行command命令时需要重新打开一个终端，并且无法保存command命令的执行结果。<br>实例：os.system(‘ls -l *’)</p>
+<h2 id="os-popen-command-mode"><a href="#os-popen-command-mode" class="headerlink" title="os.popen(command,mode)"></a>os.popen(command,mode)</h2></blockquote>
+<p>打开一个与command进程之间的管道。这个函数的返回值是一个文件对象，可以读或者写(由mode决定，mode默认是’r’)。如果mode为’r’，可以使用此函数的返回值调用read()来获取command命令的执行结果。</p>
+<p>os.system(cmd)或os.popen(cmd)，前者返回值是脚本的退出状态码，后者的返回值是脚本执行过程中的输出内容。实际使用时视需求情况而选择。</p>
+<p>实例：tmp = os.popen(‘ls -l *’).readlines()</p>
+<h1 id="同时写入多个sheet"><a href="#同时写入多个sheet" class="headerlink" title="同时写入多个sheet"></a>同时写入多个sheet</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_excel_pd</span>(<span class="params">file, sheet, data</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    excel title: name /  age</span></span><br><span class="line"><span class="string">        df1 = &#123;</span></span><br><span class="line"><span class="string">        &#x27;name&#x27;: [1, 2, 3],</span></span><br><span class="line"><span class="string">        &#x27;age&#x27;: [1, 2, 3]</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    pandas DataFrame  write to excel</span></span><br><span class="line"><span class="string">    :param file:  file_path + file_name</span></span><br><span class="line"><span class="string">    :param sheet: type：list</span></span><br><span class="line"><span class="string">    :param data: type: list  DataFrame</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    writer = pd.ExcelWriter(file)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(sheet)):</span><br><span class="line">        df = pd.DataFrame(data[i])</span><br><span class="line">        df.to_excel(excel_writer=writer, sheet_name=sheet[i])</span><br><span class="line">    writer.save()</span><br><span class="line">    writer.close()</span><br><span class="line">    log.info(<span class="string">&#x27;写入数据完成！&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="按条件过滤行"><a href="#按条件过滤行" class="headerlink" title="按条件过滤行"></a>按条件过滤行</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[df[A] &gt; <span class="number">0</span>] <span class="comment">#选出A列&gt;0的行</span></span><br><span class="line">df[df[A]。isin([<span class="number">0</span>,<span class="number">1</span>])] <span class="comment">#选出A列中是0或1的行</span></span><br></pre></td></tr></table></figure>
+<h1 id="读入"><a href="#读入" class="headerlink" title="读入"></a>读入</h1><p>import pandas as pd<br>df=pd.read_table(‘dddd.txt’,header=0,index_col=0,error_bad_lines=False,delimiter=’\t’)</p>
+<h1 id="列名"><a href="#列名" class="headerlink" title="列名"></a>列名</h1><p>df.columns</p>
+<h1 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.drop([<span class="string">&#x27;k&#x27;</span>], axis=<span class="number">1</span>, inplace=<span class="literal">True</span>) <span class="comment">#删除k列</span></span><br></pre></td></tr></table></figure>
+<h1 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h1><p>values={}<br>with open(‘fill_na.txt’) as f:<br>    for line in f:<br>        line = line.strip().split(‘:’)<br>        values[line[0]] = int(line[1])<br>df = df.fillna(value=values)<br>df = df.dropna(axis=0,how=’any’) #删除含有NULL的行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#删除指定列有空值的行</span></span><br><span class="line">df_ios_tmp=df_ios.dropna(subset=[列名],how=<span class="string">&#x27;all&#x27;</span>,inplace=<span class="literal">False</span>) <span class="comment">#how=all 或者 any</span></span><br></pre></td></tr></table></figure>
+<h1 id="shuffle"><a href="#shuffle" class="headerlink" title="shuffle"></a>shuffle</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sample(frac=<span class="number">1</span>).reset_index(drop=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="数据检查"><a href="#数据检查" class="headerlink" title="数据检查"></a>数据检查</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#datafram 每一列值unique数</span></span><br><span class="line">data_idfa.info(verbose=<span class="literal">True</span>, null_counts=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#每一列均值 方差等</span></span><br><span class="line">data_idfa.describe()</span><br></pre></td></tr></table></figure>
+
+<h1 id="group-by"><a href="#group-by" class="headerlink" title="group by"></a>group by</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_ios.groupby([<span class="string">&#x27;y_flag&#x27;</span>], as_index=<span class="literal">False</span>)[<span class="string">&#x27;dt&#x27;</span>].count() <span class="comment">#聚合函数除了count还有sum,min,max等</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_ios.groupby([<span class="string">&#x27;dt_m&#x27;</span>,<span class="string">&#x27;y_flag&#x27;</span>], as_index=<span class="literal">False</span>)[<span class="string">&#x27;pin&#x27;</span>].count()</span><br></pre></td></tr></table></figure>
+
+<h1 id="截取时间前几位"><a href="#截取时间前几位" class="headerlink" title="截取时间前几位"></a>截取时间前几位</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_ios[<span class="string">&#x27;dt_m&#x27;</span>]=df_ios[<span class="string">&#x27;dt&#x27;</span>].<span class="built_in">str</span>[<span class="number">0</span>:<span class="number">7</span>]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/04/14/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/14/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-14 16:30:10" itemprop="dateCreated datePublished" datetime="2020-04-14T16:30:10+08:00">2020-04-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="原始问题"><a href="#原始问题" class="headerlink" title="原始问题"></a>原始问题</h1><p>$f(x),c_i(x),h_i(x)$是在$R^n$上的<code>连续可微</code>函数，考虑约束最优化问题：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+min \quad f(x) \quad st \quad c_i(x)<0,i &=1,2...k  \\, 
+h_j(x)=0,j &=1,2...l
+\end{align}</script><p>此问题我们成为原始问题。</p>
+<p>为了方便解决此问题，我们引入<strong><code>广义拉格朗日函数</code></strong>L，可证明原始问题等价于拉格朗日函数的极小极大值问题。拉格朗日函数构造如下：</p>
+<script type="math/tex; mode=display">
+L(x,\alpha_i,\beta_j)=f(x)+\sum_{i=1}^k\alpha_ic_i(x)+\sum_{j=1}^l\beta_jh_j(x)，其中 x\in R^n,\alpha_i>0,\beta_j>0</script><p>我们考虑x的函数：</p>
+<script type="math/tex; mode=display">
+\theta_p(x)=max \quad L(x,\alpha_i,\beta_j),其中 x\in R^n,\alpha_i>0,\beta_j>0</script><p>可以证明  $min(\theta_p(x)) $等价于原始问题,即约束下的优化问题转化为了广义拉格朗日的极小极大值问题。</p>
+<p>【证明】约束下的优化问题转化为了广义拉格朗日的极小极大值问题</p>
+<p>满足$c_i(x)&lt;0,i =1,2…k ,h_j(x)=0,j =1,2…l$时， $max(L(x,\alpha_i,\beta_j)) = f(x)$,即$\theta_p(x)=f(x)$。</p>
+<p>不满足$c_i(x)&lt;0,i =1,2…k ,h_j(x)=0,j =1,2…l$时，可通过设置$\alpha_i 和\beta_j$ 使得$\theta_p(x)=+\infin $</p>
+<p>所以</p>
+<script type="math/tex; mode=display">
+\theta_p=\begin{cases}f(x),x满足原始问题条件 \\ 
++\infin , x不满足原始问题条件
+\end{cases}</script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/04/14/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A%E5%AD%A6%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/14/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A%E5%AD%A6%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-14 15:04:50" itemprop="dateCreated datePublished" datetime="2020-04-14T15:04:50+08:00">2020-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-28 12:25:04" itemprop="dateModified" datetime="2022-02-28T12:25:04+08:00">2022-02-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[TOC]</p>
+<h1 id="业务知识"><a href="#业务知识" class="headerlink" title="业务知识"></a>业务知识</h1><h2 id="广告分类"><a href="#广告分类" class="headerlink" title="广告分类"></a>广告分类</h2><p>广告的根本目的，是广告主通过媒体达到低成本的用户接触。</p>
+<p>也就是说，按某种市场意图接触相应的人群，进而影响其中的潜在用户，使他们选择广告主产品的机率增加，或者对产品性价比的苛求程度降低，才是广告的根本目的。至于短期内的转化效果，由于市场意图或媒体性质的不同，并不是直接可比。因此ROI中的产出是很难计算的</p>
+<h2 id="广告发展史"><a href="#广告发展史" class="headerlink" title="广告发展史"></a>广告发展史</h2><ul>
+<li><p>售卖模式1：合约式广告(Agreement-based Advertising)</p>
+</li>
+<li><p>广告投放方式：定向广告（Target Ad），是为了<code>拆分流量以获得更高的营收</code>，具体来说：媒体向广告主保证某个投放量，并在此基础上确定合同的总金额以及量未完成情况下的赔偿方案；<strong><code>只卖好苹果</code></strong></p>
+<blockquote>
+<p><code>博弈</code>：定向太准了可能导致尾部流量卖不出去，对媒体不利，但广告主效果好的话整个广告市场规模就会变大，对媒体有利。</p>
+</blockquote>
+</li>
+<li><p>交易方式：<code>担保式投送(Guaranteed Delivery)</code>：媒体向广告主保证某个投放量，并在此基础上确定合同的总金额以及量未完成情况下的赔偿方案<strong><code>保证交易苹果的量</code></strong></p>
+</li>
+<li><p>计费方式：按千次展示付费(Cost Per Mille, CPM)的计费方式</p>
+</li>
+</ul>
+<blockquote>
+<p>难点：一是如何有效地将流量分配到各个合约互相交叉的人群覆盖上；二是要在在线的环境下实时且经济地完成每一次展示决策。</p>
+</blockquote>
+<ul>
+<li>在线分配(Online Allocation):将各<code>合约的量</code>看做约束条件，将某种意义下的质看做目标函数，我们可以利用带约束优化(Constrained Optimization)的数学框架来探索这一问题；搜索排序以优化相关性为目的，在线分配  是以<code>优化投入产出比</code>为目标。</li>
+<li>售卖模式2：<code>竞价广告(Auction-based Advertising)</code>，抛弃量的保证，而采用最唯利是图的策略来进行广告决策，具体来说就是：供给方只向广告主保证质即单位流量的成本，但不再以合约的方式给出量的保证，换言之，对每一次展示，都基本按照收益最高的原则来决策。<strong><code>线下对每批苹果进行出价</code></strong> </li>
+</ul>
+<blockquote>
+<p>由于只能在广告网络定义好的定向标签组合上预先指定出价，而不能控制每一次展示的出价，因此，市场看起来象一个黑盒子，需求方只能靠选择合适的标签组合，以及阶段性调整出价来间接控制效果。</p>
+<p>随着人群定向越来越精准，广告主数量越来越多，一方面担保是投送难以对流量做精确的分配来保证各广告主的投放量，另一方面当同一流量满足多个合约要求时，仅仅考虑量的约束会导致本来可以卖得更高的流量的浪费。</p>
+</blockquote>
+<ul>
+<li>售卖模式3：实时竞价（real time bidding）。竞价广告是在媒体平台上用媒体已有的标签进行人群定向，并对定向人群进行出价。实时竞价是实时判断单个流量是不是自己的定向人群，并进行出价，可以实现更精准的人群定向</li>
+</ul>
+<blockquote>
+<p>所谓实时竞价，就是把拍卖的过程由广告主预先出价，变成每次展示时实时出价。只要把广告展示的上下文页面url，以及访客的cookie等信息传给需求方，它就有充分的信息来完成定制化的人群选择和出价。</p>
+</blockquote>
+<ul>
+<li>需求方平台(Demand Side Platform, DSP) ：通过实时竞价的方式，按照定制化的人群标签购买广告，这样与广告交易平台接口的产品叫做DSP。DSP可以方便的设置对于每个流量的定向于出价，并把结果返回媒体的平台，<code>DSP需要尽可能准确地估计每一次展示带来的期望价值。</code></li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>首先是<code>合约阶段</code>，广告主通过代理公司(Agency)从媒体方采买广告，而媒体方的Ad Server则负责完成和优化各个广告主的合约；</p>
+<p>然后，市场进化出了<code>竞价售卖方式</code>，从而在靠近供给方产生了广告网络(Ad Network)这样的产品形态，而需求方的代理公司为了适应这一市场变化，孵化除了对应的广告采买平台(Media Buying Platform)；</p>
+<p>最后，当市场产生了<code>实时竞价方式交易</code>时，供给方进化出了广告交易平台(Ad Exchange)，而需求方则需要用需求方平台(DSP)与其对接来出价和投送广告。</p>
+<h1 id="计算广告基础"><a href="#计算广告基础" class="headerlink" title="计算广告基础"></a>计算广告基础</h1><p>广告平台优化目标： $ 对1…T次广告选择a_{i…T} \quad s.t. \quad max \sum_i^T r(a_i,u_i,c_i)/\sum_i^Tp_i $</p>
+<p>表达式中的a,u,c三个变量，分别代表广告、用户与上下文，即广告活动的三个参与主体。<em>i</em>代表从第1次到第<em>T</em>次之间的某一次广告展示。我们优化的目标，就是在这<em>T</em>次展示上的总产出(<em>r</em>)与总投入(<em>p</em>)的比，即ROI。</p>
+<p>$eCPM(a,u,c)=r(a,u,c) =点击率<em>点击价值= ctr(a,u,c)</em>v(a,u)$</p>
+<h2 id="广告系统构架图"><a href="#广告系统构架图" class="headerlink" title="广告系统构架图"></a>广告系统构架图</h2><ol>
+<li>广告投放机（Ad Server）：调用哥哥模块返回前端结果</li>
+<li>广告检索：实时接受投放信息，搜索广告备选集</li>
+<li>广告排序，包括Click modeling和Ad ranking。关键技术是1.离线分布式计算平台上的海量数据支持的点击率预测模型的训练；2.线上高效查询用户特征并进行实时计算。在ctr的基础上简历点击价值估计模型，通常是简单的规则</li>
+<li>数据高速公路（Data highway）：将在线数据准实时的传输到离线分部式平台和流计算平台，供后续数据处理和建模</li>
+<li>用户日志生成：收集各渠道日志，整理成kv形式进行存储</li>
+<li>商业智能（Business Inteligence）：看板等对外交流平台</li>
+<li>行为定向：产生结构化标签库</li>
+<li>上下文定向：页面抓取给上下文打标签，与行为定向一起产生定向效果</li>
+<li>定制化用户：接收广告主定向需求（比如推包）</li>
+<li>在线行为反馈：利用日志或买点进行准实时任务，如实时反馈点击，用户行为标签等。在利用日志完成这些逻辑之前，必须要进行的步骤是反作弊(Anti-spam)与计价(Billing)。<code>在很多情形下，把系统信息反馈调整做得更快，比把模型预测做得更准确效果更加显著</code></li>
+<li>广告管理系统：只有这部分是面向用户的。通过广告管理系统定制和调整广告投放，并且与数据仓库交互</li>
+<li>实时竞价接口：对接DSP（竞价平台）的接口。对于媒体即平台的case，不需要</li>
+</ol>
+<p><img src="/Users/hetianqi/Documents/charging/notes_of_the_world/计算广告学笔记.assets/image-20200414143343558.png" alt="image-20200414143343558"></p>
+<h1 id="准备知识"><a href="#准备知识" class="headerlink" title="准备知识"></a>准备知识</h1><h2 id="带约束优化方法和拉格朗日乘子法"><a href="#带约束优化方法和拉格朗日乘子法" class="headerlink" title="带约束优化方法和拉格朗日乘子法"></a>带约束优化方法和拉格朗日乘子法</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2020/04/02/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Uplift%20Modeling/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1540,334 +1819,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/12/04/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/04/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-04 11:32:02" itemprop="dateCreated datePublished" datetime="2019-12-04T11:32:02+08:00">2019-12-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/12/04/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/FM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/04/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/FM/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-04 11:32:02" itemprop="dateCreated datePublished" datetime="2019-12-04T11:32:02+08:00">2019-12-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h1>
-<h1 id="为什么时间复杂度是O-kn"><a href="#为什么时间复杂度是O-kn" class="headerlink" title="为什么时间复杂度是O(kn)"></a>为什么时间复杂度是O(kn)</h1><p>我们考虑二次项</p>
-
-<p>哇塞，这么复杂的公式怎么看得懂，我们一步步来，其实很简单。</p>
-<p>第一步，拆解过程如图</p>
-
-<p> 拆解</p>
-<p>第二步，向量点乘</p>
-<p>第三步，将k求和提出来</p>
-<p>第四步，左边i和j式子相同，可以认为两者相等，直接得出平方</p>
-<p>到此，很明显，它的计算复杂度为O(kn)，左边求和之后平方，右边平方后求和，没有出现</p>
-
-<p>接下来我们看看FM如何收敛，照常使用SGD，计算FM的梯度是：</p>
-
-<p>求Xi的梯度，令Xj固定，则第三项左边求和是一个定值，与Xi无关。时间复杂度为O(kn)</p>
-<p>FM也可以扩展到更高阶的形式</p>
-
-<p>到这，我们可以推断，FM能够在O(kn)时间复杂度处理特征间关联问题。</p>
-<p>作者：邹金伟</p>
-<p>链接：</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/67b4f7ec919e">https://www.jianshu.com/p/67b4f7ec919e</a></p>
-<p>来源：简书</p>
-<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<h1 id="为什么能处理稀疏矩阵"><a href="#为什么能处理稀疏矩阵" class="headerlink" title="为什么能处理稀疏矩阵"></a>为什么能处理稀疏矩阵</h1><blockquote>
-<ul>
-<li>用$<v_i,v_j>$代替$W$,理论依据是任何一个正定阵$W$都可表视为  $W=V\cdot V^T$, 其中$W \in (n<em>n),V\in (n</em>k)$, 只要k足够大。</li>
-<li>FM中通过选定一个较小的超参k可捕捉交叉特征稀疏空间的联</li>
-</ul>
-</blockquote>
-<p>​                        </p>
-<p>那么，这和SVM相比有什么优势呢，SVM通过相应的核函数也能做到。还记得我们开头说的吗，相比SVM，FM能够胜任稀疏矩阵。</p>
-<p>首先我们来看一下SVM如何处理特征间关联问题。SVM的公式是：</p>
-
-<p>选用合适的核函数，这里我们设d=2， 例如</p>
-
-<p>展开后公式可得</p>
-
-<p>通过大量的数据训练，我们也能够得出对应的Weight。但是，如果特征i，和特征j没有同时出现呢。例如，从来没有一个人既买过啤酒，又买过烧鸭，那么你能认为某个人买完啤酒后不会再买烧鸭吗？这就是数据稀疏时候出现的问题，这时候Wi,j没有对应的x值训练。FM通过Vi *  Vj来确定W，那么只要其他记录有Vi，和Vj，不用同时出现，就可以分别对其进行训练，最后通过点乘来确定值。这牺牲了Wi,j一点自由度，却能够很好的处理稀疏矩阵的问题。</p>
-<p>链接：</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/67b4f7ec919e">https://www.jianshu.com/p/67b4f7ec919e</a></p>
-<p>来源：简书</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/12/04/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/04/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-04 11:32:02" itemprop="dateCreated datePublished" datetime="2019-12-04T11:32:02+08:00">2019-12-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>[TOC]</p>
-<h1 id="第一周-卷积神经网络"><a href="#第一周-卷积神经网络" class="headerlink" title="第一周 卷积神经网络"></a>第一周 卷积神经网络</h1><h2 id="计算及视觉要解决的问题"><a href="#计算及视觉要解决的问题" class="headerlink" title="计算及视觉要解决的问题"></a>计算及视觉要解决的问题</h2><ul>
-<li>Image Classification</li>
-<li>Object detection<h2 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h2></li>
-<li>图像计算数据量非常大</li>
-<li>所以需要通过卷积减少参数量</li>
-</ul>
-<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><ul>
-<li>valid padding: 不填充</li>
-<li>same padding：输出和输入一样的size。步长为1时 p=(f-1)/2 ,f为卷积核的大小</li>
-</ul>
-<h2 id="stride（步长）"><a href="#stride（步长）" class="headerlink" title="stride（步长）"></a>stride（步长）</h2><ul>
-<li>输出图像大小：floor[(n+2p-f)/s]+1<h2 id="多通道卷积"><a href="#多通道卷积" class="headerlink" title="多通道卷积"></a>多通道卷积</h2></li>
-<li>卷积核的通道数=输入的通道数</li>
-<li>一个卷积核将输入映射为单通道图片</li>
-<li>卷积核的数量=输出图片的通道数</li>
-<li>每个卷积核的bias是一个数<h2 id="pooling-池化"><a href="#pooling-池化" class="headerlink" title="pooling(池化)"></a>pooling(池化)</h2></li>
-<li>max pooling: 只要过滤器检测到了特征，就保留下来<ul>
-<li>输出的size和padding计算方法一致</li>
-<li>pooling前后通道数目不变（跟卷积核不一样的地方）</li>
-<li>没有参数需要学习<h2 id="使用卷积的意义"><a href="#使用卷积的意义" class="headerlink" title="使用卷积的意义"></a>使用卷积的意义</h2></li>
-</ul>
-</li>
-<li>参数共享(parameter sharing):<ul>
-<li>卷积核(过滤器)可通用语图片的各个位置</li>
-</ul>
-</li>
-<li>稀疏连接(sparsity of connections)<ul>
-<li>卷积后的图片每个像素点只与输入中卷集合大小的像素点有关，与其他像素点无关。这保证图片有平移不变性，即原始图片平移几个像素不太会导致结果的变化</li>
-</ul>
-</li>
-</ul>
-<h1 id="第二周-深度卷积网络：实例探究"><a href="#第二周-深度卷积网络：实例探究" class="headerlink" title="第二周 深度卷积网络：实例探究"></a>第二周 深度卷积网络：实例探究</h1><h2 id="经典网络"><a href="#经典网络" class="headerlink" title="经典网络"></a>经典网络</h2><ul>
-<li>LeNet-5 (1998)</li>
-<li>AlexNet</li>
-<li>VGG</li>
-<li>ResNet</li>
-<li>Inception</li>
-</ul>
-<h2 id="LeNet-5-（1998）"><a href="#LeNet-5-（1998）" class="headerlink" title="LeNet-5 （1998）"></a>LeNet-5 （1998）</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午3.00.23.png" alt="屏幕快照 2019-11-11 下午3.00.23"></p>
-<p>6w 参数</p>
-<h2 id="AlexNet（2012）"><a href="#AlexNet（2012）" class="headerlink" title="AlexNet（2012）"></a>AlexNet（2012）</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.11.06.png" alt=""></p>
-<p>6kw 参数</p>
-<h2 id="VGG-2015"><a href="#VGG-2015" class="headerlink" title="VGG(2015)"></a>VGG(2015)</h2><p>用同样大小的卷积核（3*3 ， s=1, padding=same），同样的池化策略</p>
-<h2 id="ResNet-2015"><a href="#ResNet-2015" class="headerlink" title="ResNet(2015)"></a>ResNet(2015)</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.20.45.png" alt="屏幕快照 2019-11-11 下午8.20.45"></p>
-<p>随着层数增加，理论上来说损失会减少，但是实际上随着层数增加，对优化算法的要求越高，导致损失上升。</p>
-<p>ResNet: $a_{l+1}=g(z(l+1)+a_l)$</p>
-<h2 id="1-1卷积核"><a href="#1-1卷积核" class="headerlink" title="1*1卷积核"></a>1*1卷积核</h2><p>输入图片用1个1*1的卷积核座卷积意义是：输入图片各个通道加权成一个通道</p>
-<h2 id="Inception-Network-2014"><a href="#Inception-Network-2014" class="headerlink" title="Inception Network(2014)"></a>Inception Network(2014)</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.40.29.png" alt="屏幕快照 2019-11-11 下午8.40.29"></p>
-<h2 id="迁移学习-transfer-learning"><a href="#迁移学习-transfer-learning" class="headerlink" title="迁移学习 transfer learning"></a>迁移学习 transfer learning</h2><p>冻结前面几层，只训练最后一层全连接层。实现方案之一为：输入通过冻结的几层得到预计算输出，写入硬盘。之后每次从硬盘读入数据，训练最后几层网络，这样不需要每次迭代时都进行前面的计算。</p>
-<p>或者只把下载的权重作为初始化，训练整个网络。</p>
-<h2 id="数据扩充-data-augmentation"><a href="#数据扩充-data-augmentation" class="headerlink" title="数据扩充 data augmentation"></a>数据扩充 data augmentation</h2><p>当数据量不够时。</p>
-<ul>
-<li>镜像对称</li>
-<li>随机剪裁</li>
-<li>色彩转换 color shifting(PCA增强)</li>
-</ul>
-<h2 id="计算机视觉现状"><a href="#计算机视觉现状" class="headerlink" title="计算机视觉现状"></a>计算机视觉现状</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.56.18.png" alt="屏幕快照 2019-11-11 下午8.56.18"></p>
-<p>数据量越少，人工特征提取越重要。</p>
-<h1 id="第三周-目标检测"><a href="#第三周-目标检测" class="headerlink" title="第三周 目标检测"></a>第三周 目标检测</h1><h2 id="目标定位-localization-and-detection"><a href="#目标定位-localization-and-detection" class="headerlink" title="目标定位 localization and detection"></a>目标定位 localization and detection</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-12 下午6.32.06.png" alt="屏幕快照 2019-11-12 下午6.32.06"></p>
-<ul>
-<li><p>目标定位：图片中只有一个目标，要定位目标并识别目标。</p>
-<p> 实现方法：输出除了类别向量外还有四个数：中心点x,y值，box长度，box高度</p>
-</li>
-<li><p>定义Y</p>
-<p> 假设检测目标有三种，图片中最多只会有一个目标物体，则y为：</p>
-<script type="math/tex; mode=display">\left[\begin{matrix}p_c\\b_x\\b_y\\b_h\\b_w\\c_1\\c_2\\c_3\end{matrix}\right]</script><p> 其中如果图片中有三种中的一种，则$p_c=1 $，$c_1,c_2,c_3$为对应的onehot向量。如果图片中没有目标种类的则$p_c=0$,其他数字为任意值</p>
-</li>
-<li><p>loss</p>
-<script type="math/tex; mode=display">loss=\left\{\begin{matrix} \sum_{i=1}^8(y_i-\hat{y_i})^2,\quad if  \quad p_c=1\\ (y_i-\hat{y_i})^2,\quad else \end{matrix}\right.</script><p> 即如果图片中有目标物体，则loss包含每个y的分量误差。如果没有，则loss只计算$p_c$和预测值的误差。实际上y不同的部分可采用不同的误差，如$p_c$用logistic误差，b用均方误差，c用softmax误差</p>
-</li>
-</ul>
-<h2 id="特征点检测"><a href="#特征点检测" class="headerlink" title="特征点检测"></a>特征点检测</h2><p>在图片分类的基础上做改造：y第一个元素实$p_c$,其他元素实特征点的坐标值。</p>
-<p>体态检测也是一样，只不过特征点是关节点的坐标。要注意的实特征点的顺序需要是一致的。</p>
-<h2 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h2><ul>
-<li><p>滑动窗口 sliding window detection</p>
-<ol>
-<li>针对被检测物体（如车）训练图片分类网络</li>
-<li><p>用不同大小的box扫过目标图片，并输出相应位置的概率</p>
-<p>计算成本很大</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="卷积的滑动窗口实现"><a href="#卷积的滑动窗口实现" class="headerlink" title="卷积的滑动窗口实现"></a>卷积的滑动窗口实现</h2><ul>
-<li><p>FC层可用卷积实现，具体操作就是卷积核大小与输入相同，卷积核数量与FC的输出层相同。这种卷积表示与全连接的数学实现是一样的</p>
-</li>
-<li><p>将滑动窗口并卷积得到不同box的预测值—&gt;将整张图片进行卷积，最后输出的就是哥哥box对应的概率</p>
-</li>
-<li><p>问题：该方法隐式的预测bounding box的位置，结果不是很准确</p>
-<p> 由于box的size是一定的（卷积网络的第一层卷积核大小），移动步长也是一定的(卷积网络的移动步长)</p>
-</li>
-</ul>
-<h2 id="bounding-box预测"><a href="#bounding-box预测" class="headerlink" title="bounding box预测"></a>bounding box预测</h2><ul>
-<li><p>YOLO (you only look once) 2015</p>
-<p> 将问题简化为子图上的目标定位问题</p>
-<ol>
-<li>将图片分割，假设分割成3*3的小图</li>
-<li>按照目标定位的方法对每个小图标定8维向量y，由于有9个小图，最终Y为3<em>3 </em> 8 的矢量</li>
-<li>按照一般的方法进行训练。</li>
-<li><p>预测时看每$\hat{Y}$的第一个分量，为1的地方就表示对应的子图有目标物体，对应的$b_i$即为box位置, 对应的$c_i$就是目标物体的种类</p>
-<p>注意：</p>
-</li>
-<li><p>标定物体的时候如果物体横跨多个子图，物体只会被分配到一个图上。</p>
-</li>
-<li>标定$b_i$的时候用的是子图的相对比例坐标。$b_x,b_y$一定小于等于1，$b_x,b_y$可以大于1</li>
-</ol>
-</li>
-<li><p>好处：</p>
-<ol>
-<li>bounding box大小和位置不受限制</li>
-<li>只进行单词卷积，而非滑动多次卷积。这是由于滑动卷积过程中有很多计算实可以共享的</li>
-</ol>
-</li>
-</ul>
-<h2 id="交并比-intersection-over-union"><a href="#交并比-intersection-over-union" class="headerlink" title="交并比 intersection over union"></a>交并比 intersection over union</h2><p>用来评价目标检测模型好坏。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1937,20 +1888,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

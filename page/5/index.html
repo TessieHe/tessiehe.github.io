@@ -163,6 +163,334 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/12/04/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/04/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-04 11:32:02" itemprop="dateCreated datePublished" datetime="2019-12-04T11:32:02+08:00">2019-12-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/12/04/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/FM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/04/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/FM/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-04 11:32:02" itemprop="dateCreated datePublished" datetime="2019-12-04T11:32:02+08:00">2019-12-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h1>
+<h1 id="为什么时间复杂度是O-kn"><a href="#为什么时间复杂度是O-kn" class="headerlink" title="为什么时间复杂度是O(kn)"></a>为什么时间复杂度是O(kn)</h1><p>我们考虑二次项</p>
+
+<p>哇塞，这么复杂的公式怎么看得懂，我们一步步来，其实很简单。</p>
+<p>第一步，拆解过程如图</p>
+
+<p> 拆解</p>
+<p>第二步，向量点乘</p>
+<p>第三步，将k求和提出来</p>
+<p>第四步，左边i和j式子相同，可以认为两者相等，直接得出平方</p>
+<p>到此，很明显，它的计算复杂度为O(kn)，左边求和之后平方，右边平方后求和，没有出现</p>
+
+<p>接下来我们看看FM如何收敛，照常使用SGD，计算FM的梯度是：</p>
+
+<p>求Xi的梯度，令Xj固定，则第三项左边求和是一个定值，与Xi无关。时间复杂度为O(kn)</p>
+<p>FM也可以扩展到更高阶的形式</p>
+
+<p>到这，我们可以推断，FM能够在O(kn)时间复杂度处理特征间关联问题。</p>
+<p>作者：邹金伟</p>
+<p>链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/67b4f7ec919e">https://www.jianshu.com/p/67b4f7ec919e</a></p>
+<p>来源：简书</p>
+<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h1 id="为什么能处理稀疏矩阵"><a href="#为什么能处理稀疏矩阵" class="headerlink" title="为什么能处理稀疏矩阵"></a>为什么能处理稀疏矩阵</h1><blockquote>
+<ul>
+<li>用$<v_i,v_j>$代替$W$,理论依据是任何一个正定阵$W$都可表视为  $W=V\cdot V^T$, 其中$W \in (n<em>n),V\in (n</em>k)$, 只要k足够大。</li>
+<li>FM中通过选定一个较小的超参k可捕捉交叉特征稀疏空间的联</li>
+</ul>
+</blockquote>
+<p>​                        </p>
+<p>那么，这和SVM相比有什么优势呢，SVM通过相应的核函数也能做到。还记得我们开头说的吗，相比SVM，FM能够胜任稀疏矩阵。</p>
+<p>首先我们来看一下SVM如何处理特征间关联问题。SVM的公式是：</p>
+
+<p>选用合适的核函数，这里我们设d=2， 例如</p>
+
+<p>展开后公式可得</p>
+
+<p>通过大量的数据训练，我们也能够得出对应的Weight。但是，如果特征i，和特征j没有同时出现呢。例如，从来没有一个人既买过啤酒，又买过烧鸭，那么你能认为某个人买完啤酒后不会再买烧鸭吗？这就是数据稀疏时候出现的问题，这时候Wi,j没有对应的x值训练。FM通过Vi *  Vj来确定W，那么只要其他记录有Vi，和Vj，不用同时出现，就可以分别对其进行训练，最后通过点乘来确定值。这牺牲了Wi,j一点自由度，却能够很好的处理稀疏矩阵的问题。</p>
+<p>链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/67b4f7ec919e">https://www.jianshu.com/p/67b4f7ec919e</a></p>
+<p>来源：简书</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/12/04/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/04/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-04 11:32:02" itemprop="dateCreated datePublished" datetime="2019-12-04T11:32:02+08:00">2019-12-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[TOC]</p>
+<h1 id="第一周-卷积神经网络"><a href="#第一周-卷积神经网络" class="headerlink" title="第一周 卷积神经网络"></a>第一周 卷积神经网络</h1><h2 id="计算及视觉要解决的问题"><a href="#计算及视觉要解决的问题" class="headerlink" title="计算及视觉要解决的问题"></a>计算及视觉要解决的问题</h2><ul>
+<li>Image Classification</li>
+<li>Object detection<h2 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h2></li>
+<li>图像计算数据量非常大</li>
+<li>所以需要通过卷积减少参数量</li>
+</ul>
+<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><ul>
+<li>valid padding: 不填充</li>
+<li>same padding：输出和输入一样的size。步长为1时 p=(f-1)/2 ,f为卷积核的大小</li>
+</ul>
+<h2 id="stride（步长）"><a href="#stride（步长）" class="headerlink" title="stride（步长）"></a>stride（步长）</h2><ul>
+<li>输出图像大小：floor[(n+2p-f)/s]+1<h2 id="多通道卷积"><a href="#多通道卷积" class="headerlink" title="多通道卷积"></a>多通道卷积</h2></li>
+<li>卷积核的通道数=输入的通道数</li>
+<li>一个卷积核将输入映射为单通道图片</li>
+<li>卷积核的数量=输出图片的通道数</li>
+<li>每个卷积核的bias是一个数<h2 id="pooling-池化"><a href="#pooling-池化" class="headerlink" title="pooling(池化)"></a>pooling(池化)</h2></li>
+<li>max pooling: 只要过滤器检测到了特征，就保留下来<ul>
+<li>输出的size和padding计算方法一致</li>
+<li>pooling前后通道数目不变（跟卷积核不一样的地方）</li>
+<li>没有参数需要学习<h2 id="使用卷积的意义"><a href="#使用卷积的意义" class="headerlink" title="使用卷积的意义"></a>使用卷积的意义</h2></li>
+</ul>
+</li>
+<li>参数共享(parameter sharing):<ul>
+<li>卷积核(过滤器)可通用语图片的各个位置</li>
+</ul>
+</li>
+<li>稀疏连接(sparsity of connections)<ul>
+<li>卷积后的图片每个像素点只与输入中卷集合大小的像素点有关，与其他像素点无关。这保证图片有平移不变性，即原始图片平移几个像素不太会导致结果的变化</li>
+</ul>
+</li>
+</ul>
+<h1 id="第二周-深度卷积网络：实例探究"><a href="#第二周-深度卷积网络：实例探究" class="headerlink" title="第二周 深度卷积网络：实例探究"></a>第二周 深度卷积网络：实例探究</h1><h2 id="经典网络"><a href="#经典网络" class="headerlink" title="经典网络"></a>经典网络</h2><ul>
+<li>LeNet-5 (1998)</li>
+<li>AlexNet</li>
+<li>VGG</li>
+<li>ResNet</li>
+<li>Inception</li>
+</ul>
+<h2 id="LeNet-5-（1998）"><a href="#LeNet-5-（1998）" class="headerlink" title="LeNet-5 （1998）"></a>LeNet-5 （1998）</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午3.00.23.png" alt="屏幕快照 2019-11-11 下午3.00.23"></p>
+<p>6w 参数</p>
+<h2 id="AlexNet（2012）"><a href="#AlexNet（2012）" class="headerlink" title="AlexNet（2012）"></a>AlexNet（2012）</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.11.06.png" alt=""></p>
+<p>6kw 参数</p>
+<h2 id="VGG-2015"><a href="#VGG-2015" class="headerlink" title="VGG(2015)"></a>VGG(2015)</h2><p>用同样大小的卷积核（3*3 ， s=1, padding=same），同样的池化策略</p>
+<h2 id="ResNet-2015"><a href="#ResNet-2015" class="headerlink" title="ResNet(2015)"></a>ResNet(2015)</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.20.45.png" alt="屏幕快照 2019-11-11 下午8.20.45"></p>
+<p>随着层数增加，理论上来说损失会减少，但是实际上随着层数增加，对优化算法的要求越高，导致损失上升。</p>
+<p>ResNet: $a_{l+1}=g(z(l+1)+a_l)$</p>
+<h2 id="1-1卷积核"><a href="#1-1卷积核" class="headerlink" title="1*1卷积核"></a>1*1卷积核</h2><p>输入图片用1个1*1的卷积核座卷积意义是：输入图片各个通道加权成一个通道</p>
+<h2 id="Inception-Network-2014"><a href="#Inception-Network-2014" class="headerlink" title="Inception Network(2014)"></a>Inception Network(2014)</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.40.29.png" alt="屏幕快照 2019-11-11 下午8.40.29"></p>
+<h2 id="迁移学习-transfer-learning"><a href="#迁移学习-transfer-learning" class="headerlink" title="迁移学习 transfer learning"></a>迁移学习 transfer learning</h2><p>冻结前面几层，只训练最后一层全连接层。实现方案之一为：输入通过冻结的几层得到预计算输出，写入硬盘。之后每次从硬盘读入数据，训练最后几层网络，这样不需要每次迭代时都进行前面的计算。</p>
+<p>或者只把下载的权重作为初始化，训练整个网络。</p>
+<h2 id="数据扩充-data-augmentation"><a href="#数据扩充-data-augmentation" class="headerlink" title="数据扩充 data augmentation"></a>数据扩充 data augmentation</h2><p>当数据量不够时。</p>
+<ul>
+<li>镜像对称</li>
+<li>随机剪裁</li>
+<li>色彩转换 color shifting(PCA增强)</li>
+</ul>
+<h2 id="计算机视觉现状"><a href="#计算机视觉现状" class="headerlink" title="计算机视觉现状"></a>计算机视觉现状</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.56.18.png" alt="屏幕快照 2019-11-11 下午8.56.18"></p>
+<p>数据量越少，人工特征提取越重要。</p>
+<h1 id="第三周-目标检测"><a href="#第三周-目标检测" class="headerlink" title="第三周 目标检测"></a>第三周 目标检测</h1><h2 id="目标定位-localization-and-detection"><a href="#目标定位-localization-and-detection" class="headerlink" title="目标定位 localization and detection"></a>目标定位 localization and detection</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-12 下午6.32.06.png" alt="屏幕快照 2019-11-12 下午6.32.06"></p>
+<ul>
+<li><p>目标定位：图片中只有一个目标，要定位目标并识别目标。</p>
+<p> 实现方法：输出除了类别向量外还有四个数：中心点x,y值，box长度，box高度</p>
+</li>
+<li><p>定义Y</p>
+<p> 假设检测目标有三种，图片中最多只会有一个目标物体，则y为：</p>
+<script type="math/tex; mode=display">\left[\begin{matrix}p_c\\b_x\\b_y\\b_h\\b_w\\c_1\\c_2\\c_3\end{matrix}\right]</script><p> 其中如果图片中有三种中的一种，则$p_c=1 $，$c_1,c_2,c_3$为对应的onehot向量。如果图片中没有目标种类的则$p_c=0$,其他数字为任意值</p>
+</li>
+<li><p>loss</p>
+<script type="math/tex; mode=display">loss=\left\{\begin{matrix} \sum_{i=1}^8(y_i-\hat{y_i})^2,\quad if  \quad p_c=1\\ (y_i-\hat{y_i})^2,\quad else \end{matrix}\right.</script><p> 即如果图片中有目标物体，则loss包含每个y的分量误差。如果没有，则loss只计算$p_c$和预测值的误差。实际上y不同的部分可采用不同的误差，如$p_c$用logistic误差，b用均方误差，c用softmax误差</p>
+</li>
+</ul>
+<h2 id="特征点检测"><a href="#特征点检测" class="headerlink" title="特征点检测"></a>特征点检测</h2><p>在图片分类的基础上做改造：y第一个元素实$p_c$,其他元素实特征点的坐标值。</p>
+<p>体态检测也是一样，只不过特征点是关节点的坐标。要注意的实特征点的顺序需要是一致的。</p>
+<h2 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h2><ul>
+<li><p>滑动窗口 sliding window detection</p>
+<ol>
+<li>针对被检测物体（如车）训练图片分类网络</li>
+<li><p>用不同大小的box扫过目标图片，并输出相应位置的概率</p>
+<p>计算成本很大</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="卷积的滑动窗口实现"><a href="#卷积的滑动窗口实现" class="headerlink" title="卷积的滑动窗口实现"></a>卷积的滑动窗口实现</h2><ul>
+<li><p>FC层可用卷积实现，具体操作就是卷积核大小与输入相同，卷积核数量与FC的输出层相同。这种卷积表示与全连接的数学实现是一样的</p>
+</li>
+<li><p>将滑动窗口并卷积得到不同box的预测值—&gt;将整张图片进行卷积，最后输出的就是哥哥box对应的概率</p>
+</li>
+<li><p>问题：该方法隐式的预测bounding box的位置，结果不是很准确</p>
+<p> 由于box的size是一定的（卷积网络的第一层卷积核大小），移动步长也是一定的(卷积网络的移动步长)</p>
+</li>
+</ul>
+<h2 id="bounding-box预测"><a href="#bounding-box预测" class="headerlink" title="bounding box预测"></a>bounding box预测</h2><ul>
+<li><p>YOLO (you only look once) 2015</p>
+<p> 将问题简化为子图上的目标定位问题</p>
+<ol>
+<li>将图片分割，假设分割成3*3的小图</li>
+<li>按照目标定位的方法对每个小图标定8维向量y，由于有9个小图，最终Y为3<em>3 </em> 8 的矢量</li>
+<li>按照一般的方法进行训练。</li>
+<li><p>预测时看每$\hat{Y}$的第一个分量，为1的地方就表示对应的子图有目标物体，对应的$b_i$即为box位置, 对应的$c_i$就是目标物体的种类</p>
+<p>注意：</p>
+</li>
+<li><p>标定物体的时候如果物体横跨多个子图，物体只会被分配到一个图上。</p>
+</li>
+<li>标定$b_i$的时候用的是子图的相对比例坐标。$b_x,b_y$一定小于等于1，$b_x,b_y$可以大于1</li>
+</ol>
+</li>
+<li><p>好处：</p>
+<ol>
+<li>bounding box大小和位置不受限制</li>
+<li>只进行单词卷积，而非滑动多次卷积。这是由于滑动卷积过程中有很多计算实可以共享的</li>
+</ol>
+</li>
+</ul>
+<h2 id="交并比-intersection-over-union"><a href="#交并比-intersection-over-union" class="headerlink" title="交并比 intersection over union"></a>交并比 intersection over union</h2><p>用来评价目标检测模型好坏。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/12/04/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -650,173 +978,6 @@ return dp[n - 1][max_k][0];
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E7%9F%A9%E9%98%B5%E6%98%A0%E5%B0%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E7%9F%A9%E9%98%B5%E6%98%A0%E5%B0%84/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-11 11:35:04" itemprop="dateCreated datePublished" datetime="2019-10-11T11:35:04+08:00">2019-10-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="专业词汇"><a href="#专业词汇" class="headerlink" title="专业词汇"></a>专业词汇</h1><ul>
-<li><strong>边（edge）</strong>：$W_{ij}$ 特点：对称矩阵</li>
-<li><strong>digree</strong>: $D=dig(d);d=rowSum(W_{i,j]})$ 特点：对角阵</li>
-<li><p><strong>拉普拉斯矩阵</strong>：$L=D-W$ </p>
-</li>
-<li><p><strong>拉普拉斯特征映射</strong>：将处于流形上的数据，在尽量保留原数据间相似度的情况下，映射到低维下表示</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1--%E6%B5%99%E5%A4%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1--%E6%B5%99%E5%A4%A7/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-11 11:35:04" itemprop="dateCreated datePublished" datetime="2019-10-11T11:35:04+08:00">2019-10-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>[TOC]</p>
-<p>概率论与数理统计—浙大</p>
-<h1 id="期望"><a href="#期望" class="headerlink" title="期望"></a>期望</h1><h2 id="离散期望"><a href="#离散期望" class="headerlink" title="离散期望"></a>离散期望</h2><script type="math/tex; mode=display">
-   E(X)=\sum_1^{\infty}x_kp_k</script><h2 id="连续数学期望"><a href="#连续数学期望" class="headerlink" title="连续数学期望"></a>连续数学期望</h2><script type="math/tex; mode=display">
-   E(X) = \int_{-\infty}^{\infty}xf(s)</script><h2 id="函数的数学期望"><a href="#函数的数学期望" class="headerlink" title="函数的数学期望"></a>函数的数学期望</h2><script type="math/tex; mode=display">
-Z=g(X<Y),二维随机变量的概率密度(X,Y)为f(x,y),则Z的期望：</script><script type="math/tex; mode=display">
-   E(Z) = E(g(Z)) = \int_{-\infty}^{+\infty}g(x,y)f(x,y)dxdy</script><p>   若（X，Y）为离散型随机变量，则：</p>
-<script type="math/tex; mode=display">
-   E(Z) = E(g(X,Y)) = \sum_{j=1}^{\infty}\sum_{i=1}^{\infty}g(x_i,y_j)p_{ij}</script><h1 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h1><script type="math/tex; mode=display">
-D(X)=E([X-E(X)]^2)</script><h2 id="均方差-标准差"><a href="#均方差-标准差" class="headerlink" title="均方差/标准差"></a>均方差/标准差</h2><script type="math/tex; mode=display">
-   \sqrt{(D(X))}</script><h2 id="离散方差"><a href="#离散方差" class="headerlink" title="离散方差"></a>离散方差</h2><script type="math/tex; mode=display">
-   D(X) =\sum_{k=1}^{\infty}[x-E(x)]^2p_k</script><h2 id="连续方差"><a href="#连续方差" class="headerlink" title="连续方差"></a>连续方差</h2><script type="math/tex; mode=display">
-   D(X)=\int_{-\infty}^{\infty}[x-E(X)]^2f(x)dx</script><script type="math/tex; mode=display">
-   D(X) = E(X^2)-(E(X))^2</script><h2 id="标准化变换"><a href="#标准化变换" class="headerlink" title="标准化变换"></a>标准化变换</h2><script type="math/tex; mode=display">
-   X^* = \frac{X-\mu}{\sigma}</script><p>   $X^*$均值为1，方差为0，是X的标准化变量</p>
-<h1 id="切比雪夫不等式"><a href="#切比雪夫不等式" class="headerlink" title="切比雪夫不等式"></a>切比雪夫不等式</h1><p>估计未知概率分布的变量取期望附近区间的概率，这个估计是粗糙的</p>
-<p>对于任意正数$\epsilon$:</p>
-<p>$P{|X-\mu|&gt;=\epsilon} &lt;=\frac{\sigma^2}{\epsilon^2}$</p>
-<h1 id="协方差"><a href="#协方差" class="headerlink" title="协方差"></a>协方差</h1><p>   $Cov(X,Y) = E{[X-E(X)][Y-E(Y)]}$ 称为X，Y的协方差</p>
-<p>   $\rho_{XY} = \frac{Cov(X,Y)}{\sqrt{D(X)}\sqrt{D(Y)}}$  称为X，Y的相关系数。</p>
-<h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><p>两个随机变量X，Y相互独立的充要条件是$Cove(X,Y)\neq0$</p>
-<ul>
-<li>$Cov(X,X) = D(X)$</li>
-<li>$Cov(X,Y) = E(XY) - E(X)E(Y)$</li>
-<li>$Cov(aX,bY) = abCov(X,Y)$</li>
-<li>$Cov(X_1+X_2,Y) = Cov(X_1,Y)+Cov(X_2,Y)$</li>
-<li>$|\rho_{xy}|\le1​$</li>
-<li>$|\rho|=1$ 的充要条件是存在常数a,b 使得</li>
-<li>$P\{Y=aX+b\}=1$</li>
-</ul>
-<h1 id="似然函数"><a href="#似然函数" class="headerlink" title="似然函数"></a>似然函数</h1><p>若总体X属于离散型，其分布规律$P\{X=x\} = p(x;\theta)$形式已知，参数未知，事件$\{X_1=x_1,X_2=x_2 …\}$的联合概率：</p>
-<p>$L(\theta) = L(x_1,x_2…;\theta) = \prod_{i=1}^{n}p(x_1;\theta)$</p>
-<p>$L(\theta)$为样本的似然函数</p>
-<ul>
-<li>若总体X属于连续型</li>
-</ul>
-<p>$L(\theta) = \prod_{i=1}^{n}f(x_1;\theta)$</p>
-<ul>
-<li><p>对数似然方程</p>
-<p> $\frac{d}{d\theta}lnL(\theta)=0$</p>
-</li>
-<li><p>无偏估计</p>
-<p> 估计值的期望和实际值期望相同</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/10/11/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E6%A8%A1%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1032,6 +1193,173 @@ D(X)=E([X-E(X)]^2)</script><h2 id="均方差-标准差"><a href="#均方差-标�
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E7%9F%A9%E9%98%B5%E6%98%A0%E5%B0%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E7%9F%A9%E9%98%B5%E6%98%A0%E5%B0%84/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-11 11:35:04" itemprop="dateCreated datePublished" datetime="2019-10-11T11:35:04+08:00">2019-10-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="专业词汇"><a href="#专业词汇" class="headerlink" title="专业词汇"></a>专业词汇</h1><ul>
+<li><strong>边（edge）</strong>：$W_{ij}$ 特点：对称矩阵</li>
+<li><strong>digree</strong>: $D=dig(d);d=rowSum(W_{i,j]})$ 特点：对角阵</li>
+<li><p><strong>拉普拉斯矩阵</strong>：$L=D-W$ </p>
+</li>
+<li><p><strong>拉普拉斯特征映射</strong>：将处于流形上的数据，在尽量保留原数据间相似度的情况下，映射到低维下表示</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1--%E6%B5%99%E5%A4%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/11/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1--%E6%B5%99%E5%A4%A7/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-11 11:35:04" itemprop="dateCreated datePublished" datetime="2019-10-11T11:35:04+08:00">2019-10-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[TOC]</p>
+<p>概率论与数理统计—浙大</p>
+<h1 id="期望"><a href="#期望" class="headerlink" title="期望"></a>期望</h1><h2 id="离散期望"><a href="#离散期望" class="headerlink" title="离散期望"></a>离散期望</h2><script type="math/tex; mode=display">
+   E(X)=\sum_1^{\infty}x_kp_k</script><h2 id="连续数学期望"><a href="#连续数学期望" class="headerlink" title="连续数学期望"></a>连续数学期望</h2><script type="math/tex; mode=display">
+   E(X) = \int_{-\infty}^{\infty}xf(s)</script><h2 id="函数的数学期望"><a href="#函数的数学期望" class="headerlink" title="函数的数学期望"></a>函数的数学期望</h2><script type="math/tex; mode=display">
+Z=g(X<Y),二维随机变量的概率密度(X,Y)为f(x,y),则Z的期望：</script><script type="math/tex; mode=display">
+   E(Z) = E(g(Z)) = \int_{-\infty}^{+\infty}g(x,y)f(x,y)dxdy</script><p>   若（X，Y）为离散型随机变量，则：</p>
+<script type="math/tex; mode=display">
+   E(Z) = E(g(X,Y)) = \sum_{j=1}^{\infty}\sum_{i=1}^{\infty}g(x_i,y_j)p_{ij}</script><h1 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h1><script type="math/tex; mode=display">
+D(X)=E([X-E(X)]^2)</script><h2 id="均方差-标准差"><a href="#均方差-标准差" class="headerlink" title="均方差/标准差"></a>均方差/标准差</h2><script type="math/tex; mode=display">
+   \sqrt{(D(X))}</script><h2 id="离散方差"><a href="#离散方差" class="headerlink" title="离散方差"></a>离散方差</h2><script type="math/tex; mode=display">
+   D(X) =\sum_{k=1}^{\infty}[x-E(x)]^2p_k</script><h2 id="连续方差"><a href="#连续方差" class="headerlink" title="连续方差"></a>连续方差</h2><script type="math/tex; mode=display">
+   D(X)=\int_{-\infty}^{\infty}[x-E(X)]^2f(x)dx</script><script type="math/tex; mode=display">
+   D(X) = E(X^2)-(E(X))^2</script><h2 id="标准化变换"><a href="#标准化变换" class="headerlink" title="标准化变换"></a>标准化变换</h2><script type="math/tex; mode=display">
+   X^* = \frac{X-\mu}{\sigma}</script><p>   $X^*$均值为1，方差为0，是X的标准化变量</p>
+<h1 id="切比雪夫不等式"><a href="#切比雪夫不等式" class="headerlink" title="切比雪夫不等式"></a>切比雪夫不等式</h1><p>估计未知概率分布的变量取期望附近区间的概率，这个估计是粗糙的</p>
+<p>对于任意正数$\epsilon$:</p>
+<p>$P{|X-\mu|&gt;=\epsilon} &lt;=\frac{\sigma^2}{\epsilon^2}$</p>
+<h1 id="协方差"><a href="#协方差" class="headerlink" title="协方差"></a>协方差</h1><p>   $Cov(X,Y) = E{[X-E(X)][Y-E(Y)]}$ 称为X，Y的协方差</p>
+<p>   $\rho_{XY} = \frac{Cov(X,Y)}{\sqrt{D(X)}\sqrt{D(Y)}}$  称为X，Y的相关系数。</p>
+<h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><p>两个随机变量X，Y相互独立的充要条件是$Cove(X,Y)\neq0$</p>
+<ul>
+<li>$Cov(X,X) = D(X)$</li>
+<li>$Cov(X,Y) = E(XY) - E(X)E(Y)$</li>
+<li>$Cov(aX,bY) = abCov(X,Y)$</li>
+<li>$Cov(X_1+X_2,Y) = Cov(X_1,Y)+Cov(X_2,Y)$</li>
+<li>$|\rho_{xy}|\le1​$</li>
+<li>$|\rho|=1$ 的充要条件是存在常数a,b 使得</li>
+<li>$P\{Y=aX+b\}=1$</li>
+</ul>
+<h1 id="似然函数"><a href="#似然函数" class="headerlink" title="似然函数"></a>似然函数</h1><p>若总体X属于离散型，其分布规律$P\{X=x\} = p(x;\theta)$形式已知，参数未知，事件$\{X_1=x_1,X_2=x_2 …\}$的联合概率：</p>
+<p>$L(\theta) = L(x_1,x_2…;\theta) = \prod_{i=1}^{n}p(x_1;\theta)$</p>
+<p>$L(\theta)$为样本的似然函数</p>
+<ul>
+<li>若总体X属于连续型</li>
+</ul>
+<p>$L(\theta) = \prod_{i=1}^{n}f(x_1;\theta)$</p>
+<ul>
+<li><p>对数似然方程</p>
+<p> $\frac{d}{d\theta}lnL(\theta)=0$</p>
+</li>
+<li><p>无偏估计</p>
+<p> 估计值的期望和实际值期望相同</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/VPN%E6%90%AD%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1089,205 +1417,6 @@ D(X)=E([X-E(X)]^2)</script><h2 id="均方差-标准差"><a href="#均方差-标�
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/shadowsocks-libev/config.json</span><br></pre></td></tr></table></figure>
 <p>需注意的是，如果你更新了配置文件，得重启 ss 才能生效。重启命令如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks-libev restart</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/mathtype%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/mathtype%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-11 11:35:02" itemprop="dateCreated datePublished" datetime="2019-10-11T11:35:02+08:00">2019-10-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li><code>Windows + R</code> 然后输入<code>regedit.exe</code> 后确定，如下图所示：<br><img src="https://img-blog.csdnimg.cn/20190426093524662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hvdXdhbmxl,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>来到目录<code>HKEY_CURRENT_USER\Software\Install Options</code> 下，删除图片中红线标出来的文件：<br><img src="https://img-blog.csdnimg.cn/20190426094144337.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hvdXdhbmxl,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>操作完上面的步骤后，重新打开MathType，又可以试用30天啦~</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/numpy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/numpy/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-11 11:35:02" itemprop="dateCreated datePublished" datetime="2019-10-11T11:35:02+08:00">2019-10-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="增加行或列"><a href="#增加行或列" class="headerlink" title="增加行或列"></a>增加行或列</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#增加列</span></span><br><span class="line">a=np.random.randn(<span class="number">4</span>,<span class="number">2</span>)</span><br><span class="line">b=np.random.randn(<span class="number">4</span>,<span class="number">1</span>)</span><br><span class="line">c=np.column_stack((a,b))</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#增加行</span></span><br><span class="line">a=np.random.randn(<span class="number">4</span>,<span class="number">2</span>)</span><br><span class="line">b=np.random.randn(<span class="number">4</span>,<span class="number">2</span>)</span><br><span class="line">c=np.row_stack((a,b))</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pyplot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/11/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pyplot/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-11 11:35:02" itemprop="dateCreated datePublished" datetime="2019-10-11T11:35:02+08:00">2019-10-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-27 18:53:36" itemprop="dateModified" datetime="2021-10-27T18:53:36+08:00">2021-10-27</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>[TOC]</p>
-<h1 id="中文显示"><a href="#中文显示" class="headerlink" title="中文显示"></a>中文显示</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">loss1=[1,2,3]</span><br><span class="line">loss2=[1,2,1]</span><br><span class="line">loss3=[2,3,1]</span><br><span class="line"></span><br><span class="line">matplotlib.rcParams[&#x27;font.family&#x27;]=&#x27;STSong&#x27;#显示中文 修改了全局变量</span><br><span class="line">matplotlib.rcParams[&#x27;font.size&#x27;]=10</span><br><span class="line">plt.title(&#x27;主成分分析&#x27;)</span><br><span class="line">plt.xlabel(&#x27;主成分数量&#x27;)</span><br><span class="line">plt.ylabel(&#x27;loss&#x27;)</span><br><span class="line">plt.plot(loss1,label=&#x27;loss1&#x27;)</span><br><span class="line">plt.plot(loss2,label=&#x27;loss2&#x27;)</span><br><span class="line">plt.plot(loss3,label=&#x27;loss3&#x27;)</span><br><span class="line">plt.legend()#图例</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>效果图<br></p>
-<h1 id="多个子图"><a href="#多个子图" class="headerlink" title="多个子图"></a>多个子图</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">loss1=[1,2,3]</span><br><span class="line">loss2=[1,2,1]</span><br><span class="line">loss3=[2,3,1]</span><br><span class="line"></span><br><span class="line">plt.subplot(2,1,1) #两行一列图中的第一幅图</span><br><span class="line">plt.plot(loss1)</span><br><span class="line">plt.plot(loss2)</span><br><span class="line">plt.xlabel(&#x27;epoch&#x27;)</span><br><span class="line">plt.ylabel(&#x27;loss&#x27;)</span><br><span class="line">plt.legend(labels=[&#x27;train_loss&#x27;, &#x27;test_loss&#x27;])</span><br><span class="line"></span><br><span class="line">plt.subplot(2,1,2) #两行一列图中的第一幅图</span><br><span class="line">plt.plot(loss2)</span><br><span class="line">plt.plot(loss3)</span><br><span class="line">plt.xlabel(&#x27;epoch&#x27;)</span><br><span class="line">plt.ylabel(&#x27;auc&#x27;)</span><br><span class="line">plt.legend(labels=[&#x27;train_auc&#x27;, &#x27;test_auc&#x27;])</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>效果图</p>
-
-<h1 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h1><h2 id="2D三点图"><a href="#2D三点图" class="headerlink" title="2D三点图"></a>2D三点图</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">import numpy as np</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">x=np.random.rand(2,20)</span><br><span class="line">label=np.random.randint(2, size=20)</span><br><span class="line"></span><br><span class="line">plt.scatter(x[0,:],x[1,:],c=label)#同一个label的点是同一个颜色</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>效果图</p>
-<p><img src="./pics/1563430474219.png" alt="1563430474219"></p>
-<h2 id="3d-三点图"><a href="#3d-三点图" class="headerlink" title="3d 三点图"></a>3d 三点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>, projection=<span class="string">&#x27;3d&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ax.scatter(X_new[:,<span class="number">0</span>].reshape(-<span class="number">1</span>),X_new[:,<span class="number">1</span>].reshape(-<span class="number">1</span>), X_new[:,<span class="number">2</span>].reshape(-<span class="number">1</span>))</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;X Label&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;Y Label&#x27;</span>)</span><br><span class="line">ax.set_zlabel(<span class="string">&#x27;Z Label&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-
-<h1 id="实时画图"><a href="#实时画图" class="headerlink" title="实时画图"></a>实时画图</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.axis([<span class="number">0</span>,<span class="number">50</span>,<span class="number">60</span>,<span class="number">80</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> np.arange(<span class="number">1</span>,<span class="number">5</span>):</span><br><span class="line">    z = <span class="number">68</span> + <span class="number">4</span> * np.random.randn(<span class="number">50</span>)</span><br><span class="line">    zm = np.cumsum(z) / <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(z)+<span class="number">1</span>)</span><br><span class="line">    plt.plot(zm)    </span><br><span class="line"></span><br><span class="line">n = np.arange(<span class="number">1</span>,<span class="number">51</span>)</span><br><span class="line">su = <span class="number">68</span> + <span class="number">4</span> / np.sqrt(n)</span><br><span class="line">sl = <span class="number">68</span> - <span class="number">4</span> / np.sqrt(n)</span><br><span class="line"></span><br><span class="line">plt.plot(n,su,n,sl) </span><br><span class="line">plt.show()<span class="comment">#阻塞函数</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1372,20 +1501,20 @@ D(X)=E([X-E(X)]^2)</script><h2 id="均方差-标准差"><a href="#均方差-标�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
