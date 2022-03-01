@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tessiehe.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Learning to Rank：Point-wise、Pair-wise 和 List-wise区别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learning to Rank：Point-wise、Pair-wise 和 List-wise区别">
+<meta property="og:url" content="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Learning%20to%20Rank%EF%BC%9APoint-wise%E3%80%81Pair-wise%20%E5%92%8C%20List-wise%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="天气桑的blog">
+<meta property="og:description" content="Learning to Rank：Point-wise、Pair-wise 和 List-wise区别">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://csdnimg.cn/release/phoenix/template/new_img/reprint.png">
+<meta property="og:image" content="https://csdnimg.cn/release/phoenix/template/new_img/articleRead.png">
+<meta property="og:image" content="https://csdnimg.cn/release/phoenix/template/new_img/tobarCollectionActive.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/818082/201809/818082-20180929163323836-2075825354.png">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-01T03:59:30.984Z">
+<meta property="article:author" content="Tenki San">
+<meta property="article:tag" content="算法相关">
+<meta property="article:tag" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://csdnimg.cn/release/phoenix/template/new_img/reprint.png">
+
+<link rel="canonical" href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Learning%20to%20Rank%EF%BC%9APoint-wise%E3%80%81Pair-wise%20%E5%92%8C%20List-wise%E5%8C%BA%E5%88%AB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别 | 天气桑的blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">天气桑的blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">这个人很懒，还没写介绍</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Learning%20to%20Rank%EF%BC%9APoint-wise%E3%80%81Pair-wise%20%E5%92%8C%20List-wise%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tenki San">
+      <meta itemprop="description" content="缘分让我们相遇">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天气桑的blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Learning to Rank：Point-wise、Pair-wise 和 List-wise区别
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:59:30" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</p>
+<span id="more"></span>
+<h1 id="Learning-to-Rank：Point-wise、Pair-wise-和-List-wise区别"><a href="#Learning-to-Rank：Point-wise、Pair-wise-和-List-wise区别" class="headerlink" title="Learning to Rank：Point-wise、Pair-wise 和 List-wise区别"></a>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</h1><p><img src="https://csdnimg.cn/release/phoenix/template/new_img/reprint.png" alt="img"></p>
+<p><a target="_blank" rel="noopener" href="https://me.csdn.net/weixin_34005042">weixin_34005042</a> 2018-09-29 15:19:00 <img src="https://csdnimg.cn/release/phoenix/template/new_img/articleRead.png" alt="img"> 4131 <img src="https://csdnimg.cn/release/phoenix/template/new_img/tobarCollectionActive.png" alt="img"> 已收藏 4</p>
+<p> 机器学习的 ranking 技术——learning2rank，包括 pointwise、pairwise、listwise 三大类型。</p>
+<p> <img src="https://img2018.cnblogs.com/blog/818082/201809/818082-20180929163323836-2075825354.png" alt="img"></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/17411986/what-is-the-difference-between-point-wise-and-pair-wise-ranking-in-machine-learn">【Ref-1】</a>给出的：</p>
+<Point wise ranking 类似于回归>
+
+<p>Point wise ranking is analogous to regression. Each point has an associated rank score, and you want to predict that rank score. So your labeled data set will have a feature vector and associated rank score given a query</p>
+<p>IE: {d1, r1} {d2, r2} {d3, r3} {d4, r4}</p>
+<p>where r1 &gt; r2 &gt; r3 &gt;r4</p>
+<Pairwise ranking 类似于分类>
+
+<p>Pairwise ranking is analogous to classification. Each data point is associated with another data point, and the goal is to learn a classifier which will predict which of the two is “more” relevant to a given query.</p>
+<p>IE: {d1 &gt; d2} {d2 &gt; d3} {d3 &gt; d4}</p>
+<h1 id="1、Pointwise-Approach"><a href="#1、Pointwise-Approach" class="headerlink" title="\1、Pointwise Approach**"></a><strong><em>\</em>1、Pointwise Approach**</strong></h1><h2 id="1-1-特点"><a href="#1-1-特点" class="headerlink" title="　　*\*1.1 特点****"></a>　　<strong>*\</strong>*1.1 特点**<em>**</em></h2><p>　　Pointwise 类方法，其 L2R 框架具有以下特征：</p>
+<ul>
+<li>输入空间中样本是单个 doc（和对应 query）构成的特征向量；</li>
+<li>输出空间中样本是单个 doc（和对应 query）的相关度；</li>
+<li>假设空间中样本是打分函数；</li>
+<li>损失函数评估单个 doc 的预测得分和真实得分之间差异。</li>
+</ul>
+<p>　　这里讨论下，关于人工标注标签怎么转换到 pointwise 类方法的输出空间：</p>
+<ol>
+<li>如果标注直接是相关度 s_j，则 doc x_j 的真实标签定义为 y_j=s_j</li>
+<li>如果标注是 pairwise preference s_{u,v}，则 doc x_j 的真实标签可以利用该 doc 击败了其他 docs 的频次</li>
+<li>如果标注是整体排序 π，则 doc x_j 的真实标签可以利用映射函数，如将 doc 的排序位置序号当作真实标签</li>
+</ol>
+<h2 id="1-2-根据使用的-ML-方法不同，pointwise-类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。"><a href="#1-2-根据使用的-ML-方法不同，pointwise-类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。" class="headerlink" title="　　1.2 根据使用的 ML 方法不同，pointwise 类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。"></a>　　1.2 根据使用的 ML 方法不同，pointwise 类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。</h2><p>　　（1）基于回归的算法</p>
+<p>　　　　此时，输出空间包含的是实值相关度得分。采用 ML 中传统的回归方法即可。</p>
+<p>　　（2）基于分类的算法</p>
+<p>　　　　此时，输出空间包含的是无序类别。对于二分类，SVM、LR 等均可；对于多分类，提升树等均可。</p>
+<p>　　（3）基于有序回归的算法</p>
+<p>　　　　此时，输出空间包含的是有序类别。通常是找到一个打分函数，然后用一系列阈值对得分进行分割，得到有序类别。采用 PRanking、基于 margin 的方法都可以。</p>
+<h2 id="1-3-缺陷"><a href="#1-3-缺陷" class="headerlink" title="　　1.3 缺陷"></a>　　1.3 缺陷</h2><p>　　　　回顾概述中提到的评估指标应该基于 query 和 position，</p>
+<ul>
+<li>ranking 追求的是排序结果，并不要求精确打分，只要有相对打分即可。</li>
+<li>pointwise 类方法并没有考虑同一个 query 对应的 docs 间的内部依赖性。一方面，导致输入空间内的样本不是 IID 的，违反了 ML 的基本假设，另一方面，没有充分利用这种样本间的结构性。其次，当不同 query 对应不同数量的 docs 时，整体 loss 将会被对应 docs 数量大的 query 组所支配，前面说过应该每组 query 都是等价的。</li>
+<li>损失函数也没有 model 到预测排序中的位置信息。因此，损失函数可能无意的过多强调那些不重要的 docs，即那些排序在后面对用户体验影响小的 doc。</li>
+</ul>
+<h2 id="1-4-改进"><a href="#1-4-改进" class="headerlink" title="　　1.4 改进"></a>　　1.4 改进</h2><p>　　　　如在 loss 中引入基于 query 的正则化因子的 RankCosine 方法。</p>
+<h1 id="2、Pairwise-Approach"><a href="#2、Pairwise-Approach" class="headerlink" title="2、Pairwise Approach"></a>2、Pairwise Approach</h1><h2 id="2-1-特点"><a href="#2-1-特点" class="headerlink" title="　  2.1 特点"></a>　  2.1 特点</h2><p>　　Pairwise 类方法，其 L2R 框架具有以下特征：</p>
+<ul>
+<li>输入空间中样本是（同一 query 对应的）两个 doc（和对应 query）构成的两个特征向量；</li>
+<li>输出空间中样本是 pairwise preference；</li>
+<li>假设空间中样本是二变量函数；</li>
+<li>损失函数评估 doc pair 的预测 preference 和真实 preference 之间差异。</li>
+</ul>
+<p>　　这里讨论下，关于人工标注标签怎么转换到 pairwise 类方法的输出空间：</p>
+<ol>
+<li>如果标注直接是相关度 s_j，则 doc pair (x_u,x_v) 的真实标签定义为 y_{u,v}=2*I_{s_u&gt;s_v}-1</li>
+<li>如果标注是 pairwise preference s_{u,v}，则 doc pair (x_u,x_v) 的真实标签定义为y_{u,v}=s_{u,v}</li>
+<li>如果标注是整体排序 π，则 doc pair (x_u,x_v) 的真实标签定义为y_{u,v}=2*I_{π_u,π_v}-1</li>
+</ol>
+<h2 id="2-2-基于二分类的算法"><a href="#2-2-基于二分类的算法" class="headerlink" title="　　2.2 基于二分类的算法　　"></a>　　2.2 基于二分类的算法　　</h2><p>　　Pairwise 类方法基本就是使用二分类算法即可。</p>
+<p>　　经典的算法有 基于 NN 的 SortNet，基于 NN 的 RankNet，基于 fidelity loss 的 FRank，基于 AdaBoost 的 RankBoost，基于 SVM 的 RankingSVM，基于提升树的 GBRank。</p>
+<h2 id="2-3-缺陷"><a href="#2-3-缺陷" class="headerlink" title="　　2.3 缺陷"></a>　　2.3 缺陷</h2><p>　　虽然 pairwise 类相较 pointwise 类 model 到一些 doc pair 间的相对顺序信息，但还是存在不少问题，回顾概述中提到的评估指标应该基于 query 和 position，</p>
+<ul>
+<li>如果人工标注给定的是第一种和第三种，即已包含多有序类别，那么转化成 pairwise preference 时必定会损失掉一些更细粒度的相关度标注信息。</li>
+<li>doc pair 的数量将是 doc 数量的二次，从而 pointwise 类方法就存在的 query 间 doc 数量的不平衡性将在 pairwise 类方法中进一步放大。</li>
+<li>pairwise 类方法相对 pointwise 类方法对噪声标注更敏感，即一个错误标注会引起多个 doc pair 标注错误。</li>
+<li>pairwise 类方法仅考虑了 doc pair 的相对位置，损失函数还是没有 model 到预测排序中的位置信息。</li>
+<li>pairwise 类方法也没有考虑同一个 query 对应的 doc pair 间的内部依赖性，即输入空间内的样本并不是 IID 的，违反了 ML 的基本假设，并且也没有充分利用这种样本间的结构性。</li>
+</ul>
+<h2 id="2-4-改进"><a href="#2-4-改进" class="headerlink" title="　　2.4 改进"></a>　　2.4 改进</h2><p>　　　pairwise 类方法也有一些尝试，去一定程度解决上述缺陷，比如：</p>
+<ul>
+<li>Multiple hyperplane ranker，主要针对前述第一个缺陷</li>
+<li>magnitude-preserving ranking，主要针对前述第一个缺陷</li>
+<li>IRSVM，主要针对前述第二个缺陷</li>
+<li>采用 Sigmoid 进行改进的 pairwise 方法，主要针对前述第三个缺陷</li>
+<li>P-norm push，主要针对前述第四个缺陷</li>
+<li>Ordered weighted average ranking，主要针对前述第四个缺陷</li>
+<li>LambdaRank，主要针对前述第四个缺陷</li>
+<li>Sparse ranker，主要针对前述第四个缺陷</li>
+</ul>
+<p> 　<strong><em>\</em>3、Listwise Approach**</strong></p>
+<h2 id="3-1-特点"><a href="#3-1-特点" class="headerlink" title="　　3.1 特点　　"></a>　　3.1 特点　　</h2><p>　　Listwise 类方法，其 L2R 框架具有以下特征：</p>
+<ul>
+<li>输入空间中样本是（同一 query 对应的）所有 doc（与对应的 query）构成的多个特征向量（列表）；</li>
+<li>输出空间中样本是这些 doc（和对应 query）的相关度排序列表或者排列；</li>
+<li>假设空间中样本是多变量函数，对于 docs 得到其排列，实践中，通常是一个打分函数，根据打分函数对所有 docs 的打分进行排序得到 docs 相关度的排列；</li>
+<li>损失函数分成两类，一类是直接和评价指标相关的，还有一类不是直接相关的。具体后面介绍。</li>
+</ul>
+<p>　　这里讨论下，关于人工标注标签怎么转换到 listwise 类方法的输出空间：</p>
+<ol>
+<li>如果标注直接是相关度 s_j，则 doc set 的真实标签可以利用相关度 s_j 进行比较构造出排列</li>
+<li>如果标注是 pairwise preference s_{u,v}，则 doc set 的真实标签也可以利用所有 s_{u,v} 进行比较构造出排列</li>
+<li>如果标注是整体排序 π，则 doc set 则可以直接得到真实标签</li>
+</ol>
+<h2 id="3-2-根据损失函数构造方式的不同，listwise-类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。"><a href="#3-2-根据损失函数构造方式的不同，listwise-类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。" class="headerlink" title="　　3.2 根据损失函数构造方式的不同，listwise 类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。"></a>　　3.2 根据损失函数构造方式的不同，listwise 类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。</h2><p>　　　（1）直接基于评价指标的算法</p>
+<p>　　直接取优化 ranking 的评价指标，也算是 listwise 中最直观的方法。但这并不简单，因为前面说过评价指标都是离散不可微的，具体处理方式有这么几种：</p>
+<ul>
+<li>优化基于评价指标的 ranking error 的连续可微的近似，这种方法就可以直接应用已有的优化方法，如SoftRank，ApproximateRank，SmoothRank</li>
+<li>优化基于评价指标的 ranking error 的连续可微的上界，如 SVM-MAP，SVM-NDCG，PermuRank</li>
+<li>使用可以优化非平滑目标函数的优化技术，如 AdaRank，RankGP</li>
+</ul>
+<p>　　上述方法的优化目标都是直接和 ranking 的评价指标有关。现在来考虑一个概念，informativeness。通常认为一个更有信息量的指标，可以产生更有效的排序模型。而多层评价指标（NDCG）相较二元评价（AP）指标通常更富信息量。因此，有时虽然使用信息量更少的指标来评估模型，但仍然可以使用更富信息量的指标来作为 loss 进行模型训练。</p>
+<p>　　  （2）非直接基于评价指标的算法</p>
+<p>　　这里，不再使用和评价指标相关的 loss 来优化模型，而是设计能衡量模型输出与真实排列之间差异的 loss，如此获得的模型在评价指标上也能获得不错的性能。<br>　　经典的如 ，ListNet，ListMLE，StructRank，BoltzRank。</p>
+<h2 id="3-3-缺陷"><a href="#3-3-缺陷" class="headerlink" title="　　3.3 缺陷"></a>　　3.3 缺陷</h2><p>listwise 类相较 pointwise、pairwise 对 ranking 的 model 更自然，解决了 ranking 应该基于 query 和 position 问题。</p>
+<p>listwise 类存在的主要缺陷是：一些 ranking 算法需要基于排列来计算 loss，从而使得训练复杂度较高，如 ListNet和 BoltzRank。此外，位置信息并没有在 loss 中得到充分利用，可以考虑在 ListNet 和 ListMLE 的 loss 中引入位置折扣因子。</p>
+<h2 id="3-4-改进"><a href="#3-4-改进" class="headerlink" title="　　3.4 改进"></a>　　3.4 改进</h2><p>　　　pairwise 类方法也有一些尝试，去一定程度解决上述缺陷，比如：</p>
+<ul>
+<li>Multiple hyperplane ranker，主要针对前述第一个缺陷</li>
+<li>magnitude-preserving ranking，主要针对前述第一个缺陷</li>
+<li>IRSVM，主要针对前述第二个缺陷</li>
+<li>采用 Sigmoid 进行改进的 pairwise 方法，主要针对前述第三个缺陷</li>
+<li>P-norm push，主要针对前述第四个缺陷</li>
+<li>Ordered weighted average ranking，主要针对前述第四个缺陷</li>
+<li>LambdaRank，主要针对前述第四个缺陷</li>
+<li>Sparse ranker，主要针对前述第四个缺陷</li>
+</ul>
+<p>以上，<strong>这三大类方法主要区别在于损失函数。不同的损失函数决定了不同的模型学习过程和输入输出空间。</strong></p>
+<p>rating数据集：</p>
+<p>：所以关于这个问题，是要使用topN=1的对吗？并把指标改为 AUC和 NDCG对吗？</p>
+<p>——是这样，这个是一个rating数据集。</p>
+<p>如果是按照pairwise ranking的正确率，应该是我们的oPR和oMRR，PR和MAP都是没有用的。</p>
+<p>如果不按照pairwise，（按照listwise），就是AUC和NDCG，所以我让你算那个。</p>
+<p>当然还有就是按照数值，（按照pointwise），RMSE，不过我们的没法计算RMSE。</p>
+<p>：啊这个“不按照pairwise”，没太明白，还是按照原来的思路，用的 winner 和 loser 比较对呀。尤其在这个rating数据集，是每个比较对当成一个session，这点还是不变的吧？？</p>
+<p>——这不就是pairwise吗？</p>
+<p>rating是可以按照每个用户得到一个排序的，这是listwise，也就是算出NDCG，AUC的指标。</p>
+<p>还可以按照pointwise，每个分数预测的怎么样，就是RMSE。</p>
+<p>【Reference】</p>
+<p>1、<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/17411986/what-is-the-difference-between-point-wise-and-pair-wise-ranking-in-machine-learn">What is the difference between point-wise and pair-wise ranking in machine learning</a></p>
+<p>2、<a target="_blank" rel="noopener" href="https://blog.csdn.net/lipengcn/article/details/80373744">学习排序 Learning to Rank：从 pointwise 和 pairwise 到 listwise，经典模型与优缺点</a></p>
+<p>3、<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/news/135904">基于 Pairwise 和 Listwise 的排序学习</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" rel="tag"># 算法相关</a>
+              <a href="/tags/default/" rel="tag"># default</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5DDeep%20Learning%20based%20Recommender%20System%20A%20Survey%20and%20New%20Perspectives/" rel="prev" title="Deep Learning based Recommender System A Survey and New Perspectives">
+      <i class="fa fa-chevron-left"></i> Deep Learning based Recommender System A Survey and New Perspectives
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Uplift%20Modeling/" rel="next" title="Uplift Modeling">
+      Uplift Modeling <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Learning-to-Rank%EF%BC%9APoint-wise%E3%80%81Pair-wise-%E5%92%8C-List-wise%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81Pointwise-Approach"><span class="nav-number">2.</span> <span class="nav-text">\1、Pointwise Approach**</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E7%89%B9%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">　　*\*1.1 特点****</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%A0%B9%E6%8D%AE%E4%BD%BF%E7%94%A8%E7%9A%84-ML-%E6%96%B9%E6%B3%95%E4%B8%8D%E5%90%8C%EF%BC%8Cpointwise-%E7%B1%BB%E5%8F%AF%E4%BB%A5%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%88%90%E4%B8%89%E7%B1%BB%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%97%E6%B3%95%E3%80%81%E5%9F%BA%E4%BA%8E%E5%88%86%E7%B1%BB%E7%9A%84%E7%AE%97%E6%B3%95%EF%BC%8C%E5%9F%BA%E4%BA%8E%E6%9C%89%E5%BA%8F%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%97%E6%B3%95%E3%80%82"><span class="nav-number">2.2.</span> <span class="nav-text">　　1.2 根据使用的 ML 方法不同，pointwise 类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E7%BC%BA%E9%99%B7"><span class="nav-number">2.3.</span> <span class="nav-text">　　1.3 缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E6%94%B9%E8%BF%9B"><span class="nav-number">2.4.</span> <span class="nav-text">　　1.4 改进</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81Pairwise-Approach"><span class="nav-number">3.</span> <span class="nav-text">2、Pairwise Approach</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E7%89%B9%E7%82%B9"><span class="nav-number">3.1.</span> <span class="nav-text">　  2.1 特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%9F%BA%E4%BA%8E%E4%BA%8C%E5%88%86%E7%B1%BB%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">　　2.2 基于二分类的算法　　</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E7%BC%BA%E9%99%B7"><span class="nav-number">3.3.</span> <span class="nav-text">　　2.3 缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E6%94%B9%E8%BF%9B"><span class="nav-number">3.4.</span> <span class="nav-text">　　2.4 改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E7%89%B9%E7%82%B9"><span class="nav-number">3.5.</span> <span class="nav-text">　　3.1 特点　　</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E6%A0%B9%E6%8D%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%9E%84%E9%80%A0%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%8D%E5%90%8C%EF%BC%8Clistwise-%E7%B1%BB%E5%8F%AF%E4%BB%A5%E5%88%86%E6%88%90%E4%B8%A4%E7%B1%BB%E7%9B%B4%E6%8E%A5%E5%9F%BA%E4%BA%8E%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87%E7%9A%84%E7%AE%97%E6%B3%95%EF%BC%8C%E9%97%B4%E6%8E%A5%E5%9F%BA%E4%BA%8E%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87%E7%9A%84%E7%AE%97%E6%B3%95%E3%80%82"><span class="nav-number">3.6.</span> <span class="nav-text">　　3.2 根据损失函数构造方式的不同，listwise 类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E7%BC%BA%E9%99%B7"><span class="nav-number">3.7.</span> <span class="nav-text">　　3.3 缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E6%94%B9%E8%BF%9B"><span class="nav-number">3.8.</span> <span class="nav-text">　　3.4 改进</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tenki San</p>
+  <div class="site-description" itemprop="description">缘分让我们相遇</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tenki San</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tessiehe.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="pandas常用操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pandas">
+<meta property="og:url" content="http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pandas/index.html">
+<meta property="og:site_name" content="天气桑的blog">
+<meta property="og:description" content="pandas常用操作">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-01T03:51:45.541Z">
+<meta property="article:author" content="Tenki San">
+<meta property="article:tag" content="default">
+<meta property="article:tag" content="代码相关">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pandas/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>pandas | 天气桑的blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">天气桑的blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">这个人很懒，还没写介绍</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pandas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tenki San">
+      <meta itemprop="description" content="缘分让我们相遇">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天气桑的blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pandas
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:51:45" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>pandas常用操作</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="python调用shell"><a href="#python调用shell" class="headerlink" title="python调用shell"></a>python调用shell</h1><p>在python程序中调用shell命令，是件很酷且常用的事情……</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pengdonglin137/articles/8093409.html">https://www.cnblogs.com/pengdonglin137/articles/8093409.html</a></p>
+<h2 id="os-system-command"><a href="#os-system-command" class="headerlink" title="os.system(command)"></a>os.system(command)</h2><p>  此函数会启动子进程，在子进程中执行command，并返回command命令执行完毕后的退出状态，如果command有执行内容，会在标准输出显示。这实际上是使用C标准库函数system()实现的。</p>
+<blockquote>
+<p>缺点：这个函数在执行command命令时需要重新打开一个终端，并且无法保存command命令的执行结果。<br>实例：os.system(‘ls -l *’)</p>
+<h2 id="os-popen-command-mode"><a href="#os-popen-command-mode" class="headerlink" title="os.popen(command,mode)"></a>os.popen(command,mode)</h2></blockquote>
+<p>打开一个与command进程之间的管道。这个函数的返回值是一个文件对象，可以读或者写(由mode决定，mode默认是’r’)。如果mode为’r’，可以使用此函数的返回值调用read()来获取command命令的执行结果。</p>
+<p>os.system(cmd)或os.popen(cmd)，前者返回值是脚本的退出状态码，后者的返回值是脚本执行过程中的输出内容。实际使用时视需求情况而选择。</p>
+<p>实例：tmp = os.popen(‘ls -l *’).readlines()</p>
+<h1 id="同时写入多个sheet"><a href="#同时写入多个sheet" class="headerlink" title="同时写入多个sheet"></a>同时写入多个sheet</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_excel_pd</span>(<span class="params">file, sheet, data</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    excel title: name /  age</span></span><br><span class="line"><span class="string">        df1 = &#123;</span></span><br><span class="line"><span class="string">        &#x27;name&#x27;: [1, 2, 3],</span></span><br><span class="line"><span class="string">        &#x27;age&#x27;: [1, 2, 3]</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    pandas DataFrame  write to excel</span></span><br><span class="line"><span class="string">    :param file:  file_path + file_name</span></span><br><span class="line"><span class="string">    :param sheet: type：list</span></span><br><span class="line"><span class="string">    :param data: type: list  DataFrame</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    writer = pd.ExcelWriter(file)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(sheet)):</span><br><span class="line">        df = pd.DataFrame(data[i])</span><br><span class="line">        df.to_excel(excel_writer=writer, sheet_name=sheet[i])</span><br><span class="line">    writer.save()</span><br><span class="line">    writer.close()</span><br><span class="line">    log.info(<span class="string">&#x27;写入数据完成！&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="按条件过滤行"><a href="#按条件过滤行" class="headerlink" title="按条件过滤行"></a>按条件过滤行</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[df[A] &gt; <span class="number">0</span>] <span class="comment">#选出A列&gt;0的行</span></span><br><span class="line">df[df[A]。isin([<span class="number">0</span>,<span class="number">1</span>])] <span class="comment">#选出A列中是0或1的行</span></span><br></pre></td></tr></table></figure>
+<h1 id="读入"><a href="#读入" class="headerlink" title="读入"></a>读入</h1><p>import pandas as pd<br>df=pd.read_table(‘dddd.txt’,header=0,index_col=0,error_bad_lines=False,delimiter=’\t’)</p>
+<h1 id="列名"><a href="#列名" class="headerlink" title="列名"></a>列名</h1><p>df.columns</p>
+<h1 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.drop([<span class="string">&#x27;k&#x27;</span>], axis=<span class="number">1</span>, inplace=<span class="literal">True</span>) <span class="comment">#删除k列</span></span><br></pre></td></tr></table></figure>
+<h1 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h1><p>values={}<br>with open(‘fill_na.txt’) as f:<br>    for line in f:<br>        line = line.strip().split(‘:’)<br>        values[line[0]] = int(line[1])<br>df = df.fillna(value=values)<br>df = df.dropna(axis=0,how=’any’) #删除含有NULL的行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#删除指定列有空值的行</span></span><br><span class="line">df_ios_tmp=df_ios.dropna(subset=[列名],how=<span class="string">&#x27;all&#x27;</span>,inplace=<span class="literal">False</span>) <span class="comment">#how=all 或者 any</span></span><br></pre></td></tr></table></figure>
+<h1 id="shuffle"><a href="#shuffle" class="headerlink" title="shuffle"></a>shuffle</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sample(frac=<span class="number">1</span>).reset_index(drop=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="数据检查"><a href="#数据检查" class="headerlink" title="数据检查"></a>数据检查</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#datafram 每一列值unique数</span></span><br><span class="line">data_idfa.info(verbose=<span class="literal">True</span>, null_counts=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#每一列均值 方差等</span></span><br><span class="line">data_idfa.describe()</span><br></pre></td></tr></table></figure>
+
+<h1 id="group-by"><a href="#group-by" class="headerlink" title="group by"></a>group by</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_ios.groupby([<span class="string">&#x27;y_flag&#x27;</span>], as_index=<span class="literal">False</span>)[<span class="string">&#x27;dt&#x27;</span>].count() <span class="comment">#聚合函数除了count还有sum,min,max等</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_ios.groupby([<span class="string">&#x27;dt_m&#x27;</span>,<span class="string">&#x27;y_flag&#x27;</span>], as_index=<span class="literal">False</span>)[<span class="string">&#x27;pin&#x27;</span>].count()</span><br></pre></td></tr></table></figure>
+
+<h1 id="截取时间前几位"><a href="#截取时间前几位" class="headerlink" title="截取时间前几位"></a>截取时间前几位</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_ios[<span class="string">&#x27;dt_m&#x27;</span>]=df_ios[<span class="string">&#x27;dt&#x27;</span>].<span class="built_in">str</span>[<span class="number">0</span>:<span class="number">7</span>]</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/default/" rel="tag"># default</a>
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" rel="tag"># 代码相关</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pandas%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="prev" title="pandas常用命令">
+      <i class="fa fa-chevron-left"></i> pandas常用命令
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/numpy/" rel="next" title="numpy">
+      numpy <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python%E8%B0%83%E7%94%A8shell"><span class="nav-number">1.</span> <span class="nav-text">python调用shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#os-system-command"><span class="nav-number">1.1.</span> <span class="nav-text">os.system(command)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-popen-command-mode"><span class="nav-number">1.2.</span> <span class="nav-text">os.popen(command,mode)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E5%86%99%E5%85%A5%E5%A4%9A%E4%B8%AAsheet"><span class="nav-number">2.</span> <span class="nav-text">同时写入多个sheet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%89%E6%9D%A1%E4%BB%B6%E8%BF%87%E6%BB%A4%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">按条件过滤行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BB%E5%85%A5"><span class="nav-number">4.</span> <span class="nav-text">读入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%97%E5%90%8D"><span class="nav-number">5.</span> <span class="nav-text">列名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%88%97"><span class="nav-number">6.</span> <span class="nav-text">删除列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A4%84%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">缺失值处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shuffle"><span class="nav-number">8.</span> <span class="nav-text">shuffle</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A3%80%E6%9F%A5"><span class="nav-number">9.</span> <span class="nav-text">数据检查</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#group-by"><span class="nav-number">10.</span> <span class="nav-text">group by</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%AA%E5%8F%96%E6%97%B6%E9%97%B4%E5%89%8D%E5%87%A0%E4%BD%8D"><span class="nav-number">11.</span> <span class="nav-text">截取时间前几位</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tenki San</p>
+  <div class="site-description" itemprop="description">缘分让我们相遇</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tenki San</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

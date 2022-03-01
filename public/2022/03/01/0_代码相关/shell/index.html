@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tessiehe.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="常用shell命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell">
+<meta property="og:url" content="http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/shell/index.html">
+<meta property="og:site_name" content="天气桑的blog">
+<meta property="og:description" content="常用shell命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-01T03:53:24.234Z">
+<meta property="article:author" content="Tenki San">
+<meta property="article:tag" content="default">
+<meta property="article:tag" content="代码相关">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/shell/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>shell | 天气桑的blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">天气桑的blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">这个人很懒，还没写介绍</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/shell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tenki San">
+      <meta itemprop="description" content="缘分让我们相遇">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天气桑的blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          shell
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:53:24" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>常用shell命令</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="etc-profile、-etc-bashrc、-bash-profile、-bashrc"><a href="#etc-profile、-etc-bashrc、-bash-profile、-bashrc" class="headerlink" title="/etc/profile、/etc/bashrc、~/.bash_profile、~/.bashrc"></a>/etc/profile、/etc/bashrc、~/.bash_profile、~/.bashrc</h1><h2 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h2><p>此文件为系统的每个用户设置环境信息，当用户第一次登录时，该文件被执行。并从 /etc/profile.d 目录的配置文件中收集 shell 的设置。如果你有对 /etc/profile 有修改的话必须得 source 一下你的修改才会生效，此修改对每个用户都生效。</p>
+<h2 id="etc-bashrc（ubuntu为-etc-bash-bashrc）"><a href="#etc-bashrc（ubuntu为-etc-bash-bashrc）" class="headerlink" title="/etc/bashrc（ubuntu为 /etc/bash.bashrc）"></a>/etc/bashrc（ubuntu为 /etc/bash.bashrc）</h2><p>为每一个运行 bash shell 的用户执行此文件。当 bash shell 被打开时，该文件被读取。如果你想对所有的使用 bash 的用户修改某个配置并在以后打开的 bash 都生效的话可以修改这个文件，修改这个文件不用重启，重新打开一个 bash 即可生效。<br>Ubuntu没有此文件，与之对应的是/ect/bash.bashrc。</p>
+<h2 id="bash-profile（ubuntu为-profile）"><a href="#bash-profile（ubuntu为-profile）" class="headerlink" title="~/.bash_profile（ubuntu为 ~/.profile）"></a>~/.bash_profile（ubuntu为 ~/.profile）</h2><p>每个用户都可使用该文件输入专用于自己使用的 shell 信息，当用户登录时，该文件仅仅执行一次！默认情况下,它设置一些环境变量，执行用户的~/ .bashrc 文件。 此文件类似于 /etc/profile，也是需要需要 source 才会生效，/etc/profile 对所有用户生效，~/.bash_profile 只对当前用户生效。~/.profile(由Bourne Shell和Korn Shell使用)和.login(由C Shell使用)两个文件是.bash_profile的同义词，目的是为了兼容其它Shell。</p>
+<h1 id="Linux的Shell种类"><a href="#Linux的Shell种类" class="headerlink" title="Linux的Shell种类"></a>Linux的Shell种类</h1><p>常见的有：</p>
+<ul>
+<li><p>Bourne Shell（/usr/bin/sh或/bin/sh）、<br>Bourne Again Shell（/bin/bash）、<br>C Shell（/usr/bin/csh）、<br>K Shell（/usr/bin/ksh）、<br>Shell for Root（/sbin/sh）等等。</p>
+</li>
+<li><p>不同的Shell语言的语法有所不同，所以不能交换使用。每种Shell都有其特色之处，基本上，掌握其中任何一种 就足够了。在本文中，我们关注的重点是Bash，也就是Bourne Again Shell，由于易用和免费，Bash在日常工作中被广泛使用；同时，Bash也是大多数Linux系统默认的Shell。</p>
+</li>
+<li>在一般情况下，人们并不区分 Bourne Shell和Bourne Again Shell，所以，在下面的文字中，我们可以看到#!/bin/sh，它同样也可以改为#!/bin/bash。(定义使用哪种sh解释器来解释脚本)</li>
+</ul>
+<h1 id="如果不存在则创建文件夹"><a href="#如果不存在则创建文件夹" class="headerlink" title="如果不存在则创建文件夹"></a>如果不存在则创建文件夹</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if [ ! -d &quot;$build_dir&quot; ]; then</span><br><span class="line">        mkdir $build_dir</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h1 id="df"><a href="#df" class="headerlink" title="df"></a>df</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df -hl 查看磁盘剩余空间</span><br><span class="line">df -h 查看每个根路径的分区大小</span><br></pre></td></tr></table></figure>
+<h1 id="alias-外部传参"><a href="#alias-外部传参" class="headerlink" title="alias 外部传参"></a>alias 外部传参</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> <span class="built_in">cd</span>=<span class="string">&#x27;func() &#123; cd $1; ls;&#125;; func&#x27;</span> <span class="comment">#定义一个函数func（）&#123;......&#125;；func; &#123;&#125;中间是要alias的执行的命令，多个命令用；隔开，最后；结尾</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/notebook/download</span><br><span class="line"><span class="built_in">alias</span> dl=<span class="string">&#x27;func() &#123; cp $1 /notebook/download/; &#125;; func&#x27;</span></span><br><span class="line"><span class="built_in">alias</span> push=<span class="string">&#x27;func() &#123; cd /notebook/download/; git add . ; git commit -m &quot;update&quot;; git push origin master; &#125;; func&#x27;</span></span><br></pre></td></tr></table></figure>
+<h1 id="du"><a href="#du" class="headerlink" title="du"></a>du</h1><h2 id="查看磁盘大小"><a href="#查看磁盘大小" class="headerlink" title="查看磁盘大小"></a>查看磁盘大小</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> du -s * | sort -nr  #查看大小并按大小排序</span><br><span class="line">du -h ftp #查看指定文件夹下所有文件大小（包括子文件夹）</span><br><span class="line">du -sh [目录名] 返回该目录的大小</span><br><span class="line">du -sm [文件夹] 返回该文件夹总M数</span><br></pre></td></tr></table></figure>
+<h1 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &#x27;hi&#x27; test.txt #显示包含hi的行</span><br></pre></td></tr></table></figure>
+<h1 id="find"><a href="#find" class="headerlink" title="find"></a>find</h1><h2 id="遍历符合条件的文件"><a href="#遍历符合条件的文件" class="headerlink" title="遍历符合条件的文件"></a>遍历符合条件的文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for f in `find . -name &quot;正则匹配&quot; ` #.是路径   双引号和飘号要注意</span><br><span class="line">do</span><br><span class="line">	echo $f</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h2 id="对于多个文件执行操作"><a href="#对于多个文件执行操作" class="headerlink" title="对于多个文件执行操作"></a>对于多个文件执行操作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*.sh&quot; | xargs wc -l</span><br></pre></td></tr></table></figure>
+<h2 id="删除符合条件的多个文件"><a href="#删除符合条件的多个文件" class="headerlink" title="删除符合条件的多个文件"></a>删除符合条件的多个文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -name &quot;$&#123;file_name&#125;_*&quot; | xargs rm -f</span><br></pre></td></tr></table></figure>
+<h2 id="统计python文件总行数"><a href="#统计python文件总行数" class="headerlink" title="统计python文件总行数"></a>统计python文件总行数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*.py&quot; | xargs wc -l &gt;&gt; temp.txt</span><br></pre></td></tr></table></figure>
+<h1 id="shellcheck检查sh文件"><a href="#shellcheck检查sh文件" class="headerlink" title="shellcheck检查sh文件"></a>shellcheck检查sh文件</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*.sh&quot; | xargs shellcheck &gt;&gt; temp2.txt</span><br><span class="line">grep &#x27;In ./&#x27;</span><br></pre></td></tr></table></figure>
+<h1 id="获取当前路径"><a href="#获取当前路径" class="headerlink" title="获取当前路径"></a>获取当前路径</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CUR_DIR=$(<span class="built_in">cd</span> $(dirname <span class="variable">$0</span>); <span class="built_in">pwd</span>) <span class="comment">#但是用source调用脚本时$0的值为&quot;-bash&quot;，词命令无法获取地址</span></span><br><span class="line">CUR_DIR=<span class="string">&quot;<span class="subst">$( cd <span class="string">&quot;<span class="subst">$( dirname <span class="string">&quot;<span class="variable">$&#123;BASH_SOURCE[0]&#125;</span>&quot;</span> )</span>&quot;</span> &amp;&amp; pwd )</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="hive"><a href="#hive" class="headerlink" title="hive"></a>hive</h1><h2 id="获取hive表最新分区"><a href="#获取hive表最新分区" class="headerlink" title="获取hive表最新分区"></a>获取hive表最新分区</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">newest_dt=$(hive -e <span class="string">&quot;show partitions cf_model.htq_hztz_xdtz_brs_s;&quot;</span>|tail -1)</span><br><span class="line">newest_dt=<span class="variable">$&#123;newest_dt:3&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h1><h2 id="插入行"><a href="#插入行" class="headerlink" title="插入行"></a>插入行</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;1i\要添加的内容&#x27;  yourfile</span><br></pre></td></tr></table></figure>
+<h2 id="删除指定行"><a href="#删除指定行" class="headerlink" title="删除指定行"></a>删除指定行</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i ‘1d’ filename</span><br></pre></td></tr></table></figure>
+<h2 id="替换指定字符"><a href="#替换指定字符" class="headerlink" title="替换指定字符"></a>替换指定字符</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;s/foo/bar/g&#x27; myfile #-i会修改代码</span><br></pre></td></tr></table></figure>
+<h2 id="查看指定行"><a href="#查看指定行" class="headerlink" title="查看指定行"></a>查看指定行</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n &#x27;5,10p&#x27; filename 这样你就可以只查看文件的第5行到第10行。</span><br></pre></td></tr></table></figure>
+<h1 id="split"><a href="#split" class="headerlink" title="split"></a>split</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">split -l 2000 urls.txt -d -a 2 url_</span><br><span class="line">解释一下：</span><br><span class="line">-l：按行分割，上面表示将urls.txt文件按2000行一个文件分割为多个文件</span><br><span class="line">-d：添加数字后缀，比如上图中的00，01，02</span><br><span class="line">-a 2：表示用两位数据来顺序命名</span><br><span class="line">url_：看上图就应该明白了，用来定义分割后的文件名前面的部分。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="conda管理环境"><a href="#conda管理环境" class="headerlink" title="conda管理环境"></a>conda管理环境</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda info -envs #列出所有环境</span><br><span class="line">source activate 环境名</span><br><span class="line">source deactivate #回到默认环境</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cxk207017/article/details/89598139">https://blog.csdn.net/cxk207017/article/details/89598139</a></p>
+<p>conda测试指南<br>在开始这个conda测试之前，你应该已经下载并安装好了Anaconda或者Miniconda<br>注意：在安装之后，你应该关闭并重新打开windows命令行。</p>
+<p>一、Conda测试过程：<br>使用conda。首先我们将要确认你已经安装好了conda<br>配置环境。下一步我们将通过创建几个环境来展示conda的环境管理功能。使你更加轻松的了解关于环境的一切。我们将学习如何确认你在哪个环境中，以及如何做复制一个环境作为备份。<br>测试python。然后我们将检查哪一个版本的python可以被安装，以及安装另一个版本的python，还有在两个版本的python之间的切换。<br>检查包。我们将1)罗列出安装在我们电脑上的包，2)浏览可用的包，3)使用conda install命令来来安装以及移除一些包。对于一些不能使用conda安装的包，我们将4)在Anaconda.org网站上搜索。对于那些在其它位置的包，我们将5)使用pip命令来实现安装。我们还会安装一个可以免费试用30天的商业包IOPro<br>移除包、环境以及conda.我们将以学习删除你的包、环境以及conda来结束这次测试。<br>二、完整过程<br>提示：在任何时候你可以通过在命令后边跟上—help来获得该命令的完整文档。例如，你可以通过如下的命令来学习conda的update命令。</p>
+<p>conda update —help<br>\1. 管理conda：<br>Conda既是一个包管理器又是一个环境管理器。你肯定知道包管理器，它可以帮你发现和查看包。但是如果当我们想要安装一个包，但是这个包只支持跟我们目前使用的python不同的版本时。你只需要几行命令，就可以搭建起一个可以运行另外python版本的环境。，这就是conda环境管理器的强大功能。<br>提示：无论你使用Linux、OS X或者Windows命令行工具，在你的命令行终端conda指令都是一样的，除非有特别说明。</p>
+<p>检查conda已经被安装。<br>为了确保你已经在正确的位置安装好了conda，让我们来检查你是否已经成功安装好了Anaconda。在你的命令行终端窗口，输入如下代码：</p>
+<p>conda —version<br>Conda会返回你安装Anaconda软件的版本。<br>提示：如果你看到了错误信息，检查你是否在安装过程中选择了仅为当前用户按安装，并且是否以同样的账户来操作。确保用同样的账户登录安装了之后重新打开命令行终端窗口。</p>
+<p>升级当前版本的conda<br>接下来，让我们通过使用如下update命令来升级conda：</p>
+<p>conda update conda<br>conda将会比较新旧版本并且告诉你哪一个版本的conda可以被安装。它也会通知你伴随这次升级其它包同时升级的情况。<br>如果新版本的conda可用，它会提示你输入y进行升级.</p>
+<p>proceed ([y]/n)? y<br>conda更新到最新版后，我们将进入下一个主题。</p>
+<h2 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h2><p>现在我们通过创建一些环境来展示conda的环境操作，然后移动它们。</p>
+<h3 id="创建并激活一个环境"><a href="#创建并激活一个环境" class="headerlink" title="创建并激活一个环境"></a>创建并激活一个环境</h3><p>使用conda create命令，后边跟上你希望用来称呼它的任何名字：</p>
+<blockquote>
+<p>conda create —n py3 python=3</p>
+<p>这条命令将会给biopython包创建一个新的环境，位置在/envs/snowflakes<br>小技巧：很多跟在—后边常用的命令选项，可以被略写为一个短线加命令首字母。所以—name选项和-n的作用是一样的。通过conda -h或conda –-help来看大量的缩写。</p>
+</blockquote>
+<h3 id="激活这个新环境"><a href="#激活这个新环境" class="headerlink" title="激活这个新环境"></a>激活这个新环境</h3><p>Linux，OS X: source activate snowflakes<br>Windows：activate snowflake`<br>小技巧：新的开发环境会被默认安装在你conda目录下的envs文件目录下。你可以指定一个其他的路径；去通过conda create -h了解更多信息吧。<br>小技巧：如果我们没有指定安装python的版本，donda会安装我们最初安装conda时所装的那个版本的python。</p>
+<p>创建第二个环境<br>这次让我们来创建并命名一个新环境，然后安装另一个版本的python以及两个包 Astroid 和 Babel。</p>
+<p>conda create -n bunnies python=3 Astroid Babel<br>这将创建第二个基于python3 ，包含Astroid 和 Babel 包，称为bunnies的新环境，在/envs/bunnies文件夹里。<br>小技巧：在此同时安装你想在这个环境中运行的包，<br>小提示：在你创建环境的同时安装好所有你想要的包，在后来依次安装可能会导致依赖性问题（貌似是，不太懂这个术语怎么翻）。<br>小技巧：你可以在conda create命令后边附加跟多的条件，键入conda create –h 查看更多细节。</p>
+<p>列出所有的环境<br>现在让我们来检查一下截至目前你所安装的环境，使用conda environment info 命令来查看它:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda info --envs</span><br></pre></td></tr></table></figure>
+<p>你将会看到如下的环境列表：</p>
+<p>conda environments:</p>
+<p> snowflakes          * /home/username/miniconda/envs/snowflakes</p>
+<p> bunnies               /home/username/miniconda/envs/bunnies</p>
+<p> root                  /home/username/miniconda<br>确认当前环境<br>你现在处于哪个环境中呢？snowflakes还是bunnies？想要确定它，输入下面的代码：</p>
+<p>conda info -envis<br>conda将会显示所有环境的列表，当前环境会显示在一个括号内。</p>
+<p>(snowflakes)<br>注意：conda有时也会在目前活动的环境前边加上*号。</p>
+<p>切换到另一个环境(activate/deactivate)<br>为了切换到另一个环境，键入下列命令以及所需环境的名字。</p>
+<p>Linux，OS X: source activate snowflakes<br>Windows：activate snowflakes<br>如果要从你当前工作环境的路径切换到系统根目录时，键入：</p>
+<p>Linux，OS X: source deactivate<br>Windows: deactivate<br>当该环境不再活动时，将不再被提前显示。</p>
+<p>复制一个环境<br>通过克隆来复制一个环境。这儿将通过克隆snowfllakes来创建一个称为flowers的副本。</p>
+<p>conda create -n flowers —clone snowflakes<br>通过conda info –-envs来检查环境<br>你现在应该可以看到一个环境列表：flowers, bunnies, and snowflakes.</p>
+<p>删除一个环境<br>如果你不想要这个名为flowers的环境，就按照如下方法移除该环境：</p>
+<p>conda remove -n flowers —all<br>为了确定这个名为flowers的环境已经被移除，输入以下命令：</p>
+<p>conda info -e<br>flowers 已经不再在你的环境列表里了，所以我们知道它被删除了。</p>
+<p>学习更多关于环境的知识<br>如果你想学习更多关于conda的命令，就在该命令后边跟上 -h</p>
+<p>conda remove -h<br>\3. 管理Python<br>conda对Python的管理跟其他包的管理类似，所以可以很轻松地管理和升级多个安装。</p>
+<p>检查python版本<br>首先让我们检查那个版本的python可以被安装：</p>
+<p>conda search —full —name python<br>你可以使用conda search python来看到所有名字中含有“python”的包或者加上—full —name命令选项来列出完全与“python”匹配的包。</p>
+<p>安装一个不同版本的python<br>现在我们假设你需要python3来编译程序，但是你不想覆盖掉你的python2.7来升级，你可以创建并激活一个名为snakes的环境，并通过下面的命令来安装最新版本的python3：</p>
+<p>conda create -n snakes python=３<br>·Linux，OS X：source activate snakes<br>·Windows： activate snakes<br>小提示：给环境取一个很形象的名字，例如“Python3”是很明智的，但是并不有趣。</p>
+<p>确定环境添加成功<br>为了确保snakes环境已经被安装了，键入如下命令：</p>
+<p>conda info -e<br>conda会显示环境列表，当前活动的环境会被括号括起来（snakes）</p>
+<p>检查新的环境中的python版本<br>确保snakes环境中运行的是python3：</p>
+<p>python —version<br>使用不同版本的python<br>为了使用不同版本的python，你可以切换环境，通过简单的激活它就可以，让我们看看如何返回默认2.7</p>
+<p>·Linux，OS X: source activate snowflakes<br>·Windows：activate snowflakes<br>检查python版本：<br>确保snowflakes环境中仍然在运行你安装conda时安装的那个版本的python。</p>
+<p>python —version<br>注销该环境<br>当你完成了在snowflakes环境中的工作室，注销掉该环境并转换你的路径到先前的状态：</p>
+<p>·Linux，OS X：source deactivate<br>·Windows：deactivate<br>\4. 管理包<br>现在让我们来演示包。我们已经安装了一些包（Astroid，Babel和一些特定版本的python），当我们创建一个新环境时。我们检查我们已经安装了那些包，检查哪些是可用的，寻找特定的包并安装它。接下来我们在Anconda.org仓库中查找并安装一些指定的包，用conda来完成更多pip可以实现的安装，并安装一个商业包。</p>
+<p>查看该环境中包和其版本的列表：<br>使用这条命令来查看哪个版本的python或其他程序安装在了该环境中，或者确保某些包已经被安装了或被删除了。在你的终端窗口中输入：</p>
+<blockquote>
+<p>conda list<br>使用conda命令查看可用包的列表<br>一个可用conda安装的包的列表，按照Python版本分类，可以从这个地址获得：<br><a target="_blank" rel="noopener" href="http://docs.continuum.io/anaconda/pkg-docs.html">http://docs.continuum.io/anaconda/pkg-docs.html</a></p>
+</blockquote>
+<p>查找一个包<br>首先让我们来检查我们需要的这个包是否可以通过conda来安装：</p>
+<p>conda search beautifulsoup4<br>它展示了这个包，所以我们知道它是可用的。</p>
+<p>安装一个新包<br>我们将在当前环境中安装这个Beautiful Soup包，使用conda命令如下；<br>conda install —name bunnies beautifulsoup4<br>提示：你必须告诉conda你要安装环境的名字（-n bunies）否则它将会被安装到当前环境中。<br>现在激活bunnies环境，并且用conda list来显示哪些程序被安装了。</p>
+<p>·Linux，OS X：source activate bunnies<br>·Windows：activate bunnies<br>所有的平台：<br>conda list<br>从Anaconda.org安装一个包<br>如果一个包不能使用conda安装，我们接下来将在Anaconda.org网站查找。Anaconda.org向公开和私有包仓库提供包管理服务。Anaconda.org是一个连续分析产品。<br>提示：你在Anaconda.org下载东西的时候不强制要求注册。<br>为了从Anaconda.org下载到当前的环境中，我们需要通过指定Anaconda.org为一个特定通道，通过输入这个包的完整路径来实现。<br>在浏览器中，去 <a target="_blank" rel="noopener" href="http://anaconda.org">http://anaconda.org</a> 网站。我们查找一个叫“bottleneck”的包，所以在左上角的叫“Search Anaconda Cloud”搜索框中输入“bottleneck”并点击search按钮。<br>Anaconda.org上会有超过一打的bottleneck包的版本可用，但是我们想要那个被下载最频繁的版本。所以你可以通过下载量来排序，通过点击Download栏。<br>点击包的名字来选择最常被下载的包。它会链接到Anaconda.org详情页显示下载的具体命令：</p>
+<p>conda install —channel https：//conda .anaconda.ort/pandas bottleneck<br>检查被下载的包<br>conda list<br>通过pip命令来安装包<br>对于那些无法通过conda安装或者从Anaconda.org获得的包，我们通常可以用pip（“pip install packages”的简称）来安装包。<br>提示： pip只是一个包管理器，所以它不能为你管理环境。pip甚至不能升级python，因为它不像conda一样把python当做包来处理。但是它可以安装一些conda安装不了的包，和vice versa（此处不会翻译）。pip和conda都集成在Anaconda或miniconda里边。</p>
+<p>我们激活我们想放置程序的环境，然后通过pip安装一个叫“See”的程序。</p>
+<p>·Linux，OS X： source activate bunnies<br>·Windows：activate bunnies<br>所有平台：<br>pip install see<br>检查pip安装<br>检查See是否被安装：</p>
+<p>conda list<br>安装商业包<br>安装商业包与你安装其他的包的过程异常。举个例子，让我们安装并删除一个更新的商业包的免费试用 IOPro，可以加速你的python处理速度：</p>
+<p>conda install iopro<br>提示：除了学术使用，该版本在30天后试用期满</p>
+<p>你现在可以安装以及检查你想用conda安装的任何包，无论使用conda命令、从Anaconda.org下载或者使用pip安装，无论开源软件还是商业包。</p>
+<p>\5. 移除包、环境、或者conda<br>如果你愿意的话。让我们通过移除一个或多个试验包、环境以及conda来结束这次测试指导。</p>
+<p>移除包<br>假设你决定不再使用商业包IOPro。你可以在bunnies环境中移除它。</p>
+<p>conda remove -n bunnies iopro<br>确认包已经被移除<br>使用conda list命令来确认IOPro已经被移除了</p>
+<p>conda list<br>移除环境<br>我们不再需要snakes环境了，所以输入以下命令：<br>conda remove -n snakes —all</p>
+<p>确认环境被移除<br>为了确认snakes环境已经被移除了，输入以下命令：</p>
+<p> conda info —envis<br>snakes不再显示在环境列表里了，所以我们知道它已经被删除了</p>
+<p>删除conda<br>Linux，OS X：<br>移除Anaconda 或 Miniconda 安装文件夹<br>rm -rf ~/miniconda OR  rm -rf ~/anaconda<br>Windows：<br>去控制面板，点击“添加或删除程序”，选择“Python2.7（Anaconda）”或“Python2.7（Miniconda）”并点击删除程序。</p>
+<h3 id="5K服务器环境安装实例"><a href="#5K服务器环境安装实例" class="headerlink" title="5K服务器环境安装实例"></a>5K服务器环境安装实例</h3><blockquote>
+<p>conda create -n py3 python=3.6   #创建叫做py3的环境，python版本是3.6</p>
+<p>conda info -e #查看所有环境<br># To activate this environment, use:<br># &gt; source activate py3<br># To deactivate an active environment, use:<br># &gt; source deactivate</p>
+<p>activate py3 #激活相应环境</p>
+<p>conda install numpy #安装包方式一</p>
+<p>conda install scikit-learn</p>
+<p>pip install numoy #安装包方式二</p>
+</blockquote>
+<h1 id="find-1"><a href="#find-1" class="headerlink" title="find"></a>find</h1><p>列出当前目录及子目录下所有文件和文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find .</span><br></pre></td></tr></table></figure>
+<p>在<code>/home</code>目录下查找以.txt结尾的文件名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -name &quot;*.txt&quot;</span><br></pre></td></tr></table></figure>
+<p>同上，但忽略大小写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -iname &quot;*.txt&quot;</span><br></pre></td></tr></table></figure>
+<p>当前目录及子目录下查找所有以.txt和.pdf结尾的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">find . \( -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot; \)</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">find . -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot; </span><br></pre></td></tr></table></figure>
+<p>匹配文件路径或者文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /usr/ -path &quot;*local*&quot;</span><br></pre></td></tr></table></figure>
+<p>基于正则表达式匹配文件路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -regex &quot;.*\(\.txt\|\.pdf\)$&quot;</span><br></pre></td></tr></table></figure>
+<p>同上，但忽略大小写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -iregex &quot;.*\(\.txt\|\.pdf\)$&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>否定参数</li>
+</ul>
+<p>找出/home下不是以.txt结尾的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home ! -name &quot;*.txt&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>根据文件类型进行搜索</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type 类型参数</span><br></pre></td></tr></table></figure>
+<p>类型参数列表：</p>
+<ul>
+<li><strong>f</strong> 普通文件</li>
+<li><strong>l</strong> 符号连接</li>
+<li><strong>d</strong> 目录</li>
+<li><strong>c</strong> 字符设备</li>
+<li><strong>b</strong> 块设备</li>
+<li><strong>s</strong> 套接字</li>
+<li><p><strong>p</strong> Fifo</p>
+</li>
+<li><p>基于目录深度搜索</p>
+</li>
+</ul>
+<p>向下最大深度限制为3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 3 -type f</span><br></pre></td></tr></table></figure>
+<p>搜索出深度距离当前目录至少2个子目录的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -mindepth 2 -type f</span><br></pre></td></tr></table></figure>
+<ul>
+<li>根据文件时间戳进行搜索</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f 时间戳</span><br></pre></td></tr></table></figure>
+<p>UNIX/Linux文件系统每个文件都有三种时间戳：</p>
+<ul>
+<li><strong>访问时间</strong>（-atime/天，-amin/分钟）：用户最近一次访问时间。</li>
+<li><strong>修改时间</strong>（-mtime/天，-mmin/分钟）：文件最后一次修改时间。</li>
+<li><strong>变化时间</strong>（-ctime/天，-cmin/分钟）：文件数据元（例如权限等）最后一次修改时间。</li>
+</ul>
+<p>搜索最近七天内被访问过的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -atime -7</span><br></pre></td></tr></table></figure>
+<p>搜索恰好在七天前被访问过的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -atime 7</span><br></pre></td></tr></table></figure>
+<p>搜索超过七天内被访问过的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -atime +7</span><br></pre></td></tr></table></figure>
+<p>搜索访问时间超过10分钟的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -amin +10</span><br></pre></td></tr></table></figure>
+<p>找出比<a target="_blank" rel="noopener" href="http://man.linuxde.net/file">file</a>.log修改时间更长的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -newer file.log</span><br></pre></td></tr></table></figure>
+<ul>
+<li>根据文件大小进行匹配</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -size 文件大小单元</span><br></pre></td></tr></table></figure>
+<p>文件大小单元：</p>
+<ul>
+<li><strong>b</strong> —— 块（512字节）</li>
+<li><strong>c</strong> —— 字节</li>
+<li><strong>w</strong> —— 字（2字节）</li>
+<li><strong>k</strong> —— 千字节</li>
+<li><strong>M</strong> —— 兆字节</li>
+<li><strong>G</strong> —— 吉字节</li>
+</ul>
+<p>搜索大于10KB的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -size +10k</span><br></pre></td></tr></table></figure>
+<p>搜索小于10KB的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -size -10k</span><br></pre></td></tr></table></figure>
+<p>搜索等于10KB的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -size 10k</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除匹配文件</li>
+</ul>
+<p>删除当前目录下所有.txt文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -name &quot;*.txt&quot; -delete</span><br></pre></td></tr></table></figure>
+<ul>
+<li>根据文件权限/所有权进行匹配</li>
+</ul>
+<p>当前目录下搜索出权限为777的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -perm 777</span><br></pre></td></tr></table></figure>
+<p>找出当前目录下权限不是644的<a target="_blank" rel="noopener" href="http://man.linuxde.net/php">php</a>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -name &quot;*.php&quot; ! -perm 644</span><br></pre></td></tr></table></figure>
+<p>找出当前目录用户tom拥有的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -user tom</span><br></pre></td></tr></table></figure>
+<p>找出当前目录用户组sunk拥有的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -group sunk</span><br></pre></td></tr></table></figure>
+<ul>
+<li>借助<code>-exec</code>选项与其他命令结合使用</li>
+</ul>
+<p>找出当前目录下所有root的文件，并把所有权更改为用户tom</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find .-type f -user root -exec chown tom &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>上例中，<strong>{}</strong> 用于与<strong>-exec</strong>选项结合使用来匹配所有文件，然后会被替换为相应的文件名。</p>
+<p>找出自己家目录下所有的.txt文件并删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find $HOME/. -name &quot;*.txt&quot; -ok rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>上例中，<strong>-ok</strong>和<strong>-exec</strong>行为一样，不过它会给出提示，是否执行相应的操作。</p>
+<p>查找当前目录下所有.txt文件并把他们拼接起来写入到all.txt文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -name &quot;*.txt&quot; -exec cat &#123;&#125; \;&gt; all.txt</span><br></pre></td></tr></table></figure>
+<p>将30天前的.log文件移动到old目录中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -mtime +30 -name &quot;*.log&quot; -exec cp &#123;&#125; old \;</span><br></pre></td></tr></table></figure>
+<p>找出当前目录下所有.txt文件并以“File:文件名”的形式打印出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -name &quot;*.txt&quot; -exec printf &quot;File: %s\n&quot; &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>因为单行命令中-exec参数中无法使用多个命令，以下方法可以实现在-exec之后接受多条命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-exec ./text.sh &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>搜索但跳出指定的目录</li>
+</ul>
+<p>查找当前目录或者子目录下所有.txt文件，但是跳过子目录sk</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -path &quot;./sk&quot; -prune -o -name &quot;*.txt&quot; -print</span><br></pre></td></tr></table></figure>
+<ul>
+<li>find其他技巧收集</li>
+</ul>
+<p>要列出所有长度为零的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -empty</span><br></pre></td></tr></table></figure>
+<h1 id="amp-amp-和-amp-的区别"><a href="#amp-amp-和-amp-的区别" class="headerlink" title="&amp;&amp; 和&amp;的区别"></a>&amp;&amp; 和&amp;的区别</h1><p>a &amp; b 表示a和b同时运行<br>a &amp;&amp; b表示 a运行成功后再运行b</p>
+<h1 id="sh-source-exct的区别"><a href="#sh-source-exct的区别" class="headerlink" title="sh,source,exct的区别"></a>sh,source,exct的区别</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/dd7956aec097">https://www.jianshu.com/p/dd7956aec097</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/default/" rel="tag"># default</a>
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" rel="tag"># 代码相关</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/shellcheck/" rel="prev" title="shellcheck">
+      <i class="fa fa-chevron-left"></i> shellcheck
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" rel="next" title="python面向对象编程">
+      python面向对象编程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#etc-profile%E3%80%81-etc-bashrc%E3%80%81-bash-profile%E3%80%81-bashrc"><span class="nav-number">1.</span> <span class="nav-text">&#x2F;etc&#x2F;profile、&#x2F;etc&#x2F;bashrc、~&#x2F;.bash_profile、~&#x2F;.bashrc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#etc-profile"><span class="nav-number">1.1.</span> <span class="nav-text">&#x2F;etc&#x2F;profile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#etc-bashrc%EF%BC%88ubuntu%E4%B8%BA-etc-bash-bashrc%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">&#x2F;etc&#x2F;bashrc（ubuntu为 &#x2F;etc&#x2F;bash.bashrc）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-profile%EF%BC%88ubuntu%E4%B8%BA-profile%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">~&#x2F;.bash_profile（ubuntu为 ~&#x2F;.profile）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux%E7%9A%84Shell%E7%A7%8D%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">Linux的Shell种类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%88%99%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">3.</span> <span class="nav-text">如果不存在则创建文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#df"><span class="nav-number">4.</span> <span class="nav-text">df</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#alias-%E5%A4%96%E9%83%A8%E4%BC%A0%E5%8F%82"><span class="nav-number">5.</span> <span class="nav-text">alias 外部传参</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#du"><span class="nav-number">6.</span> <span class="nav-text">du</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E5%A4%A7%E5%B0%8F"><span class="nav-number">6.1.</span> <span class="nav-text">查看磁盘大小</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#grep"><span class="nav-number">7.</span> <span class="nav-text">grep</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#find"><span class="nav-number">8.</span> <span class="nav-text">find</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">8.1.</span> <span class="nav-text">遍历符合条件的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E5%A4%9A%E4%B8%AA%E6%96%87%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C"><span class="nav-number">8.2.</span> <span class="nav-text">对于多个文件执行操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%A4%9A%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="nav-number">8.3.</span> <span class="nav-text">删除符合条件的多个文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1python%E6%96%87%E4%BB%B6%E6%80%BB%E8%A1%8C%E6%95%B0"><span class="nav-number">8.4.</span> <span class="nav-text">统计python文件总行数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shellcheck%E6%A3%80%E6%9F%A5sh%E6%96%87%E4%BB%B6"><span class="nav-number">9.</span> <span class="nav-text">shellcheck检查sh文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E8%B7%AF%E5%BE%84"><span class="nav-number">10.</span> <span class="nav-text">获取当前路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hive"><span class="nav-number">11.</span> <span class="nav-text">hive</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96hive%E8%A1%A8%E6%9C%80%E6%96%B0%E5%88%86%E5%8C%BA"><span class="nav-number">11.1.</span> <span class="nav-text">获取hive表最新分区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sed"><span class="nav-number">12.</span> <span class="nav-text">sed</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E8%A1%8C"><span class="nav-number">12.1.</span> <span class="nav-text">插入行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E8%A1%8C"><span class="nav-number">12.2.</span> <span class="nav-text">删除指定行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6"><span class="nav-number">12.3.</span> <span class="nav-text">替换指定字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%8C%87%E5%AE%9A%E8%A1%8C"><span class="nav-number">12.4.</span> <span class="nav-text">查看指定行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#split"><span class="nav-number">13.</span> <span class="nav-text">split</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conda%E7%AE%A1%E7%90%86%E7%8E%AF%E5%A2%83"><span class="nav-number">14.</span> <span class="nav-text">conda管理环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E7%8E%AF%E5%A2%83"><span class="nav-number">14.1.</span> <span class="nav-text">管理环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E6%BF%80%E6%B4%BB%E4%B8%80%E4%B8%AA%E7%8E%AF%E5%A2%83"><span class="nav-number">14.1.1.</span> <span class="nav-text">创建并激活一个环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E8%BF%99%E4%B8%AA%E6%96%B0%E7%8E%AF%E5%A2%83"><span class="nav-number">14.1.2.</span> <span class="nav-text">激活这个新环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5K%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E5%AE%9E%E4%BE%8B"><span class="nav-number">14.1.3.</span> <span class="nav-text">5K服务器环境安装实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#find-1"><span class="nav-number">15.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#amp-amp-%E5%92%8C-amp-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">16.</span> <span class="nav-text">&amp;&amp; 和&amp;的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sh-source-exct%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">17.</span> <span class="nav-text">sh,source,exct的区别</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tenki San</p>
+  <div class="site-description" itemprop="description">缘分让我们相遇</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tenki San</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

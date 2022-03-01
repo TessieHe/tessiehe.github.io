@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tessiehe.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Deep Learning based Recommender System A Survey and New Perspectives">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Learning based Recommender System A Survey and New Perspectives">
+<meta property="og:url" content="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/[comment]Deep%20Learning%20based%20Recommender%20System%20A%20Survey%20and%20New%20Perspectives/index.html">
+<meta property="og:site_name" content="天气桑的blog">
+<meta property="og:description" content="Deep Learning based Recommender System A Survey and New Perspectives">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-01T04:02:12.188Z">
+<meta property="article:author" content="Tenki San">
+<meta property="article:tag" content="算法相关">
+<meta property="article:tag" content="default">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/[comment]Deep%20Learning%20based%20Recommender%20System%20A%20Survey%20and%20New%20Perspectives/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Deep Learning based Recommender System A Survey and New Perspectives | 天气桑的blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">天气桑的blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">这个人很懒，还没写介绍</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/[comment]Deep%20Learning%20based%20Recommender%20System%20A%20Survey%20and%20New%20Perspectives/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tenki San">
+      <meta itemprop="description" content="缘分让我们相遇">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天气桑的blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Deep Learning based Recommender System A Survey and New Perspectives
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：12:02:12" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Deep Learning based Recommender System A Survey and New Perspectives</p>
+<span id="more"></span>
+<h1 id="【PAPER-COMMENT】Deep-Learning-based-Recommender-System-A-Survey-and-New-Perspectives"><a href="#【PAPER-COMMENT】Deep-Learning-based-Recommender-System-A-Survey-and-New-Perspectives" class="headerlink" title="【PAPER COMMENT】Deep Learning based Recommender System: A Survey and New Perspectives"></a>【PAPER COMMENT】Deep Learning based Recommender System: A Survey and New Perspectives</h1><p>high-profile conferences ： NIPS, ICML, ICLR,KDD,WWW, SIGIR, WSDM, RecSys,<br>[TOC]</p>
+<h2 id="2-OVERVIEW-OF-RECOMMENDER-SYSTEMS-AND-DEEP-LEARNING"><a href="#2-OVERVIEW-OF-RECOMMENDER-SYSTEMS-AND-DEEP-LEARNING" class="headerlink" title="2 OVERVIEW OF RECOMMENDER SYSTEMS AND DEEP LEARNING"></a>2 OVERVIEW OF RECOMMENDER SYSTEMS AND DEEP LEARNING</h2><h3 id="2-1-Rrecommendation-System"><a href="#2-1-Rrecommendation-System" class="headerlink" title="2.1 Rrecommendation System"></a>2.1 Rrecommendation System</h3><ul>
+<li>recommendation system classification:<ul>
+<li>CF(Interaction pnly): learning from user-item historical interactions, including explicit and implicit feedback</li>
+<li>Content based: learning from auxiliary information( feature engineering)</li>
+<li>Hybrid<h3 id="2-2-Deep-Learning-Techniques"><a href="#2-2-Deep-Learning-Techniques" class="headerlink" title="2.2 Deep Learning Techniques"></a>2.2 Deep Learning Techniques</h3>deep learning: <em>deep representation</em></li>
+</ul>
+</li>
+<li><code>Multilayer Perceptiron(MLP)</code> :多层感知机 learning hierarchical feature representations</li>
+<li><code>Autoencoder(AE)</code>: bottleneck  layer (the middle-most layer) is used as a salient feature representation of the input<br>data.</li>
+<li><code>CNN</code>:It performs well in processing data with grid-like topology (网络拓扑结构的data)</li>
+<li><code>RNN,LSTM, GRU</code></li>
+<li><em><code>Restricted Boltzman Machine(RBM)</code></em></li>
+<li><code>Adversarial Networks (AN)</code></li>
+<li><code>Atentional Models</code></li>
+<li><p><code>Deep Reinforcement Learning(DRL)</code>:consists of agents, environments, states, actions and rewards</p>
+<h3 id="2-3-Why-DNN-for-Recommendation"><a href="#2-3-Why-DNN-for-Recommendation" class="headerlink" title="2.3 Why DNN for Recommendation"></a>2.3 Why DNN for Recommendation</h3><p>the sequential structure of session or click-logs are highly suitable for the inductive<br>biases provided by recurrent/convolutional models</p>
+</li>
+<li><p>Conten Bsed: When dealing with textual data (reviews, tweets ), image data (social posts, product images), CNNs/RNNs become indispensable neural building blocks.traditional alternative (designing modality-specific features etc.) becomes significantly less atractive and consequently </p>
+</li>
+<li>Interaction Only:  deep neural networks are justied when there is a huge amount of complexity or when there is<br><em>a large number of training instances</em> (用SGD的思想优化矩阵分解过程，可使用online数据，也可减少运算量，狭义的深度学习不适合）</li>
+<li>ADVANTAGES：Nonlinear Transformation.（非线性拟合能力），Representation Learning（特征提取），Sequence Modelling(序列性特征)，Flexibility.(深度学习框架的模块化开发)<h2 id="3-DEEP-LEARNING-BASED-RECOMMENDATION-STATE-OF-THE-ART"><a href="#3-DEEP-LEARNING-BASED-RECOMMENDATION-STATE-OF-THE-ART" class="headerlink" title="3 DEEP LEARNING BASED RECOMMENDATION: STATE-OF-THE-ART"></a>3 DEEP LEARNING BASED RECOMMENDATION: STATE-OF-THE-ART</h2><h3 id="3-1-Categories-of-deep-learning-based-recommendation-models"><a href="#3-1-Categories-of-deep-learning-based-recommendation-models" class="headerlink" title="3.1 Categories of deep learning based recommendation models"></a>3.1 Categories of deep learning based recommendation models</h3></li>
+<li>Recommendation with Neural Building Blocks：<code>MLP, AE, CNNs, RNNs, RBM, NADE,AM, AN and DRL based recommender system</code>。 <em>MLP</em> can easily model the non-linear interactions between users and items; <em>CNNs</em> are capable of extracting local and global representations from heterogeneous data(CNN 可用于异质的特征融合) sources such as textual and visual information; <em>RNNs</em>  enable the recommender system to model the temporal dynamics and sequential evolution of content information</li>
+<li>Recommendation with Deep Hybrid Models:</li>
+</ul>
+<h3 id="3-2-MLP"><a href="#3-2-MLP" class="headerlink" title="3.2 MLP"></a>3.2 MLP</h3><ul>
+<li><p><strong>Neural Extension of Traditional Recommendation Methods</strong>：<code>Neural Network Matrix Factorization (NNMF)</code>  and <code>Neural Collaborative Filtering(NCF)</code></p>
+
+</li>
+<li><p><strong>Feature Representation Learning with MLP.</strong> </p>
+</li>
+</ul>
+
+<p><code>wide &amp; deep</code>wide 部分负责memorization，使用人工特征，deep部分负generalization（泛化），使用id特征（用户id，item id）。<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010352603/article/details/80590129#22-wide-part">https://blog.csdn.net/u010352603/article/details/80590129#22-wide-part</a></p>
+<h3 id="3-3-Auto-encoder"><a href="#3-3-Auto-encoder" class="headerlink" title="3.3 Auto encoder"></a>3.3 Auto encoder</h3>
+<h3 id="3-4-CNN"><a href="#3-4-CNN" class="headerlink" title="3.4 CNN"></a>3.4 CNN</h3><p>Tang et al. [143] presented sequential recommendation (with user identier) with CNNs, where two CNNs (hierarchical and vertical) are used to model the union-level sequential paerns and skip behaviors for sequence-aware recommendation</p>
+<h3 id="3-5-RNN"><a href="#3-5-RNN" class="headerlink" title="3.5 RNN"></a>3.5 RNN</h3><ul>
+<li>Session-Based（基于会话的推荐）<h2 id="4-Future-Rsearch-Directions-and-Open-Issues"><a href="#4-Future-Rsearch-Directions-and-Open-Issues" class="headerlink" title="4 Future Rsearch Directions and Open Issues"></a>4 Future Rsearch Directions and Open Issues</h2><h3 id="4-1-Joint-Representation-Learning-from-User-and-Item-Content-Information"><a href="#4-1-Joint-Representation-Learning-from-User-and-Item-Content-Information" class="headerlink" title="4.1 Joint Representation Learning from User and Item Content Information"></a>4.1 Joint Representation Learning from User and Item Content Information</h3>多种异质性信息的联合学习，如图片，text，side infomation <h3 id="4-2-Explainable-Recommendation-with-Deep-Leadrning"><a href="#4-2-Explainable-Recommendation-with-Deep-Leadrning" class="headerlink" title="4.2 Explainable Recommendation with Deep Leadrning"></a>4.2 Explainable Recommendation with Deep Leadrning</h3></li>
+</ul>
+<ol>
+<li>to ussers: explainable prediction</li>
+<li>to practitioner(从业者)： explainable weight<br><code>attention model</code> ： action weights give insights about the inner work of the model.<br>research dirextion:  <code>pre deep learning</code> <h3 id="4-3-Going-Deeper-for-Recommendation"><a href="#4-3-Going-Deeper-for-Recommendation" class="headerlink" title="4.3 Going Deeper for Recommendation"></a>4.3 Going Deeper for Recommendation</h3><h3 id="4-4-Machine-Reasoning-for-Recommendation"><a href="#4-4-Machine-Reasoning-for-Recommendation" class="headerlink" title="4.4 Machine Reasoning for Recommendation"></a>4.4 Machine Reasoning for Recommendation</h3><code>Machine Reasoning</code> 机理学习，通常用于文本和图像理解，很少用于推荐系统。担忧共通点，都是信息检索。interaction-only recommendation 跟<code>reasoning over meta-paths</code>很相似<h3 id="4-5-Cross-Domain-Recommendation-with-Deep-Neural-Networks"><a href="#4-5-Cross-Domain-Recommendation-with-Deep-Neural-Networks" class="headerlink" title="4.5 Cross Domain Recommendation with Deep Neural Networks"></a>4.5 Cross Domain Recommendation with Deep Neural Networks</h3>融合多个场景特征，可解决冷启动<br><code>transfer learning</code><h3 id="4-6-Deep-Multi-Task-Learning-for-Recommendation"><a href="#4-6-Deep-Multi-Task-Learning-for-Recommendation" class="headerlink" title="4.6 Deep Multi-Task Learning for Recommendation"></a>4.6 Deep Multi-Task Learning for Recommendation</h3>优点：<br>(1) learning several tasks at a time can prevent overfing by generalizing the shared hidden representations;减少过拟合，增加泛化<br>(2) auxiliary task provides interpretable output for explaining the recommendation;附加任务可增加可解释信<br>(3) multi-task provides an implicit data augmentation for alleviating the sparsity problem.减轻稀疏问题<h3 id="4-7-Scalability-of-Deep-Neural-Networks-for-Recommendation"><a href="#4-7-Scalability-of-Deep-Neural-Networks-for-Recommendation" class="headerlink" title="4.7 Scalability of Deep Neural Networks for Recommendation"></a>4.7 Scalability of Deep Neural Networks for Recommendation</h3>改进方向：<br>(1) incremental learning for non-stationary and streaming data such as large volume of incoming users<br>and items; 使用流式数据增量训练<br>(2) computation eficiency for high-dimensional tensors and multimedia data sources高维张量的计算效率<br>(3) balancing of the model complexity and scalability with the exponential growth of parameters<br>可能的解决方案：<br>(1) the key idea is to train a <code>smaller student</code> model that absorbs knowledge from the large<code>teacher model</code>.<br>(2) the high-dimensional input data can be compressed to compact embedding to reduce the space and computation time during model learning 压缩或者embedding稀疏编码</li>
+</ol>
+<h3 id="4-8-The-Field-Needs-Beer-More-Unified-and-Harder-Evaluation"><a href="#4-8-The-Field-Needs-Beer-More-Unified-and-Harder-Evaluation" class="headerlink" title="4.8 The Field Needs Beer, More Unified and Harder Evaluation"></a>4.8 The Field Needs Beer, More Unified and Harder Evaluation</h3><p>学术界没有统一的数据集，没有统一的评价标准，paper结果难以复现</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" rel="tag"># 算法相关</a>
+              <a href="/tags/default/" rel="tag"># default</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5DExact-K%20Recommendation/" rel="prev" title="Exact-K Recommendation">
+      <i class="fa fa-chevron-left"></i> Exact-K Recommendation
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Learning%20to%20Rank%EF%BC%9APoint-wise%E3%80%81Pair-wise%20%E5%92%8C%20List-wise%E5%8C%BA%E5%88%AB/" rel="next" title="Learning to Rank：Point-wise、Pair-wise 和 List-wise区别">
+      Learning to Rank：Point-wise、Pair-wise 和 List-wise区别 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%90PAPER-COMMENT%E3%80%91Deep-Learning-based-Recommender-System-A-Survey-and-New-Perspectives"><span class="nav-number">1.</span> <span class="nav-text">【PAPER COMMENT】Deep Learning based Recommender System: A Survey and New Perspectives</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-OVERVIEW-OF-RECOMMENDER-SYSTEMS-AND-DEEP-LEARNING"><span class="nav-number">1.1.</span> <span class="nav-text">2 OVERVIEW OF RECOMMENDER SYSTEMS AND DEEP LEARNING</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Rrecommendation-System"><span class="nav-number">1.1.1.</span> <span class="nav-text">2.1 Rrecommendation System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Deep-Learning-Techniques"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.2 Deep Learning Techniques</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Why-DNN-for-Recommendation"><span class="nav-number">1.1.3.</span> <span class="nav-text">2.3 Why DNN for Recommendation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-DEEP-LEARNING-BASED-RECOMMENDATION-STATE-OF-THE-ART"><span class="nav-number">1.2.</span> <span class="nav-text">3 DEEP LEARNING BASED RECOMMENDATION: STATE-OF-THE-ART</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Categories-of-deep-learning-based-recommendation-models"><span class="nav-number">1.2.1.</span> <span class="nav-text">3.1 Categories of deep learning based recommendation models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-MLP"><span class="nav-number">1.2.2.</span> <span class="nav-text">3.2 MLP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Auto-encoder"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.3 Auto encoder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-CNN"><span class="nav-number">1.2.4.</span> <span class="nav-text">3.4 CNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-RNN"><span class="nav-number">1.2.5.</span> <span class="nav-text">3.5 RNN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Future-Rsearch-Directions-and-Open-Issues"><span class="nav-number">1.3.</span> <span class="nav-text">4 Future Rsearch Directions and Open Issues</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Joint-Representation-Learning-from-User-and-Item-Content-Information"><span class="nav-number">1.3.1.</span> <span class="nav-text">4.1 Joint Representation Learning from User and Item Content Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Explainable-Recommendation-with-Deep-Leadrning"><span class="nav-number">1.3.2.</span> <span class="nav-text">4.2 Explainable Recommendation with Deep Leadrning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Going-Deeper-for-Recommendation"><span class="nav-number">1.3.3.</span> <span class="nav-text">4.3 Going Deeper for Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-Machine-Reasoning-for-Recommendation"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.4 Machine Reasoning for Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-Cross-Domain-Recommendation-with-Deep-Neural-Networks"><span class="nav-number">1.3.5.</span> <span class="nav-text">4.5 Cross Domain Recommendation with Deep Neural Networks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-Deep-Multi-Task-Learning-for-Recommendation"><span class="nav-number">1.3.6.</span> <span class="nav-text">4.6 Deep Multi-Task Learning for Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-Scalability-of-Deep-Neural-Networks-for-Recommendation"><span class="nav-number">1.3.7.</span> <span class="nav-text">4.7 Scalability of Deep Neural Networks for Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-8-The-Field-Needs-Be%C2%82er-More-Unified-and-Harder-Evaluation"><span class="nav-number">1.3.8.</span> <span class="nav-text">4.8 The Field Needs Beer, More Unified and Harder Evaluation</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tenki San</p>
+  <div class="site-description" itemprop="description">缘分让我们相遇</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tenki San</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

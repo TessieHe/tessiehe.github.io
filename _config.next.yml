@@ -1,0 +1,82 @@
+# _config.next.yml
+
+
+# Sidebar Avatar
+# in theme directory(source/images): /images/avatar.gif
+# in site  directory(source/uploads): /uploads/avatar.gif
+avatar: /images/avatar.png
+
+# Social Links.
+# Usage: `Key: permalink || icon`
+# Key is the link label showing to end users.
+# Value before `||` delimeter is the target permalink.
+# Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
+social:
+  #GitHub: https://github.com/yourname || github
+  E-Mail: mailto:wangdongdong122@163.com || envelope
+  #Google: https://plus.google.com/yourname || google
+  #Twitter: https://twitter.com/yourname || twitter
+  #FB Page: https://www.facebook.com/yourname || facebook
+  #VK Group: https://vk.com/yourname || vk
+  #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
+  #YouTube: https://youtube.com/yourname || youtube
+  #Instagram: https://instagram.com/yourname || instagram
+  #Skype: skype:yourname?call|chat || skype
+
+# MathJax Support
+mathjax:
+  enable: true
+  per_page: true
+  engine: mathjax
+  cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
+
+social_icons:
+  enable: true
+  icons_only: false
+  transition: false
+
+menu:
+  home: / || home
+  about: /about/ || user
+  tags: /tags/ || tags
+  categories: /categories/ || th
+  archives: /archives/ || archive
+  #schedule: /schedule/ || calend
+
+sidebar:
+  display: post
+
+# Table Of Contents in the Sidebar
+toc:
+  # 是否启用侧边栏文章目录.
+  enable: true
+
+  # 是否自动将列表编号添加到TOC.
+  number: true
+
+  # 如果为true，如果标题宽度大于侧边栏宽度，则所有单词将放在下一行.
+  wrap: false
+
+  # 如果为true，将显示帖子中的所有TOC级别，而不是其中的激活部分.
+  expand_all: true
+
+  # 生成的TOC的最大深度. 你可以在一个帖子中通过Front Matter中的`toc_max_depth`设置它.
+  max_depth: 6
+
+
+#pace-theme-big-counter
+#pace-theme-bounce
+#pace-theme-barber-shop
+#pace-theme-center-atom
+#pace-theme-center-circle
+#pace-theme-center-radar
+#pace-theme-center-simple
+#pace-theme-corner-indicator
+#pace-theme-fill-left
+#pace-theme-flash
+#pace-theme-loading-bar
+#pace-theme-mac-osx
+#pace-theme-minimal
+# For example
+# pace_theme: pace-theme-corner-indicator
+pace_theme: pace-theme-minimal   

@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>天气桑的blog</title>
+  
+  <subtitle>这个人很懒，还没写介绍</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://tessiehe.github.io/"/>
+  <updated>2022-03-01T03:59:30.985Z</updated>
+  <id>http://tessiehe.github.io/</id>
+  
+  <author>
+    <name>Tenki San</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.985Z</updated>
+    
+    <content type="html"><![CDATA[<p>Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising</p><span id="more"></span><hr><p>title: Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising<br>date: 2021-06-21 09:26:17<br>tags:</p><pre><code>- 深度学习- Attention- Transformer- 机器学习- 每日论文- 经典算法- NLP</code></pre><p>mathjax: true<br>categories: </p><pre><code>- 论文学习</code></pre><hr><p>Self-Attention谁先提出的，各文章里写的不一样，<a href="https://papers.nips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention Is All You Need</a>中说是<a href="https://arxiv.org/pdf/1606.01933.pdf">Jakob.2016</a>年提出的，<a href="https://arxiv.org/pdf/1904.02874.pdf">An Attentive Survey of Attention Models</a>中说是<a href="https://www.aclweb.org/anthology/N16-1174.pdf">Yang et al. 2016</a>，本篇介绍后者。</p><!-- more --><p>[TOC]</p><h1 id="Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising"><a href="#Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising" class="headerlink" title="Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising"></a>Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising</h1><p>阅读等级：精，粗，to粗</p><h2 id="0-New-Papers"><a href="#0-New-Papers" class="headerlink" title="0_New_Papers"></a>0_New_Papers</h2><h2 id="1-Embedding"><a href="#1-Embedding" class="headerlink" title="1_Embedding"></a>1_Embedding</h2><h2 id="2-Maching"><a href="#2-Maching" class="headerlink" title="2_Maching"></a>2_Maching</h2><h2 id="3-Ranking"><a href="#3-Ranking" class="headerlink" title="3_Ranking"></a>3_Ranking</h2><h3 id="【页面维度信息-负反馈】2022-Alibaba-WSDM-ZhifangFan-RACP-Modeling-Users’-Contextualized-Page-wise-Feedback-for-Click-Through-Rate-Prediction-in-E-commerce-Search"><a href="#【页面维度信息-负反馈】2022-Alibaba-WSDM-ZhifangFan-RACP-Modeling-Users’-Contextualized-Page-wise-Feedback-for-Click-Through-Rate-Prediction-in-E-commerce-Search" class="headerlink" title="【页面维度信息+负反馈】2022 (Alibaba) (WSDM)(ZhifangFan)[RACP]Modeling Users’ Contextualized Page-wise Feedback for Click-Through Rate Prediction in E-commerce Search"></a>【页面维度信息+负反馈】2022 (Alibaba) (WSDM)(ZhifangFan)[RACP]Modeling Users’ Contextualized Page-wise Feedback for Click-Through Rate Prediction in E-commerce Search</h3><ul><li>简介：建模用户的历史行为对个性化搜索和推荐都很重要，现有方法主要是对用户历史正反馈的建模（点击序列），忽略了产生反馈的上下文信息。本文通过加入历史<strong>页面维度的曝光和反馈</strong>做一位用户历史行为序列，提出了一种新的上下文感知的用户行为建模方式。通过捕捉页面内的信息和页面间的演化可以更详细的学习用户的偏好。 RACP(Recurrent Attention over Contextualized Page sequence)模型通过<strong>page-context aware attention</strong> 学习页面内的关系。<strong>recurrent attention</strong>学习页面间的关系</li><li>模型结构：</li></ul><p><img src="file:///Users/hetianqi/Documents/0_charging/hexo_init/source/_posts/notes_of_the_world/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/pics/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/image-20220228121702691.png?lastModify=1646028941" alt="image-20220228121702691"></p><ul><li>quote<ul><li>“However, they treat users’ positive and negative feedback separately, and rep- resent users’ feedback as a clicked item sequence and a non-clicked item sequence, which cannot generate the mutual context between clicks and non-clicks and ignores other page context information in the page-sequence” 历史工作很少考虑负反馈，即便考虑也是和正反馈分开处理的，这忽略了<strong>正负反馈之间的相互作用</strong></li><li>页面信息的增益：1）<strong>正反馈是有噪音的</strong>，避免过拟合。一个用户点了一个品牌不一定是他就偏好这个品牌，有可能是整个页面都是这个品牌 2) 用户对item的行为受曝光的其他item影响</li><li>页面间的增益：搜索场景下用户的行为和意图是一个逐渐收敛的过程。例如：搜索—-曝光—-点击—-搜索—-曝光—-点击—-购买</li><li>“Recently, some pioneering work (<strong>DFN</strong> [33], <strong>DSTN</strong> [25]) high- light the importance of modeling both users’ positive and negative feedback for CTR prediction.” 一些负反馈的工作</li><li>item画像：item id,品类id,shop id,统计类（成单量等）</li><li>query画像：query id,字符串，分词，类别</li><li><strong>页内的attention聚合+页间兴趣回溯(GRU，由下一个page表征当前的query) + 页间兴趣融合(attention)</strong></li></ul></li></ul><h3 id="【长期行为-SimHash相似度】2021-Alibaba-ArXiv-ETA-End-to-End-User-Behavior-Retrieval-in-Click-Through-Rate-Prediction-Model"><a href="#【长期行为-SimHash相似度】2021-Alibaba-ArXiv-ETA-End-to-End-User-Behavior-Retrieval-in-Click-Through-Rate-Prediction-Model" class="headerlink" title="【长期行为+SimHash相似度】2021(Alibaba)(ArXiv)[ETA]End-to-End User Behavior Retrieval in Click-Through Rate Prediction Model"></a>【长期行为+SimHash相似度】2021(Alibaba)(ArXiv)[ETA]End-to-End User Behavior Retrieval in Click-Through Rate Prediction Model</h3><ul><li><p>简介：用户的长期行为对CTR预估很重要，但由于性能的约束，超长期用户行为通常是通过两段式训练进行处理的。第一阶段通过长期行为召回topK,第二阶段结合短期行为进行排序。两阶段由于优化目标不一致降低了长期用户行为带来的CTR增益。本文通过<strong>locality- sensitive hashing (LSH)</strong>方法提出端到端的ETA模型，使得满足训练和推理性能要求的前提下端到端训练的长期用户行为ctr模型。主要是通过<strong>SimHash</strong>的方法计算相似度，使得相似度的计算复杂度由O(L<em> B </em> d)变为O(L*B)，其中L是序列长度，B是candidate梳理，d是embedding维度</p></li><li><p>模型结构：</p><p><img src="pics/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/image-20220228145221827.png" alt="image-20220228145221827" style="zoom:50%;" /></p></li></ul><h3 id="2021-Alibaba-CIKM-ZEUS-Self-Supervised-Learning-on-Users’-Spontaneous-Behaviors-for-Multi-Scenario-Ranking-in-E-commerce"><a href="#2021-Alibaba-CIKM-ZEUS-Self-Supervised-Learning-on-Users’-Spontaneous-Behaviors-for-Multi-Scenario-Ranking-in-E-commerce" class="headerlink" title="2021 (Alibaba) (CIKM) [ZEUS] Self-Supervised Learning on Users’ Spontaneous Behaviors for Multi-Scenario Ranking in E-commerce"></a>2021 (Alibaba) (CIKM) [ZEUS] Self-Supervised Learning on Users’ Spontaneous Behaviors for Multi-Scenario Ranking in E-commerce</h3><h3 id="2020-JD-WSDM-HUP-Hierarchical-User-Profiling-for-E-commerce-Recommender-Systems"><a href="#2020-JD-WSDM-HUP-Hierarchical-User-Profiling-for-E-commerce-Recommender-Systems" class="headerlink" title="2020 (JD) (WSDM) [HUP] Hierarchical User Profiling for E-commerce Recommender Systems"></a>2020 (JD) (WSDM) [HUP] Hierarchical User Profiling for E-commerce Recommender Systems</h3><h3 id="【加入负反馈-显反馈对隐反馈去噪】2021-Alibaba-ACM-DUMN-Denoising-User-aware-Memory-Network-for-Recommendation"><a href="#【加入负反馈-显反馈对隐反馈去噪】2021-Alibaba-ACM-DUMN-Denoising-User-aware-Memory-Network-for-Recommendation" class="headerlink" title="【加入负反馈+显反馈对隐反馈去噪】2021(Alibaba)(ACM)[DUMN]Denoising User-aware Memory Network for Recommendation"></a>【加入负反馈+显反馈对隐反馈去噪】2021(Alibaba)(ACM)[DUMN]Denoising User-aware Memory Network for Recommendation</h3><ul><li>简介：最近推荐领域非常多的工作聚焦在用户行为建模。用户的反馈包含显式和隐式的，大部分工作忽略了<strong>隐式反馈的噪音</strong>（用显示反馈对隐式反馈进行去噪），这会导致对于用户兴趣的有偏理解，本文1）通过正交映射( orthogonal mapping)对隐反馈进行去噪  2)基于内存的用户长期行为建模  3)短期行为和长期行为的融合。输入包括4个部分，<strong>显示反馈：喜欢，不喜欢 ；隐式反馈：点击，未点击</strong></li><li>外卖场景下的显示隐式反馈是什么？？？<img src="pics/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/image-20220228150641871.png" alt="image-20220228150641871" style="zoom:50%;" /></li></ul><h2 id="4-Post-Ranking"><a href="#4-Post-Ranking" class="headerlink" title="4_Post_Ranking"></a>4_Post_Ranking</h2><h2 id="5-Multi-task"><a href="#5-Multi-task" class="headerlink" title="5_Multi-task"></a>5_Multi-task</h2><h2 id="6-Graph-Neural-Network"><a href="#6-Graph-Neural-Network" class="headerlink" title="6_Graph_Neural_Network"></a>6_Graph_Neural_Network</h2><h2 id="7-Transfer-Learning"><a href="#7-Transfer-Learning" class="headerlink" title="7_Transfer_Learning"></a>7_Transfer_Learning</h2><h2 id="8-Reignforcement-Learning"><a href="#8-Reignforcement-Learning" class="headerlink" title="8_Reignforcement_Learning"></a>8_Reignforcement_Learning</h2><h2 id="9-Self-Supervised-Learning"><a href="#9-Self-Supervised-Learning" class="headerlink" title="9_Self_Supervised_Learning"></a>9_Self_Supervised_Learning</h2><h2 id="10-Corporation"><a href="#10-Corporation" class="headerlink" title="10_Corporation"></a>10_Corporation</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>参考github awosome paper repository: <a href="https://github.com/guyulongcs/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising">Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FM</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/FM/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/FM/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.994Z</updated>
+    
+    <content type="html"><![CDATA[<p>FM</p><span id="more"></span><h1 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h1><h1 id="为什么时间复杂度是O-kn"><a href="#为什么时间复杂度是O-kn" class="headerlink" title="为什么时间复杂度是O(kn)"></a>为什么时间复杂度是O(kn)</h1><p>我们考虑二次项</p><p>哇塞，这么复杂的公式怎么看得懂，我们一步步来，其实很简单。</p><p>第一步，拆解过程如图</p><p> 拆解</p><p>第二步，向量点乘</p><p>第三步，将k求和提出来</p><p>第四步，左边i和j式子相同，可以认为两者相等，直接得出平方</p><p>到此，很明显，它的计算复杂度为O(kn)，左边求和之后平方，右边平方后求和，没有出现</p><p>接下来我们看看FM如何收敛，照常使用SGD，计算FM的梯度是：</p><p>求Xi的梯度，令Xj固定，则第三项左边求和是一个定值，与Xi无关。时间复杂度为O(kn)</p><p>FM也可以扩展到更高阶的形式</p><p>到这，我们可以推断，FM能够在O(kn)时间复杂度处理特征间关联问题。</p><p>作者：邹金伟</p><p>链接：</p><p><a href="https://www.jianshu.com/p/67b4f7ec919e">https://www.jianshu.com/p/67b4f7ec919e</a></p><p>来源：简书</p><p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p><h1 id="为什么能处理稀疏矩阵"><a href="#为什么能处理稀疏矩阵" class="headerlink" title="为什么能处理稀疏矩阵"></a>为什么能处理稀疏矩阵</h1><blockquote><ul><li>用$<v_i,v_j>$代替$W$,理论依据是任何一个正定阵$W$都可表视为  $W=V\cdot V^T$, 其中$W \in (n<em>n),V\in (n</em>k)$, 只要k足够大。</li><li>FM中通过选定一个较小的超参k可捕捉交叉特征稀疏空间的联</li></ul></blockquote><p>​                        </p><p>那么，这和SVM相比有什么优势呢，SVM通过相应的核函数也能做到。还记得我们开头说的吗，相比SVM，FM能够胜任稀疏矩阵。</p><p>首先我们来看一下SVM如何处理特征间关联问题。SVM的公式是：</p><p>选用合适的核函数，这里我们设d=2， 例如</p><p>展开后公式可得</p><p>通过大量的数据训练，我们也能够得出对应的Weight。但是，如果特征i，和特征j没有同时出现呢。例如，从来没有一个人既买过啤酒，又买过烧鸭，那么你能认为某个人买完啤酒后不会再买烧鸭吗？这就是数据稀疏时候出现的问题，这时候Wi,j没有对应的x值训练。FM通过Vi *  Vj来确定W，那么只要其他记录有Vi，和Vj，不用同时出现，就可以分别对其进行训练，最后通过点乘来确定值。这牺牲了Wi,j一点自由度，却能够很好的处理稀疏矩阵的问题。</p><p>链接：</p><p><a href="https://www.jianshu.com/p/67b4f7ec919e">https://www.jianshu.com/p/67b4f7ec919e</a></p><p>来源：简书</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;FM&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LDA算法</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/LDA%E7%AE%97%E6%B3%95/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/LDA算法/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.994Z</updated>
+    
+    <content type="html"><![CDATA[<p>LDA算法</p><span id="more"></span><h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>PLSA </p><p>每篇文章有个<script type="math/tex">\theta_i</script>确定每篇文章到topic的概率分布</p><p>每个topic_j有个<script type="math/tex">\phi_j</script>确定每篇文章到词的概率分布</p><p>求解theta_i，phi_j</p><p>LDA</p><p>每篇文i章有个alpha（对每篇文章都一样，是依靠先验人工设置的） 确定的地理克雷分布确定theta_i，由theta_i确定文章i到topic的概率分布</p><p>每个topic_j有个beta（对每个词都一样，是依靠先验人工设置的） 确定的地理克雷分布确定 phi_j, 由phi_j 确定topic_j到词的概率分布</p><p>求解theta_i，phi_j</p><h1 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h1><p>LDA</p><ol><li>每篇文i章有个alpha（对每篇文章都一样，是依靠先验人工设置的） 确定的地理克雷分布确定theta_i，由theta_i确定文章i到topic的概率分布</li></ol><script type="math/tex; mode=display">\theta_i=P_d(\alpha) \\P(j|i) = P_{mult}(\theta_i) \\文章i到各个topic_j的分布由\theta_i确定,其中P_d是狄利克雷分布，P_{mult}是多项式分布</script><ol><li>每个topic_j有个beta（对每个词都一样，是依靠先验人工设置的） 确定的地理克雷分布确定 phi_j, 由phi_j 确定topic_j到词的概率分布</li></ol><script type="math/tex; mode=display">\phi_j=P_d(\beta) \\P(k|j) = P_{mult}(\phi_j) \\topic_j到词k的分布由\phi_j确定,其中P_d是狄利克雷分布，P_{mult}是多项式分布</script><ol><li>求解theta_i，phi_j</li></ol><h1 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;LDA算法&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Uplift Modeling</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Uplift%20Modeling/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/Uplift Modeling/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.990Z</updated>
+    
+    <content type="html"><![CDATA[<p>Uplift Modeling</p><span id="more"></span><p>Uplift Modeling</p><h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>增量模型，用于预估某种干预对结果的因果关系（ITE，Individual Treatment Effect），即预测：</p><h1 id="基本假设"><a href="#基本假设" class="headerlink" title="基本假设"></a>基本假设</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Uplift Modeling&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Learning%20to%20Rank%EF%BC%9APoint-wise%E3%80%81Pair-wise%20%E5%92%8C%20List-wise%E5%8C%BA%E5%88%AB/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/Learning to Rank：Point-wise、Pair-wise 和 List-wise区别/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.984Z</updated>
+    
+    <content type="html"><![CDATA[<p>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</p><span id="more"></span><h1 id="Learning-to-Rank：Point-wise、Pair-wise-和-List-wise区别"><a href="#Learning-to-Rank：Point-wise、Pair-wise-和-List-wise区别" class="headerlink" title="Learning to Rank：Point-wise、Pair-wise 和 List-wise区别"></a>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</h1><p><img src="https://csdnimg.cn/release/phoenix/template/new_img/reprint.png" alt="img"></p><p><a href="https://me.csdn.net/weixin_34005042">weixin_34005042</a> 2018-09-29 15:19:00 <img src="https://csdnimg.cn/release/phoenix/template/new_img/articleRead.png" alt="img"> 4131 <img src="https://csdnimg.cn/release/phoenix/template/new_img/tobarCollectionActive.png" alt="img"> 已收藏 4</p><p> 机器学习的 ranking 技术——learning2rank，包括 pointwise、pairwise、listwise 三大类型。</p><p> <img src="https://img2018.cnblogs.com/blog/818082/201809/818082-20180929163323836-2075825354.png" alt="img"></p><p><a href="https://stackoverflow.com/questions/17411986/what-is-the-difference-between-point-wise-and-pair-wise-ranking-in-machine-learn">【Ref-1】</a>给出的：</p><Point wise ranking 类似于回归><p>Point wise ranking is analogous to regression. Each point has an associated rank score, and you want to predict that rank score. So your labeled data set will have a feature vector and associated rank score given a query</p><p>IE: {d1, r1} {d2, r2} {d3, r3} {d4, r4}</p><p>where r1 &gt; r2 &gt; r3 &gt;r4</p><Pairwise ranking 类似于分类><p>Pairwise ranking is analogous to classification. Each data point is associated with another data point, and the goal is to learn a classifier which will predict which of the two is “more” relevant to a given query.</p><p>IE: {d1 &gt; d2} {d2 &gt; d3} {d3 &gt; d4}</p><h1 id="1、Pointwise-Approach"><a href="#1、Pointwise-Approach" class="headerlink" title="\1、Pointwise Approach**"></a><strong><em>\</em>1、Pointwise Approach**</strong></h1><h2 id="1-1-特点"><a href="#1-1-特点" class="headerlink" title="　　*\*1.1 特点****"></a>　　<strong>*\</strong>*1.1 特点**<em>**</em></h2><p>　　Pointwise 类方法，其 L2R 框架具有以下特征：</p><ul><li>输入空间中样本是单个 doc（和对应 query）构成的特征向量；</li><li>输出空间中样本是单个 doc（和对应 query）的相关度；</li><li>假设空间中样本是打分函数；</li><li>损失函数评估单个 doc 的预测得分和真实得分之间差异。</li></ul><p>　　这里讨论下，关于人工标注标签怎么转换到 pointwise 类方法的输出空间：</p><ol><li>如果标注直接是相关度 s_j，则 doc x_j 的真实标签定义为 y_j=s_j</li><li>如果标注是 pairwise preference s_{u,v}，则 doc x_j 的真实标签可以利用该 doc 击败了其他 docs 的频次</li><li>如果标注是整体排序 π，则 doc x_j 的真实标签可以利用映射函数，如将 doc 的排序位置序号当作真实标签</li></ol><h2 id="1-2-根据使用的-ML-方法不同，pointwise-类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。"><a href="#1-2-根据使用的-ML-方法不同，pointwise-类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。" class="headerlink" title="　　1.2 根据使用的 ML 方法不同，pointwise 类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。"></a>　　1.2 根据使用的 ML 方法不同，pointwise 类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。</h2><p>　　（1）基于回归的算法</p><p>　　　　此时，输出空间包含的是实值相关度得分。采用 ML 中传统的回归方法即可。</p><p>　　（2）基于分类的算法</p><p>　　　　此时，输出空间包含的是无序类别。对于二分类，SVM、LR 等均可；对于多分类，提升树等均可。</p><p>　　（3）基于有序回归的算法</p><p>　　　　此时，输出空间包含的是有序类别。通常是找到一个打分函数，然后用一系列阈值对得分进行分割，得到有序类别。采用 PRanking、基于 margin 的方法都可以。</p><h2 id="1-3-缺陷"><a href="#1-3-缺陷" class="headerlink" title="　　1.3 缺陷"></a>　　1.3 缺陷</h2><p>　　　　回顾概述中提到的评估指标应该基于 query 和 position，</p><ul><li>ranking 追求的是排序结果，并不要求精确打分，只要有相对打分即可。</li><li>pointwise 类方法并没有考虑同一个 query 对应的 docs 间的内部依赖性。一方面，导致输入空间内的样本不是 IID 的，违反了 ML 的基本假设，另一方面，没有充分利用这种样本间的结构性。其次，当不同 query 对应不同数量的 docs 时，整体 loss 将会被对应 docs 数量大的 query 组所支配，前面说过应该每组 query 都是等价的。</li><li>损失函数也没有 model 到预测排序中的位置信息。因此，损失函数可能无意的过多强调那些不重要的 docs，即那些排序在后面对用户体验影响小的 doc。</li></ul><h2 id="1-4-改进"><a href="#1-4-改进" class="headerlink" title="　　1.4 改进"></a>　　1.4 改进</h2><p>　　　　如在 loss 中引入基于 query 的正则化因子的 RankCosine 方法。</p><h1 id="2、Pairwise-Approach"><a href="#2、Pairwise-Approach" class="headerlink" title="2、Pairwise Approach"></a>2、Pairwise Approach</h1><h2 id="2-1-特点"><a href="#2-1-特点" class="headerlink" title="　  2.1 特点"></a>　  2.1 特点</h2><p>　　Pairwise 类方法，其 L2R 框架具有以下特征：</p><ul><li>输入空间中样本是（同一 query 对应的）两个 doc（和对应 query）构成的两个特征向量；</li><li>输出空间中样本是 pairwise preference；</li><li>假设空间中样本是二变量函数；</li><li>损失函数评估 doc pair 的预测 preference 和真实 preference 之间差异。</li></ul><p>　　这里讨论下，关于人工标注标签怎么转换到 pairwise 类方法的输出空间：</p><ol><li>如果标注直接是相关度 s_j，则 doc pair (x_u,x_v) 的真实标签定义为 y_{u,v}=2*I_{s_u&gt;s_v}-1</li><li>如果标注是 pairwise preference s_{u,v}，则 doc pair (x_u,x_v) 的真实标签定义为y_{u,v}=s_{u,v}</li><li>如果标注是整体排序 π，则 doc pair (x_u,x_v) 的真实标签定义为y_{u,v}=2*I_{π_u,π_v}-1</li></ol><h2 id="2-2-基于二分类的算法"><a href="#2-2-基于二分类的算法" class="headerlink" title="　　2.2 基于二分类的算法　　"></a>　　2.2 基于二分类的算法　　</h2><p>　　Pairwise 类方法基本就是使用二分类算法即可。</p><p>　　经典的算法有 基于 NN 的 SortNet，基于 NN 的 RankNet，基于 fidelity loss 的 FRank，基于 AdaBoost 的 RankBoost，基于 SVM 的 RankingSVM，基于提升树的 GBRank。</p><h2 id="2-3-缺陷"><a href="#2-3-缺陷" class="headerlink" title="　　2.3 缺陷"></a>　　2.3 缺陷</h2><p>　　虽然 pairwise 类相较 pointwise 类 model 到一些 doc pair 间的相对顺序信息，但还是存在不少问题，回顾概述中提到的评估指标应该基于 query 和 position，</p><ul><li>如果人工标注给定的是第一种和第三种，即已包含多有序类别，那么转化成 pairwise preference 时必定会损失掉一些更细粒度的相关度标注信息。</li><li>doc pair 的数量将是 doc 数量的二次，从而 pointwise 类方法就存在的 query 间 doc 数量的不平衡性将在 pairwise 类方法中进一步放大。</li><li>pairwise 类方法相对 pointwise 类方法对噪声标注更敏感，即一个错误标注会引起多个 doc pair 标注错误。</li><li>pairwise 类方法仅考虑了 doc pair 的相对位置，损失函数还是没有 model 到预测排序中的位置信息。</li><li>pairwise 类方法也没有考虑同一个 query 对应的 doc pair 间的内部依赖性，即输入空间内的样本并不是 IID 的，违反了 ML 的基本假设，并且也没有充分利用这种样本间的结构性。</li></ul><h2 id="2-4-改进"><a href="#2-4-改进" class="headerlink" title="　　2.4 改进"></a>　　2.4 改进</h2><p>　　　pairwise 类方法也有一些尝试，去一定程度解决上述缺陷，比如：</p><ul><li>Multiple hyperplane ranker，主要针对前述第一个缺陷</li><li>magnitude-preserving ranking，主要针对前述第一个缺陷</li><li>IRSVM，主要针对前述第二个缺陷</li><li>采用 Sigmoid 进行改进的 pairwise 方法，主要针对前述第三个缺陷</li><li>P-norm push，主要针对前述第四个缺陷</li><li>Ordered weighted average ranking，主要针对前述第四个缺陷</li><li>LambdaRank，主要针对前述第四个缺陷</li><li>Sparse ranker，主要针对前述第四个缺陷</li></ul><p> 　<strong><em>\</em>3、Listwise Approach**</strong></p><h2 id="3-1-特点"><a href="#3-1-特点" class="headerlink" title="　　3.1 特点　　"></a>　　3.1 特点　　</h2><p>　　Listwise 类方法，其 L2R 框架具有以下特征：</p><ul><li>输入空间中样本是（同一 query 对应的）所有 doc（与对应的 query）构成的多个特征向量（列表）；</li><li>输出空间中样本是这些 doc（和对应 query）的相关度排序列表或者排列；</li><li>假设空间中样本是多变量函数，对于 docs 得到其排列，实践中，通常是一个打分函数，根据打分函数对所有 docs 的打分进行排序得到 docs 相关度的排列；</li><li>损失函数分成两类，一类是直接和评价指标相关的，还有一类不是直接相关的。具体后面介绍。</li></ul><p>　　这里讨论下，关于人工标注标签怎么转换到 listwise 类方法的输出空间：</p><ol><li>如果标注直接是相关度 s_j，则 doc set 的真实标签可以利用相关度 s_j 进行比较构造出排列</li><li>如果标注是 pairwise preference s_{u,v}，则 doc set 的真实标签也可以利用所有 s_{u,v} 进行比较构造出排列</li><li>如果标注是整体排序 π，则 doc set 则可以直接得到真实标签</li></ol><h2 id="3-2-根据损失函数构造方式的不同，listwise-类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。"><a href="#3-2-根据损失函数构造方式的不同，listwise-类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。" class="headerlink" title="　　3.2 根据损失函数构造方式的不同，listwise 类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。"></a>　　3.2 根据损失函数构造方式的不同，listwise 类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。</h2><p>　　　（1）直接基于评价指标的算法</p><p>　　直接取优化 ranking 的评价指标，也算是 listwise 中最直观的方法。但这并不简单，因为前面说过评价指标都是离散不可微的，具体处理方式有这么几种：</p><ul><li>优化基于评价指标的 ranking error 的连续可微的近似，这种方法就可以直接应用已有的优化方法，如SoftRank，ApproximateRank，SmoothRank</li><li>优化基于评价指标的 ranking error 的连续可微的上界，如 SVM-MAP，SVM-NDCG，PermuRank</li><li>使用可以优化非平滑目标函数的优化技术，如 AdaRank，RankGP</li></ul><p>　　上述方法的优化目标都是直接和 ranking 的评价指标有关。现在来考虑一个概念，informativeness。通常认为一个更有信息量的指标，可以产生更有效的排序模型。而多层评价指标（NDCG）相较二元评价（AP）指标通常更富信息量。因此，有时虽然使用信息量更少的指标来评估模型，但仍然可以使用更富信息量的指标来作为 loss 进行模型训练。</p><p>　　  （2）非直接基于评价指标的算法</p><p>　　这里，不再使用和评价指标相关的 loss 来优化模型，而是设计能衡量模型输出与真实排列之间差异的 loss，如此获得的模型在评价指标上也能获得不错的性能。<br>　　经典的如 ，ListNet，ListMLE，StructRank，BoltzRank。</p><h2 id="3-3-缺陷"><a href="#3-3-缺陷" class="headerlink" title="　　3.3 缺陷"></a>　　3.3 缺陷</h2><p>listwise 类相较 pointwise、pairwise 对 ranking 的 model 更自然，解决了 ranking 应该基于 query 和 position 问题。</p><p>listwise 类存在的主要缺陷是：一些 ranking 算法需要基于排列来计算 loss，从而使得训练复杂度较高，如 ListNet和 BoltzRank。此外，位置信息并没有在 loss 中得到充分利用，可以考虑在 ListNet 和 ListMLE 的 loss 中引入位置折扣因子。</p><h2 id="3-4-改进"><a href="#3-4-改进" class="headerlink" title="　　3.4 改进"></a>　　3.4 改进</h2><p>　　　pairwise 类方法也有一些尝试，去一定程度解决上述缺陷，比如：</p><ul><li>Multiple hyperplane ranker，主要针对前述第一个缺陷</li><li>magnitude-preserving ranking，主要针对前述第一个缺陷</li><li>IRSVM，主要针对前述第二个缺陷</li><li>采用 Sigmoid 进行改进的 pairwise 方法，主要针对前述第三个缺陷</li><li>P-norm push，主要针对前述第四个缺陷</li><li>Ordered weighted average ranking，主要针对前述第四个缺陷</li><li>LambdaRank，主要针对前述第四个缺陷</li><li>Sparse ranker，主要针对前述第四个缺陷</li></ul><p>以上，<strong>这三大类方法主要区别在于损失函数。不同的损失函数决定了不同的模型学习过程和输入输出空间。</strong></p><p>rating数据集：</p><p>：所以关于这个问题，是要使用topN=1的对吗？并把指标改为 AUC和 NDCG对吗？</p><p>——是这样，这个是一个rating数据集。</p><p>如果是按照pairwise ranking的正确率，应该是我们的oPR和oMRR，PR和MAP都是没有用的。</p><p>如果不按照pairwise，（按照listwise），就是AUC和NDCG，所以我让你算那个。</p><p>当然还有就是按照数值，（按照pointwise），RMSE，不过我们的没法计算RMSE。</p><p>：啊这个“不按照pairwise”，没太明白，还是按照原来的思路，用的 winner 和 loser 比较对呀。尤其在这个rating数据集，是每个比较对当成一个session，这点还是不变的吧？？</p><p>——这不就是pairwise吗？</p><p>rating是可以按照每个用户得到一个排序的，这是listwise，也就是算出NDCG，AUC的指标。</p><p>还可以按照pointwise，每个分数预测的怎么样，就是RMSE。</p><p>【Reference】</p><p>1、<a href="https://stackoverflow.com/questions/17411986/what-is-the-difference-between-point-wise-and-pair-wise-ranking-in-machine-learn">What is the difference between point-wise and pair-wise ranking in machine learning</a></p><p>2、<a href="https://blog.csdn.net/lipengcn/article/details/80373744">学习排序 Learning to Rank：从 pointwise 和 pairwise 到 listwise，经典模型与优缺点</a></p><p>3、<a href="https://cloud.tencent.com/developer/news/135904">基于 Pairwise 和 Listwise 的排序学习</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Learning to Rank：Point-wise、Pair-wise 和 List-wise区别&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Deep Learning based Recommender System A Survey and New Perspectives</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5DDeep%20Learning%20based%20Recommender%20System%20A%20Survey%20and%20New%20Perspectives/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/[comment]Deep Learning based Recommender System A Survey and New Perspectives/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T04:02:12.188Z</updated>
+    
+    <content type="html"><![CDATA[<p>Deep Learning based Recommender System A Survey and New Perspectives</p><span id="more"></span><h1 id="【PAPER-COMMENT】Deep-Learning-based-Recommender-System-A-Survey-and-New-Perspectives"><a href="#【PAPER-COMMENT】Deep-Learning-based-Recommender-System-A-Survey-and-New-Perspectives" class="headerlink" title="【PAPER COMMENT】Deep Learning based Recommender System: A Survey and New Perspectives"></a>【PAPER COMMENT】Deep Learning based Recommender System: A Survey and New Perspectives</h1><p>high-profile conferences ： NIPS, ICML, ICLR,KDD,WWW, SIGIR, WSDM, RecSys,<br>[TOC]</p><h2 id="2-OVERVIEW-OF-RECOMMENDER-SYSTEMS-AND-DEEP-LEARNING"><a href="#2-OVERVIEW-OF-RECOMMENDER-SYSTEMS-AND-DEEP-LEARNING" class="headerlink" title="2 OVERVIEW OF RECOMMENDER SYSTEMS AND DEEP LEARNING"></a>2 OVERVIEW OF RECOMMENDER SYSTEMS AND DEEP LEARNING</h2><h3 id="2-1-Rrecommendation-System"><a href="#2-1-Rrecommendation-System" class="headerlink" title="2.1 Rrecommendation System"></a>2.1 Rrecommendation System</h3><ul><li>recommendation system classification:<ul><li>CF(Interaction pnly): learning from user-item historical interactions, including explicit and implicit feedback</li><li>Content based: learning from auxiliary information( feature engineering)</li><li>Hybrid<h3 id="2-2-Deep-Learning-Techniques"><a href="#2-2-Deep-Learning-Techniques" class="headerlink" title="2.2 Deep Learning Techniques"></a>2.2 Deep Learning Techniques</h3>deep learning: <em>deep representation</em></li></ul></li><li><code>Multilayer Perceptiron(MLP)</code> :多层感知机 learning hierarchical feature representations</li><li><code>Autoencoder(AE)</code>: bottleneck  layer (the middle-most layer) is used as a salient feature representation of the input<br>data.</li><li><code>CNN</code>:It performs well in processing data with grid-like topology (网络拓扑结构的data)</li><li><code>RNN,LSTM, GRU</code></li><li><em><code>Restricted Boltzman Machine(RBM)</code></em></li><li><code>Adversarial Networks (AN)</code></li><li><code>Atentional Models</code></li><li><p><code>Deep Reinforcement Learning(DRL)</code>:consists of agents, environments, states, actions and rewards</p><h3 id="2-3-Why-DNN-for-Recommendation"><a href="#2-3-Why-DNN-for-Recommendation" class="headerlink" title="2.3 Why DNN for Recommendation"></a>2.3 Why DNN for Recommendation</h3><p>the sequential structure of session or click-logs are highly suitable for the inductive<br>biases provided by recurrent/convolutional models</p></li><li><p>Conten Bsed: When dealing with textual data (reviews, tweets ), image data (social posts, product images), CNNs/RNNs become indispensable neural building blocks.traditional alternative (designing modality-specific features etc.) becomes significantly less atractive and consequently </p></li><li>Interaction Only:  deep neural networks are justied when there is a huge amount of complexity or when there is<br><em>a large number of training instances</em> (用SGD的思想优化矩阵分解过程，可使用online数据，也可减少运算量，狭义的深度学习不适合）</li><li>ADVANTAGES：Nonlinear Transformation.（非线性拟合能力），Representation Learning（特征提取），Sequence Modelling(序列性特征)，Flexibility.(深度学习框架的模块化开发)<h2 id="3-DEEP-LEARNING-BASED-RECOMMENDATION-STATE-OF-THE-ART"><a href="#3-DEEP-LEARNING-BASED-RECOMMENDATION-STATE-OF-THE-ART" class="headerlink" title="3 DEEP LEARNING BASED RECOMMENDATION: STATE-OF-THE-ART"></a>3 DEEP LEARNING BASED RECOMMENDATION: STATE-OF-THE-ART</h2><h3 id="3-1-Categories-of-deep-learning-based-recommendation-models"><a href="#3-1-Categories-of-deep-learning-based-recommendation-models" class="headerlink" title="3.1 Categories of deep learning based recommendation models"></a>3.1 Categories of deep learning based recommendation models</h3></li><li>Recommendation with Neural Building Blocks：<code>MLP, AE, CNNs, RNNs, RBM, NADE,AM, AN and DRL based recommender system</code>。 <em>MLP</em> can easily model the non-linear interactions between users and items; <em>CNNs</em> are capable of extracting local and global representations from heterogeneous data(CNN 可用于异质的特征融合) sources such as textual and visual information; <em>RNNs</em>  enable the recommender system to model the temporal dynamics and sequential evolution of content information</li><li>Recommendation with Deep Hybrid Models:</li></ul><h3 id="3-2-MLP"><a href="#3-2-MLP" class="headerlink" title="3.2 MLP"></a>3.2 MLP</h3><ul><li><p><strong>Neural Extension of Traditional Recommendation Methods</strong>：<code>Neural Network Matrix Factorization (NNMF)</code>  and <code>Neural Collaborative Filtering(NCF)</code></p></li><li><p><strong>Feature Representation Learning with MLP.</strong> </p></li></ul><p><code>wide &amp; deep</code>wide 部分负责memorization，使用人工特征，deep部分负generalization（泛化），使用id特征（用户id，item id）。<a href="https://blog.csdn.net/u010352603/article/details/80590129#22-wide-part">https://blog.csdn.net/u010352603/article/details/80590129#22-wide-part</a></p><h3 id="3-3-Auto-encoder"><a href="#3-3-Auto-encoder" class="headerlink" title="3.3 Auto encoder"></a>3.3 Auto encoder</h3><h3 id="3-4-CNN"><a href="#3-4-CNN" class="headerlink" title="3.4 CNN"></a>3.4 CNN</h3><p>Tang et al. [143] presented sequential recommendation (with user identier) with CNNs, where two CNNs (hierarchical and vertical) are used to model the union-level sequential paerns and skip behaviors for sequence-aware recommendation</p><h3 id="3-5-RNN"><a href="#3-5-RNN" class="headerlink" title="3.5 RNN"></a>3.5 RNN</h3><ul><li>Session-Based（基于会话的推荐）<h2 id="4-Future-Rsearch-Directions-and-Open-Issues"><a href="#4-Future-Rsearch-Directions-and-Open-Issues" class="headerlink" title="4 Future Rsearch Directions and Open Issues"></a>4 Future Rsearch Directions and Open Issues</h2><h3 id="4-1-Joint-Representation-Learning-from-User-and-Item-Content-Information"><a href="#4-1-Joint-Representation-Learning-from-User-and-Item-Content-Information" class="headerlink" title="4.1 Joint Representation Learning from User and Item Content Information"></a>4.1 Joint Representation Learning from User and Item Content Information</h3>多种异质性信息的联合学习，如图片，text，side infomation <h3 id="4-2-Explainable-Recommendation-with-Deep-Leadrning"><a href="#4-2-Explainable-Recommendation-with-Deep-Leadrning" class="headerlink" title="4.2 Explainable Recommendation with Deep Leadrning"></a>4.2 Explainable Recommendation with Deep Leadrning</h3></li></ul><ol><li>to ussers: explainable prediction</li><li>to practitioner(从业者)： explainable weight<br><code>attention model</code> ： action weights give insights about the inner work of the model.<br>research dirextion:  <code>pre deep learning</code> <h3 id="4-3-Going-Deeper-for-Recommendation"><a href="#4-3-Going-Deeper-for-Recommendation" class="headerlink" title="4.3 Going Deeper for Recommendation"></a>4.3 Going Deeper for Recommendation</h3><h3 id="4-4-Machine-Reasoning-for-Recommendation"><a href="#4-4-Machine-Reasoning-for-Recommendation" class="headerlink" title="4.4 Machine Reasoning for Recommendation"></a>4.4 Machine Reasoning for Recommendation</h3><code>Machine Reasoning</code> 机理学习，通常用于文本和图像理解，很少用于推荐系统。担忧共通点，都是信息检索。interaction-only recommendation 跟<code>reasoning over meta-paths</code>很相似<h3 id="4-5-Cross-Domain-Recommendation-with-Deep-Neural-Networks"><a href="#4-5-Cross-Domain-Recommendation-with-Deep-Neural-Networks" class="headerlink" title="4.5 Cross Domain Recommendation with Deep Neural Networks"></a>4.5 Cross Domain Recommendation with Deep Neural Networks</h3>融合多个场景特征，可解决冷启动<br><code>transfer learning</code><h3 id="4-6-Deep-Multi-Task-Learning-for-Recommendation"><a href="#4-6-Deep-Multi-Task-Learning-for-Recommendation" class="headerlink" title="4.6 Deep Multi-Task Learning for Recommendation"></a>4.6 Deep Multi-Task Learning for Recommendation</h3>优点：<br>(1) learning several tasks at a time can prevent overfing by generalizing the shared hidden representations;减少过拟合，增加泛化<br>(2) auxiliary task provides interpretable output for explaining the recommendation;附加任务可增加可解释信<br>(3) multi-task provides an implicit data augmentation for alleviating the sparsity problem.减轻稀疏问题<h3 id="4-7-Scalability-of-Deep-Neural-Networks-for-Recommendation"><a href="#4-7-Scalability-of-Deep-Neural-Networks-for-Recommendation" class="headerlink" title="4.7 Scalability of Deep Neural Networks for Recommendation"></a>4.7 Scalability of Deep Neural Networks for Recommendation</h3>改进方向：<br>(1) incremental learning for non-stationary and streaming data such as large volume of incoming users<br>and items; 使用流式数据增量训练<br>(2) computation eficiency for high-dimensional tensors and multimedia data sources高维张量的计算效率<br>(3) balancing of the model complexity and scalability with the exponential growth of parameters<br>可能的解决方案：<br>(1) the key idea is to train a <code>smaller student</code> model that absorbs knowledge from the large<code>teacher model</code>.<br>(2) the high-dimensional input data can be compressed to compact embedding to reduce the space and computation time during model learning 压缩或者embedding稀疏编码</li></ol><h3 id="4-8-The-Field-Needs-Beer-More-Unified-and-Harder-Evaluation"><a href="#4-8-The-Field-Needs-Beer-More-Unified-and-Harder-Evaluation" class="headerlink" title="4.8 The Field Needs Beer, More Unified and Harder Evaluation"></a>4.8 The Field Needs Beer, More Unified and Harder Evaluation</h3><p>学术界没有统一的数据集，没有统一的评价标准，paper结果难以复现</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Deep Learning based Recommender System A Survey and New Perspectives&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Exact-K Recommendation</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5DExact-K%20Recommendation/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/[comment]Exact-K Recommendation/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T04:02:16.574Z</updated>
+    
+    <content type="html"><![CDATA[<p>Exact-K Recommendation</p><span id="more"></span><p>Exact-K Recommendation via Maximal Clique Optimization</p><h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><blockquote><ol><li>传统的top k推荐基于的假设是要把点击概率最高的商品排在前面</li><li>exact-K目标是通过排序优化K个商品的联合概率</li></ol></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Exact-K Recommendation&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>XGBOOST文献</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5DXGBOOST%E6%96%87%E7%8C%AE/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/[comment]XGBOOST文献/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T04:02:26.966Z</updated>
+    
+    <content type="html"><![CDATA[<p>XGBOOST文献</p><span id="more"></span><h1 id="XGBOOST文献笔记"><a href="#XGBOOST文献笔记" class="headerlink" title="XGBOOST文献笔记"></a>XGBOOST文献笔记</h1><p><a href="http://delivery.acm.org/10.1145/2940000/2939785/p785-chen.pdf?ip=111.200.23.13&amp;id=2939785&amp;acc=CHORUS&amp;key=4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E6D218144511F3437&amp;__acm__=1536805596_740dd7db7cc67a94ca9b28d83bd32678">http://delivery.acm.org/10.1145/2940000/2939785/p785-chen.pdf?ip=111.200.23.13&amp;id=2939785&amp;acc=CHORUS&amp;key=4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E6D218144511F3437&amp;__acm__=1536805596_740dd7db7cc67a94ca9b28d83bd32678</a></p><h2 id="决策相关知识点"><a href="#决策相关知识点" class="headerlink" title="决策相关知识点"></a>决策相关知识点</h2><ul><li><p>输入特征是连续特征&amp;离散特征</p><p>连续特征可直接输入，算法处理时暴力选择改特征划分点 或者按照该特征值的分布选择候选划分点</p><p>离散特征要进过one-hot后输入</p></li><li><p>输出是连续值（回归）&amp;离散值（分类）</p><p>回归：损失函数用均方误差</p><p>分类：损失函数用基尼值之类的</p></li><li><p>如何数值计算导数</p><p>$\frac{\partial J}{\partial \theta} = \lim_{\varepsilon \to 0} \frac{J(\theta + \varepsilon) - J(\theta - \varepsilon)}{2 \varepsilon} $</p></li></ul><h1 id="XGBoost-A-Scalable-Tree-Boosting-System"><a href="#XGBoost-A-Scalable-Tree-Boosting-System" class="headerlink" title="XGBoost: A Scalable Tree Boosting System"></a>XGBoost: A Scalable Tree Boosting System</h1><ul><li>字母解释</li></ul><p>$n:样本数 \\  m: 特征维度 \\  K:数的颗数 \\ D: 样本空间 \\ F:cart树空间 \\q:每棵树的结构\\ T：每棵树的叶子 \\ w:叶子权重 $</p><h2 id="与gradient-boosting相比改进的地方"><a href="#与gradient-boosting相比改进的地方" class="headerlink" title="与gradient boosting相比改进的地方"></a>与gradient boosting相比改进的地方</h2><blockquote><ol><li>增加正则项，防止过拟合。类似的方法用在RGF上</li><li>算每一颗数的loss时用$L_{t}=L_{t-1}+\Delta L\\  $，$\Delta L用L对\hat{y}_{t}$的二阶泰勒展开代替</li><li>优化时逐棵树优化，每棵树只在上一棵树的基础上分裂一次</li><li>叶子节点分裂时先对样本进行排序，分箱，再按分箱值进行分裂并筛选合适的分裂值。这样一方面能减少运算量，一方面可减轻过拟合, 为了保证每个分箱产生的loss均一，用残差的二阶导作为分箱依据（Weighted Quantile）</li></ol></blockquote><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>$\hat{y_i}=\sum_{i=1}^{K}w_i$</p><p>当正则项为0时，目标函数就跟传统的gradient tree boosting一样</p><h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>低t轮迭代时（第t棵树），对于第i个样本，用一阶倒数近似就是$y_i^{t}=y_i^{t-1}+f_t(x_i)$，损失函数就是</p><p>第二棵树开始，每棵树预测残差</p><p>只要确定了树结构，二阶近似有以上的最优解。但实际上无法确定树结构，即无法全局优化，所以采用贪婪地逐个叶子优化：</p><p>其中$L_{split}$是一个节点分裂前的loss-分裂后的loss，$L_{split}$越大越好</p><h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><p>解读：</p><p>首先对将全量样本分别按照各个特征排序，分箱（百分位数），箱值即为之后树分裂会用到的值；</p><p>假设前一颗数有两个叶子节点，生成第三棵树时：</p><ol><li>对第一个叶子节点上的sample<ol><li>计算各个分箱值时score，取使得score最大的分箱值</li><li>同样的方法遍历所有特征，得到各个特征在第一个节点上的最佳分裂值及score</li><li>选择score最大的特征及对应分分裂值</li></ol></li><li>同样的方式得到第二个叶子节点上的sample最佳分裂特征和分裂值</li><li>比较score，选择score最大的节点及特征及分裂值</li></ol><blockquote><p>分箱方法有两个：global variant 和 local variant</p><p>global variant是全局分箱，计算量少，但需要数据量大，分箱粒度大，不适合太深的树</p><p>local variant是每个叶子节点上的数据进行分箱</p></blockquote><h2 id="weighted-quantile"><a href="#weighted-quantile" class="headerlink" title="weighted quantile"></a>weighted quantile</h2><p>解读：</p><p>不是按特征值大小排序，按百分位分箱，而是构造特征排序函数r，其中h是残差在特征x上的二阶导。</p><p>推导：</p><p>loss函数$\sum_{i=1}^n=\sum_{k=1}^k\sum_{i\in z_j}\frac{h_i}{2}（f_t-\frac{g_i}{h_i}）+  ….$</p><p>rankz函数$r_k$的构造可以保证每个分箱上的loss的高阶系数是均一的，这样能加速优化</p><h2 id="Sparsity-aware-Split-Finding-空值"><a href="#Sparsity-aware-Split-Finding-空值" class="headerlink" title="Sparsity-aware Split Finding(空值)"></a>Sparsity-aware Split Finding(空值)</h2><p>处理每一个分支时默认空值朝左或者朝右，找到最合适的方向</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;XGBOOST文献&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>airbnb embedding</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5Dairbnb%20embedding/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/[comment]airbnb embedding/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T04:02:09.151Z</updated>
+    
+    <content type="html"><![CDATA[<p>[comment]</p><span id="more"></span><p>Real-time Personalization using Embeddings for Search<br>Ranking at Airbnb</p><h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><ul><li>airbnb是租客与房东双向预测 -&gt; 解决方法：用pair wise的loss（每一对样本有正反馈和负反馈）</li></ul><h1 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h1><h2 id="Listing-Embedding"><a href="#Listing-Embedding" class="headerlink" title="Listing Embedding"></a>Listing Embedding</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;[comment]&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>silk_road</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5Dsilk_road/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/[comment]silk_road/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T04:02:21.603Z</updated>
+    
+    <content type="html"><![CDATA[<p>silk_road</p><span id="more"></span><h1 id="Problem-Formulation"><a href="#Problem-Formulation" class="headerlink" title="Problem Formulation"></a>Problem Formulation</h1><p>基于购买行为的information domain 和 基于社交关系的 social domain联合推荐，最终实现对social domain中的用户进行item预</p><p>特点：</p><ol><li><p>info domain中用pooling的办法把交互特征和side information 融合在一起；</p><ol><li>bridge 用户很少；</li><li>两个网络时异质的</li></ol></li></ol><h2 id="名词解释："><a href="#名词解释：" class="headerlink" title="名词解释："></a>名词解释：</h2><h3 id="info-domain"><a href="#info-domain" class="headerlink" title="info-domain"></a>info-domain</h3><p>包括有交互特征$Y$和side info $G$ 。用户的G指的是一些tag标签，如喜欢自然，喜欢欧洲，一共有$v_u$个tag。item的G指的是item的一些标签（与用户标签对应的），如自然，欧洲，一共有$v_i$ 个tag。</p><script type="math/tex; mode=display">\begin{split}User_1&:&U_1&={\{u_t}\}_{t=1}^{M_1}  \\Item_1&:&I_1&=\{i_t\}_{t=1}^{m}  \\Interaction&:&Y&=\{y_{ij}\} \\Arttibute&:& \\&&G_u&=\{g_1^u,g_2^u\quad ...\quad g_{v_u}^u\} \\&&G_i&=\{g_1^i,g_1^i \quad ... \quad g_{v_i}^i\}\end{split}</script><h3 id="social-domain"><a href="#social-domain" class="headerlink" title="social-domain"></a>social-domain</h3><script type="math/tex; mode=display">User_2:U_2=\{u_t^{'}\}_{t=1}^{M_2} \\Interaction: S=\{s_{u{'},u^{''}}\}</script><h1 id="Solution-NSCR"><a href="#Solution-NSCR" class="headerlink" title="Solution: NSCR"></a>Solution: NSCR</h1><p>Neural Social Collaborative Ranking (NSCR)</p><h2 id="info-domain-1"><a href="#info-domain-1" class="headerlink" title="info-domain"></a>info-domain</h2><h3 id="pairwise-pooling"><a href="#pairwise-pooling" class="headerlink" title="pairwise pooling"></a>pairwise pooling</h3><h3 id="pairwise-loss"><a href="#pairwise-loss" class="headerlink" title="pairwise loss"></a>pairwise loss</h3><p>其中$y_{u,i}=1,t_{u,j}=0$</p><h3 id="forward-propagation"><a href="#forward-propagation" class="headerlink" title="forward propagation"></a>forward propagation</h3><p>prediction:</p><h2 id="social-domain-1"><a href="#social-domain-1" class="headerlink" title="social-domain"></a>social-domain</h2><p>两个约束作为loss：</p><h3 id="平滑约束（smothness）"><a href="#平滑约束（smothness）" class="headerlink" title="平滑约束（smothness）"></a>平滑约束（smothness）</h3><p>$s_{u^{‘’},u^{‘’}} 越大，p_{u^{‘}},p_{u^{‘’}}就$</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;silk_road&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>deep learning based推荐系统论文笔记</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/deep%20learning%20based%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/deep learning based推荐系统论文笔记/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.976Z</updated>
+    
+    <content type="html"><![CDATA[<p>deep learning based推荐系统论文笔记</p><span id="more"></span><p><a href="&#39;&#39;D:\资源\papers\time aware recommender system\综述好文_cite170-1707.07435.pdf&#39;">Deep Learning based Recommender System: A Survey and New Perspectives</a></p><p>推荐体统的本质是用户与商品的匹配，涉及到两个问题：匹配策略及评判标准</p><h1 id="推荐系统中深度学习模型总结"><a href="#推荐系统中深度学习模型总结" class="headerlink" title="推荐系统中深度学习模型总结"></a>推荐系统中深度学习模型总结</h1><p>按照模型分：<br><br>按照推荐领域：</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;deep learning based推荐系统论文笔记&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>embedding相关笔记</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/embedding%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/embedding相关笔记/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.978Z</updated>
+    
+    <content type="html"><![CDATA[<p>embedding相关笔记</p><span id="more"></span><h1 id="文献列表"><a href="#文献列表" class="headerlink" title="文献列表"></a>文献列表</h1><ul><li><p>graph embedding</p><p>Billion scale xommodity embedding for W-commerce recommedation in alibaba,KDD,2018</p></li></ul><ul><li>NLP</li></ul><p>A Fast and Simple Algorithm for Training Neural Probabilistic Language Models，2012<br>Learning word embeddings efficiently with noise-contrastive estimation,2013 NIPS</p><p>  [1] Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. Efficient estimation of word representations in vector space. <em>ICLR Workshop</em>, 2013<br>  [2] T. Mikolov, I. Sutskever, K. Chen, G. Corrado, and J. Dean. Distributed Representations of Words and Phrases and their Compositionality. NIPS 2013</p><h2 id="Noise-Contrastive-Estimation-NCE"><a href="#Noise-Contrastive-Estimation-NCE" class="headerlink" title="Noise Contrastive Estimation (NCE)"></a>Noise Contrastive Estimation (NCE)</h2><h1 id="框架介绍"><a href="#框架介绍" class="headerlink" title="框架介绍"></a>框架介绍</h1><h2 id="random-walk"><a href="#random-walk" class="headerlink" title="random walk"></a>random walk</h2><ol><li>无放回等概率抽样n_start个起点</li><li>所有indexer的0都表示未覆盖的品类</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;embedding相关笔记&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中文分词</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/中文分词/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.981Z</updated>
+    
+    <content type="html"><![CDATA[<p>中文分词</p><span id="more"></span><p>[TOC]</p><h1 id="jieba分词"><a href="#jieba分词" class="headerlink" title="jieba分词"></a>jieba分词</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="keyword">import</span> jieba.analyse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_corpus</span>(<span class="params">f_corpus</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param f_corpus: txt</span></span><br><span class="line"><span class="string">    :return: list</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(f_corpus, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        lines = f.readlines()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;f_corpus lines: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">len</span>(lines)))</span><br><span class="line">    <span class="built_in">print</span>(lines[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">return</span> lines</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_stopwords</span>(<span class="params">f_stopwords</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param f_stopwords: txt</span></span><br><span class="line"><span class="string">    :return: list</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(f_stopwords, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        stopwords = f.readlines()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;stop words lines: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">len</span>(stopwords)))</span><br><span class="line">    <span class="keyword">return</span> stopwords</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_keyword_dict</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="built_in">dict</span> = &#123;&#125;</span><br><span class="line">    keys = []</span><br><span class="line">    num=<span class="number">0</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename,<span class="string">&#x27;r&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        line = f.readline()</span><br><span class="line">        <span class="keyword">while</span> line :</span><br><span class="line">            num +=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> num % <span class="number">10000</span> ==<span class="number">0</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;line &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(num))</span><br><span class="line">            word = line.strip()</span><br><span class="line">            word = get_keyword(word).strip(<span class="string">&#x27;【&#x27;</span>).strip(<span class="string">&#x27;】&#x27;</span>)</span><br><span class="line">            <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> keys:</span><br><span class="line">                keys.append(word)</span><br><span class="line">                <span class="built_in">dict</span>[word] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">dict</span>[word] += <span class="number">1</span></span><br><span class="line">            line = f.readline()</span><br><span class="line">    <span class="built_in">dict</span> = <span class="built_in">sorted</span>(<span class="built_in">dict</span>.items(),key=<span class="keyword">lambda</span> s:s[<span class="number">1</span>],reverse=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main_count</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    统计词频</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    f_corpus = <span class="string">&#x27;part1.txt&#x27;</span></span><br><span class="line">    f_stopwords = <span class="string">&#x27;stopwords.txt&#x27;</span></span><br><span class="line">    f_count_words = <span class="string">&#x27;wordsCount_part1.txt&#x27;</span></span><br><span class="line">    corpus=get_corpus(f_corpus) <span class="comment">#list</span></span><br><span class="line">    stopwords=get_stopwords(f_stopwords) <span class="comment">#list</span></span><br><span class="line">    word_dic=count_word(corpus,stopwords) <span class="comment">#list</span></span><br><span class="line">    <span class="built_in">print</span> (word_dic)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(f_count_words):</span><br><span class="line">        os.system(<span class="string">r&quot;touch &#123;&#125;&quot;</span>.<span class="built_in">format</span>(f_count_words))</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(f_count_words,<span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> word_dic:</span><br><span class="line">            res = i[<span class="number">0</span>].strip()+<span class="string">&#x27;\t&#x27;</span>+<span class="built_in">str</span>(i[<span class="number">1</span>])</span><br><span class="line">            f.write(res+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;done!&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;中文分词&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>吴恩达卷积神经网络笔记</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/吴恩达卷积神经网络笔记/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.987Z</updated>
+    
+    <content type="html"><![CDATA[<p>吴恩达卷积神经网络笔记</p><span id="more"></span><p>[TOC]</p><h1 id="第一周-卷积神经网络"><a href="#第一周-卷积神经网络" class="headerlink" title="第一周 卷积神经网络"></a>第一周 卷积神经网络</h1><h2 id="计算及视觉要解决的问题"><a href="#计算及视觉要解决的问题" class="headerlink" title="计算及视觉要解决的问题"></a>计算及视觉要解决的问题</h2><ul><li>Image Classification</li><li>Object detection<h2 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h2></li><li>图像计算数据量非常大</li><li>所以需要通过卷积减少参数量</li></ul><h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><ul><li>valid padding: 不填充</li><li>same padding：输出和输入一样的size。步长为1时 p=(f-1)/2 ,f为卷积核的大小</li></ul><h2 id="stride（步长）"><a href="#stride（步长）" class="headerlink" title="stride（步长）"></a>stride（步长）</h2><ul><li>输出图像大小：floor[(n+2p-f)/s]+1<h2 id="多通道卷积"><a href="#多通道卷积" class="headerlink" title="多通道卷积"></a>多通道卷积</h2></li><li>卷积核的通道数=输入的通道数</li><li>一个卷积核将输入映射为单通道图片</li><li>卷积核的数量=输出图片的通道数</li><li>每个卷积核的bias是一个数<h2 id="pooling-池化"><a href="#pooling-池化" class="headerlink" title="pooling(池化)"></a>pooling(池化)</h2></li><li>max pooling: 只要过滤器检测到了特征，就保留下来<ul><li>输出的size和padding计算方法一致</li><li>pooling前后通道数目不变（跟卷积核不一样的地方）</li><li>没有参数需要学习<h2 id="使用卷积的意义"><a href="#使用卷积的意义" class="headerlink" title="使用卷积的意义"></a>使用卷积的意义</h2></li></ul></li><li>参数共享(parameter sharing):<ul><li>卷积核(过滤器)可通用语图片的各个位置</li></ul></li><li>稀疏连接(sparsity of connections)<ul><li>卷积后的图片每个像素点只与输入中卷集合大小的像素点有关，与其他像素点无关。这保证图片有平移不变性，即原始图片平移几个像素不太会导致结果的变化</li></ul></li></ul><h1 id="第二周-深度卷积网络：实例探究"><a href="#第二周-深度卷积网络：实例探究" class="headerlink" title="第二周 深度卷积网络：实例探究"></a>第二周 深度卷积网络：实例探究</h1><h2 id="经典网络"><a href="#经典网络" class="headerlink" title="经典网络"></a>经典网络</h2><ul><li>LeNet-5 (1998)</li><li>AlexNet</li><li>VGG</li><li>ResNet</li><li>Inception</li></ul><h2 id="LeNet-5-（1998）"><a href="#LeNet-5-（1998）" class="headerlink" title="LeNet-5 （1998）"></a>LeNet-5 （1998）</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午3.00.23.png" alt="屏幕快照 2019-11-11 下午3.00.23"></p><p>6w 参数</p><h2 id="AlexNet（2012）"><a href="#AlexNet（2012）" class="headerlink" title="AlexNet（2012）"></a>AlexNet（2012）</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.11.06.png" alt=""></p><p>6kw 参数</p><h2 id="VGG-2015"><a href="#VGG-2015" class="headerlink" title="VGG(2015)"></a>VGG(2015)</h2><p>用同样大小的卷积核（3*3 ， s=1, padding=same），同样的池化策略</p><h2 id="ResNet-2015"><a href="#ResNet-2015" class="headerlink" title="ResNet(2015)"></a>ResNet(2015)</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.20.45.png" alt="屏幕快照 2019-11-11 下午8.20.45"></p><p>随着层数增加，理论上来说损失会减少，但是实际上随着层数增加，对优化算法的要求越高，导致损失上升。</p><p>ResNet: $a_{l+1}=g(z(l+1)+a_l)$</p><h2 id="1-1卷积核"><a href="#1-1卷积核" class="headerlink" title="1*1卷积核"></a>1*1卷积核</h2><p>输入图片用1个1*1的卷积核座卷积意义是：输入图片各个通道加权成一个通道</p><h2 id="Inception-Network-2014"><a href="#Inception-Network-2014" class="headerlink" title="Inception Network(2014)"></a>Inception Network(2014)</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.40.29.png" alt="屏幕快照 2019-11-11 下午8.40.29"></p><h2 id="迁移学习-transfer-learning"><a href="#迁移学习-transfer-learning" class="headerlink" title="迁移学习 transfer learning"></a>迁移学习 transfer learning</h2><p>冻结前面几层，只训练最后一层全连接层。实现方案之一为：输入通过冻结的几层得到预计算输出，写入硬盘。之后每次从硬盘读入数据，训练最后几层网络，这样不需要每次迭代时都进行前面的计算。</p><p>或者只把下载的权重作为初始化，训练整个网络。</p><h2 id="数据扩充-data-augmentation"><a href="#数据扩充-data-augmentation" class="headerlink" title="数据扩充 data augmentation"></a>数据扩充 data augmentation</h2><p>当数据量不够时。</p><ul><li>镜像对称</li><li>随机剪裁</li><li>色彩转换 color shifting(PCA增强)</li></ul><h2 id="计算机视觉现状"><a href="#计算机视觉现状" class="headerlink" title="计算机视觉现状"></a>计算机视觉现状</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.56.18.png" alt="屏幕快照 2019-11-11 下午8.56.18"></p><p>数据量越少，人工特征提取越重要。</p><h1 id="第三周-目标检测"><a href="#第三周-目标检测" class="headerlink" title="第三周 目标检测"></a>第三周 目标检测</h1><h2 id="目标定位-localization-and-detection"><a href="#目标定位-localization-and-detection" class="headerlink" title="目标定位 localization and detection"></a>目标定位 localization and detection</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-12 下午6.32.06.png" alt="屏幕快照 2019-11-12 下午6.32.06"></p><ul><li><p>目标定位：图片中只有一个目标，要定位目标并识别目标。</p><p> 实现方法：输出除了类别向量外还有四个数：中心点x,y值，box长度，box高度</p></li><li><p>定义Y</p><p> 假设检测目标有三种，图片中最多只会有一个目标物体，则y为：</p><script type="math/tex; mode=display">\left[\begin{matrix}p_c\\b_x\\b_y\\b_h\\b_w\\c_1\\c_2\\c_3\end{matrix}\right]</script><p> 其中如果图片中有三种中的一种，则$p_c=1 $，$c_1,c_2,c_3$为对应的onehot向量。如果图片中没有目标种类的则$p_c=0$,其他数字为任意值</p></li><li><p>loss</p><script type="math/tex; mode=display">loss=\left\{\begin{matrix} \sum_{i=1}^8(y_i-\hat{y_i})^2,\quad if  \quad p_c=1\\ (y_i-\hat{y_i})^2,\quad else \end{matrix}\right.</script><p> 即如果图片中有目标物体，则loss包含每个y的分量误差。如果没有，则loss只计算$p_c$和预测值的误差。实际上y不同的部分可采用不同的误差，如$p_c$用logistic误差，b用均方误差，c用softmax误差</p></li></ul><h2 id="特征点检测"><a href="#特征点检测" class="headerlink" title="特征点检测"></a>特征点检测</h2><p>在图片分类的基础上做改造：y第一个元素实$p_c$,其他元素实特征点的坐标值。</p><p>体态检测也是一样，只不过特征点是关节点的坐标。要注意的实特征点的顺序需要是一致的。</p><h2 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h2><ul><li><p>滑动窗口 sliding window detection</p><ol><li>针对被检测物体（如车）训练图片分类网络</li><li><p>用不同大小的box扫过目标图片，并输出相应位置的概率</p><p>计算成本很大</p></li></ol></li></ul><h2 id="卷积的滑动窗口实现"><a href="#卷积的滑动窗口实现" class="headerlink" title="卷积的滑动窗口实现"></a>卷积的滑动窗口实现</h2><ul><li><p>FC层可用卷积实现，具体操作就是卷积核大小与输入相同，卷积核数量与FC的输出层相同。这种卷积表示与全连接的数学实现是一样的</p></li><li><p>将滑动窗口并卷积得到不同box的预测值—&gt;将整张图片进行卷积，最后输出的就是哥哥box对应的概率</p></li><li><p>问题：该方法隐式的预测bounding box的位置，结果不是很准确</p><p> 由于box的size是一定的（卷积网络的第一层卷积核大小），移动步长也是一定的(卷积网络的移动步长)</p></li></ul><h2 id="bounding-box预测"><a href="#bounding-box预测" class="headerlink" title="bounding box预测"></a>bounding box预测</h2><ul><li><p>YOLO (you only look once) 2015</p><p> 将问题简化为子图上的目标定位问题</p><ol><li>将图片分割，假设分割成3*3的小图</li><li>按照目标定位的方法对每个小图标定8维向量y，由于有9个小图，最终Y为3<em>3 </em> 8 的矢量</li><li>按照一般的方法进行训练。</li><li><p>预测时看每$\hat{Y}$的第一个分量，为1的地方就表示对应的子图有目标物体，对应的$b_i$即为box位置, 对应的$c_i$就是目标物体的种类</p><p>注意：</p></li><li><p>标定物体的时候如果物体横跨多个子图，物体只会被分配到一个图上。</p></li><li>标定$b_i$的时候用的是子图的相对比例坐标。$b_x,b_y$一定小于等于1，$b_x,b_y$可以大于1</li></ol></li><li><p>好处：</p><ol><li>bounding box大小和位置不受限制</li><li>只进行单词卷积，而非滑动多次卷积。这是由于滑动卷积过程中有很多计算实可以共享的</li></ol></li></ul><h2 id="交并比-intersection-over-union"><a href="#交并比-intersection-over-union" class="headerlink" title="交并比 intersection over union"></a>交并比 intersection over union</h2><p>用来评价目标检测模型好坏。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;吴恩达卷积神经网络笔记&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>时间序列模型</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/时间序列模型/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.977Z</updated>
+    
+    <content type="html"><![CDATA[<p>时间序列模型</p><span id="more"></span><hr><h2 id="typora-copy-images-to-image"><a href="#typora-copy-images-to-image" class="headerlink" title="typora-copy-images-to: ./image"></a>typora-copy-images-to: ./image</h2><h1 id="时间序列模型"><a href="#时间序列模型" class="headerlink" title="时间序列模型"></a>时间序列模型</h1><h2 id="WEEK1"><a href="#WEEK1" class="headerlink" title="WEEK1"></a>WEEK1</h2><ul><li><p>符号解释</p><p>$x^{(i)<t>}$:  第i个样本的第t维分量</p><p>$T_x^{(i)}$ : 第i个样本x的维度</p></li><li><p>主体抓取</p><ol><li><p>多对多模型</p></li><li><p>不能用全连接，因为输入和输出的长度不定，而且输入矩阵太大</p><p><img src="/Users/tessiehe/Documents/study_notes/吴恩达时间序列笔记/image/E36DF04F-C0BD-42D3-9A0D-CA2F2B1C7DE9.png" alt="E36DF04F-C0BD-42D3-9A0D-CA2F2B1C7DE9"></p></li></ol></li></ul><p>$a^{<0>} = \vec{0}$</p><p>$a^{<1>} = g(W_{aa}a^{<0>} +W_{ax}x^{<1>} +b_a)$</p><p>$\hat{y}^{<1>} = g(W_{ya}a^{<1>}+b_y)$</p><ul><li>Forward propagation</li></ul><p>$a^{<t>} = g(W_{aa}a^{<t-1>} +W_{ax}x^{<t-1>}+b_a)$</p><p>$\hat{y^{<t>}} = g(W_{ya}a^{<t>}+b_y)$</p><p>为了简化模型，可把$W_{ax},W_{aa}$横向排列成为$W_a$，$a^{<t-1>},x^{t}$纵向排列</p><p><img src="/Users/tessiehe/Documents/study_notes/吴恩达时间序列笔记/image/D71818E3-4031-4EF4-99F4-BD47FC6BD0C5.png" alt="D71818E3-4031-4EF4-99F4-BD47FC6BD0C5"></p><ul><li><p>Back propagation</p><p>$L^{<t>} (\hat{y}^{<t>},y^{t}) = -y^{<t>}log(\hat{y})-(1-y^{<t>})log(1-\hat{y}^{<t>})$</p><p>$L(\hat{y},y) = \sum_{t=1}^{T_x}L^{<t>}(\hat{y}^{<t>},y^{<t>})$</p></li><li><p>Different types of RNN</p><p><img src="/Users/tessiehe/Documents/study_notes/吴恩达时间序列笔记/image/FF3C6BD2-518A-480C-ADE5-3B71224C7DDB.png" alt="FF3C6BD2-518A-480C-ADE5-3B71224C7DDB"></p></li><li><p>Language model</p><ul><li><p>tokenize (one hot)</p></li><li><p><UNK>来编码非常用单词</p></li><li><p>目标：判断一个句子的概率</p><ul><li><p>训练：</p><p><img src="/Users/tessiehe/Documents/study_notes/吴恩达时间序列笔记/image/FC45A4AF-B524-425F-8C28-14FF8C16B802.png" alt="ßFC45A4AF-B524-425F-8C28-14FF8C16B802"></p></li></ul></li></ul></li><li><p>Sample a sequence model from trained RNN</p><ul><li>初始化输入（零向量）</li><li>按照预测softmax后的概率sample出一个词</li><li>以新词作为输入，softmax预测下一个词的概率，按照概率分布sample出第二个词</li></ul></li><li><p>RNN的梯度消失</p><p>梯度爆炸可使用gradient clipping</p></li><li><p>GRU（Gradient Recurrent Unit）</p><ul><li><p>c:memory cell</p><p>$c^{<t>} = a^{<t>}$</p><p>$\hat{c}^{<t>}=tanh(W_c[c^{<t-1>},x^{<t>}]+b_c)$</p><p>$\Gamma_u=\sigma(W_u[c^{<t-1>},x^{<t>}]+b_u)$   (u: update,$\Gamma$ 约为0或1)</p><p>$c^{<t>} = \Gamma_u\hat{c}^{<t>} +(1-\Gamma_u)c^{<t-1>}$  （$\Gamma$维度和c一样；elemet wise multiply）</p><p><img src="/Users/tessiehe/Documents/study_notes/吴恩达时间序列笔记/image/05728660-E7EF-4289-9665-45E6653B03F5.png" alt="05728660-E7EF-4289-9665-45E6653B03F5"></p></li><li><p>Full GRU</p><p>$\hat{c}^{<t>} = tanh(Wc[\Gamma_r*c^{<t-1>},x^{<t>}]+b_c)$</p><p>$\Gamma_r=\sigma(W_r[c^{<t-1>},x^{t}]+b_c)$</p><p>$\Gamma _u=\sigma(W_u[c^{<t-1>},x^{<t>}]+b_u)$</p><p>$c^{<t>} = \Gamma_u<em>\hat{c}^{<t>}+(1-\Gamma_u)</em>c^{<t-1>}$</p><p>$a^{<t>} = c^{<t>}$</p><p>​</p></li></ul></li><li><p>LSTM (Long Short Term Memory)</p><p>$\hat{c}^{<t>} = tanh(W_c[a^{<t-1>},x^{<t>}]+b_c)$</p><p>$\Gamma_u=\sigma(W_u[a^{<t-1>},x^{<t>}]+b_u)$</p><p>$\Gamma_f=\sigma(W_f[a^{<t-1>},x^{<t>}]+b_f)$</p><p>$\Gamma_o=\sigma(W_o[a^{<t-1>},x^{<t>}]+b_o)$</p><p>$c^{<t>}=\Gamma_u<em>\hat{c}^{<t>}+\Gamma_f</em>c^{<t-1>}$</p><p>$a^{<t>}=\Gamma_o*c^{<t>}$</p><p><img src="/Users/tessiehe/Documents/study_notes/吴恩达时间序列笔记/image/C9ED60FC-BEA6-49F4-A735-90C7B76F782D.png" alt="C9ED60FC-BEA6-49F4-A735-90C7B76F782D"></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;时间序列模型&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习基础</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/机器学习基础/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.976Z</updated>
+    
+    <content type="html"><![CDATA[<p>机器学习基础</p><span id="more"></span><p>[TOC]</p><h1 id="Woe"><a href="#Woe" class="headerlink" title="Woe"></a>Woe</h1><p>WOE的全称是“weight of evidence”，即证据权重, WOE表示的含义即是”<strong>当前分组中响应客户占所有响应客户的比例”和”当前分组中没有响应的客户占所有没有响应客户的比例</strong>“的差异。先把分析变量进行分箱，每个分箱内的$w_{oe}$为</p><script type="math/tex; mode=display">woe_i=\frac{当前分组中响应客户占所有响应客户的比例}{当前分组中没有响应的客户占所有没有响应客户的比例}=ln\frac{P_{y_i}}{P_{n_i}}=ln\frac{y_1/y_2}{n_i/n_s}</script><script type="math/tex; mode=display">woe_i=\frac{sum(y_i)/sum(y_s)}{sum(1-y_i)/sum(1-y_s)}</script><p>该值绝对值越大说明变量区分能力越强</p><h1 id="IV"><a href="#IV" class="headerlink" title="IV"></a>IV</h1><p>IV衡量的是某一个变量的信息量，从公式来看的话，相当于是自变量WOE值的一个加权求和，其值的大小决定了自变量对于目标变量的影响程度</p><script type="math/tex; mode=display">IV_i=(P_{y_i}-P_{n_i})*woe_i</script><p>WOE 和 IV 都能表达某个分组对目标变量的预测能力。但实际中，我们通常选择 IV 而不是 WOE 的和来衡量变量预测的能力，这是为什么呢？首先，因为我们在衡量一个变量的预测能力时，我们所使用的指标值不应该是负数。从这意义上来说，IV 比 WOE 多乘以前面那个因子，就保证了它不会是负数；然后，乘以(Pyi−Pni)这个因子，体现出了变量当前分组中个体的数量占整体的比例，从而很好考虑了这个分组中样本占整体的比例，比例越低，这个分组对变量整体预测能力的贡献越低。相反，如果直接用 WOE 的绝对值加和，会因为该分组出现次数偏少的影响而得到一个很高的指标。</p><h1 id="AUC-amp-KS"><a href="#AUC-amp-KS" class="headerlink" title="AUC &amp; KS"></a>AUC &amp; KS</h1><h1 id="信息熵（information-entropy）"><a href="#信息熵（information-entropy）" class="headerlink" title="信息熵（information entropy）"></a>信息熵（information entropy）</h1><p>衡量样本纯度，熵越小越纯,样本D有K类样本，其信息熵为</p><script type="math/tex; mode=display">Ent(D)=-\sum_{k=1}^{K}p_klog_2p_k</script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;机器学习基础&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>李宏毅强化学习笔记</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9D%8E%E5%AE%8F%E6%AF%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/李宏毅强化学习笔记/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.983Z</updated>
+    
+    <content type="html"><![CDATA[<p>李宏毅强化学习笔记</p><span id="more"></span><p>[TOC]</p><h1 id="PART1"><a href="#PART1" class="headerlink" title="PART1"></a>PART1</h1><p><strong>什么是强化学习</strong></p><p>强化学习决策过程包括4个环节：agent观察环境（observation）—-agent做出动作（action）——动作会引起环境的变化 —- agent得到奖励（reward）—-agent再次观察环境（observation）。强化学习就是通过学习实现agent的决策序列收益（reward）最大。</p><p><strong>强化学习的分类</strong></p><p>policy based, grade based, model based。 这三种方式其实是不同的reward方式</p><h1 id="PART-2"><a href="#PART-2" class="headerlink" title="PART 2"></a>PART 2</h1><h1 id="PART-3"><a href="#PART-3" class="headerlink" title="PART 3"></a>PART 3</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;李宏毅强化学习笔记&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习笔记</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/深度学习笔记/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.989Z</updated>
+    
+    <content type="html"><![CDATA[<p>深度学习笔记</p><span id="more"></span><h1 id="深度学习笔记"><a href="#深度学习笔记" class="headerlink" title="深度学习笔记"></a>深度学习笔记</h1><h2 id="BatchNorm"><a href="#BatchNorm" class="headerlink" title="BatchNorm"></a>BatchNorm</h2><ul><li><p>基本思想：</p><p>深度网络对输入的分布式敏感的，若采用mini-batch方法训练模型，则每次样本分布式不同的。不仅第一层如此，由于非线性的变换，后面每一层的输入（即前一层的输出）的分布都是不一样的，不符合IID独立同分布假设，模型训练也会越来越困难，也就是所谓的internal covariate shift问题。所以考虑在每一层的线下变换后，非线性变化之前，将输出强制变换为0-1分布。</p><p>这样做是受图像处理中的白化（whiten）操作的启发：就是对输入数据分布变换到0均值，单位方差的正态分布</p><p>所以本质就是：<strong>对于每个隐层神经元，把逐渐向非线性函数映射后向取值区间极限饱和区靠拢的输入分布强制拉回到均值为0方差为1的比较标准的正态分布，使得非线性变换函数的输入值落入对输入比较敏感的区域，以此避免梯度消失问题。</strong> </p><p>但是，都通过BN，那么不就跟把非线性函数替换成线性函数效果相同了？这意味着什么？我们知道，如果是多层的线性函数变换其实这个深层是没有意义的，因为多层线性网络跟一层线性网络是等价的。这意味着网络的<strong>表达能力</strong>下降了，这也意味着深度的意义就没有了。<strong>所以BN为了保证非线性的获得，对变换后的满足均值为0方差为1的x又进行了scale加上shift操作(y=scale*x+shift)</strong>，每个神经元增加了两个参数scale和shift参数，这两个参数是通过训练学习到的，意思是通过scale和shift把这个值从标准正态分布左移或者右移一点并长胖一点或者变瘦一点，每个实例挪动的程度不一样，这样等价于非线性函数的值从正中心周围的线性区往非线性区动了动。核心思想应该是想找到一个线性和非线性的较好平衡点，既能享受非线性的较强表达能力的好处，又避免太靠非线性区两头使得网络收敛速度太慢。 </p></li><li><p>流程：</p><p><img src="深度学习笔记.assets\1541386887738.png" alt="1541386887738"></p></li><li><p>inference过程：</p><p>由于inference过程只有一个实例，无法获得期望和方差，可用全局方差代替。具体来说就是记住每一个mini-batch的方差和期望，然后统计出全局统计量</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;深度学习笔记&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>联邦树模型</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%81%94%E9%82%A6%E6%A0%91%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/联邦树模型/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.993Z</updated>
+    
+    <content type="html"><![CDATA[<p>联邦树模型</p><span id="more"></span><p>[TOC]</p><h1 id="普通XGB原理"><a href="#普通XGB原理" class="headerlink" title="普通XGB原理"></a>普通XGB原理</h1><h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><h1 id="联邦GXB"><a href="#联邦GXB" class="headerlink" title="联邦GXB"></a>联邦GXB</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;联邦树模型&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自然语言处理笔记</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/自然语言处理笔记/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.990Z</updated>
+    
+    <content type="html"><![CDATA[<p>自然语言处理笔记</p><span id="more"></span><p>[TOC]</p><h1 id="文本特征提取"><a href="#文本特征提取" class="headerlink" title="文本特征提取"></a>文本特征提取</h1><h2 id="TF-IDF"><a href="#TF-IDF" class="headerlink" title="TF-IDF"></a>TF-IDF</h2><p><a href="https://blog.csdn.net/The_lastest/article/details/79093407">链接</a></p><blockquote><p>TF-IDF是传统的统计算法，用于评估一个词在一个文档集中对于某一个文档的重要程度。它与这个词在当前文档中的词频成正比，与文档集中的其他词频成反比</p></blockquote><p>x:多个文档，如多个电影评论</p><p>y:针对每个文档可以提取关键词</p><h1 id="gensim"><a href="#gensim" class="headerlink" title="gensim"></a>gensim</h1><p><a href="https://blog.csdn.net/CoderPai/article/details/80250380">https://blog.csdn.net/CoderPai/article/details/80250380</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#train</span></span><br><span class="line"><span class="keyword">from</span> gensim.test.utils <span class="keyword">import</span> common_texts, get_tmpfile</span><br><span class="line"><span class="keyword">from</span> gensim.models <span class="keyword">import</span> Word2Vec</span><br><span class="line">model_name=<span class="string">&#x27;test&#x27;</span></span><br><span class="line">path = get_tmpfile(model_name + <span class="string">&#x27;.model&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> params <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    params = &#123;</span><br><span class="line">        <span class="string">&#x27;size&#x27;</span>: <span class="number">100</span>,</span><br><span class="line">        <span class="string">&#x27;window&#x27;</span>: <span class="number">10</span>,</span><br><span class="line">        <span class="string">&#x27;min_count&#x27;</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="string">&#x27;workers&#x27;</span>: <span class="number">4</span>,</span><br><span class="line">        <span class="string">&#x27;compute_loss&#x27;</span>: <span class="literal">True</span></span><br><span class="line">    &#125;</span><br><span class="line">model = Word2Vec([[<span class="string">&#x27;我&#x27;</span>,<span class="string">&#x27;是&#x27;</span>,<span class="string">&#x27;天才&#x27;</span>],[<span class="string">&#x27;你&#x27;</span>，<span class="string">&#x27;是&#x27;</span>，<span class="string">&#x27;呵呵&#x27;</span>]] **params)  <span class="comment"># get_latest_training_loss().</span></span><br><span class="line">model.save(path)</span><br><span class="line"><span class="comment">#pred</span></span><br><span class="line">model=Word2Vec.load(path)</span><br><span class="line"> </span><br></pre></td></tr></table></figure><ul><li>size: 词向量的维度。</li><li>alpha: 模型初始的学习率。</li><li>window: 表示在一个句子中，当前词于预测词在一个句子中的最大距离。</li><li>min_count: 用于过滤操作，词频少于 min_count 次数的单词会被丢弃掉，默认值为 5。</li><li>max_vocab_size: 设置词向量构建期间的 RAM 限制。如果所有的独立单词数超过这个限定词，那么就删除掉其中词频最低的那个。根据统计，每一千万个单词大概需要 1GB 的RAM。如果我们把该值设置为 None ，则没有限制。</li><li>sample: 高频词汇的随机降采样的配置阈值，默认为 1e-3，范围是 (0, 1e-5)。</li><li>seed: 用于随机数发生器。与词向量的初始化有关。</li><li>workers: 控制训练的并行数量。</li><li>min_alpha: 随着训练进行，alpha 线性下降到 min_alpha。</li><li>sg: 用于设置训练算法。当 sg=0，使用 CBOW 算法来进行训练；当 sg=1，使用 skip-gram 算法来进行训练。</li><li>hs: 如果设置为 1 ，那么系统会采用 hierarchica softmax 技巧。如果设置为 0（默认情况），则系统会采用 negative samping 技巧。</li><li>negative: 如果这个值大于 0，那么 negative samping 会被使用。该值表示 “noise words” 的数量，一般这个值是 5 - 20，默认是 5。如果这个值设置为 0，那么 negative samping 没有使用。</li><li>cbow_mean: 如果这个值设置为 0，那么就采用上下文词向量的总和。如果这个值设置为 1 （默认情况下），那么我们就采用均值。但这个值只有在使用 CBOW 的时候才起作用。</li><li>hashfxn: hash函数用来初始化权重，默认情况下使用 Python 自带的 hash 函数。</li><li>iter: 算法迭代次数，默认为 5。</li><li>trim_rule: 用于设置词汇表的整理规则，用来指定哪些词需要被剔除，哪些词需要保留。默认情况下，如果 word count &lt; min_count，那么该词被剔除。这个参数也可以被设置为 None，这种情况下 min_count 会被使用。</li><li>sorted_vocab: 如果这个值设置为 1（默认情况下），则在分配 word index 的时候会先对单词基于频率降序排序。</li><li>batch_words: 每次批处理给线程传递的单词的数量，默认是 10000。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自然语言处理笔记&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+</feed>
