@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>凛冬将至</title>
+  <title>天气桑的blog</title>
   
-  <subtitle>从简单的例子开始</subtitle>
+  <subtitle>这个人很懒，还没写介绍</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://wangdongdong122.github.io/"/>
+  <link href="http://tessiehe.github.io/"/>
   <updated>2022-03-01T03:59:30.985Z</updated>
-  <id>http://wangdongdong122.github.io/</id>
+  <id>http://tessiehe.github.io/</id>
   
   <author>
-    <name>Dongdong Wang</name>
+    <name>Tenki San</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.985Z</updated>
     
@@ -31,19 +31,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>FM</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/FM/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/FM/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/FM/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/FM/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.994Z</updated>
     
@@ -55,19 +55,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>LDA算法</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/LDA%E7%AE%97%E6%B3%95/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/LDA算法/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/LDA%E7%AE%97%E6%B3%95/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/LDA算法/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.994Z</updated>
     
@@ -79,43 +79,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Learning%20to%20Rank%EF%BC%9APoint-wise%E3%80%81Pair-wise%20%E5%92%8C%20List-wise%E5%8C%BA%E5%88%AB/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/Learning to Rank：Point-wise、Pair-wise 和 List-wise区别/</id>
-    <published>2022-03-01T03:32:38.000Z</published>
-    <updated>2022-03-01T03:59:30.984Z</updated>
-    
-    <content type="html"><![CDATA[<p>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</p><span id="more"></span><h1 id="Learning-to-Rank：Point-wise、Pair-wise-和-List-wise区别"><a href="#Learning-to-Rank：Point-wise、Pair-wise-和-List-wise区别" class="headerlink" title="Learning to Rank：Point-wise、Pair-wise 和 List-wise区别"></a>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</h1><p><img src="https://csdnimg.cn/release/phoenix/template/new_img/reprint.png" alt="img"></p><p><a href="https://me.csdn.net/weixin_34005042">weixin_34005042</a> 2018-09-29 15:19:00 <img src="https://csdnimg.cn/release/phoenix/template/new_img/articleRead.png" alt="img"> 4131 <img src="https://csdnimg.cn/release/phoenix/template/new_img/tobarCollectionActive.png" alt="img"> 已收藏 4</p><p> 机器学习的 ranking 技术——learning2rank，包括 pointwise、pairwise、listwise 三大类型。</p><p> <img src="https://img2018.cnblogs.com/blog/818082/201809/818082-20180929163323836-2075825354.png" alt="img"></p><p><a href="https://stackoverflow.com/questions/17411986/what-is-the-difference-between-point-wise-and-pair-wise-ranking-in-machine-learn">【Ref-1】</a>给出的：</p><Point wise ranking 类似于回归><p>Point wise ranking is analogous to regression. Each point has an associated rank score, and you want to predict that rank score. So your labeled data set will have a feature vector and associated rank score given a query</p><p>IE: {d1, r1} {d2, r2} {d3, r3} {d4, r4}</p><p>where r1 &gt; r2 &gt; r3 &gt;r4</p><Pairwise ranking 类似于分类><p>Pairwise ranking is analogous to classification. Each data point is associated with another data point, and the goal is to learn a classifier which will predict which of the two is “more” relevant to a given query.</p><p>IE: {d1 &gt; d2} {d2 &gt; d3} {d3 &gt; d4}</p><h1 id="1、Pointwise-Approach"><a href="#1、Pointwise-Approach" class="headerlink" title="\1、Pointwise Approach**"></a><strong><em>\</em>1、Pointwise Approach**</strong></h1><h2 id="1-1-特点"><a href="#1-1-特点" class="headerlink" title="　　*\*1.1 特点****"></a>　　<strong>*\</strong>*1.1 特点**<em>**</em></h2><p>　　Pointwise 类方法，其 L2R 框架具有以下特征：</p><ul><li>输入空间中样本是单个 doc（和对应 query）构成的特征向量；</li><li>输出空间中样本是单个 doc（和对应 query）的相关度；</li><li>假设空间中样本是打分函数；</li><li>损失函数评估单个 doc 的预测得分和真实得分之间差异。</li></ul><p>　　这里讨论下，关于人工标注标签怎么转换到 pointwise 类方法的输出空间：</p><ol><li>如果标注直接是相关度 s_j，则 doc x_j 的真实标签定义为 y_j=s_j</li><li>如果标注是 pairwise preference s_{u,v}，则 doc x_j 的真实标签可以利用该 doc 击败了其他 docs 的频次</li><li>如果标注是整体排序 π，则 doc x_j 的真实标签可以利用映射函数，如将 doc 的排序位置序号当作真实标签</li></ol><h2 id="1-2-根据使用的-ML-方法不同，pointwise-类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。"><a href="#1-2-根据使用的-ML-方法不同，pointwise-类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。" class="headerlink" title="　　1.2 根据使用的 ML 方法不同，pointwise 类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。"></a>　　1.2 根据使用的 ML 方法不同，pointwise 类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。</h2><p>　　（1）基于回归的算法</p><p>　　　　此时，输出空间包含的是实值相关度得分。采用 ML 中传统的回归方法即可。</p><p>　　（2）基于分类的算法</p><p>　　　　此时，输出空间包含的是无序类别。对于二分类，SVM、LR 等均可；对于多分类，提升树等均可。</p><p>　　（3）基于有序回归的算法</p><p>　　　　此时，输出空间包含的是有序类别。通常是找到一个打分函数，然后用一系列阈值对得分进行分割，得到有序类别。采用 PRanking、基于 margin 的方法都可以。</p><h2 id="1-3-缺陷"><a href="#1-3-缺陷" class="headerlink" title="　　1.3 缺陷"></a>　　1.3 缺陷</h2><p>　　　　回顾概述中提到的评估指标应该基于 query 和 position，</p><ul><li>ranking 追求的是排序结果，并不要求精确打分，只要有相对打分即可。</li><li>pointwise 类方法并没有考虑同一个 query 对应的 docs 间的内部依赖性。一方面，导致输入空间内的样本不是 IID 的，违反了 ML 的基本假设，另一方面，没有充分利用这种样本间的结构性。其次，当不同 query 对应不同数量的 docs 时，整体 loss 将会被对应 docs 数量大的 query 组所支配，前面说过应该每组 query 都是等价的。</li><li>损失函数也没有 model 到预测排序中的位置信息。因此，损失函数可能无意的过多强调那些不重要的 docs，即那些排序在后面对用户体验影响小的 doc。</li></ul><h2 id="1-4-改进"><a href="#1-4-改进" class="headerlink" title="　　1.4 改进"></a>　　1.4 改进</h2><p>　　　　如在 loss 中引入基于 query 的正则化因子的 RankCosine 方法。</p><h1 id="2、Pairwise-Approach"><a href="#2、Pairwise-Approach" class="headerlink" title="2、Pairwise Approach"></a>2、Pairwise Approach</h1><h2 id="2-1-特点"><a href="#2-1-特点" class="headerlink" title="　  2.1 特点"></a>　  2.1 特点</h2><p>　　Pairwise 类方法，其 L2R 框架具有以下特征：</p><ul><li>输入空间中样本是（同一 query 对应的）两个 doc（和对应 query）构成的两个特征向量；</li><li>输出空间中样本是 pairwise preference；</li><li>假设空间中样本是二变量函数；</li><li>损失函数评估 doc pair 的预测 preference 和真实 preference 之间差异。</li></ul><p>　　这里讨论下，关于人工标注标签怎么转换到 pairwise 类方法的输出空间：</p><ol><li>如果标注直接是相关度 s_j，则 doc pair (x_u,x_v) 的真实标签定义为 y_{u,v}=2*I_{s_u&gt;s_v}-1</li><li>如果标注是 pairwise preference s_{u,v}，则 doc pair (x_u,x_v) 的真实标签定义为y_{u,v}=s_{u,v}</li><li>如果标注是整体排序 π，则 doc pair (x_u,x_v) 的真实标签定义为y_{u,v}=2*I_{π_u,π_v}-1</li></ol><h2 id="2-2-基于二分类的算法"><a href="#2-2-基于二分类的算法" class="headerlink" title="　　2.2 基于二分类的算法　　"></a>　　2.2 基于二分类的算法　　</h2><p>　　Pairwise 类方法基本就是使用二分类算法即可。</p><p>　　经典的算法有 基于 NN 的 SortNet，基于 NN 的 RankNet，基于 fidelity loss 的 FRank，基于 AdaBoost 的 RankBoost，基于 SVM 的 RankingSVM，基于提升树的 GBRank。</p><h2 id="2-3-缺陷"><a href="#2-3-缺陷" class="headerlink" title="　　2.3 缺陷"></a>　　2.3 缺陷</h2><p>　　虽然 pairwise 类相较 pointwise 类 model 到一些 doc pair 间的相对顺序信息，但还是存在不少问题，回顾概述中提到的评估指标应该基于 query 和 position，</p><ul><li>如果人工标注给定的是第一种和第三种，即已包含多有序类别，那么转化成 pairwise preference 时必定会损失掉一些更细粒度的相关度标注信息。</li><li>doc pair 的数量将是 doc 数量的二次，从而 pointwise 类方法就存在的 query 间 doc 数量的不平衡性将在 pairwise 类方法中进一步放大。</li><li>pairwise 类方法相对 pointwise 类方法对噪声标注更敏感，即一个错误标注会引起多个 doc pair 标注错误。</li><li>pairwise 类方法仅考虑了 doc pair 的相对位置，损失函数还是没有 model 到预测排序中的位置信息。</li><li>pairwise 类方法也没有考虑同一个 query 对应的 doc pair 间的内部依赖性，即输入空间内的样本并不是 IID 的，违反了 ML 的基本假设，并且也没有充分利用这种样本间的结构性。</li></ul><h2 id="2-4-改进"><a href="#2-4-改进" class="headerlink" title="　　2.4 改进"></a>　　2.4 改进</h2><p>　　　pairwise 类方法也有一些尝试，去一定程度解决上述缺陷，比如：</p><ul><li>Multiple hyperplane ranker，主要针对前述第一个缺陷</li><li>magnitude-preserving ranking，主要针对前述第一个缺陷</li><li>IRSVM，主要针对前述第二个缺陷</li><li>采用 Sigmoid 进行改进的 pairwise 方法，主要针对前述第三个缺陷</li><li>P-norm push，主要针对前述第四个缺陷</li><li>Ordered weighted average ranking，主要针对前述第四个缺陷</li><li>LambdaRank，主要针对前述第四个缺陷</li><li>Sparse ranker，主要针对前述第四个缺陷</li></ul><p> 　<strong><em>\</em>3、Listwise Approach**</strong></p><h2 id="3-1-特点"><a href="#3-1-特点" class="headerlink" title="　　3.1 特点　　"></a>　　3.1 特点　　</h2><p>　　Listwise 类方法，其 L2R 框架具有以下特征：</p><ul><li>输入空间中样本是（同一 query 对应的）所有 doc（与对应的 query）构成的多个特征向量（列表）；</li><li>输出空间中样本是这些 doc（和对应 query）的相关度排序列表或者排列；</li><li>假设空间中样本是多变量函数，对于 docs 得到其排列，实践中，通常是一个打分函数，根据打分函数对所有 docs 的打分进行排序得到 docs 相关度的排列；</li><li>损失函数分成两类，一类是直接和评价指标相关的，还有一类不是直接相关的。具体后面介绍。</li></ul><p>　　这里讨论下，关于人工标注标签怎么转换到 listwise 类方法的输出空间：</p><ol><li>如果标注直接是相关度 s_j，则 doc set 的真实标签可以利用相关度 s_j 进行比较构造出排列</li><li>如果标注是 pairwise preference s_{u,v}，则 doc set 的真实标签也可以利用所有 s_{u,v} 进行比较构造出排列</li><li>如果标注是整体排序 π，则 doc set 则可以直接得到真实标签</li></ol><h2 id="3-2-根据损失函数构造方式的不同，listwise-类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。"><a href="#3-2-根据损失函数构造方式的不同，listwise-类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。" class="headerlink" title="　　3.2 根据损失函数构造方式的不同，listwise 类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。"></a>　　3.2 根据损失函数构造方式的不同，listwise 类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。</h2><p>　　　（1）直接基于评价指标的算法</p><p>　　直接取优化 ranking 的评价指标，也算是 listwise 中最直观的方法。但这并不简单，因为前面说过评价指标都是离散不可微的，具体处理方式有这么几种：</p><ul><li>优化基于评价指标的 ranking error 的连续可微的近似，这种方法就可以直接应用已有的优化方法，如SoftRank，ApproximateRank，SmoothRank</li><li>优化基于评价指标的 ranking error 的连续可微的上界，如 SVM-MAP，SVM-NDCG，PermuRank</li><li>使用可以优化非平滑目标函数的优化技术，如 AdaRank，RankGP</li></ul><p>　　上述方法的优化目标都是直接和 ranking 的评价指标有关。现在来考虑一个概念，informativeness。通常认为一个更有信息量的指标，可以产生更有效的排序模型。而多层评价指标（NDCG）相较二元评价（AP）指标通常更富信息量。因此，有时虽然使用信息量更少的指标来评估模型，但仍然可以使用更富信息量的指标来作为 loss 进行模型训练。</p><p>　　  （2）非直接基于评价指标的算法</p><p>　　这里，不再使用和评价指标相关的 loss 来优化模型，而是设计能衡量模型输出与真实排列之间差异的 loss，如此获得的模型在评价指标上也能获得不错的性能。<br>　　经典的如 ，ListNet，ListMLE，StructRank，BoltzRank。</p><h2 id="3-3-缺陷"><a href="#3-3-缺陷" class="headerlink" title="　　3.3 缺陷"></a>　　3.3 缺陷</h2><p>listwise 类相较 pointwise、pairwise 对 ranking 的 model 更自然，解决了 ranking 应该基于 query 和 position 问题。</p><p>listwise 类存在的主要缺陷是：一些 ranking 算法需要基于排列来计算 loss，从而使得训练复杂度较高，如 ListNet和 BoltzRank。此外，位置信息并没有在 loss 中得到充分利用，可以考虑在 ListNet 和 ListMLE 的 loss 中引入位置折扣因子。</p><h2 id="3-4-改进"><a href="#3-4-改进" class="headerlink" title="　　3.4 改进"></a>　　3.4 改进</h2><p>　　　pairwise 类方法也有一些尝试，去一定程度解决上述缺陷，比如：</p><ul><li>Multiple hyperplane ranker，主要针对前述第一个缺陷</li><li>magnitude-preserving ranking，主要针对前述第一个缺陷</li><li>IRSVM，主要针对前述第二个缺陷</li><li>采用 Sigmoid 进行改进的 pairwise 方法，主要针对前述第三个缺陷</li><li>P-norm push，主要针对前述第四个缺陷</li><li>Ordered weighted average ranking，主要针对前述第四个缺陷</li><li>LambdaRank，主要针对前述第四个缺陷</li><li>Sparse ranker，主要针对前述第四个缺陷</li></ul><p>以上，<strong>这三大类方法主要区别在于损失函数。不同的损失函数决定了不同的模型学习过程和输入输出空间。</strong></p><p>rating数据集：</p><p>：所以关于这个问题，是要使用topN=1的对吗？并把指标改为 AUC和 NDCG对吗？</p><p>——是这样，这个是一个rating数据集。</p><p>如果是按照pairwise ranking的正确率，应该是我们的oPR和oMRR，PR和MAP都是没有用的。</p><p>如果不按照pairwise，（按照listwise），就是AUC和NDCG，所以我让你算那个。</p><p>当然还有就是按照数值，（按照pointwise），RMSE，不过我们的没法计算RMSE。</p><p>：啊这个“不按照pairwise”，没太明白，还是按照原来的思路，用的 winner 和 loser 比较对呀。尤其在这个rating数据集，是每个比较对当成一个session，这点还是不变的吧？？</p><p>——这不就是pairwise吗？</p><p>rating是可以按照每个用户得到一个排序的，这是listwise，也就是算出NDCG，AUC的指标。</p><p>还可以按照pointwise，每个分数预测的怎么样，就是RMSE。</p><p>【Reference】</p><p>1、<a href="https://stackoverflow.com/questions/17411986/what-is-the-difference-between-point-wise-and-pair-wise-ranking-in-machine-learn">What is the difference between point-wise and pair-wise ranking in machine learning</a></p><p>2、<a href="https://blog.csdn.net/lipengcn/article/details/80373744">学习排序 Learning to Rank：从 pointwise 和 pairwise 到 listwise，经典模型与优缺点</a></p><p>3、<a href="https://cloud.tencent.com/developer/news/135904">基于 Pairwise 和 Listwise 的排序学习</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Learning to Rank：Point-wise、Pair-wise 和 List-wise区别&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-    
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>Uplift Modeling</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Uplift%20Modeling/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/Uplift Modeling/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Uplift%20Modeling/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/Uplift Modeling/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.990Z</updated>
     
@@ -127,19 +103,43 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Learning%20to%20Rank%EF%BC%9APoint-wise%E3%80%81Pair-wise%20%E5%92%8C%20List-wise%E5%8C%BA%E5%88%AB/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/Learning to Rank：Point-wise、Pair-wise 和 List-wise区别/</id>
+    <published>2022-03-01T03:32:38.000Z</published>
+    <updated>2022-03-01T03:59:30.984Z</updated>
+    
+    <content type="html"><![CDATA[<p>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</p><span id="more"></span><h1 id="Learning-to-Rank：Point-wise、Pair-wise-和-List-wise区别"><a href="#Learning-to-Rank：Point-wise、Pair-wise-和-List-wise区别" class="headerlink" title="Learning to Rank：Point-wise、Pair-wise 和 List-wise区别"></a>Learning to Rank：Point-wise、Pair-wise 和 List-wise区别</h1><p><img src="https://csdnimg.cn/release/phoenix/template/new_img/reprint.png" alt="img"></p><p><a href="https://me.csdn.net/weixin_34005042">weixin_34005042</a> 2018-09-29 15:19:00 <img src="https://csdnimg.cn/release/phoenix/template/new_img/articleRead.png" alt="img"> 4131 <img src="https://csdnimg.cn/release/phoenix/template/new_img/tobarCollectionActive.png" alt="img"> 已收藏 4</p><p> 机器学习的 ranking 技术——learning2rank，包括 pointwise、pairwise、listwise 三大类型。</p><p> <img src="https://img2018.cnblogs.com/blog/818082/201809/818082-20180929163323836-2075825354.png" alt="img"></p><p><a href="https://stackoverflow.com/questions/17411986/what-is-the-difference-between-point-wise-and-pair-wise-ranking-in-machine-learn">【Ref-1】</a>给出的：</p><Point wise ranking 类似于回归><p>Point wise ranking is analogous to regression. Each point has an associated rank score, and you want to predict that rank score. So your labeled data set will have a feature vector and associated rank score given a query</p><p>IE: {d1, r1} {d2, r2} {d3, r3} {d4, r4}</p><p>where r1 &gt; r2 &gt; r3 &gt;r4</p><Pairwise ranking 类似于分类><p>Pairwise ranking is analogous to classification. Each data point is associated with another data point, and the goal is to learn a classifier which will predict which of the two is “more” relevant to a given query.</p><p>IE: {d1 &gt; d2} {d2 &gt; d3} {d3 &gt; d4}</p><h1 id="1、Pointwise-Approach"><a href="#1、Pointwise-Approach" class="headerlink" title="\1、Pointwise Approach**"></a><strong><em>\</em>1、Pointwise Approach**</strong></h1><h2 id="1-1-特点"><a href="#1-1-特点" class="headerlink" title="　　*\*1.1 特点****"></a>　　<strong>*\</strong>*1.1 特点**<em>**</em></h2><p>　　Pointwise 类方法，其 L2R 框架具有以下特征：</p><ul><li>输入空间中样本是单个 doc（和对应 query）构成的特征向量；</li><li>输出空间中样本是单个 doc（和对应 query）的相关度；</li><li>假设空间中样本是打分函数；</li><li>损失函数评估单个 doc 的预测得分和真实得分之间差异。</li></ul><p>　　这里讨论下，关于人工标注标签怎么转换到 pointwise 类方法的输出空间：</p><ol><li>如果标注直接是相关度 s_j，则 doc x_j 的真实标签定义为 y_j=s_j</li><li>如果标注是 pairwise preference s_{u,v}，则 doc x_j 的真实标签可以利用该 doc 击败了其他 docs 的频次</li><li>如果标注是整体排序 π，则 doc x_j 的真实标签可以利用映射函数，如将 doc 的排序位置序号当作真实标签</li></ol><h2 id="1-2-根据使用的-ML-方法不同，pointwise-类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。"><a href="#1-2-根据使用的-ML-方法不同，pointwise-类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。" class="headerlink" title="　　1.2 根据使用的 ML 方法不同，pointwise 类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。"></a>　　1.2 根据使用的 ML 方法不同，pointwise 类可以进一步分成三类：基于回归的算法、基于分类的算法，基于有序回归的算法。</h2><p>　　（1）基于回归的算法</p><p>　　　　此时，输出空间包含的是实值相关度得分。采用 ML 中传统的回归方法即可。</p><p>　　（2）基于分类的算法</p><p>　　　　此时，输出空间包含的是无序类别。对于二分类，SVM、LR 等均可；对于多分类，提升树等均可。</p><p>　　（3）基于有序回归的算法</p><p>　　　　此时，输出空间包含的是有序类别。通常是找到一个打分函数，然后用一系列阈值对得分进行分割，得到有序类别。采用 PRanking、基于 margin 的方法都可以。</p><h2 id="1-3-缺陷"><a href="#1-3-缺陷" class="headerlink" title="　　1.3 缺陷"></a>　　1.3 缺陷</h2><p>　　　　回顾概述中提到的评估指标应该基于 query 和 position，</p><ul><li>ranking 追求的是排序结果，并不要求精确打分，只要有相对打分即可。</li><li>pointwise 类方法并没有考虑同一个 query 对应的 docs 间的内部依赖性。一方面，导致输入空间内的样本不是 IID 的，违反了 ML 的基本假设，另一方面，没有充分利用这种样本间的结构性。其次，当不同 query 对应不同数量的 docs 时，整体 loss 将会被对应 docs 数量大的 query 组所支配，前面说过应该每组 query 都是等价的。</li><li>损失函数也没有 model 到预测排序中的位置信息。因此，损失函数可能无意的过多强调那些不重要的 docs，即那些排序在后面对用户体验影响小的 doc。</li></ul><h2 id="1-4-改进"><a href="#1-4-改进" class="headerlink" title="　　1.4 改进"></a>　　1.4 改进</h2><p>　　　　如在 loss 中引入基于 query 的正则化因子的 RankCosine 方法。</p><h1 id="2、Pairwise-Approach"><a href="#2、Pairwise-Approach" class="headerlink" title="2、Pairwise Approach"></a>2、Pairwise Approach</h1><h2 id="2-1-特点"><a href="#2-1-特点" class="headerlink" title="　  2.1 特点"></a>　  2.1 特点</h2><p>　　Pairwise 类方法，其 L2R 框架具有以下特征：</p><ul><li>输入空间中样本是（同一 query 对应的）两个 doc（和对应 query）构成的两个特征向量；</li><li>输出空间中样本是 pairwise preference；</li><li>假设空间中样本是二变量函数；</li><li>损失函数评估 doc pair 的预测 preference 和真实 preference 之间差异。</li></ul><p>　　这里讨论下，关于人工标注标签怎么转换到 pairwise 类方法的输出空间：</p><ol><li>如果标注直接是相关度 s_j，则 doc pair (x_u,x_v) 的真实标签定义为 y_{u,v}=2*I_{s_u&gt;s_v}-1</li><li>如果标注是 pairwise preference s_{u,v}，则 doc pair (x_u,x_v) 的真实标签定义为y_{u,v}=s_{u,v}</li><li>如果标注是整体排序 π，则 doc pair (x_u,x_v) 的真实标签定义为y_{u,v}=2*I_{π_u,π_v}-1</li></ol><h2 id="2-2-基于二分类的算法"><a href="#2-2-基于二分类的算法" class="headerlink" title="　　2.2 基于二分类的算法　　"></a>　　2.2 基于二分类的算法　　</h2><p>　　Pairwise 类方法基本就是使用二分类算法即可。</p><p>　　经典的算法有 基于 NN 的 SortNet，基于 NN 的 RankNet，基于 fidelity loss 的 FRank，基于 AdaBoost 的 RankBoost，基于 SVM 的 RankingSVM，基于提升树的 GBRank。</p><h2 id="2-3-缺陷"><a href="#2-3-缺陷" class="headerlink" title="　　2.3 缺陷"></a>　　2.3 缺陷</h2><p>　　虽然 pairwise 类相较 pointwise 类 model 到一些 doc pair 间的相对顺序信息，但还是存在不少问题，回顾概述中提到的评估指标应该基于 query 和 position，</p><ul><li>如果人工标注给定的是第一种和第三种，即已包含多有序类别，那么转化成 pairwise preference 时必定会损失掉一些更细粒度的相关度标注信息。</li><li>doc pair 的数量将是 doc 数量的二次，从而 pointwise 类方法就存在的 query 间 doc 数量的不平衡性将在 pairwise 类方法中进一步放大。</li><li>pairwise 类方法相对 pointwise 类方法对噪声标注更敏感，即一个错误标注会引起多个 doc pair 标注错误。</li><li>pairwise 类方法仅考虑了 doc pair 的相对位置，损失函数还是没有 model 到预测排序中的位置信息。</li><li>pairwise 类方法也没有考虑同一个 query 对应的 doc pair 间的内部依赖性，即输入空间内的样本并不是 IID 的，违反了 ML 的基本假设，并且也没有充分利用这种样本间的结构性。</li></ul><h2 id="2-4-改进"><a href="#2-4-改进" class="headerlink" title="　　2.4 改进"></a>　　2.4 改进</h2><p>　　　pairwise 类方法也有一些尝试，去一定程度解决上述缺陷，比如：</p><ul><li>Multiple hyperplane ranker，主要针对前述第一个缺陷</li><li>magnitude-preserving ranking，主要针对前述第一个缺陷</li><li>IRSVM，主要针对前述第二个缺陷</li><li>采用 Sigmoid 进行改进的 pairwise 方法，主要针对前述第三个缺陷</li><li>P-norm push，主要针对前述第四个缺陷</li><li>Ordered weighted average ranking，主要针对前述第四个缺陷</li><li>LambdaRank，主要针对前述第四个缺陷</li><li>Sparse ranker，主要针对前述第四个缺陷</li></ul><p> 　<strong><em>\</em>3、Listwise Approach**</strong></p><h2 id="3-1-特点"><a href="#3-1-特点" class="headerlink" title="　　3.1 特点　　"></a>　　3.1 特点　　</h2><p>　　Listwise 类方法，其 L2R 框架具有以下特征：</p><ul><li>输入空间中样本是（同一 query 对应的）所有 doc（与对应的 query）构成的多个特征向量（列表）；</li><li>输出空间中样本是这些 doc（和对应 query）的相关度排序列表或者排列；</li><li>假设空间中样本是多变量函数，对于 docs 得到其排列，实践中，通常是一个打分函数，根据打分函数对所有 docs 的打分进行排序得到 docs 相关度的排列；</li><li>损失函数分成两类，一类是直接和评价指标相关的，还有一类不是直接相关的。具体后面介绍。</li></ul><p>　　这里讨论下，关于人工标注标签怎么转换到 listwise 类方法的输出空间：</p><ol><li>如果标注直接是相关度 s_j，则 doc set 的真实标签可以利用相关度 s_j 进行比较构造出排列</li><li>如果标注是 pairwise preference s_{u,v}，则 doc set 的真实标签也可以利用所有 s_{u,v} 进行比较构造出排列</li><li>如果标注是整体排序 π，则 doc set 则可以直接得到真实标签</li></ol><h2 id="3-2-根据损失函数构造方式的不同，listwise-类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。"><a href="#3-2-根据损失函数构造方式的不同，listwise-类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。" class="headerlink" title="　　3.2 根据损失函数构造方式的不同，listwise 类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。"></a>　　3.2 根据损失函数构造方式的不同，listwise 类可以分成两类直接基于评价指标的算法，间接基于评价指标的算法。</h2><p>　　　（1）直接基于评价指标的算法</p><p>　　直接取优化 ranking 的评价指标，也算是 listwise 中最直观的方法。但这并不简单，因为前面说过评价指标都是离散不可微的，具体处理方式有这么几种：</p><ul><li>优化基于评价指标的 ranking error 的连续可微的近似，这种方法就可以直接应用已有的优化方法，如SoftRank，ApproximateRank，SmoothRank</li><li>优化基于评价指标的 ranking error 的连续可微的上界，如 SVM-MAP，SVM-NDCG，PermuRank</li><li>使用可以优化非平滑目标函数的优化技术，如 AdaRank，RankGP</li></ul><p>　　上述方法的优化目标都是直接和 ranking 的评价指标有关。现在来考虑一个概念，informativeness。通常认为一个更有信息量的指标，可以产生更有效的排序模型。而多层评价指标（NDCG）相较二元评价（AP）指标通常更富信息量。因此，有时虽然使用信息量更少的指标来评估模型，但仍然可以使用更富信息量的指标来作为 loss 进行模型训练。</p><p>　　  （2）非直接基于评价指标的算法</p><p>　　这里，不再使用和评价指标相关的 loss 来优化模型，而是设计能衡量模型输出与真实排列之间差异的 loss，如此获得的模型在评价指标上也能获得不错的性能。<br>　　经典的如 ，ListNet，ListMLE，StructRank，BoltzRank。</p><h2 id="3-3-缺陷"><a href="#3-3-缺陷" class="headerlink" title="　　3.3 缺陷"></a>　　3.3 缺陷</h2><p>listwise 类相较 pointwise、pairwise 对 ranking 的 model 更自然，解决了 ranking 应该基于 query 和 position 问题。</p><p>listwise 类存在的主要缺陷是：一些 ranking 算法需要基于排列来计算 loss，从而使得训练复杂度较高，如 ListNet和 BoltzRank。此外，位置信息并没有在 loss 中得到充分利用，可以考虑在 ListNet 和 ListMLE 的 loss 中引入位置折扣因子。</p><h2 id="3-4-改进"><a href="#3-4-改进" class="headerlink" title="　　3.4 改进"></a>　　3.4 改进</h2><p>　　　pairwise 类方法也有一些尝试，去一定程度解决上述缺陷，比如：</p><ul><li>Multiple hyperplane ranker，主要针对前述第一个缺陷</li><li>magnitude-preserving ranking，主要针对前述第一个缺陷</li><li>IRSVM，主要针对前述第二个缺陷</li><li>采用 Sigmoid 进行改进的 pairwise 方法，主要针对前述第三个缺陷</li><li>P-norm push，主要针对前述第四个缺陷</li><li>Ordered weighted average ranking，主要针对前述第四个缺陷</li><li>LambdaRank，主要针对前述第四个缺陷</li><li>Sparse ranker，主要针对前述第四个缺陷</li></ul><p>以上，<strong>这三大类方法主要区别在于损失函数。不同的损失函数决定了不同的模型学习过程和输入输出空间。</strong></p><p>rating数据集：</p><p>：所以关于这个问题，是要使用topN=1的对吗？并把指标改为 AUC和 NDCG对吗？</p><p>——是这样，这个是一个rating数据集。</p><p>如果是按照pairwise ranking的正确率，应该是我们的oPR和oMRR，PR和MAP都是没有用的。</p><p>如果不按照pairwise，（按照listwise），就是AUC和NDCG，所以我让你算那个。</p><p>当然还有就是按照数值，（按照pointwise），RMSE，不过我们的没法计算RMSE。</p><p>：啊这个“不按照pairwise”，没太明白，还是按照原来的思路，用的 winner 和 loser 比较对呀。尤其在这个rating数据集，是每个比较对当成一个session，这点还是不变的吧？？</p><p>——这不就是pairwise吗？</p><p>rating是可以按照每个用户得到一个排序的，这是listwise，也就是算出NDCG，AUC的指标。</p><p>还可以按照pointwise，每个分数预测的怎么样，就是RMSE。</p><p>【Reference】</p><p>1、<a href="https://stackoverflow.com/questions/17411986/what-is-the-difference-between-point-wise-and-pair-wise-ranking-in-machine-learn">What is the difference between point-wise and pair-wise ranking in machine learning</a></p><p>2、<a href="https://blog.csdn.net/lipengcn/article/details/80373744">学习排序 Learning to Rank：从 pointwise 和 pairwise 到 listwise，经典模型与优缺点</a></p><p>3、<a href="https://cloud.tencent.com/developer/news/135904">基于 Pairwise 和 Listwise 的排序学习</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Learning to Rank：Point-wise、Pair-wise 和 List-wise区别&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>Deep Learning based Recommender System A Survey and New Perspectives</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5DDeep%20Learning%20based%20Recommender%20System%20A%20Survey%20and%20New%20Perspectives/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/[comment]Deep Learning based Recommender System A Survey and New Perspectives/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5DDeep%20Learning%20based%20Recommender%20System%20A%20Survey%20and%20New%20Perspectives/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/[comment]Deep Learning based Recommender System A Survey and New Perspectives/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T04:02:12.188Z</updated>
     
@@ -151,19 +151,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>Exact-K Recommendation</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5DExact-K%20Recommendation/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/[comment]Exact-K Recommendation/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5DExact-K%20Recommendation/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/[comment]Exact-K Recommendation/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T04:02:16.574Z</updated>
     
@@ -175,19 +175,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>XGBOOST文献</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5DXGBOOST%E6%96%87%E7%8C%AE/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/[comment]XGBOOST文献/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5DXGBOOST%E6%96%87%E7%8C%AE/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/[comment]XGBOOST文献/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T04:02:26.966Z</updated>
     
@@ -199,19 +199,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>airbnb embedding</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5Dairbnb%20embedding/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/[comment]airbnb embedding/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5Dairbnb%20embedding/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/[comment]airbnb embedding/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T04:02:09.151Z</updated>
     
@@ -223,19 +223,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>silk_road</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5Dsilk_road/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/[comment]silk_road/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%5Bcomment%5Dsilk_road/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/[comment]silk_road/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T04:02:21.603Z</updated>
     
@@ -247,19 +247,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>deep learning based推荐系统论文笔记</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/deep%20learning%20based%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/deep learning based推荐系统论文笔记/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/deep%20learning%20based%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/deep learning based推荐系统论文笔记/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.976Z</updated>
     
@@ -271,19 +271,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>embedding相关笔记</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/embedding%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/embedding相关笔记/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/embedding%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/embedding相关笔记/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.978Z</updated>
     
@@ -295,19 +295,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>中文分词</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/中文分词/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/中文分词/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.981Z</updated>
     
@@ -319,19 +319,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>吴恩达卷积神经网络笔记</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/吴恩达卷积神经网络笔记/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/吴恩达卷积神经网络笔记/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.987Z</updated>
     
@@ -343,19 +343,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>时间序列模型</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E6%A8%A1%E5%9E%8B/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/时间序列模型/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/时间序列模型/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.977Z</updated>
     
@@ -367,19 +367,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>机器学习基础</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/机器学习基础/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/机器学习基础/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.976Z</updated>
     
@@ -391,19 +391,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>李宏毅强化学习笔记</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9D%8E%E5%AE%8F%E6%AF%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/李宏毅强化学习笔记/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9D%8E%E5%AE%8F%E6%AF%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/李宏毅强化学习笔记/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.983Z</updated>
     
@@ -415,19 +415,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>深度学习笔记</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/深度学习笔记/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/深度学习笔记/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.989Z</updated>
     
@@ -439,19 +439,19 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
     <title>联邦树模型</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%81%94%E9%82%A6%E6%A0%91%E6%A8%A1%E5%9E%8B/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/联邦树模型/</id>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%81%94%E9%82%A6%E6%A0%91%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/联邦树模型/</id>
     <published>2022-03-01T03:32:38.000Z</published>
     <updated>2022-03-01T03:59:30.993Z</updated>
     
@@ -463,36 +463,36 @@
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
   <entry>
-    <title>表示学习调研</title>
-    <link href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E8%B0%83%E7%A0%94/"/>
-    <id>http://wangdongdong122.github.io/2022/03/01/2_算法相关/表示学习调研/</id>
+    <title>自然语言处理笔记</title>
+    <link href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tessiehe.github.io/2022/03/01/2_算法相关/自然语言处理笔记/</id>
     <published>2022-03-01T03:32:38.000Z</published>
-    <updated>2022-03-01T03:59:30.980Z</updated>
+    <updated>2022-03-01T03:59:30.990Z</updated>
     
-    <content type="html"><![CDATA[<p>表示学习调研</p><span id="more"></span><p>[TOC]</p><h1 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h1><p>representation learning；data representation; Deep learning, representation learning, feature learning, unsupervised learning, Boltzmann Machine, autoencoder, neural nets</p><h1 id="粗读文献笔记"><a href="#粗读文献笔记" class="headerlink" title="粗读文献笔记"></a>粗读文献笔记</h1><h2 id="Bengio，2014，Representation-Learning-A-Review-and-New-Perspectives"><a href="#Bengio，2014，Representation-Learning-A-Review-and-New-Perspectives" class="headerlink" title="Bengio，2014，Representation Learning: A Review and New Perspectives"></a>Bengio，2014，Representation Learning: A Review and New Perspectives</h2><p><strong>Index Terms</strong>:Deep learning, representation learning, feature learning, unsupervised learning, Boltzmann Machine, autoencoder, neural nets,underlying explanatory factors</p><ul><li>机器学习的成功依赖于数据的表征（data representation），我们假设这是因为数据的表征或多或少的揭示了数据的内在结构。当然可以采用专家经验设计表征方式，但AI的目的在于依照通用的先验（generic priors）设计表征，并通过数据实例化这个表征。</li><li>“ This paper reviews recent work in the area of unsupervised feature learning and deep learning, covering advances in <strong>probabilistic models, auto-encoders, manifold learning, and deep networks.</strong> “<ul><li>本文聚焦与<strong>无监督学习</strong>，实现的方式包括以上三种方式。auto-encoders是基于信息重建的算法， manifold learning是基于拓扑学的算法</li></ul></li><li>这个工作有助于理解一个长期没有确定答案的问题：什么样的数据表征是一个好的表征？数据表征的优化目标是什么？<ul><li><strong>好的特征能够解耦数据中的关键潜在影响变量，这些变量最好是通用的（例如通用的语言模型、图像模型）。特征提取的过程就是冗余信息删减聚合的过程</strong>。如果不能通用，那退一步特征最好能提取针对下游任务有区分性的潜在因子，因子和任务目标之间最好有简单关系（如线性关系）</li></ul></li><li>“In order to expand the scope and ease of applicability of machine learning, it would be highly desirable to make learning algorithms <strong>less dependent on feature engineering</strong>, so that novel applications could be constructed faster, and more importantly, to <strong>make progress towards Artificial Intelligence</strong> (AI). An AI must fundamentally <em>understand the world around us</em>, and we argue that this can only be achieved if it can learn to identify and disentangle the underlying explanatory factors hidden in the observed milieu of <strong>low-level sensory data</strong>.” P1<ul><li>借助专家经验的特征工程能一定程度描述数据的内在结构，但真正的AI应该是解耦低等级的感官数据中的影响因子，从而了解这个世界的</li></ul></li><li>“In the case of probabilistic models, a good representation is often one that captures the posterior distribution of the <strong>underlying explanatory factors</strong> for the observed input.” P1<ul><li>对于概率模型，一个好的表征能够提取观察到的输入数据中的潜在影响因子。</li></ul></li><li>AI中的表示学习中的先验：<ul><li>平滑性（smoothness): x ≈ y generally implies f(x) ≈ f(y)</li><li>解耦（ Multiple explanatory factors）</li><li>层次化的组织方式（A hierarchical organization of explanatory factors）：越抽象的特征处于越高层</li><li>半监督（semi-supervised learning）:有一些解释X分布的因子也能解释Y的分布，基于这个假设，对于P(X)有用的表征对P(Y|X)也有用。所以note2vec的embeding才可以用于下游任务。但这个假设并不强，也就是用在下游任务不一定效果好</li><li>通用性（Shared factors across tasks）：能在不同的任务中共享一些因子</li><li>自然的聚集性（Natural clustering）</li></ul></li></ul><h2 id="Chen-2018-A-Tutorial-on-Network-Embeddings"><a href="#Chen-2018-A-Tutorial-on-Network-Embeddings" class="headerlink" title="Chen,2018,A Tutorial on Network Embeddings"></a>Chen,2018,A Tutorial on Network Embeddings</h2><p>Chen, H.; Perozzi, B.; Al-Rfou, R.; Skiena, S. A Tutorial on Network Embeddings. <em>arXiv:1808.02590 [cs]</em> <strong>2018</strong>.</p><ul><li><p>模型分类：unsupervised NE(以deepwalk为代表的无监督方法);  attributed NE(网络结构信息+节点和边的属性学习节点表征); Heterogeneous NE(从有多类节点或边的网络中学习表征)</p></li><li><p>NE的应用</p><ul><li><p>知识图谱（Knowledge Representation）：GenVector(2015), PDF2Vec(2016)</p></li><li><p>推荐（recommender system）</p><p>Chih-Ming Chen, Po-Chuan Chien, Yu-Ching Lin, Ming-Feng Tsai, and Yi-Hsuan Yang. Ex- ploiting latent social listening representations for music recommendations. In Proc Ninth ACM Int. Conf. Recommender Syst. Poster, 2015</p><p>Chih-Ming Chen, Ming-Feng Tsai, Yu-Ching Lin, and Yi-Hsuan Yang. Query-based music recommendations via preference embedding. In Proceedings of the 10th ACM Conference on Recommender Systems, pages 79–82. ACM, 2016.</p></li><li><p>NLP: PLE(2016), CANE(2017),</p><p>Hanyin Fang, Fei Wu, Zhou Zhao, Xinyu Duan, Yueting Zhuang, and Martin Ester. Community-based question answering via heterogeneous social network learning. In Thirtieth AAAI Conference on Artificial Intelligence, 2016.</p><p>Zhou Zhao, Qifan Yang, Deng Cai, Xiaofei He, and Yueting Zhuang. Expert finding for community-based question answering via ranking metric network learning. In IJCAI, pages 3000–3006, 2016.</p></li><li><p>社会关系（social network analysis）</p><p>Bryan Perozzi and Steven Skiena. Exact age prediction in social networks. In Proceedings of the 24th International Conference on World Wide Web, pages 91–92. ACM, 2015.</p><p>Cheng Yang, Maosong Sun, Wayne Xin Zhao, Zhiyuan Liu, and Edward Y Chang. A neural network approach to joint modeling social networks and mobile trajectories. arXiv preprint arXiv:1606.08154, 2016.</p></li></ul></li></ul><h1 id="精读文献笔记"><a href="#精读文献笔记" class="headerlink" title="精读文献笔记"></a>精读文献笔记</h1><h1 id="杂七杂八的comment"><a href="#杂七杂八的comment" class="headerlink" title="杂七杂八的comment"></a>杂七杂八的comment</h1><ul><li>无监督学习侧重于学习数据的内在关系、结构，比如clustering、grouping、density estimation, or anomaly detection等等，而自监督是根据数据集本身生成标签</li><li>表示学习领域的会议：ICML（ International Conference on Learning Representations）</li></ul><h1 id="文献总结"><a href="#文献总结" class="headerlink" title="文献总结"></a>文献总结</h1><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>[1]Bengio, Y.; Courville, A.; Vincent, P. Representation Learning: A Review and New Perspectives. <em>arXiv:1206.5538 [cs]</em> <strong>2014</strong>.【done】</p><p>[2] <a href="https://www.cxyzjd.com/article/weixin_42137700/106039656">图灵奖得主Bengio和LeCun称自监督学习可使AI达到人类智力水平</a>  【done】</p><p>[3] <a href="https://cloud.tencent.com/developer/article/1523877">图灵奖得主LeCun力推无监督学习：要重视基于能量的学习方法</a> 【done】</p><p><strong>[4] Weston, J.; Bengio, S.; Usunier, N. Large Scale Image Annotation: Learning to Rank with Joint Word-Image Embeddings. <em>Machine learning</em> 2010, <em>81</em> (1), 21–35.</strong> </p><p><strong>[5] Srivastava, N., &amp; Salakhutdinov, R. R. (2012). Multimodal learning with deep boltzmann machines. <em>Advances in neural information processing systems</em>, <em>25</em>.</strong></p><p>[6] Chen, H.; Perozzi, B.; Al-Rfou, R.; Skiena, S. A Tutorial on Network Embeddings. <em>arXiv:1808.02590 [cs]</em> <strong>2018</strong>. </p><p>[7]   Bryan Perozzi, Rami Al-Rfou, and Steven Skiena. Deepwalk: Online learning of social repre- sentations. In Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining, pages 701–710. ACM, 2014.</p><p>[8] Sami Abu-El-Haija, Bryan Perozzi, Rami Al-Rfou, and Alex Alemi. Watch your step: Learning graph embeddings through attention. arXiv preprint arXiv:1710.09599, 2017.</p><p>[9]  Xiaofei Sun, Jiang Guo, Xiao Ding, and Ting Liu. A general framework for content-enhanced network representation learning. arXiv preprint arXiv:1610.02906, 2016.【图的节点中有文本信息作为arttibute】</p><p>[][12][10]  Jifan Chen, Qi Zhang, and Xuanjing Huang. Incorporate group information to enhance network embedding. In Proceedings of the 25th ACM International on Conference on Information and Knowledge Management, pages 1901–1904. ACM, 2016.  【图中的节点有标签信息】</p><p>[11]  Chih-Ming Chen, Po-Chuan Chien, Yu-Ching Lin, Ming-Feng Tsai, and Yi-Hsuan Yang. Ex- ploiting latent social listening representations for music recommendations. In Proc Ninth ACM Int. Conf. Recommender Syst. Poster, 2015. 【NE在推荐中的应用】</p><p>[12]  Chih-Ming Chen, Ming-Feng Tsai, Yu-Ching Lin, and Yi-Hsuan Yang. Query-based music recommendations via preference embedding. In Proceedings of the 10th ACM Conference on Recommender Systems, pages 79–82. ACM, 2016.【NE在推荐中的应用】</p>]]></content>
+    <content type="html"><![CDATA[<p>自然语言处理笔记</p><span id="more"></span><p>[TOC]</p><h1 id="文本特征提取"><a href="#文本特征提取" class="headerlink" title="文本特征提取"></a>文本特征提取</h1><h2 id="TF-IDF"><a href="#TF-IDF" class="headerlink" title="TF-IDF"></a>TF-IDF</h2><p><a href="https://blog.csdn.net/The_lastest/article/details/79093407">链接</a></p><blockquote><p>TF-IDF是传统的统计算法，用于评估一个词在一个文档集中对于某一个文档的重要程度。它与这个词在当前文档中的词频成正比，与文档集中的其他词频成反比</p></blockquote><p>x:多个文档，如多个电影评论</p><p>y:针对每个文档可以提取关键词</p><h1 id="gensim"><a href="#gensim" class="headerlink" title="gensim"></a>gensim</h1><p><a href="https://blog.csdn.net/CoderPai/article/details/80250380">https://blog.csdn.net/CoderPai/article/details/80250380</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#train</span></span><br><span class="line"><span class="keyword">from</span> gensim.test.utils <span class="keyword">import</span> common_texts, get_tmpfile</span><br><span class="line"><span class="keyword">from</span> gensim.models <span class="keyword">import</span> Word2Vec</span><br><span class="line">model_name=<span class="string">&#x27;test&#x27;</span></span><br><span class="line">path = get_tmpfile(model_name + <span class="string">&#x27;.model&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> params <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    params = &#123;</span><br><span class="line">        <span class="string">&#x27;size&#x27;</span>: <span class="number">100</span>,</span><br><span class="line">        <span class="string">&#x27;window&#x27;</span>: <span class="number">10</span>,</span><br><span class="line">        <span class="string">&#x27;min_count&#x27;</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="string">&#x27;workers&#x27;</span>: <span class="number">4</span>,</span><br><span class="line">        <span class="string">&#x27;compute_loss&#x27;</span>: <span class="literal">True</span></span><br><span class="line">    &#125;</span><br><span class="line">model = Word2Vec([[<span class="string">&#x27;我&#x27;</span>,<span class="string">&#x27;是&#x27;</span>,<span class="string">&#x27;天才&#x27;</span>],[<span class="string">&#x27;你&#x27;</span>，<span class="string">&#x27;是&#x27;</span>，<span class="string">&#x27;呵呵&#x27;</span>]] **params)  <span class="comment"># get_latest_training_loss().</span></span><br><span class="line">model.save(path)</span><br><span class="line"><span class="comment">#pred</span></span><br><span class="line">model=Word2Vec.load(path)</span><br><span class="line"> </span><br></pre></td></tr></table></figure><ul><li>size: 词向量的维度。</li><li>alpha: 模型初始的学习率。</li><li>window: 表示在一个句子中，当前词于预测词在一个句子中的最大距离。</li><li>min_count: 用于过滤操作，词频少于 min_count 次数的单词会被丢弃掉，默认值为 5。</li><li>max_vocab_size: 设置词向量构建期间的 RAM 限制。如果所有的独立单词数超过这个限定词，那么就删除掉其中词频最低的那个。根据统计，每一千万个单词大概需要 1GB 的RAM。如果我们把该值设置为 None ，则没有限制。</li><li>sample: 高频词汇的随机降采样的配置阈值，默认为 1e-3，范围是 (0, 1e-5)。</li><li>seed: 用于随机数发生器。与词向量的初始化有关。</li><li>workers: 控制训练的并行数量。</li><li>min_alpha: 随着训练进行，alpha 线性下降到 min_alpha。</li><li>sg: 用于设置训练算法。当 sg=0，使用 CBOW 算法来进行训练；当 sg=1，使用 skip-gram 算法来进行训练。</li><li>hs: 如果设置为 1 ，那么系统会采用 hierarchica softmax 技巧。如果设置为 0（默认情况），则系统会采用 negative samping 技巧。</li><li>negative: 如果这个值大于 0，那么 negative samping 会被使用。该值表示 “noise words” 的数量，一般这个值是 5 - 20，默认是 5。如果这个值设置为 0，那么 negative samping 没有使用。</li><li>cbow_mean: 如果这个值设置为 0，那么就采用上下文词向量的总和。如果这个值设置为 1 （默认情况下），那么我们就采用均值。但这个值只有在使用 CBOW 的时候才起作用。</li><li>hashfxn: hash函数用来初始化权重，默认情况下使用 Python 自带的 hash 函数。</li><li>iter: 算法迭代次数，默认为 5。</li><li>trim_rule: 用于设置词汇表的整理规则，用来指定哪些词需要被剔除，哪些词需要保留。默认情况下，如果 word count &lt; min_count，那么该词被剔除。这个参数也可以被设置为 None，这种情况下 min_count 会被使用。</li><li>sorted_vocab: 如果这个值设置为 1（默认情况下），则在分配 word index 的时候会先对单词基于频率降序排序。</li><li>batch_words: 每次批处理给线程传递的单词的数量，默认是 10000。</li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;表示学习调研&lt;/p&gt;
+      &lt;p&gt;自然语言处理笔记&lt;/p&gt;
     
     </summary>
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="算法相关" scheme="http://wangdongdong122.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+      <category term="算法相关" scheme="http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     
-      <category term="default" scheme="http://wangdongdong122.github.io/tags/default/"/>
+      <category term="default" scheme="http://tessiehe.github.io/tags/default/"/>
     
   </entry>
   
