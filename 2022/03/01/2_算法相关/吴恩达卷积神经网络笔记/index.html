@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangdongdong122.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="吴恩达卷积神经网络笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="吴恩达卷积神经网络笔记">
+<meta property="og:url" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="吴恩达卷积神经网络笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/吴恩达卷积神经网络笔记.assets/屏幕快照%202019-11-11%20下午3.00.23.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/吴恩达卷积神经网络笔记.assets/屏幕快照%202019-11-11%20下午8.11.06.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/吴恩达卷积神经网络笔记.assets/屏幕快照%202019-11-11%20下午8.20.45.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/吴恩达卷积神经网络笔记.assets/屏幕快照%202019-11-11%20下午8.40.29.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/吴恩达卷积神经网络笔记.assets/屏幕快照%202019-11-11%20下午8.56.18.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/吴恩达卷积神经网络笔记.assets/屏幕快照%202019-11-12%20下午6.32.06.png">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-01T03:59:30.987Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="default">
+<meta property="article:tag" content="算法相关">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/吴恩达卷积神经网络笔记.assets/屏幕快照%202019-11-11%20下午3.00.23.png">
+
+<link rel="canonical" href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>吴恩达卷积神经网络笔记 | 凛冬将至</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凛冬将至</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">从简单的例子开始</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          吴恩达卷积神经网络笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:59:30" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>吴恩达卷积神经网络笔记</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="第一周-卷积神经网络"><a href="#第一周-卷积神经网络" class="headerlink" title="第一周 卷积神经网络"></a>第一周 卷积神经网络</h1><h2 id="计算及视觉要解决的问题"><a href="#计算及视觉要解决的问题" class="headerlink" title="计算及视觉要解决的问题"></a>计算及视觉要解决的问题</h2><ul>
+<li>Image Classification</li>
+<li>Object detection<h2 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h2></li>
+<li>图像计算数据量非常大</li>
+<li>所以需要通过卷积减少参数量</li>
+</ul>
+<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><ul>
+<li>valid padding: 不填充</li>
+<li>same padding：输出和输入一样的size。步长为1时 p=(f-1)/2 ,f为卷积核的大小</li>
+</ul>
+<h2 id="stride（步长）"><a href="#stride（步长）" class="headerlink" title="stride（步长）"></a>stride（步长）</h2><ul>
+<li>输出图像大小：floor[(n+2p-f)/s]+1<h2 id="多通道卷积"><a href="#多通道卷积" class="headerlink" title="多通道卷积"></a>多通道卷积</h2></li>
+<li>卷积核的通道数=输入的通道数</li>
+<li>一个卷积核将输入映射为单通道图片</li>
+<li>卷积核的数量=输出图片的通道数</li>
+<li>每个卷积核的bias是一个数<h2 id="pooling-池化"><a href="#pooling-池化" class="headerlink" title="pooling(池化)"></a>pooling(池化)</h2></li>
+<li>max pooling: 只要过滤器检测到了特征，就保留下来<ul>
+<li>输出的size和padding计算方法一致</li>
+<li>pooling前后通道数目不变（跟卷积核不一样的地方）</li>
+<li>没有参数需要学习<h2 id="使用卷积的意义"><a href="#使用卷积的意义" class="headerlink" title="使用卷积的意义"></a>使用卷积的意义</h2></li>
+</ul>
+</li>
+<li>参数共享(parameter sharing):<ul>
+<li>卷积核(过滤器)可通用语图片的各个位置</li>
+</ul>
+</li>
+<li>稀疏连接(sparsity of connections)<ul>
+<li>卷积后的图片每个像素点只与输入中卷集合大小的像素点有关，与其他像素点无关。这保证图片有平移不变性，即原始图片平移几个像素不太会导致结果的变化</li>
+</ul>
+</li>
+</ul>
+<h1 id="第二周-深度卷积网络：实例探究"><a href="#第二周-深度卷积网络：实例探究" class="headerlink" title="第二周 深度卷积网络：实例探究"></a>第二周 深度卷积网络：实例探究</h1><h2 id="经典网络"><a href="#经典网络" class="headerlink" title="经典网络"></a>经典网络</h2><ul>
+<li>LeNet-5 (1998)</li>
+<li>AlexNet</li>
+<li>VGG</li>
+<li>ResNet</li>
+<li>Inception</li>
+</ul>
+<h2 id="LeNet-5-（1998）"><a href="#LeNet-5-（1998）" class="headerlink" title="LeNet-5 （1998）"></a>LeNet-5 （1998）</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午3.00.23.png" alt="屏幕快照 2019-11-11 下午3.00.23"></p>
+<p>6w 参数</p>
+<h2 id="AlexNet（2012）"><a href="#AlexNet（2012）" class="headerlink" title="AlexNet（2012）"></a>AlexNet（2012）</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.11.06.png" alt=""></p>
+<p>6kw 参数</p>
+<h2 id="VGG-2015"><a href="#VGG-2015" class="headerlink" title="VGG(2015)"></a>VGG(2015)</h2><p>用同样大小的卷积核（3*3 ， s=1, padding=same），同样的池化策略</p>
+<h2 id="ResNet-2015"><a href="#ResNet-2015" class="headerlink" title="ResNet(2015)"></a>ResNet(2015)</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.20.45.png" alt="屏幕快照 2019-11-11 下午8.20.45"></p>
+<p>随着层数增加，理论上来说损失会减少，但是实际上随着层数增加，对优化算法的要求越高，导致损失上升。</p>
+<p>ResNet: $a_{l+1}=g(z(l+1)+a_l)$</p>
+<h2 id="1-1卷积核"><a href="#1-1卷积核" class="headerlink" title="1*1卷积核"></a>1*1卷积核</h2><p>输入图片用1个1*1的卷积核座卷积意义是：输入图片各个通道加权成一个通道</p>
+<h2 id="Inception-Network-2014"><a href="#Inception-Network-2014" class="headerlink" title="Inception Network(2014)"></a>Inception Network(2014)</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.40.29.png" alt="屏幕快照 2019-11-11 下午8.40.29"></p>
+<h2 id="迁移学习-transfer-learning"><a href="#迁移学习-transfer-learning" class="headerlink" title="迁移学习 transfer learning"></a>迁移学习 transfer learning</h2><p>冻结前面几层，只训练最后一层全连接层。实现方案之一为：输入通过冻结的几层得到预计算输出，写入硬盘。之后每次从硬盘读入数据，训练最后几层网络，这样不需要每次迭代时都进行前面的计算。</p>
+<p>或者只把下载的权重作为初始化，训练整个网络。</p>
+<h2 id="数据扩充-data-augmentation"><a href="#数据扩充-data-augmentation" class="headerlink" title="数据扩充 data augmentation"></a>数据扩充 data augmentation</h2><p>当数据量不够时。</p>
+<ul>
+<li>镜像对称</li>
+<li>随机剪裁</li>
+<li>色彩转换 color shifting(PCA增强)</li>
+</ul>
+<h2 id="计算机视觉现状"><a href="#计算机视觉现状" class="headerlink" title="计算机视觉现状"></a>计算机视觉现状</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-11 下午8.56.18.png" alt="屏幕快照 2019-11-11 下午8.56.18"></p>
+<p>数据量越少，人工特征提取越重要。</p>
+<h1 id="第三周-目标检测"><a href="#第三周-目标检测" class="headerlink" title="第三周 目标检测"></a>第三周 目标检测</h1><h2 id="目标定位-localization-and-detection"><a href="#目标定位-localization-and-detection" class="headerlink" title="目标定位 localization and detection"></a>目标定位 localization and detection</h2><p><img src="吴恩达卷积神经网络笔记.assets/屏幕快照 2019-11-12 下午6.32.06.png" alt="屏幕快照 2019-11-12 下午6.32.06"></p>
+<ul>
+<li><p>目标定位：图片中只有一个目标，要定位目标并识别目标。</p>
+<p> 实现方法：输出除了类别向量外还有四个数：中心点x,y值，box长度，box高度</p>
+</li>
+<li><p>定义Y</p>
+<p> 假设检测目标有三种，图片中最多只会有一个目标物体，则y为：</p>
+<script type="math/tex; mode=display">\left[\begin{matrix}p_c\\b_x\\b_y\\b_h\\b_w\\c_1\\c_2\\c_3\end{matrix}\right]</script><p> 其中如果图片中有三种中的一种，则$p_c=1 $，$c_1,c_2,c_3$为对应的onehot向量。如果图片中没有目标种类的则$p_c=0$,其他数字为任意值</p>
+</li>
+<li><p>loss</p>
+<script type="math/tex; mode=display">loss=\left\{\begin{matrix} \sum_{i=1}^8(y_i-\hat{y_i})^2,\quad if  \quad p_c=1\\ (y_i-\hat{y_i})^2,\quad else \end{matrix}\right.</script><p> 即如果图片中有目标物体，则loss包含每个y的分量误差。如果没有，则loss只计算$p_c$和预测值的误差。实际上y不同的部分可采用不同的误差，如$p_c$用logistic误差，b用均方误差，c用softmax误差</p>
+</li>
+</ul>
+<h2 id="特征点检测"><a href="#特征点检测" class="headerlink" title="特征点检测"></a>特征点检测</h2><p>在图片分类的基础上做改造：y第一个元素实$p_c$,其他元素实特征点的坐标值。</p>
+<p>体态检测也是一样，只不过特征点是关节点的坐标。要注意的实特征点的顺序需要是一致的。</p>
+<h2 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h2><ul>
+<li><p>滑动窗口 sliding window detection</p>
+<ol>
+<li>针对被检测物体（如车）训练图片分类网络</li>
+<li><p>用不同大小的box扫过目标图片，并输出相应位置的概率</p>
+<p>计算成本很大</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="卷积的滑动窗口实现"><a href="#卷积的滑动窗口实现" class="headerlink" title="卷积的滑动窗口实现"></a>卷积的滑动窗口实现</h2><ul>
+<li><p>FC层可用卷积实现，具体操作就是卷积核大小与输入相同，卷积核数量与FC的输出层相同。这种卷积表示与全连接的数学实现是一样的</p>
+</li>
+<li><p>将滑动窗口并卷积得到不同box的预测值—&gt;将整张图片进行卷积，最后输出的就是哥哥box对应的概率</p>
+</li>
+<li><p>问题：该方法隐式的预测bounding box的位置，结果不是很准确</p>
+<p> 由于box的size是一定的（卷积网络的第一层卷积核大小），移动步长也是一定的(卷积网络的移动步长)</p>
+</li>
+</ul>
+<h2 id="bounding-box预测"><a href="#bounding-box预测" class="headerlink" title="bounding box预测"></a>bounding box预测</h2><ul>
+<li><p>YOLO (you only look once) 2015</p>
+<p> 将问题简化为子图上的目标定位问题</p>
+<ol>
+<li>将图片分割，假设分割成3*3的小图</li>
+<li>按照目标定位的方法对每个小图标定8维向量y，由于有9个小图，最终Y为3<em>3 </em> 8 的矢量</li>
+<li>按照一般的方法进行训练。</li>
+<li><p>预测时看每$\hat{Y}$的第一个分量，为1的地方就表示对应的子图有目标物体，对应的$b_i$即为box位置, 对应的$c_i$就是目标物体的种类</p>
+<p>注意：</p>
+</li>
+<li><p>标定物体的时候如果物体横跨多个子图，物体只会被分配到一个图上。</p>
+</li>
+<li>标定$b_i$的时候用的是子图的相对比例坐标。$b_x,b_y$一定小于等于1，$b_x,b_y$可以大于1</li>
+</ol>
+</li>
+<li><p>好处：</p>
+<ol>
+<li>bounding box大小和位置不受限制</li>
+<li>只进行单词卷积，而非滑动多次卷积。这是由于滑动卷积过程中有很多计算实可以共享的</li>
+</ol>
+</li>
+</ul>
+<h2 id="交并比-intersection-over-union"><a href="#交并比-intersection-over-union" class="headerlink" title="交并比 intersection over union"></a>交并比 intersection over union</h2><p>用来评价目标检测模型好坏。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/default/" rel="tag"># default</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" rel="tag"># 算法相关</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E6%A8%A1%E5%9E%8B/" rel="prev" title="时间序列模型">
+      <i class="fa fa-chevron-left"></i> 时间序列模型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D/" rel="next" title="中文分词">
+      中文分词 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%91%A8-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">第一周 卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%8F%8A%E8%A7%86%E8%A7%89%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">计算及视觉要解决的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%BE%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">难点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding"><span class="nav-number">1.3.</span> <span class="nav-text">padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stride%EF%BC%88%E6%AD%A5%E9%95%BF%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">stride（步长）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%80%9A%E9%81%93%E5%8D%B7%E7%A7%AF"><span class="nav-number">1.5.</span> <span class="nav-text">多通道卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pooling-%E6%B1%A0%E5%8C%96"><span class="nav-number">1.6.</span> <span class="nav-text">pooling(池化)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%B7%E7%A7%AF%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-number">1.7.</span> <span class="nav-text">使用卷积的意义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%91%A8-%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C%EF%BC%9A%E5%AE%9E%E4%BE%8B%E6%8E%A2%E7%A9%B6"><span class="nav-number">2.</span> <span class="nav-text">第二周 深度卷积网络：实例探究</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%BD%91%E7%BB%9C"><span class="nav-number">2.1.</span> <span class="nav-text">经典网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeNet-5-%EF%BC%881998%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">LeNet-5 （1998）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AlexNet%EF%BC%882012%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">AlexNet（2012）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VGG-2015"><span class="nav-number">2.4.</span> <span class="nav-text">VGG(2015)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ResNet-2015"><span class="nav-number">2.5.</span> <span class="nav-text">ResNet(2015)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E5%8D%B7%E7%A7%AF%E6%A0%B8"><span class="nav-number">2.6.</span> <span class="nav-text">1*1卷积核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inception-Network-2014"><span class="nav-number">2.7.</span> <span class="nav-text">Inception Network(2014)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-transfer-learning"><span class="nav-number">2.8.</span> <span class="nav-text">迁移学习 transfer learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%89%A9%E5%85%85-data-augmentation"><span class="nav-number">2.9.</span> <span class="nav-text">数据扩充 data augmentation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E7%8E%B0%E7%8A%B6"><span class="nav-number">2.10.</span> <span class="nav-text">计算机视觉现状</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%91%A8-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B"><span class="nav-number">3.</span> <span class="nav-text">第三周 目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E5%AE%9A%E4%BD%8D-localization-and-detection"><span class="nav-number">3.1.</span> <span class="nav-text">目标定位 localization and detection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8B"><span class="nav-number">3.2.</span> <span class="nav-text">特征点检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B"><span class="nav-number">3.3.</span> <span class="nav-text">目标检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%9A%84%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.4.</span> <span class="nav-text">卷积的滑动窗口实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bounding-box%E9%A2%84%E6%B5%8B"><span class="nav-number">3.5.</span> <span class="nav-text">bounding box预测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E5%B9%B6%E6%AF%94-intersection-over-union"><span class="nav-number">3.6.</span> <span class="nav-text">交并比 intersection over union</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dongdong Wang</p>
+  <div class="site-description" itemprop="description">从爪印判断，这是头雄狮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

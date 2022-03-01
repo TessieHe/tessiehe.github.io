@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangdongdong122.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="tf易混淆操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tensorflow">
+<meta property="og:url" content="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/tensorflow/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="tf易混淆操作">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10758717-617d15c988fca257.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/704/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10758717-ede38dbd30efd3c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1074/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10758717-82fde1420900d6b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10758717-d5376e32b383d1de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10758717-66ba8e48437be765.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/976/format/webp">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-cfed5df9f0c6ae2d180e7b8c65ed233b_720w.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-5dd2ee82f762b8fa9ef2a64e631f9cf1_720w.jpg">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-01T03:54:19.148Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="代码相关">
+<meta property="article:tag" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/10758717-617d15c988fca257.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/704/format/webp">
+
+<link rel="canonical" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/tensorflow/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>tensorflow | 凛冬将至</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凛冬将至</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">从简单的例子开始</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/tensorflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          tensorflow
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:54:19" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>tf易混淆操作</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="Tensorflow笔记"><a href="#Tensorflow笔记" class="headerlink" title="Tensorflow笔记"></a>Tensorflow笔记</h1><h1 id="name-scope-VS-variable-scope"><a href="#name-scope-VS-variable-scope" class="headerlink" title="name_scope VS variable_scope"></a>name_scope VS variable_scope</h1><p>参考知乎：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52055580">https://zhuanlan.zhihu.com/p/52055580</a></p>
+<p><strong>注意</strong>，tf.variable() 和tf.get_variable()有不同的创建变量的方式：<strong>tf.Variable() 每次都会新建变量</strong>。如果希望<strong>重用</strong>（<strong>共享</strong>）一些变量，就需要用到了<strong>get_variable()，它会去搜索变量名，有就直接用，没有再新建</strong>。此外，<strong>为了对不同位置或者范围的共享进行区分</strong>，就引入<strong>名字域</strong>。既然用到变量名了，就涉及到了名字域的概念。这就是为什么会有scope 的概念。name_scope 作用域操作，variable_scope 可以通过设置reuse 标志以及初始化方式来影响域下的变量，<strong>因为想要达到变量共享的效果, 就要在 tf.variable_scope()的作用域下使用 tf.get_variable() 这种方式产生和提取变量. 不像 tf.Variable() 每次都会产生新的变量, tf.get_variable() 如果遇到了已经存在名字的变量时, 它会单纯的提取这个同样名字的变量，如果不存在名字的变量再创建.</strong></p>
+<h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><p>建图(graph) — 打开对话(session) — 初始化变量 — sess.run()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模型保存</span></span><br><span class="line">saver=tf.train.Saver() </span><br><span class="line">sess=tf.Session()</span><br><span class="line">saver.save(sess,check_point_dir + <span class="string">&#x27;model.ckpt&#x27;</span>,global_step=i+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型调用（只调用参数）</span></span><br><span class="line">saver=tf.train.Saver()</span><br><span class="line">sess=tf.Session()</span><br><span class="line">ckpt = tf.train.get_checkpoint_state(check_point_dir) <span class="comment">#获取最新的保存的模型地址</span></span><br><span class="line">saver.restore(sess,ckpt.model_saved_ckeckpoint_path)</span><br><span class="line"><span class="comment">#saver.restore(sess,&#x27;....ckpt&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#模型调用（参数和图）</span></span><br><span class="line">sess=tf.Session()</span><br><span class="line">ckpt =tf.train.latest_checkpoint(check_point_path)  <span class="comment">#获取最新的保存的模型地址</span></span><br><span class="line">saver =tf.train.import_meta_graph(ckpt+<span class="string">&#x27;.meta&#x27;</span>) <span class="comment">#载入结构图</span></span><br><span class="line"><span class="comment">#saver =tf.train.import_meta_graph(&#x27;........ckpt.meta&#x27;)</span></span><br><span class="line">saver.restore(sess,<span class="string">&#x27;....ckpt&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#基本操作</span></span><br><span class="line">a=tf.placeholder(<span class="string">&#x27;float&#x27;</span>)</span><br><span class="line">b=tf.placeholder(<span class="string">&#x27;float&#x27;</span>)<span class="comment">#定义变量</span></span><br><span class="line">y=tf.mul(a,b) <span class="comment">#构造op节点</span></span><br><span class="line"></span><br><span class="line">sess=tf.Session()<span class="comment">#建立对话</span></span><br><span class="line"><span class="built_in">print</span>（sess.run(y,feed_dic&#123;a:<span class="number">3</span>,b:<span class="number">3</span>&#125;)）<span class="comment">#运行节点并打印结果</span></span><br><span class="line">sess.close（）<span class="comment">#关闭会话</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#onehot</span></span><br><span class="line"><span class="comment">#tf.one_hot(indices, depth, on_value=None, off_value=None, CLASS=8</span></span><br><span class="line">label=tf.constant([<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>])</span><br><span class="line">CLASS=<span class="number">8</span></span><br><span class="line">b=tf.one_hot(label,CLASS，<span class="number">1</span>，<span class="number">0</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">	sess.run(tf.global_variables_initializer())</span><br><span class="line">	<span class="built_in">print</span>(sess.run(b))</span><br></pre></td></tr></table></figure>
+<p>checkpoint文件：用于告知某些TF函数，这是最新的检查点文件（可以用记事本打开看一下）</p>
+<p>.data文件：（后面缀的那一串我也布吉岛是啥）这个文件保存的是图中所有变量的值，没有结构。</p>
+<p>.index文件：可能是保存了一些必要的索引叭（这个文件不大清楚）。</p>
+<p>.meta文件：保存了计算图的结构，但是不包含里面变量的值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">　　<span class="comment">#搭建网络</span></span><br><span class="line">　　x=tf.placeholder(tf.float32,name=<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">　　y=tf.placeholder(tf.float32,name=<span class="string">&#x27;y&#x27;</span>)</span><br><span class="line">　　b=tf.Variable(<span class="number">1.</span>,name=<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">　　xy=tf.multiply(x,y)</span><br><span class="line">　　op=tf.add(xy,b,name=<span class="string">&#x27;op&#x27;</span>)</span><br><span class="line">　　sess.run(tf.global_variables_initializer())</span><br><span class="line">　　<span class="built_in">print</span>(sess.run(op,feed_dict=&#123;x:<span class="number">2</span>,y:<span class="number">3</span>&#125;))</span><br><span class="line"></span><br><span class="line">　　<span class="comment">#ckpt保存</span></span><br><span class="line">　　saver=tf.train.Saver()</span><br><span class="line">　　saver.save(sess,<span class="string">&#x27;D:/pycharm files/111/ckpt/model_ck&#x27;</span>)</span><br><span class="line"></span><br><span class="line">　　<span class="comment">#pb保存</span></span><br><span class="line">　　constant_graph=tf.graph_util.convert_variables_to_constants(sess,sess.graph_def,[<span class="string">&#x27;op&#x27;</span>])</span><br><span class="line">　　<span class="keyword">with</span> tf.gfile.FastGFile(<span class="string">&#x27;D:/pycharm files/111/pb/model.pb&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">　　f.write(constant_graph.SerializeToString())</span><br><span class="line"></span><br><span class="line">　　<span class="comment">#savedmodel文件保存</span></span><br><span class="line">　　builder=tf.saved_model.builder.SavedModelBuilder(<span class="string">&#x27;D:/pycharm files/111/savemodel&#x27;</span>)</span><br><span class="line">　　builder.add_meta_graph_and_variables(sess,[<span class="string">&#x27;cpu_server_1&#x27;</span>])</span><br><span class="line">　　builder.save()</span><br><span class="line"></span><br><span class="line">　　<span class="built_in">print</span>(<span class="string">&#x27;over&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">　　<span class="comment">#ckpt加载</span></span><br><span class="line">　　saver=tf.train.import_meta_graph(<span class="string">&#x27;D:/pycharm files/111/ckpt/model_ck.meta&#x27;</span>)</span><br><span class="line">　　saver.restore(sess,tf.train.latest_checkpoint(<span class="string">&#x27;D:/pycharm files/111/ckpt&#x27;</span>))</span><br><span class="line"></span><br><span class="line">　　<span class="comment">#pb加载</span></span><br><span class="line">　　<span class="keyword">with</span> tf.gfile.FastGFile(<span class="string">&#x27;D:/pycharm files/111/pb/model.pb&#x27;</span>,<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">　　　　graph_def=tf.GraphDef()</span><br><span class="line">　　　　graph_def.ParseFromString(f.read())</span><br><span class="line">　　　　tf.import_graph_def(graph_def,name=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">　　<span class="comment">#savemodel加载</span></span><br><span class="line">　　tf.saved_model.loader.load(sess, [<span class="string">&#x27;cpu_server_1&#x27;</span>], <span class="string">&#x27;D:/pycharm files/111/savemodel&#x27;</span>)</span><br><span class="line"></span><br><span class="line">　　<span class="comment">#测试模型加载是否成功</span></span><br><span class="line">　　input_x = sess.graph.get_tensor_by_name(<span class="string">&#x27;x:0&#x27;</span>)</span><br><span class="line">　　input_y = sess.graph.get_tensor_by_name(<span class="string">&#x27;y:0&#x27;</span>)</span><br><span class="line">　　op = sess.graph.get_tensor_by_name(<span class="string">&#x27;op:0&#x27;</span>)</span><br><span class="line">　　ret = sess.run(op, feed_dict=&#123;input_x: <span class="number">5</span>, input_y: <span class="number">5</span>&#125;)</span><br><span class="line">　　<span class="built_in">print</span>(ret)</span><br></pre></td></tr></table></figure>
+<h2 id="graph-amp-session"><a href="#graph-amp-session" class="headerlink" title="graph &amp; session"></a>graph &amp; session</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hypnus-ly/p/8040951.html">https://www.cnblogs.com/hypnus-ly/p/8040951.html</a></p>
+<ul>
+<li><p>使用默认图和默认session</p>
+<p>不用指定图或session</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tf.reset_default_graph()   <span class="comment">#清空默认图中所有节点</span></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&#x27;&#x27;</span>):</span><br><span class="line">	a = tf.constant(<span class="number">1</span>,name=<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">	b = tf.constant(<span class="number">2</span>,name=<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">	c = a*b</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">	<span class="built_in">print</span>(sess.run(c))</span><br></pre></td></tr></table></figure></li>
+<li><p>使用指定图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">g1=tf.Graph()</span><br><span class="line">with g1.as_default():</span><br><span class="line">    # 在计算图g1中定义变量&#x27;v&#x27;,并设置初始值为0。</span><br><span class="line">    v=tf.get_variable(&#x27;v&#x27;,initializer=tf.zeros_initializer()(shape = [1]))</span><br><span class="line">    </span><br><span class="line">g2=tf.Graph()</span><br><span class="line">with g2.as_default():</span><br><span class="line">    # 在计算图g2中定义变量&#x27;v&#x27;,并设置初始值微1。</span><br><span class="line">    v=tf.get_variable(&#x27;v&#x27;,initializer=tf.ones_initializer()(shape = [1]))</span><br><span class="line"></span><br><span class="line"># 在计算图g1中读取变量&#x27;v&#x27;的取值</span><br><span class="line">with tf.Session(graph=g1) as sess:</span><br><span class="line">    tf.global_variables_initializer().run()</span><br><span class="line">    with tf.variable_scope(&#x27;&#x27;,reuse=True):</span><br><span class="line">        # 在计算图g1中，变量&#x27;v&#x27;的取值应该为0，下一行代码会输出[0.]。</span><br><span class="line">        print(sess.run(tf.get_variable(&#x27;v&#x27;)))</span><br><span class="line"></span><br><span class="line"># 在计算图g2中读取变量&#x27;v&#x27;的取值</span><br><span class="line">with tf.Session(graph=g2) as sess:</span><br><span class="line">    tf.global_variables_initializer().run()</span><br><span class="line">    with tf.variable_scope(&#x27;&#x27;,reuse=True):</span><br><span class="line">        # 在计算图g2中，变量&#x27;v&#x27;的取值应该为1，下一行代码会输出[1.]。</span><br><span class="line">        print(sess.run(tf.get_variable(&#x27;v&#x27;)))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>集合名称</th>
+<th>集合内容</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tf.GraphKeys.VARIABLES</td>
+<td>所有变量</td>
+<td>持久化tensorflow模型</td>
+</tr>
+<tr>
+<td>tf.GraphKeys.TRAINABLE_VARIABLES</td>
+<td>可学习的变量（一般指神经网络中的参数）</td>
+<td>模型训练、生成模型可视化内容</td>
+</tr>
+<tr>
+<td>tf.GraphKeys.SUMMARIES</td>
+<td>日志生成相关的张量</td>
+<td>tensorflow计算可视化</td>
+</tr>
+<tr>
+<td>tf.GraphKeys.QUEUE_RUNNERS</td>
+<td>处理输入的QueueRunner</td>
+<td>输入处理</td>
+</tr>
+<tr>
+<td>tf.GraphKeys.MOVING_AVERAGE_VARIABLES</td>
+<td>所有计算了滑动平均值的变量</td>
+<td>计算变量的滑动平均值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="获取变量"><a href="#获取变量" class="headerlink" title="获取变量"></a>获取变量</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">g_list = tf.global_variables() <span class="comment">#获取素有变量（有的是tensor不是变量，不会获取）</span></span><br><span class="line">variable_names = [v.name <span class="keyword">for</span> v <span class="keyword">in</span> tf.trainable_variables()] <span class="comment">#获取所有可训练变量</span></span><br><span class="line">[<span class="built_in">print</span>(n.name) <span class="keyword">for</span> n <span class="keyword">in</span> tf.get_default_graph().as_graph_def().node] <span class="comment">#打印所有节点（tensor)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="tf-nn，tf-layers，-tf-contrib-异同"><a href="#tf-nn，tf-layers，-tf-contrib-异同" class="headerlink" title="tf.nn，tf.layers， tf.contrib 异同"></a>tf.nn，tf.layers， tf.contrib 异同</h2><p>我们在使用tensorflow时，会发现tf.nn，tf.layers， tf.contrib模块有很多功能是重复的，尤其是卷积操作，在使用的时候，我们可以根据需要现在不同的模块。但有些时候可以一起混用。</p>
+<p>​        下面是对三个模块的简述：</p>
+<p>​        （1）tf.nn ：提供神经网络相关操作的支持，包括卷积操作（conv）、池化操作（pooling）、归一化、loss、分类操作、embedding、RNN、Evaluation。</p>
+<p>​        （2）tf.layers：主要提供的高层的神经网络，主要和卷积相关的，个人感觉是对tf.nn的进一步封装，tf.nn会更底层一些。</p>
+<p>​        （3）tf.contrib：tf.contrib.layers提供够将计算图中的  网络层、正则化、摘要操作、是构建计算图的高级操作，但是tf.contrib包含不稳定和实验代码，有可能以后API会改变。</p>
+<h2 id="load-pb-model"><a href="#load-pb-model" class="headerlink" title="load pb model"></a>load pb model</h2><p><a target="_blank" rel="noopener" href="https://leimao.github.io/blog/Save-Load-Inference-From-TF-Frozen-Graph/">https://leimao.github.io/blog/Save-Load-Inference-From-TF-Frozen-Graph/</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#参考 https://stackoverflow.com/questions/50632258/how-to-restore-tensorflow-model-from-pb-file-in-python</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.platform <span class="keyword">import</span> gfile</span><br><span class="line">GRAPH_PB_PATH = <span class="string">&#x27;./frozen_model.pb&#x27;</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">   <span class="built_in">print</span>(<span class="string">&quot;load graph&quot;</span>)</span><br><span class="line">   <span class="keyword">with</span> gfile.FastGFile(GRAPH_PB_PATH,<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">       graph_def = tf.GraphDef()</span><br><span class="line">   graph_def.ParseFromString(f.read())</span><br><span class="line">   sess.graph.as_default()</span><br><span class="line">   tf.import_graph_def(graph_def, name=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">   graph_nodes=[n <span class="keyword">for</span> n <span class="keyword">in</span> graph_def.node]</span><br><span class="line">   names = []</span><br><span class="line">   <span class="keyword">for</span> t <span class="keyword">in</span> graph_nodes:</span><br><span class="line">      names.append(t.name)</span><br><span class="line">   <span class="built_in">print</span>(names)</span><br></pre></td></tr></table></figure>
+<p>如果报错：DecodeError: Error parsing message ,则修改为以下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.platform <span class="keyword">import</span> gfile</span><br><span class="line"><span class="keyword">from</span> tensorflow.core.protobuf <span class="keyword">import</span> saved_model_pb2</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.util <span class="keyword">import</span> compat</span><br><span class="line">graph_path = <span class="string">&#x27;./saved_model_ctcvr.pb&#x27;</span></span><br><span class="line"><span class="comment"># sess = tf.InteractiveSession(graph = self.graph)</span></span><br><span class="line">sess = tf.Session()</span><br><span class="line"><span class="keyword">with</span> gfile.FastGFile(graph_path, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = compat.as_bytes(f.read())</span><br><span class="line">    sm = saved_model_pb2.SavedModel()</span><br><span class="line">    sm.ParseFromString(data)</span><br><span class="line">    graph_def = sm.meta_graphs[<span class="number">0</span>].graph_def</span><br><span class="line">sess.graph.as_default()</span><br><span class="line">graph = sess.graph</span><br><span class="line">tf.import_graph_def(graph_def,name=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Check out the input placeholders:&#x27;</span>)</span><br><span class="line">nodes = [n.name + <span class="string">&#x27; =&gt; &#x27;</span> +  n.op <span class="keyword">for</span> n <span class="keyword">in</span> graph_def.node <span class="keyword">if</span> n.op <span class="keyword">in</span> (<span class="string">&#x27;Placeholder&#x27;</span>)]</span><br><span class="line"><span class="keyword">for</span> node <span class="keyword">in</span> nodes:</span><br><span class="line">    <span class="built_in">print</span>(node)</span><br><span class="line">    </span><br><span class="line"> <span class="comment"># Get layer names</span></span><br><span class="line">layers = [op.name <span class="keyword">for</span> op <span class="keyword">in</span> graph.get_operations()]</span><br><span class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> layers:</span><br><span class="line">    <span class="built_in">print</span>(layer)</span><br><span class="line"></span><br><span class="line">output_tensor = graph.get_tensor_by_name(<span class="string">&quot;import/model/pctr:0&quot;</span>)</span><br><span class="line">output = sess.run(output_tensor, feed_dict = features_dic) <span class="comment">#但是貌似知识import了图，没有restore variable</span></span><br></pre></td></tr></table></figure>
+<h1 id="tfrecord"><a href="#tfrecord" class="headerlink" title="tfrecord"></a>tfrecord</h1><ul>
+<li>生成</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 借助于TFRecordWriter 才能将信息写入TFRecord 文件</span></span><br><span class="line">writer = tf.python_io.TFRecordWriter(output)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建example对象</span></span><br><span class="line">example = tf.train.Example(features=tf.train.Features(feature=&#123;</span><br><span class="line">             <span class="string">&#x27;name&#x27;</span>: tf.train.Feature(bytes_list=tf.train.BytesList(value=[name])),</span><br><span class="line">             <span class="string">&#x27;shape&#x27;</span>: tf.train.Feature(int64_list=tf.train.Int64List(value=[shape[<span class="number">0</span>], shape[<span class="number">1</span>], shape[<span class="number">2</span>]])),</span><br><span class="line">             <span class="string">&#x27;data&#x27;</span>: tf.train.Feature(bytes_list=tf.train.BytesList(value=[image_data]))</span><br><span class="line">        &#125;</span><br><span class="line">        ))</span><br><span class="line"><span class="comment"># 将example序列化成string 类型，然后写入。</span></span><br><span class="line"> writer.write(example.SerializeToString())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 流式数据读取&amp;训练</span></span><br><span class="line"></span><br><span class="line">简介：起两个进程，一个数据读取进程源源不断的读多个文件到内存；一个计算进程从内存中读数并计算</span><br><span class="line"></span><br><span class="line"><span class="comment">## 流式读文件到内存</span></span><br><span class="line"></span><br><span class="line">为了方便管理，有**文件名队列**和**内存队列**</span><br><span class="line"></span><br><span class="line">- 文件名队列用tf.train.string_input_producer(文件名<span class="built_in">list</span>)函数产生文件名和结束标志的队列；可设置shuffle（决定小文件间有没有shuffle）和num_epoch（决定读多少次全部文件名<span class="built_in">list</span>）；</span><br><span class="line">- 读数据到内存队列用tf.WholeFileReader().read()读到内存队列</span><br><span class="line">- tf.train.start_queue_runners使整个线程开始运转</span><br><span class="line"></span><br><span class="line">![image-<span class="number">20200422180419725</span>](/Users/hetianqi/Documents/charging/notes_of_the_world/tensorflow.assets/image-<span class="number">20200422180419725.</span>png)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 代码示例</span></span><br><span class="line">```python</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">file_name_list=[<span class="string">&#x27;a1.txt&#x27;</span>,<span class="string">&#x27;a2.txt&#x27;</span>,<span class="string">&#x27;a3.txt&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">  <span class="comment"># 产生文件名队列</span></span><br><span class="line">  filename_queue = tf.train.string_input_producer(file_name_list,shuffle=<span class="literal">False</span>,num_epoch=<span class="number">5</span>)</span><br><span class="line">  <span class="comment"># reader从文件名队列中读数据。对应的方法是reader.read</span></span><br><span class="line">  reader = tf.WholeFileReader()</span><br><span class="line">  key , value = reader.read(filename_queue)</span><br><span class="line">  <span class="comment"># tf.train.string_input_producer定义了一个epoch变量，要对它进行初始化</span></span><br><span class="line">   tf.local_variables_initializer().run()</span><br><span class="line">   <span class="comment"># 使用start_queue_runners之后，才会开始填充队列</span></span><br><span class="line">   threads = tf.train.start_queue_runners(sess=sess)</span><br><span class="line">   i = <span class="number">0</span></span><br><span class="line">   <span class="keyword">while</span> <span class="literal">True</span>:<span class="comment"># 内存队列检测到结束次数&gt;num_epochs时就会自动抛出一个异常（OutOfRange），从而停止读数</span></span><br><span class="line">       i += <span class="number">1</span> </span><br><span class="line">       <span class="comment"># 获取图片数据并保存</span></span><br><span class="line">       data = sess.run(value)</span><br></pre></td></tr></table></figure>
+<h1 id="tensorboard"><a href="#tensorboard" class="headerlink" title="tensorboard"></a>tensorboard</h1><ol>
+<li>cd到wirter文件夹的上层路径</li>
+<li>执行以下命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir v0</span><br></pre></td></tr></table></figure>
+<ol>
+<li>打开<a target="_blank" rel="noopener" href="http://localhost:6006/">http://localhost:6006/</a>  （terminal的路径不是这个的话依然打开这个路径。。。）</li>
+</ol>
+<h1 id="控制日志级别"><a href="#控制日志级别" class="headerlink" title="控制日志级别"></a>控制日志级别</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># logger = logging.getLogger(&quot;tensorflow&quot;)</span></span><br><span class="line"><span class="comment"># 貌似tensorflow的logger默认就有一个StreamHandler了</span></span><br><span class="line"><span class="comment"># 所以，首先判断len(logger.handlers)是否为1</span></span><br><span class="line"><span class="comment"># 如果为1的话， 说明只有默认的StreamHandler,</span></span><br><span class="line"><span class="comment"># 那么先清空handlers,然后再加入指定格式(formatter)的StreamHandler和FileHandler</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_logger</span>():</span></span><br><span class="line">    logger = logging.getLogger(<span class="string">&quot;tensorflow&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(logger.handlers) == <span class="number">1</span>:</span><br><span class="line">        logger.handlers = []</span><br><span class="line">        logger.setLevel(logging.DEBUG)</span><br><span class="line"></span><br><span class="line">        formatter = logging.Formatter(</span><br><span class="line">            <span class="string">&quot;%(asctime)s - [%(filename)s:%(lineno)d] - %(name)s - %(levelname)s - %(message)s&quot;</span>)</span><br><span class="line">        ch = logging.StreamHandler(sys.stdout)</span><br><span class="line">        ch.setLevel(logging.DEBUG)</span><br><span class="line">        ch.setFormatter(formatter)</span><br><span class="line"></span><br><span class="line">        fh = logging.FileHandler(<span class="string">&#x27;tensorflow.log&#x27;</span>)</span><br><span class="line">        fh.setLevel(logging.DEBUG)</span><br><span class="line">        fh.setFormatter(formatter)</span><br><span class="line"></span><br><span class="line">        logger.addHandler(ch)</span><br><span class="line">        logger.addHandler(fh)</span><br><span class="line">    <span class="keyword">return</span> logger</span><br><span class="line">logger = set_logger()</span><br><span class="line">tf.logging.set_verbosity(tf.logging.INFO)</span><br></pre></td></tr></table></figure>
+<p>日志等级：debug&lt;info&lt;warn&lt;error</p>
+<h1 id="tf-identity-assign的区别"><a href="#tf-identity-assign的区别" class="headerlink" title="tf.identity,=,assign的区别"></a>tf.identity,=,assign的区别</h1><ul>
+<li>tf.identity(变量引用)</li>
+</ul>
+<p>tf.identity在计算图内部创建了两个节点，send/recv节点，用来发送和接受两个变量，如果两个变量在不同的设备上，比如CPU和GPU，那么将会复制变量，如果在一个设备上，将会只是一个引用</p>
+<ul>
+<li><ul>
+<li>引用变量：当遇到一个操作没有name这个参数的时候，可以用它来给该操作设置一个name，这样在模型测试阶段直接加载图模型，然后通过name来获取op</li>
+<li>复制变量：不同设备(CPU\GPU)之间传递变量的值</li>
+<li>作为一个虚拟节点来控制流程操作，一般配合tf.control_dependencies()使用</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note：</strong>具体实例参考<a href="https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/34877523/in-tensorflow-what-is-tf-identity-used-for">In TensorFlow, what is tf.identity used for?</a>中前三个回答</p>
+<ul>
+<li>=</li>
+</ul>
+<p>=只是拷贝内存，而y不会作为一个tensor在图中出现</p>
+<p>如果希望y成为一个tensor出现在图中，=的右边必须是一个op，而遗憾的x是一个tensor，所以</p>
+<p>需要利用tf.identity来告诉告诉编译器，y可以是一个和x一样的tensor。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">x = tf.Variable(<span class="number">1.0</span>)</span><br><span class="line">x_plus_1 = tf.assign_add(x, <span class="number">1</span>)</span><br><span class="line"><span class="keyword">with</span> tf.control_dependencies([x_plus_1]):</span><br><span class="line">    y = x</span><br><span class="line">    <span class="comment">#y = tf.identity(x)</span></span><br><span class="line"></span><br><span class="line">init = tf.initialize_all_variables()</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</span><br><span class="line">    init.run()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;y=&#x27;</span>,y.<span class="built_in">eval</span>())</span><br><span class="line">        </span><br><span class="line"><span class="comment">#y= 1.0</span></span><br><span class="line"><span class="comment">#y= 1.0</span></span><br><span class="line"><span class="comment">#y= 1.0</span></span><br><span class="line"><span class="comment">#y= 1.0</span></span><br><span class="line"><span class="comment">#y= 1.0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">x = tf.Variable(<span class="number">1.0</span>)</span><br><span class="line">x_plus_1 = tf.assign_add(x, <span class="number">1</span>)</span><br><span class="line"><span class="keyword">with</span> tf.control_dependencies([x_plus_1]):</span><br><span class="line">    y = tf.identity(x)</span><br><span class="line"></span><br><span class="line">init = tf.initialize_all_variables()</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</span><br><span class="line">    init.run()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;y=&#x27;</span>,y.<span class="built_in">eval</span>())</span><br><span class="line"></span><br><span class="line"><span class="comment">#y= 2.0</span></span><br><span class="line"><span class="comment">#y= 3.0</span></span><br><span class="line"><span class="comment">#y= 4.0</span></span><br><span class="line"><span class="comment">#y= 5.0</span></span><br><span class="line"><span class="comment">#y= 6.0        </span></span><br></pre></td></tr></table></figure>
+<h1 id="TensorFlow入门12-—-Checkpoints，保存和恢复Estimator创建的模型"><a href="#TensorFlow入门12-—-Checkpoints，保存和恢复Estimator创建的模型" class="headerlink" title="TensorFlow入门12 — Checkpoints，保存和恢复Estimator创建的模型"></a>TensorFlow入门12 — Checkpoints，保存和恢复Estimator创建的模型</h1><p>参考 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/60c3b084fe44">https://www.jianshu.com/p/60c3b084fe44</a></p>
+<p>模型训练好了后，下一步就是保存（Save）和恢复（restore）模型，TensorFlow提供两种模型格式（Model Format）</p>
+<p>1，Checkpoints, 该格式依赖于创建模型的代码.</p>
+<p>2，SavedModel, 该格式不依赖于创建模型的代码.</p>
+<p>本文主要讨论检查点(Checkpoint).</p>
+<p>如《<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4e1d4bfd056d">从数据的角度理解TensorFlow鸢尾花分类程序6</a>》一文所述，在创建tf.estimator.DNNClassifier对象时，其构造函数<strong>init</strong>有一个参数：</p>
+<p><strong>model_dir：</strong>保存模型参数的路径。（Directory to save model parameters, graph and etc. This can also be used to load checkpoints from the directory into a estimator to continue training a previously saved model.）</p>
+<p>a.当没有指定的时候，Estimator 会将检查点文件写入由 Python 的 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Ftempfile.html%23tempfile.mkdtemp">tempfile.mkdtemp</a>函数选择的临时目录中。用语句 print(tempfile.gettempdir())可以查出本机的临时目录</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/10758717-617d15c988fca257.png?imageMogr2/auto-orient/strip|imageView2/2/w/704/format/webp" alt="img"></p>
+<p>tempfile.gettempdir</p>
+<p>b.当指定了目录的时候，例如：<em>model_dir = ‘models/iris’</em>，Estimator 会将检查点文件写入~/models/iris</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/10758717-ede38dbd30efd3c9.png?imageMogr2/auto-orient/strip|imageView2/2/w/1074/format/webp" alt="img"></p>
+<p>有了保存检查点文件路径后，tf.estimator.DNNClassifier对象会在<strong>运行train方法的时候，写入检查点文件，</strong>如下图所示：</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/10758717-82fde1420900d6b5.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp" alt="img"></p>
+<p>train方法负责写入检查点文件</p>
+<p><strong>那train方法以什么频率写入检查点文件呢？</strong></p>
+<p>默认情况下，Estimator 按照以下时间安排将<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https%3A%2F%2Fdevelopers.google.com%2Fmachine-learning%2Fglossary%2F%23checkpoint">检查点</a>保存到 model_dir 中：</p>
+<p>a.每 10 分钟（600 秒）写入一个检查点。</p>
+<p>b.在 train 方法开始（第一次迭代）和完成（最后一次迭代）时写入一个检查点。</p>
+<p>c.只在目录中保留 5 个最近写入的检查点。</p>
+<p><strong>保存好检查点文件后，如何恢复模型呢？</strong></p>
+<p>Estimator 将一个检查点保存到 model_dir 中后，每次调用 Estimator 的 train、eval 或 predict 方法时，都会发生下列情况：</p>
+<p>a) Estimator 通过运行 model_fn() 构建模型<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https%3A%2F%2Fdevelopers.google.com%2Fmachine-learning%2Fglossary%2F%23graph">图</a>。（要详细了解 model_fn()，请参阅<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.tensorflow.org%2Fget_started%2Fcustom_estimators">创建自定义 Estimator</a>。）</p>
+<p>b) Estimator 根据最近写入的检查点中存储的数据来初始化新模型的权重。</p>
+<p>换言之，如下图所示，一旦存在检查点，TensorFlow 就会在您每次调用 train()、evaluate() 或 predict() 时重建模型。</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/10758717-d5376e32b383d1de.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp" alt="img"></p>
+<p><strong>不当恢复</strong></p>
+<p>通过检查点恢复模型的状态这一操作<strong>仅在模型和检查点兼容时可行</strong>。例如，假设训练了一个 tf.estimator.DNNClassifier，它包含 2 个隐藏层且每层都有 10 个节点；在训练之后（TensorFlow已在 models/iris 中创建检查点），将每个隐藏层中的神经元数量从 10 更改为 3，然后重新训练模型，由于检查点中的状态与 修改后tf.estimator.DNNClassifier 中描述的模型不兼容，因此重新训练失败并出现以下错误，如下图所示：</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/10758717-66ba8e48437be765.PNG?imageMogr2/auto-orient/strip|imageView2/2/w/976/format/webp" alt="img"></p>
+<p>不当恢复</p>
+<p><strong>解决不当恢复</strong></p>
+<p>1，当模型参数一直在变化的时候，最简单的方式是，不要指定<em>model_dir，</em>这样TensorFlow不会启动Checkpoint模型恢复，方便你随时修改模型。</p>
+<p>2，启动Checkpoint的情况下，用Git为每个 model-dir 所需的代码保存一个副本，即为每个模型版本创建一个单独的 git 分支。这种区分将有助于保证检查点的可恢复性。</p>
+<p><strong>总结</strong>：检查点提供了一种简单的自动机制来保存和恢复由 Estimator 创建的模型。</p>
+<h1 id="分布式训练"><a href="#分布式训练" class="headerlink" title="分布式训练"></a>分布式训练</h1><ul>
+<li>ps: Parameter Sever, 参数服务器</li>
+<li>chief: ps-worker架构中的主节点</li>
+<li>worker: 正常训练节点</li>
+<li>evaluator: 评估节点，不参与训练，只用来进行训练数据评估</li>
+</ul>
+<h1 id="记录timeline-tf-train-ProfilerHook"><a href="#记录timeline-tf-train-ProfilerHook" class="headerlink" title="记录timeline-tf.train.ProfilerHook"></a>记录timeline-tf.train.ProfilerHook</h1><p>通过ProfilerHook对tensor代码中的各个节点耗时情况进行分析</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/147319531">https://zhuanlan.zhihu.com/p/147319531</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_and_eval</span>(<span class="params">model</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    :param model: 声明的estimator实例</span></span><br><span class="line"><span class="string">    :return: None</span></span><br><span class="line"><span class="string">    :usage: 进行模型训练，并在指定步长的时候进行结果评估</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    timeline_hook = tf.train.ProfilerHook(save_steps=<span class="number">100</span>, output_dir=os.path.join(</span><br><span class="line">            os.getcwd(), <span class="string">&#x27;./timeline_track&#x27;</span></span><br><span class="line">        ))</span><br><span class="line"></span><br><span class="line">    hook = tf.contrib.estimator.stop_if_no_increase_hook(</span><br><span class="line">        model,</span><br><span class="line">        metric_name=<span class="string">&#x27;ctcvr_cvr_auc_esmm&#x27;</span>,</span><br><span class="line">        max_steps_without_increase=configuration_params[<span class="string">&#x27;max_steps_without_increase&#x27;</span>],</span><br><span class="line">        <span class="comment"># maximum number of training steps with no decrease in the given metric.</span></span><br><span class="line">        min_steps=configuration_params[<span class="string">&#x27;min_steps&#x27;</span>],  <span class="comment"># stop is never requested if global step is less than this value</span></span><br><span class="line">        run_every_steps=configuration_params[<span class="string">&#x27;run_every_steps&#x27;</span>],</span><br><span class="line">        run_every_secs=<span class="literal">None</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    train_spec = tf.estimator.TrainSpec(</span><br><span class="line">        input_fn=<span class="keyword">lambda</span>: input_fn(os.path.join(os.getcwd(),</span><br><span class="line">                                               CONFIG_TRAIN[<span class="string">&#x27;train_data&#x27;</span>]),</span><br><span class="line">                                  <span class="string">&#x27;train&#x27;</span>, CONFIG_TRAIN[<span class="string">&#x27;batch_size&#x27;</span>]),</span><br><span class="line">        hooks=[hook, timeline_hook]</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    eval_spec = tf.estimator.EvalSpec(</span><br><span class="line">        input_fn=<span class="keyword">lambda</span>: input_fn(os.path.join(os.getcwd(),</span><br><span class="line">                                               CONFIG_TRAIN[<span class="string">&#x27;test_data&#x27;</span>]),</span><br><span class="line">                                  <span class="string">&#x27;eval&#x27;</span>, <span class="number">128</span>),</span><br><span class="line">        steps=CONFIG.evalconfig[<span class="string">&#x27;steps&#x27;</span>],</span><br><span class="line">        throttle_secs=<span class="number">30</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    tf.estimator.train_and_evaluate(model, train_spec, eval_spec)</span><br></pre></td></tr></table></figure>
+<p>timeline.json：每个保存步长输出的监控文件</p>
+<ul>
+<li><p>web展示</p>
+<ol>
+<li><p>在chrome中打开“chome://tracing”页面</p>
+<p><img src="https://pic4.zhimg.com/80/v2-cfed5df9f0c6ae2d180e7b8c65ed233b_720w.jpg" alt="img"></p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><ul>
+<li>点击“load”，将上一步中生成time-line.json文件导入，导入任意一个即可</li>
+<li>输出结果如下：</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://pic2.zhimg.com/80/v2-5dd2ee82f762b8fa9ef2a64e631f9cf1_720w.jpg" alt="img"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" rel="tag"># 代码相关</a>
+              <a href="/tags/default/" rel="tag"># default</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/tensroflow%E5%90%84%E7%A7%8D%E6%A8%A1%E5%9E%8B%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD/" rel="prev" title="tensroflow各种模型保存和加载">
+      <i class="fa fa-chevron-left"></i> tensroflow各种模型保存和加载
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/shell%E6%97%A5%E6%9C%9F%E8%BF%90%E7%AE%97/" rel="next" title="shell日期运算">
+      shell日期运算 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorflow%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">Tensorflow笔记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#name-scope-VS-variable-scope"><span class="nav-number">2.</span> <span class="nav-text">name_scope VS variable_scope</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">基本流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#graph-amp-session"><span class="nav-number">2.2.</span> <span class="nav-text">graph &amp; session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F"><span class="nav-number">2.3.</span> <span class="nav-text">获取变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-nn%EF%BC%8Ctf-layers%EF%BC%8C-tf-contrib-%E5%BC%82%E5%90%8C"><span class="nav-number">2.4.</span> <span class="nav-text">tf.nn，tf.layers， tf.contrib 异同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#load-pb-model"><span class="nav-number">2.5.</span> <span class="nav-text">load pb model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tfrecord"><span class="nav-number">3.</span> <span class="nav-text">tfrecord</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensorboard"><span class="nav-number">4.</span> <span class="nav-text">tensorboard</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%97%A5%E5%BF%97%E7%BA%A7%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text">控制日志级别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tf-identity-assign%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.</span> <span class="nav-text">tf.identity,&#x3D;,assign的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow%E5%85%A5%E9%97%A812-%E2%80%94-Checkpoints%EF%BC%8C%E4%BF%9D%E5%AD%98%E5%92%8C%E6%81%A2%E5%A4%8DEstimator%E5%88%9B%E5%BB%BA%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">7.</span> <span class="nav-text">TensorFlow入门12 — Checkpoints，保存和恢复Estimator创建的模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83"><span class="nav-number">8.</span> <span class="nav-text">分布式训练</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95timeline-tf-train-ProfilerHook"><span class="nav-number">9.</span> <span class="nav-text">记录timeline-tf.train.ProfilerHook</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dongdong Wang</p>
+  <div class="site-description" itemprop="description">从爪印判断，这是头雄狮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -163,7 +163,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/02/24/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E8%B0%83%E7%A0%94/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/01_%E6%97%A5%E6%9C%9F%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -177,141 +177,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/24/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E8%B0%83%E7%A0%94/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-24 15:17:15" itemprop="dateCreated datePublished" datetime="2022-02-24T15:17:15+08:00">2022-02-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-25 15:45:08" itemprop="dateModified" datetime="2022-02-25T15:45:08+08:00">2022-02-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>[TOC]</p>
-<h1 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h1><p>representation learning；data representation; Deep learning, representation learning, feature learning, unsupervised learning, Boltzmann Machine, autoencoder, neural nets</p>
-<h1 id="粗读文献笔记"><a href="#粗读文献笔记" class="headerlink" title="粗读文献笔记"></a>粗读文献笔记</h1><h2 id="Bengio，2014，Representation-Learning-A-Review-and-New-Perspectives"><a href="#Bengio，2014，Representation-Learning-A-Review-and-New-Perspectives" class="headerlink" title="Bengio，2014，Representation Learning: A Review and New Perspectives"></a>Bengio，2014，Representation Learning: A Review and New Perspectives</h2><p><strong>Index Terms</strong>:Deep learning, representation learning, feature learning, unsupervised learning, Boltzmann Machine, autoencoder, neural nets,underlying explanatory factors</p>
-<ul>
-<li>机器学习的成功依赖于数据的表征（data representation），我们假设这是因为数据的表征或多或少的揭示了数据的内在结构。当然可以采用专家经验设计表征方式，但AI的目的在于依照通用的先验（generic priors）设计表征，并通过数据实例化这个表征。</li>
-<li>“ This paper reviews recent work in the area of unsupervised feature learning and deep learning, covering advances in <strong>probabilistic models, auto-encoders, manifold learning, and deep networks.</strong> “<ul>
-<li>本文聚焦与<strong>无监督学习</strong>，实现的方式包括以上三种方式。auto-encoders是基于信息重建的算法， manifold learning是基于拓扑学的算法</li>
-</ul>
-</li>
-<li>这个工作有助于理解一个长期没有确定答案的问题：什么样的数据表征是一个好的表征？数据表征的优化目标是什么？<ul>
-<li><strong>好的特征能够解耦数据中的关键潜在影响变量，这些变量最好是通用的（例如通用的语言模型、图像模型）。特征提取的过程就是冗余信息删减聚合的过程</strong>。如果不能通用，那退一步特征最好能提取针对下游任务有区分性的潜在因子，因子和任务目标之间最好有简单关系（如线性关系）</li>
-</ul>
-</li>
-<li>“In order to expand the scope and ease of applicability of machine learning, it would be highly desirable to make learning algorithms <strong>less dependent on feature engineering</strong>, so that novel applications could be constructed faster, and more importantly, to <strong>make progress towards Artificial Intelligence</strong> (AI). An AI must fundamentally <em>understand the world around us</em>, and we argue that this can only be achieved if it can learn to identify and disentangle the underlying explanatory factors hidden in the observed milieu of <strong>low-level sensory data</strong>.” P1<ul>
-<li>借助专家经验的特征工程能一定程度描述数据的内在结构，但真正的AI应该是解耦低等级的感官数据中的影响因子，从而了解这个世界的</li>
-</ul>
-</li>
-<li>“In the case of probabilistic models, a good representation is often one that captures the posterior distribution of the <strong>underlying explanatory factors</strong> for the observed input.” P1<ul>
-<li>对于概率模型，一个好的表征能够提取观察到的输入数据中的潜在影响因子。</li>
-</ul>
-</li>
-<li>AI中的表示学习中的先验：<ul>
-<li>平滑性（smoothness): x ≈ y generally implies f(x) ≈ f(y)</li>
-<li>解耦（ Multiple explanatory factors）</li>
-<li>层次化的组织方式（A hierarchical organization of explanatory factors）：越抽象的特征处于越高层</li>
-<li>半监督（semi-supervised learning）:有一些解释X分布的因子也能解释Y的分布，基于这个假设，对于P(X)有用的表征对P(Y|X)也有用。所以note2vec的embeding才可以用于下游任务。但这个假设并不强，也就是用在下游任务不一定效果好</li>
-<li>通用性（Shared factors across tasks）：能在不同的任务中共享一些因子</li>
-<li>自然的聚集性（Natural clustering）</li>
-</ul>
-</li>
-</ul>
-<h2 id="Chen-2018-A-Tutorial-on-Network-Embeddings"><a href="#Chen-2018-A-Tutorial-on-Network-Embeddings" class="headerlink" title="Chen,2018,A Tutorial on Network Embeddings"></a>Chen,2018,A Tutorial on Network Embeddings</h2><p>Chen, H.; Perozzi, B.; Al-Rfou, R.; Skiena, S. A Tutorial on Network Embeddings. <em>arXiv:1808.02590 [cs]</em> <strong>2018</strong>.</p>
-<ul>
-<li><p>模型分类：unsupervised NE(以deepwalk为代表的无监督方法);  attributed NE(网络结构信息+节点和边的属性学习节点表征); Heterogeneous NE(从有多类节点或边的网络中学习表征)</p>
-</li>
-<li><p>NE的应用</p>
-<ul>
-<li><p>知识图谱（Knowledge Representation）：GenVector(2015), PDF2Vec(2016)</p>
-</li>
-<li><p>推荐（recommender system）</p>
-<p>Chih-Ming Chen, Po-Chuan Chien, Yu-Ching Lin, Ming-Feng Tsai, and Yi-Hsuan Yang. Ex- ploiting latent social listening representations for music recommendations. In Proc Ninth ACM Int. Conf. Recommender Syst. Poster, 2015</p>
-<p>Chih-Ming Chen, Ming-Feng Tsai, Yu-Ching Lin, and Yi-Hsuan Yang. Query-based music recommendations via preference embedding. In Proceedings of the 10th ACM Conference on Recommender Systems, pages 79–82. ACM, 2016.</p>
-</li>
-<li><p>NLP: PLE(2016), CANE(2017),</p>
-<p>Hanyin Fang, Fei Wu, Zhou Zhao, Xinyu Duan, Yueting Zhuang, and Martin Ester. Community-based question answering via heterogeneous social network learning. In Thirtieth AAAI Conference on Artificial Intelligence, 2016.</p>
-<p>Zhou Zhao, Qifan Yang, Deng Cai, Xiaofei He, and Yueting Zhuang. Expert finding for community-based question answering via ranking metric network learning. In IJCAI, pages 3000–3006, 2016.</p>
-</li>
-<li><p>社会关系（social network analysis）</p>
-<p>Bryan Perozzi and Steven Skiena. Exact age prediction in social networks. In Proceedings of the 24th International Conference on World Wide Web, pages 91–92. ACM, 2015.</p>
-<p>Cheng Yang, Maosong Sun, Wayne Xin Zhao, Zhiyuan Liu, and Edward Y Chang. A neural network approach to joint modeling social networks and mobile trajectories. arXiv preprint arXiv:1606.08154, 2016.</p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="精读文献笔记"><a href="#精读文献笔记" class="headerlink" title="精读文献笔记"></a>精读文献笔记</h1><h1 id="杂七杂八的comment"><a href="#杂七杂八的comment" class="headerlink" title="杂七杂八的comment"></a>杂七杂八的comment</h1><ul>
-<li>无监督学习侧重于学习数据的内在关系、结构，比如clustering、grouping、density estimation, or anomaly detection等等，而自监督是根据数据集本身生成标签</li>
-<li>表示学习领域的会议：ICML（ International Conference on Learning Representations）</li>
-</ul>
-<h1 id="文献总结"><a href="#文献总结" class="headerlink" title="文献总结"></a>文献总结</h1><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>[1]Bengio, Y.; Courville, A.; Vincent, P. Representation Learning: A Review and New Perspectives. <em>arXiv:1206.5538 [cs]</em> <strong>2014</strong>.【done】</p>
-<p>[2] <a target="_blank" rel="noopener" href="https://www.cxyzjd.com/article/weixin_42137700/106039656">图灵奖得主Bengio和LeCun称自监督学习可使AI达到人类智力水平</a>  【done】</p>
-<p>[3] <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1523877">图灵奖得主LeCun力推无监督学习：要重视基于能量的学习方法</a> 【done】</p>
-<p><strong>[4] Weston, J.; Bengio, S.; Usunier, N. Large Scale Image Annotation: Learning to Rank with Joint Word-Image Embeddings. <em>Machine learning</em> 2010, <em>81</em> (1), 21–35.</strong> </p>
-<p><strong>[5] Srivastava, N., &amp; Salakhutdinov, R. R. (2012). Multimodal learning with deep boltzmann machines. <em>Advances in neural information processing systems</em>, <em>25</em>.</strong></p>
-<p>[6] Chen, H.; Perozzi, B.; Al-Rfou, R.; Skiena, S. A Tutorial on Network Embeddings. <em>arXiv:1808.02590 [cs]</em> <strong>2018</strong>. </p>
-<p>[7]   Bryan Perozzi, Rami Al-Rfou, and Steven Skiena. Deepwalk: Online learning of social repre- sentations. In Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining, pages 701–710. ACM, 2014.</p>
-<p>[8] Sami Abu-El-Haija, Bryan Perozzi, Rami Al-Rfou, and Alex Alemi. Watch your step: Learning graph embeddings through attention. arXiv preprint arXiv:1710.09599, 2017.</p>
-<p>[9]  Xiaofei Sun, Jiang Guo, Xiao Ding, and Ting Liu. A general framework for content-enhanced network representation learning. arXiv preprint arXiv:1610.02906, 2016.【图的节点中有文本信息作为arttibute】</p>
-<p>[][12][10]  Jifan Chen, Qi Zhang, and Xuanjing Huang. Incorporate group information to enhance network embedding. In Proceedings of the 25th ACM International on Conference on Information and Knowledge Management, pages 1901–1904. ACM, 2016.  【图中的节点有标签信息】</p>
-<p>[11]  Chih-Ming Chen, Po-Chuan Chien, Yu-Ching Lin, Ming-Feng Tsai, and Yi-Hsuan Yang. Ex- ploiting latent social listening representations for music recommendations. In Proc Ninth ACM Int. Conf. Recommender Syst. Poster, 2015. 【NE在推荐中的应用】</p>
-<p>[12]  Chih-Ming Chen, Ming-Feng Tsai, Yu-Ching Lin, and Yi-Hsuan Yang. Query-based music recommendations via preference embedding. In Proceedings of the 10th ACM Conference on Recommender Systems, pages 79–82. ACM, 2016.【NE在推荐中的应用】</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/02/24/6_%E9%AB%98%E6%95%88tips/marginnote/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/24/6_%E9%AB%98%E6%95%88tips/marginnote/" class="post-title-link" itemprop="url">未命名</a>
+            <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/01_%E6%97%A5%E6%9C%9F%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">01_日期操作</a>
         </h2>
 
         <div class="post-meta">
@@ -322,73 +188,17 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-02-24 13:00:57 / 修改时间：15:16:23" itemprop="dateCreated datePublished" datetime="2022-02-24T13:00:57+08:00">2022-02-24</time>
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:47:49" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
             </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>导出word的大纲，用word打开，完美！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/02/24/6_%E9%AB%98%E6%95%88tips/Zotero%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E6%96%87%E7%8C%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/24/6_%E9%AB%98%E6%95%88tips/Zotero%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E6%96%87%E7%8C%AE/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-24 12:15:48" itemprop="dateCreated datePublished" datetime="2022-02-24T12:15:48+08:00">2022-02-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-25 12:04:40" itemprop="dateModified" datetime="2022-02-25T12:04:40+08:00">2022-02-25</time>
-              </span>
+            </span>
 
           
 
@@ -401,76 +211,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>[TOC]</p>
-<h1 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h1><p>现在 Zotero 有两种主流的同步方式</p>
-<ul>
-<li>WebDAV 方式</li>
-<li>Zotfile+Onedriver 方式</li>
-</ul>
-<p>两种同步方式源于对文件管理的不同：</p>
-<p>第一种方式：如果直接把论文文件拖入 Zotero 中，它会在数据文件夹自动拷贝一份并建立无意义的文件夹。而 WebDAV 方式就是直接同步数据文件夹。</p>
-<p>第二种方式：由于第一种文件存储方式的原因，拷贝一份浪费空间，也不便查找。因此 Zotfile+Onedriver 同步方式是个人（强迫症）推荐的。Zotfile 用来管理文件的存储路径而 onedriver 则用来同步文件本身。</p>
-<p>两者选择一种即可，如何选择呢？</p>
-<p>如果你完全使用 Zotero 管理论文不在意本地文件夹，那么 WebDAV 方式同步论文就很方便，同时还可以支持移动端预览。如果你忽略文件夹的问题，你会发现这种方式省心省力。</p>
-<p>如果你还想使用本地文件夹管理，zotero 仅仅作为写论文时导入方便那么 Zotfile+Onedrive 的方式最合适（本人也习惯使用这种方式）</p>
-<h2 id="WebDAV-方式"><a href="#WebDAV-方式" class="headerlink" title="WebDAV 方式"></a>WebDAV 方式</h2><p>选用坚果云进行同步配置</p>
-<ul>
-<li>申请坚果云账号 www.jianguoyun.com</li>
-<li>在个人网盘页面右上角账户名找到“帐户信息”-“安全选项”</li>
-<li>在第三方应用管理中添加应用，应用名称随意</li>
-</ul>
-<p>zotero 客户端</p>
-<ul>
-<li>编辑-首选项-同步</li>
-<li>数据同步登录 zotero 账号即可</li>
-<li>文件同步中选择 WebDAV</li>
-<li>URL：使用刚刚坚果云给的服务器地址 dav.jianguoyun.com/dav</li>
-<li>用户名：使用坚果云账号</li>
-<li>密码：使用刚刚坚果云给的的应用密码</li>
-</ul>
-<h2 id="ZotFile-OneDriver"><a href="#ZotFile-OneDriver" class="headerlink" title="ZotFile+OneDriver"></a>ZotFile+OneDriver</h2><p>上文<strong>配置路径</strong>中提到由于 Zotero 下载的文件或者直接通过拖动导入的文件会随机建立文件夹管理。ZotFile 可以转换成正常文件夹。</p>
-<p>下载地址：<a target="_blank" rel="noopener" href="http://zotfile.com/">http://zotfile.com/</a></p>
-<p>在“工具”-“插件”中进行安装</p>
-<h3 id="配置路径"><a href="#配置路径" class="headerlink" title="配置路径"></a>配置路径</h3><p>现存的论文文件可以直接通过拖动到 zotero 中，但是 zotero 会拷贝一份论文文件到数据存储路径并且存储文件夹命名是随机字符。不方便本地管理。</p>
-<p>因此推荐使用导入文件链接的形式导入论文。在此之前</p>
-<ul>
-<li>在设置界面选择“高级”-“文件和文件夹”</li>
-<li>链接附件的根目录设定为你论文存储的最最最根目录，本人使用的是 onedrive 文件夹“E:\下载\OneDrive”。</li>
-<li>设定为相对路径（方便同步）</li>
-</ul>
-<p>设定完成之后就可以通过链接导入。</p>
-<p>如果你在另一台电脑（PC-B）上也是用 onedrive，那么论文文件就可以同步，同时由于我们使用的相对路径，只要在另一台电脑（PC-B）上 zotero 设定“链接附件的根目录”也为这台电脑（PC-B）的 onedrive 根路径，那么 zotero 中也可以直接双击打开附件。</p>
-<h3 id="分类同步配置"><a href="#分类同步配置" class="headerlink" title="分类同步配置"></a>分类同步配置</h3><ul>
-<li><strong>“工具”-“zotfile preference”</strong>打开设置界面</li>
-<li>General Setting 中第一个路径看作你将使用 zotero 下载文件或者拖动文件时的缓存路径</li>
-<li>第二个路径就是你常用的论文文件存储的根路径。（“E:\下载\OneDrive”）</li>
-<li>配置完成后可以测试随意拖动一个文件到 zetero 的分类条目中，zotero 会私自建立乱码文件夹。然后右键条目 Manage attachments-rename attachments 。Zotfile 会自动在刚才设定的根目录根据你的分类建立文件夹并且讲论文文件放置到该目录下并在条目中设定文件链接。</li>
-<li>这样就保持了你文件夹存储方式和 zotero 分类标签的同步</li>
-<li>即使你在 zotero 移动你的论文分类标签，只需要重新执行 rename attachments 就可以再次整理本地文件夹</li>
-<li>你也可以在 Renaming Rules 设定重命名的格式</li>
-</ul>
-<h3 id="几点注意"><a href="#几点注意" class="headerlink" title="几点注意"></a>几点注意</h3><ul>
-<li>如果你选用 WebDAV 方式进行同步，那么如果想在移动端（iPad,手机）查看那么使用 <strong>PaperShip</strong>可以直接同步附件文件你可以理解成移动端的 Zotero</li>
-<li>如果你使用 ZotFile+ 同步盘的方式，如果想在移动端阅读那么可以直接下载你同步盘的客户端，或者使用 zotero 的 Table 功能，移动端 PDF Expert 同步查看</li>
-</ul>
-<h1 id="协同"><a href="#协同" class="headerlink" title="协同"></a>协同</h1><h2 id="与-Word-协同"><a href="#与-Word-协同" class="headerlink" title="与 Word 协同"></a>与 Word 协同</h2><p>使用 word 书写论文配合 zotero 可以方便管理引用</p>
-<ul>
-<li>首先在 zotero 设置界面“引用”-“文字处理软件”安装 word 插件。</li>
-<li>在 word 的 zotero 插件选项卡中，在你想插入的文章位置选择 Add/Edit Citation，选择需要的论文样式，如果没有可以在线搜索。选择要引用的论文就可以了。</li>
-<li>之后在文章末尾，点击 Add/Edit Bibliography 插入参考文献具体内容。</li>
-</ul>
-<h2 id="与-GoogleScholar-协同"><a href="#与-GoogleScholar-协同" class="headerlink" title="与 GoogleScholar 协同"></a>与 GoogleScholar 协同</h2><p>有时候我们需要找一些参考文献，但是我们不需要下载文件内容只是知道引用格式即可。前提已经安装好 Zotero chrome 插件。</p>
-<ul>
-<li>在 Google Scholar 设置界面，找到“参考书目管理软件”选择显示导入 EndNotes(必须)，点击保存。</li>
-<li>我们随便搜索论文，在每个条目下面有个导入 Endnote 按钮，点击会弹出对话框就可以使用 zotero 保存这篇文章的引用了。</li>
-<li>同时你也可以点击 chrome 中的 zotero 插件图标多选保存，如果你在 zotero 设置了保存条目时自动附加 PDF 文档（常规-文字处理），他也会帮你把文件下载下来。</li>
-</ul>
-<h2 id="与-Tablet-协同"><a href="#与-Tablet-协同" class="headerlink" title="与 Tablet 协同"></a>与 Tablet 协同</h2><p>此方法是适用于 ZotFile+ 同步盘文件管理方式。</p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAxNzgyMDg0MQ==&amp;mid=2650457410&amp;idx=1&amp;sn=1198b535f1624ff63ff2f544c11e801c&amp;chksm=83d1d884b4a65192a238fd3fc2b0c4241b8768c2fc4e6ab927b8b669d99dcdd185278a83b3ee&amp;scene=158#rd">https://mp.weixin.qq.com/s?__biz=MzAxNzgyMDg0MQ==&amp;mid=2650457410&amp;idx=1&amp;sn=1198b535f1624ff63ff2f544c11e801c&amp;chksm=83d1d884b4a65192a238fd3fc2b0c4241b8768c2fc4e6ab927b8b669d99dcdd185278a83b3ee&amp;scene=158#rd</a></p>
-<h2 id="与Latex协同"><a href="#与Latex协同" class="headerlink" title="与Latex协同"></a>与Latex协同</h2><p>有时候我们用word写完论文需要转为latex格式，其中引用部分很头疼。可以使用下面的工具直接从word中提取引用为bibtex格式，也可以选择在zotero选中引用论文，然后你可以将选中论文拖动到一个单独的分类下面，之后就可以用zotero自带的导出功能生成bibtex文件</p>
-<p><a target="_blank" rel="noopener" href="https://rintze.zelle.me/ref-extractor/">https://rintze.zelle.me/ref-extractor/</a></p>
-<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/104848524">https://zhuanlan.zhihu.com/p/104848524</a> </p>
-
+          <p>sql相关的日期操作</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/01_%E6%97%A5%E6%9C%9F%E6%93%8D%E4%BD%9C/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -489,7 +238,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/12/09/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9D%8E%E5%AE%8F%E6%AF%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -503,204 +252,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/09/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%9D%8E%E5%AE%8F%E6%AF%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-12-09 19:52:36" itemprop="dateCreated datePublished" datetime="2021-12-09T19:52:36+08:00">2021-12-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-17 14:37:22" itemprop="dateModified" datetime="2021-12-17T14:37:22+08:00">2021-12-17</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>[TOC]</p>
-<h1 id="PART1"><a href="#PART1" class="headerlink" title="PART1"></a>PART1</h1><p><strong>什么是强化学习</strong></p>
-<p>强化学习决策过程包括4个环节：agent观察环境（observation）—-agent做出动作（action）——动作会引起环境的变化 —- agent得到奖励（reward）—-agent再次观察环境（observation）。强化学习就是通过学习实现agent的决策序列收益（reward）最大。</p>
-<p><strong>强化学习的分类</strong></p>
-<p>policy based, grade based, model based。 这三种方式其实是不同的reward方式</p>
-<h1 id="PART-2"><a href="#PART-2" class="headerlink" title="PART 2"></a>PART 2</h1><h1 id="PART-3"><a href="#PART-3" class="headerlink" title="PART 3"></a>PART 3</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/09/28/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/tensroflow%E5%90%84%E7%A7%8D%E6%A8%A1%E5%9E%8B%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/28/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/tensroflow%E5%90%84%E7%A7%8D%E6%A8%A1%E5%9E%8B%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-28 10:44:23" itemprop="dateCreated datePublished" datetime="2021-09-28T10:44:23+08:00">2021-09-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-29 10:33:17" itemprop="dateModified" datetime="2021-09-29T10:33:17+08:00">2021-09-29</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/128546377">https://zhuanlan.zhihu.com/p/128546377</a></p>
-<p>[TOC]</p>
-<h1 id="Tensorflow笔记：模型保存、加载和Fine-tune"><a href="#Tensorflow笔记：模型保存、加载和Fine-tune" class="headerlink" title="Tensorflow笔记：模型保存、加载和Fine-tune"></a>Tensorflow笔记：模型保存、加载和Fine-tune</h1><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/chong-yu-4-73"><img src="pics/tensroflow各种模型保存和加载/v2-da8a1fcd82fbe5f7206ac58cee088681_xs.jpg" alt="锟斤拷"></a></p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/chong-yu-4-73">锟斤拷</a></p>
-<p>50 人赞同了该文章</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>尝试过迁移学习的同学们都知道，Tensorflow的模型保存加载有不同格式，使用方法也不一样，新手会觉得乱七八糟，所以本文做一个梳理。从模型的保存到加载，再到使用，力求理清这个流程。</p>
-<h2 id="1-保存"><a href="#1-保存" class="headerlink" title="1. 保存"></a>1. 保存</h2><p>Tensorflow的保存分为三种：1. checkpoint模式；2. pb模式；3. saved_model模式。</p>
-<h3 id="1-1-先假设有这么个模型"><a href="#1-1-先假设有这么个模型" class="headerlink" title="1.1 先假设有这么个模型"></a>1.1 先假设有这么个模型</h3><p>首先假定我们已经有了这样一个简单的线性回归网络结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">size = 10</span><br><span class="line"># 构建input</span><br><span class="line">X = tf.placeholder(name=&quot;input&quot;, shape=[None, size], dtype=tf.float32)</span><br><span class="line">y = tf.placeholder(name=&quot;label&quot;, shape=[None, 1], dtype=tf.float32)</span><br><span class="line"># 网络结构</span><br><span class="line">beta = tf.get_variable(name=&quot;beta&quot;, shape=[size, 1], initializer=tf.glorot_normal_initializer())</span><br><span class="line">bias = tf.get_variable(name=&quot;bias&quot;, shape=[1], initializer=tf.glorot_normal_initializer())</span><br><span class="line">pred = tf.add(tf.matmul(X, beta), bias, name=&quot;output&quot;)</span><br><span class="line"># 构建损失</span><br><span class="line">loss = tf.losses.mean_squared_error(y, pred)</span><br><span class="line"># 构建train_op</span><br><span class="line">train_op = tf.train.AdamOptimizer(learning_rate=0.001, beta1=0.9, beta2=0.999, epsilon=1e-8).minimize(loss)</span><br></pre></td></tr></table></figure>
-<p>我们来简单初始化，然后跑一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch_size=8的batch</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"># 先看一下pred，在训练一个step，在看一下pred是否有变化</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br><span class="line">    sess.run(train_op, feed_dict=&#123;X:feed_X, y:feed_y&#125;)</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
-<p>可以看到初始化的输出y值，以及训练1个step之后的模型输出发生了变化。</p>
-<h3 id="1-2-checkpoint模式"><a href="#1-2-checkpoint模式" class="headerlink" title="1.2 checkpoint模式"></a>1.2 checkpoint模式</h3><p>checkpoint模式将网络和变量数据分开保存，保存好的模型长这个样子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|--checkpoint_dir</span><br><span class="line">|    |--checkpoint</span><br><span class="line">|    |--test-model-550.meta</span><br><span class="line">|    |--test-model-550.data-00000-of-00001</span><br><span class="line">|    |--test-model-550.index</span><br></pre></td></tr></table></figure>
-<p>checkpoint_dir就是保存时候指定的路径，路径下会生成4个文件。其中.meta文件（其实就是pb格式文件）用来保存模型结构，.data和.index文件用来保存模型中的各种变量，而checkpoint文件里面记录了最新的checkpoint文件以及其它checkpoint文件列表，在inference时可以通过修改这个文件，指定使用哪个model。那么要如何保存呢？</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 只有sess中有变量的值，所以保存模型的操作只能在sess内</span><br><span class="line">checkpoint_dir = &quot;./model_ckpt/&quot;</span><br><span class="line">saver = tf.train.Saver(max_to_keep=1)    # saver 不需要在sess内</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    saver.save(sess, checkpoint_dir + &quot;test-model&quot;,global_step=i, write_meta_graph=True)</span><br></pre></td></tr></table></figure>
-<p>实际就两步。执行之后就可以在checkpoint_dir下面看到前面提到的4个文件了。（这里的max_to_keep是指本次训练在checkpoint_dir这个路径下最多保存多少个模型文件，新模型会覆盖旧模型以节省空间）。</p>
-<h3 id="1-3-pb模式"><a href="#1-3-pb模式" class="headerlink" title="1.3 pb模式"></a>1.3 pb模式</h3><p>pb模式保存的模型，只有在目标路径pb_dir = “./model_pb/“下孤孤单单的一个文件”test-model.pb”，这也是它相比于其他几种方式的优势，简单明了。假设还是前面的网络结构，如果想保存成pb模式该怎么做呢？</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 只有sess中有变量的值，所以保存模型的操作只能在sess内</span><br><span class="line">pb_dir = &quot;./model_pb/&quot;</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    graph_def = tf.get_default_graph().as_graph_def()</span><br><span class="line">    # 这里是指定要冻结并保存到pb模型中的变量</span><br><span class="line">    var_list = [&quot;input&quot;, &quot;label&quot;, &quot;beta&quot;, &quot;bias&quot;, &quot;output&quot;]   # 如果有name_scope，要写全名，如:&quot;name_scope/beta&quot; </span><br><span class="line">    constant_graph = tf.graph_util.convert_variables_to_constants(sess, graph_def, var_list)</span><br><span class="line">    with tf.gfile.FastGFile(pb_dir + &quot;test-model.pb&quot;, mode=&#x27;wb&#x27;) as f:</span><br><span class="line">        f.write(constant_graph.SerializeToString())</span><br></pre></td></tr></table></figure>
-<p>其实pb模式本质上就是把变量先冻结成常数，然后保存到图结构中。这样就可以直接加载图结构和“参数”了。</p>
-<h3 id="1-4-saved-model模式"><a href="#1-4-saved-model模式" class="headerlink" title="1.4 saved_model模式"></a>1.4 saved_model模式</h3><p>虽然saved_model也支持模型加载，并进行迁移学习。可是不得不说<strong>saved_model几乎就是为了部署而生的</strong>，因为依靠tf.Serving部署模型时要求模型格式必须是saved_model格式。除此以外saved_model还有另外一个优点就是可以跨语言读取，所以本文也介绍一下这种模式的保存于加载。<strong>本文样例的保存在参数设置上会考虑到方便部署</strong>。保存好的saved_model结构长这个样子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">|--saved_model_dir</span><br><span class="line">|    |--1</span><br><span class="line">|        |--saved_model.pb</span><br><span class="line">|        |--variables</span><br><span class="line">|            |--variables.data-00000-of-00001</span><br><span class="line">|            |--variables.index</span><br></pre></td></tr></table></figure>
-<p>保存时需要将保存路径精确到”saved_model_dir/1/ “，会在下面生成一个pb文件，以及一个variables文件夹。其中“1”文件夹是表示版本的文件夹，应该是一个整数。人为设定这个“版本文件夹”的原因是，在模型部署的时候需要将模型位置精确到saved_model_dir，tf.Serving会在saved_model_dir下搜索版本号最大的路径下的模型进行服务。模型保存的方法是</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 只有sess中有变量的值，所以保存模型的操作只能在sess内</span><br><span class="line">version = &quot;1/&quot;</span><br><span class="line">saved_model_dir = &quot;./saved_model/test-model-dir/&quot;</span><br><span class="line">builder = tf.saved_model.builder.SavedModelBuilder(saved_model_dir + version)</span><br><span class="line"></span><br><span class="line"># 构建 signature</span><br><span class="line">signature = tf.saved_model.signature_def_utils.build_signature_def(</span><br><span class="line">        # 获取输入输出的信息（shape,dtype等），在部署服务后请求带来的数据会喂到inputs中，服务吐的结果会以outputs的形式返回</span><br><span class="line">        inputs=&#123;&quot;input&quot;: tf.saved_model.utils.build_tensor_info(X)&#125;,          # 获取输入tensor的信息，这个字典可以有多个key-value对</span><br><span class="line">        outputs=&#123;&quot;output&quot;: tf.saved_model.utils.build_tensor_info(pred)&#125;,     # 获取输出tensor的信息，这个字典可以有多个key-value对</span><br><span class="line">        method_name=tf.saved_model.signature_constants.PREDICT_METHOD_NAME    # 就是&#x27;tensorflow/serving/predict&#x27;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 保存到 saved_model</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    builder.add_meta_graph_and_variables(sess, </span><br><span class="line">        tags=[tf.saved_model.tag_constants.SERVING],         # 如果用来部署，就这样写。否则可以写其他，如[&quot;test-model&quot;]</span><br><span class="line">        signature_def_map=&#123;&quot;serving_default&quot;: signature&#125;,    # 如果用来部署，字典的key必须是&quot;serving_default&quot;。否则可以写其他</span><br><span class="line">    )</span><br><span class="line">    builder.save()</span><br></pre></td></tr></table></figure>
-<p>因为涉及到部署，比较复杂，这里不得不说明一下。</p>
-<p>在保存之前需要构建一个signature，用来构造signature的build_signature_def函数有三个参数：inputs、outputs、method_name。其中inputs和outputs分别用来获取输入输出向量的信息，在部署服务后来的数据会喂到inputs中，服务吐的结果会以outputs的形式返回；而method_name如果用来部署模型的话需要设置为”tensorflow/serving/predict”, “tensorflow/serving/classify”, “tensorflow/serving/regress” 中的一个。如果不是用来服务，就可以写一个其他的。</p>
-<p>在保存的时候，除了刚刚构建的signature，还需要提供一个tags 参数，如果用来部署的话需要填[tf.saved_model.tag_constants.SERVING]，否则可以填其他。另外如果用来部署模型的话，signature_def_map的key必须是”serving_default”。</p>
-<h2 id="2-加载"><a href="#2-加载" class="headerlink" title="2. 加载"></a>2. 加载</h2><p>下面说如何加载，checkpoint和pb两种模式的加载方法也不一样。下面分别说</p>
-<h3 id="2-1-checkpoint加载（略烦）"><a href="#2-1-checkpoint加载（略烦）" class="headerlink" title="2.1 checkpoint加载（略烦）"></a>2.1 checkpoint加载（略烦）</h3><p>checkpoint模式的网络结构和变量是分来保存的，加载的时候也需要分别加载。而网络结构部分你有两种选择：1. 加载.meta文件中的结构， 2. 手动重新写一遍原样结构。</p>
-<p>我们先说后一个，如果你不光有模型文件，还有源码，可以把源码构建模型那部分复制过来，然后只加载变量就好，这是手动重新搭建网络结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">size = 10</span><br><span class="line"># 构建input</span><br><span class="line">X = tf.placeholder(name=&quot;input&quot;, shape=[None, size], dtype=tf.float32)</span><br><span class="line">y = tf.placeholder(name=&quot;label&quot;, shape=[None, 1], dtype=tf.float32)</span><br><span class="line"># 网络结构</span><br><span class="line">beta = tf.get_variable(name=&quot;beta&quot;, shape=[size, 1], initializer=tf.glorot_normal_initializer())</span><br><span class="line">bias = tf.get_variable(name=&quot;bias&quot;, shape=[1], initializer=tf.glorot_normal_initializer())</span><br><span class="line">pred = tf.sigmoid(tf.matmul(X, beta) + bias, name=&quot;output&quot;)</span><br></pre></td></tr></table></figure>
-<p>然后加载变量：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch_size=8的batch</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"># 用加载出来的参数，跑一下pred</span><br><span class="line">saver = tf.train.Saver()</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    saver.restore(sess, tf.train.latest_checkpoint(&#x27;./model_ckpt/&#x27;))    # 加载模型中的变量</span><br><span class="line">    # sess.run(tf.global_variables_initializer())    # 重新初始化一下参数</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
-<p>所以手动构建网络结构后，只需要saver.restore一下，就可以加载模型中的参数。</p>
-<p>另外，如果将上面的sess.run(tf.global_variables_initializer())注释掉，那每次运行的结果都一样，可见此时模型中的变量确实是加载进来的变量。如果取消注释这一句，每次跑出来的结果都不同，因为加载进来的变量又被初始化函数覆盖了，所以每次都不一样。这也说明了：<strong>通过checkpoint这种模式加载进来的变量，依然是变量，而且是trainable=True的</strong>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(tf.trainable_variables())</span><br></pre></td></tr></table></figure>
-<p>结果为：[<tf.Variable 'beta:0' shape=(10, 1) dtype=float32_ref>, <tf.Variable 'bias:0' shape=(1,) dtype=float32_ref>]</p>
-<p>那如果我懒，活着没有源码，无法手动构建网络呢？就需要从.meta文件里导入网络结构了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 不手动构建，从文件中加载网络结构</span><br><span class="line">import numpy as np</span><br><span class="line">import tensorflow as tf</span><br><span class="line">size = 10</span><br><span class="line"># 加载网络</span><br><span class="line">saver=tf.train.import_meta_graph(&#x27;./model_ckpt/test-model-0.meta&#x27;)</span><br></pre></td></tr></table></figure>
-<p>什么？这就完了？网络结构在哪呢？先别急，这种方法就是这样，网络结构已经加载进来了，那怎么用呢？</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"># 下面我们来跑一下 pred</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    saver.restore(sess, tf.train.latest_checkpoint(&#x27;./model_ckpt/&#x27;))  # 加载模型变量</span><br><span class="line">    graph = tf.get_default_graph()</span><br><span class="line">    X = graph.get_tensor_by_name(&quot;input:0&quot;)        # 根据tensor名字获取tensor变量</span><br><span class="line">    pred = graph.get_tensor_by_name(&quot;output:0&quot;)    # 根据tensor名字获取tensor变量</span><br><span class="line">    # sess.run(tf.global_variables_initializer())  # 是否重新初始化变量</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
-<p>其实前面把网络结构加载进来之后，如果需要对某tensor进行操作的话（run、feed、concat等等）需要通过tensor的name获取成变量。同样通过sess.run(tf.global_variables_initializer())可以看出，加载进来的变量，还是变量。</p>
-<p>总结一下：手动构建网络结构的话，缺点是麻烦！优点是你想用什么变量直接用就行；而通过.meta文件来加载网络结构，优点是省事，缺点是如果想用某个变量，必须通过name获取变量。</p>
-<h3 id="2-2-pb模式加载"><a href="#2-2-pb模式加载" class="headerlink" title="2.2 pb模式加载"></a>2.2 pb模式加载</h3><p>相比之下，pb模式的加载旧没那么复杂，因为他的网络结构和数据是存在一起的。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># 直接从pb获取tensor</span><br><span class="line">pb_dir = &quot;./model_pb/&quot;</span><br><span class="line">with tf.gfile.FastGFile(pb_dir + &quot;test-model.pb&quot;, &quot;rb&quot;) as f:</span><br><span class="line">    graph_def = tf.GraphDef()</span><br><span class="line">    graph_def.ParseFromString(f.read())    # 从pb文件中导入信息</span><br><span class="line">    # 从网络中通过tensor的name获取为变量</span><br><span class="line">    X, pred = tf.import_graph_def(graph_def, return_elements=[&quot;input:0&quot;, &quot;output:0&quot;])</span><br></pre></td></tr></table></figure>
-<p>现在我们就已经有了X和pred，下面来跑一个pred吧</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"># 跑一下 pred</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    # sess.run(tf.global_variables_initializer())</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
-<p>就这么简单！从pb中获取进来的“变量”就可以直接用。为什么我要给变量两个字打上引号呢？因为在pb模型里保存的其实是常量了，取消注释sess.run(tf.global_variables_initializer())后，多次运行的结果还是一样的。此时的“beta:0”和”bias:0”已经不再是variable，而是constant。<strong>这带来一个好处：读取模型中的tensor可以在Session外进行。相比之下checkpoint只能在Session内读取模型，对Fine-tune来说就比较麻烦。</strong></p>
-<h3 id="2-3-saved-model模式加载"><a href="#2-3-saved-model模式加载" class="headerlink" title="2.3 saved_model模式加载"></a>2.3 saved_model模式加载</h3><p>前两种加载方法想要获取tensor，要么需要手动搭建网络，要么需要知道tensor的name，如果用模型和训模型的不是同一个人，那在没有源码的情况下，就不方便获取每个tensor的name。好在saved_model可以通过前面提到的signature_def_map的方法获取tensor。先看一下直接通过tensor的name获取变量的加载方式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch</span><br><span class="line">size = 10</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"></span><br><span class="line">saved_model_dir = &quot;./saved_model/1/&quot;</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    # tf.saved_model.tag_constants.SERVING == &quot;serve&quot;，这里load时的tags需要和保存时的tags一致</span><br><span class="line">    meta_graph_def = tf.saved_model.loader.load(sess, tags=[&quot;serve&quot;], export_dir=saved_model_dir)</span><br><span class="line">    graph = tf.get_default_graph()</span><br><span class="line">    X = graph.get_tensor_by_name(&quot;input:0&quot;)</span><br><span class="line">    pred = graph.get_tensor_by_name(&quot;output:0&quot;)</span><br><span class="line">    # sess.run(tf.global_variables_initializer())</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
-<p>这里和checkpoint的加载过程很相似，先一个load过程，然后get_tensor_by_name。这需要我们事先知道tensor的name。如果有了signature的信息就不一样了：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch</span><br><span class="line">size = 10</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_y = np.ones((8,1)).astype(np.float32)</span><br><span class="line"></span><br><span class="line">saved_model_dir = &quot;./saved_model/1/&quot;</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    # tf.saved_model.tag_constants.SERVING == &quot;serve&quot;，这里load时的tags需要和保存时的tags一致</span><br><span class="line">    meta_graph_def = tf.saved_model.loader.load(sess, tags=[&quot;serve&quot;], export_dir=saved_model_dir)</span><br><span class="line">    signature = meta_graph_def.signature_def</span><br><span class="line">    # print(signature)    # signature 内包含了保存模型时，signature_def_map 的信息</span><br><span class="line">    X = signature[&quot;serving_default&quot;].inputs[&quot;input&quot;].name</span><br><span class="line">    pred = signature[&quot;serving_default&quot;].outputs[&quot;output&quot;].name</span><br><span class="line">    print(sess.run(pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
-<p>这时即使我们没有源码，也可以通过print(signature)获知关于tensor的信息，如上就展示了没有源码时，通过signature获取tensor的name，并获取tensor的过程。这里输出的signature长这样：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"># signature长什么样</span><br><span class="line">print(signature)</span><br><span class="line"></span><br><span class="line"># 输出</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">INFO:tensorflow:Restoring parameters from ./saved_model/1/variables/variables</span><br><span class="line">&#123;&#x27;serving_default&#x27;: inputs &#123;</span><br><span class="line">  key: &quot;input&quot;</span><br><span class="line">  value &#123;</span><br><span class="line">    name: &quot;input:0&quot;</span><br><span class="line">    dtype: DT_FLOAT</span><br><span class="line">    tensor_shape &#123;</span><br><span class="line">      dim &#123;</span><br><span class="line">        size: -1</span><br><span class="line">      &#125;</span><br><span class="line">      dim &#123;</span><br><span class="line">        size: 10</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">outputs &#123;</span><br><span class="line">  key: &quot;output&quot;</span><br><span class="line">  value &#123;</span><br><span class="line">    name: &quot;output:0&quot;</span><br><span class="line">    dtype: DT_FLOAT</span><br><span class="line">    tensor_shape &#123;</span><br><span class="line">      dim &#123;</span><br><span class="line">        size: -1</span><br><span class="line">      &#125;</span><br><span class="line">      dim &#123;</span><br><span class="line">        size: 1</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">method_name: &quot;tensorflow/serving/predict&quot;</span><br><span class="line">&#125;</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="3-Fine-tune"><a href="#3-Fine-tune" class="headerlink" title="3. Fine-tune"></a>3. Fine-tune</h2><p>最后不管保存还是加载模型，多数情况都是为了能够进行迁移学习。其实大部分无非就是将模型加载进来之后，使用某一个节点的值，作为我们后续模型的输入呗。比如我要用前面的模型结果作为特征通过一元罗辑回归去预测z，这样新的网络结构就是这样：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line"># 加载模型部分，直接从pb获取X和pred</span><br><span class="line">pb_dir = &quot;./model_pb/&quot;</span><br><span class="line">with tf.gfile.FastGFile(pb_dir + &quot;test-model.pb&quot;, &quot;rb&quot;) as f:</span><br><span class="line">    graph_def = tf.GraphDef()</span><br><span class="line">    graph_def.ParseFromString(f.read())</span><br><span class="line">    X, pred = tf.import_graph_def(graph_def, return_elements=[&quot;input:0&quot;, &quot;output:0&quot;])</span><br><span class="line"></span><br><span class="line"># 下面是 Fine-tune 部分</span><br><span class="line"># 新的 label</span><br><span class="line">z = tf.placeholder(name=&quot;new_label&quot;, shape=[None, 1], dtype=tf.float32)</span><br><span class="line"># 新的参数</span><br><span class="line">new_beta = tf.get_variable(name=&quot;new_beta&quot;, shape=[1], initializer=tf.glorot_normal_initializer())</span><br><span class="line">new_bias = tf.get_variable(name=&quot;new_bias&quot;, shape=[1], initializer=tf.glorot_normal_initializer())</span><br><span class="line"># 一元罗辑回归，通过pred去预测z</span><br><span class="line">new_pred = tf.sigmoid(new_beta * pred + new_beta)    # 这种变量不写name的习惯是不好的哦</span><br><span class="line"></span><br><span class="line"># 下面是构建模型的损失函数以及train_op</span><br><span class="line"># log_loss</span><br><span class="line">new_loss = tf.reduce_mean(tf.losses.log_loss(predictions=new_pred, labels=z))</span><br><span class="line"># train_op</span><br><span class="line">train_op = tf.train.AdamOptimizer(learning_rate=0.001, beta1=0.9, beta2=0.999, epsilon=1e-8).minimize(new_loss)</span><br></pre></td></tr></table></figure>
-<p>就是这样，把保存好的模型看作一个黑盒，喂进去X吐出来pred，然后我们直接用pred就好了。</p>
-<p>但是这里存在一个问题，就是只能通过name获取节点。比如这里的new_pred就没有name，那我想要基于这个新模型再次进行Fine-tune的时候，就不能获取这个new_pred，就无法进行Fine-tune。所以大家还是要养成一个好习惯，多给变量起名字，尤其是placeholder！要是连placeholder都没名字，别人就没法用你的模型啦。如果保存的是saved_model，建议一定要设置signature。</p>
-<p>下面来实验一下这个Fine-tune的模型吧：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 假设这是一个batch</span><br><span class="line">feed_X = np.ones((8,size)).astype(np.float32)</span><br><span class="line">feed_z = np.array([[1],[1],[0],[0],[1],[1],[0],[0]]).astype(np.float32)</span><br><span class="line"># 跑一下 new_pred 之后train一个step，在看看 new_pred 有没有改变</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    print(sess.run(new_pred, feed_dict=&#123;X:feed_X&#125;))</span><br><span class="line">    sess.run(train_op,  feed_dict=&#123;X:feed_X, z:feed_z&#125;)</span><br><span class="line">    print(sess.run(new_pred, feed_dict=&#123;X:feed_X&#125;))</span><br></pre></td></tr></table></figure>
-<p>这里补充一下：<strong>通过pb模式导入进来的参数其实是constants，所以在Fine-tune的时候不会变化，而通过checkpoint模式导入进来的参数是variables，在后续Fine-tune的时候是会发生变化的</strong>。具体让不让他trainable就看你的实际需要了。</p>
-<h2 id="4-其他补充"><a href="#4-其他补充" class="headerlink" title="4. 其他补充"></a>4. 其他补充</h2><p>在2.2中，加载pb模型的时候，并不需要把所有的tensor都获取到，只要“一头一尾”即可。因为头（”input:0”）是需要进行feed操作的，而尾（”output:0”）是需要输出，或者在迁移学习中要进行其他操作。至于中间哪些其他不需要进行操作的tensor，可以不获取。</p>
-<p>因为只有pb模式在加载的时候，可以在Session外进行加载，方便Fine-tune。所以个人建议，如果要进行迁移学习，先将模型转化为pb模式。</p>
-<p>其他的想起来在写</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/09/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/iterm%E5%A5%87%E6%B7%AB%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/iterm%E5%A5%87%E6%B7%AB%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">未命名</a>
+            <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">C语言学习</a>
         </h2>
 
         <div class="post-meta">
@@ -711,83 +263,15 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-09-01 11:41:23 / 修改时间：11:44:10" itemprop="dateCreated datePublished" datetime="2021-09-01T11:41:23+08:00">2021-09-01</time>
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:49:44" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
             </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-修改tag名称"><a href="#1-修改tag名称" class="headerlink" title="1.修改tag名称"></a>1.修改tag名称</h1><p>快捷键 ： command+i  ，修改session name。</p>
-<p><img src="pics/iterm奇淫技巧/image-20210901114300463.png" alt="image-20210901114300463" style="zoom:25%;" /></p>
-<p>右键-new tag 现在的tag就能显示自定义名称</p>
-<p><img src="pics/iterm奇淫技巧/image-20210901114353748.png" alt="image-20210901114353748" style="zoom:25%;" /></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/07/14/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-07-14-hexo%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dongdong Wang">
-      <meta itemprop="description" content="从爪印判断，这是头雄狮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凛冬将至">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/14/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-07-14-hexo%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" class="post-title-link" itemprop="url">hexo疑难杂症</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-07-14 22:34:05" itemprop="dateCreated datePublished" datetime="2021-07-14T22:34:05+08:00">2021-07-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-18 19:06:50" itemprop="dateModified" datetime="2021-12-18T19:06:50+08:00">2021-12-18</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">博客配置</span></a>
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
                 </span>
             </span>
 
@@ -802,10 +286,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>记录一下博客使用过程中遇到的问题及解决方案。</p>
+          <p>C语言入门</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/07/14/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-07-14-hexo%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/#more" rel="contents">
+              <a class="btn" href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -829,7 +313,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/06/26/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-06-26-hexo%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E9%85%8D%E7%BD%AE/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/VPN%E6%90%AD%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -843,7 +327,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/06/26/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-06-26-hexo%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">hexo图片路径配置</a>
+            <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/VPN%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">VPN搭建</a>
         </h2>
 
         <div class="post-meta">
@@ -852,23 +336,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-06-26 09:47:25" itemprop="dateCreated datePublished" datetime="2021-06-26T09:47:25+08:00">2021-06-26</time>
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:54:56" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-18 19:07:14" itemprop="dateModified" datetime="2021-12-18T19:07:14+08:00">2021-12-18</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">博客配置</span></a>
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
                 </span>
             </span>
 
@@ -883,10 +361,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>有两种方法解决图片显示问题，通过<code>hexo-asset-image</code>实现和官方推荐的方式</p>
+          <p>科学搭建~~~</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/06/26/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-06-26-hexo%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E9%85%8D%E7%BD%AE/#more" rel="contents">
+              <a class="btn" href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/VPN%E6%90%AD%E5%BB%BA/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -910,7 +388,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/06/23/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-06-23-%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/XGB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -924,7 +402,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/06/23/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-06-23-%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">搭建hexo博客</a>
+            <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/XGB/" class="post-title-link" itemprop="url">XGB</a>
         </h2>
 
         <div class="post-meta">
@@ -933,23 +411,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-06-23 13:02:38" itemprop="dateCreated datePublished" datetime="2021-06-23T13:02:38+08:00">2021-06-23</time>
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:55:10" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-18 19:07:09" itemprop="dateModified" datetime="2021-12-18T19:07:09+08:00">2021-12-18</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">博客配置</span></a>
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
                 </span>
             </span>
 
@@ -964,10 +436,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>记录一下搭建博客的过程。</p>
+          <p>xgb包函数</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/06/23/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-06-23-%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/#more" rel="contents">
+              <a class="btn" href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/XGB/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -991,7 +463,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2021/06/21/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/anaconda+tensorflow%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1005,7 +477,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/06/21/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/" class="post-title-link" itemprop="url">Hierarchical Attention Networks</a>
+            <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/anaconda+tensorflow%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">anaconda+tensorflow安装教程</a>
         </h2>
 
         <div class="post-meta">
@@ -1014,23 +486,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-06-21 09:26:17" itemprop="dateCreated datePublished" datetime="2021-06-21T09:26:17+08:00">2021-06-21</time>
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:49:20" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-28 23:58:25" itemprop="dateModified" datetime="2022-02-28T23:58:25+08:00">2022-02-28</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">论文学习</span></a>
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
                 </span>
             </span>
 
@@ -1045,10 +511,385 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Self-Attention谁先提出的，各文章里写的不一样，<a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention Is All You Need</a>中说是<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1606.01933.pdf">Jakob.2016</a>年提出的，<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1904.02874.pdf">An Attentive Survey of Attention Models</a>中说是<a target="_blank" rel="noopener" href="https://www.aclweb.org/anthology/N16-1174.pdf">Yang et al. 2016</a>，本篇介绍后者。</p>
+          <p>anaconda+tensorflow安装教程</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/06/21/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/#more" rel="contents">
+              <a class="btn" href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/anaconda+tensorflow%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/final_cut_pro%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/final_cut_pro%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">final_cut_pro基础知识</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:50:02" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最常用的FCP操作</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/final_cut_pro%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/awk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/awk/" class="post-title-link" itemprop="url">AWK语法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:49:35" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>AWK工具书</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/awk/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/git%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/git%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">git基础操作笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:50:09" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>git工具书</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/git%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/hdfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/hdfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">hdfs常用命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:50:21" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>hdfs常用操作</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/hdfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/hive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/hive/" class="post-title-link" itemprop="url">hive</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:50:37" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>hive 常用操作</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/hive/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1137,20 +978,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-count">63</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1261,59 +1102,6 @@ if (document.querySelectorAll('pre.mermaid').length) {
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 

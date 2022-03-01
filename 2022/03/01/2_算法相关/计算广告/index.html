@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangdongdong122.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="计算广告">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算广告">
+<meta property="og:url" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="计算广告">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wangdongdong122.github.io/Users/hetianqi/Library/Application%20Support/typora-user-images/image-20210805144947093.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/pics/计算广告/image-20210805152419480.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/pics/计算广告/image-20210805152357961.png">
+<meta property="og:image" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/pics/计算广告/image-20210805152447320.png">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-01T03:59:30.974Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="default">
+<meta property="article:tag" content="算法相关">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangdongdong122.github.io/Users/hetianqi/Library/Application%20Support/typora-user-images/image-20210805144947093.png">
+
+<link rel="canonical" href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算广告 | 凛冬将至</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凛冬将至</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">从简单的例子开始</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算广告
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:59:30" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>计算广告</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="1-好文"><a href="#1-好文" class="headerlink" title="1. 好文"></a>1. 好文</h1><p><a target="_blank" rel="noopener" href="https://borgwang.github.io/adtech/2020/12/09/adtech-buying-type.html">https://borgwang.github.io/adtech/2020/12/09/adtech-buying-type.html</a> </p>
+<h1 id="2-出价模式"><a href="#2-出价模式" class="headerlink" title="2. 出价模式"></a>2. 出价模式</h1><p>转化链路：曝光 M -&gt; 点击 C -&gt; 转化 A -&gt; 消费 P</p>
+<p> 考核出价 ： bidROI</p>
+<p><img src="/Users/hetianqi/Library/Application Support/typora-user-images/image-20210805144947093.png" alt="image-20210805144947093"></p>
+<ul>
+<li>本质上 CPM 到 CPC 的变化是计费点和出价点从 M 移动到 C，这个点之前的部分（ CTR 预估）让渡给平台去完成了，广告主只负责这个点后面的预估</li>
+<li>因为 CPA 模式按照转化计费，只要广告主不回传或只回传部分转化数据，就可以进行作弊，薅媒体平台羊毛。因此实际中 CPA 模式应用的很少。</li>
+<li>从广告主的角度，从 CPM 到 CPC 到 CPA，出价点越来越靠近广告主考核点，平台需要预估的东西越来越多，承担的风险也越来越大。到了 CPA 这种模式，由于转化数据平台无法完全控制，<strong>预估 CVR 带来的期望风险已经超过了期望收益了</strong>，因此看上去很难再继续往链路后端发展。这时 Facebook 提出了 oCPX 模式，这种模式的创新点在于<strong>分离了计费点和出价点</strong>。我们仍希望利用媒体平台的能力对 CVR 进行预估，因此将出价点往后移到 A，因为这会带来平台收益；同时将计费点保留在 M 或者 C（对应 oCPM、oCPC），仍然按照曝光或点击计费，这会降低进行预估的期望风险（广告主没有动力作弊了）。</li>
+</ul>
+<h1 id="3-oCPX的成本控制"><a href="#3-oCPX的成本控制" class="headerlink" title="3. oCPX的成本控制"></a>3. oCPX的成本控制</h1><ul>
+<li>oCPX 中的成本控制和预算控制<ul>
+<li>oCPX 是一种保转化成本的模式，即媒体平台需要在一个广告投放周期内对广告转化成本进行控制，使其尽量等于广告主设定的目标成本。因此 oCPX 中通常会有智能调价的功能，即如果前期出价出高了，比如广告主设定 80 元一个转化，前期投放下来发现一个转化要 100 元，这时候智能调价需要将出价调低，拉低其平均转化成本。最朴素的是做法就是用 PID 反馈控制出价</li>
+<li>除了成本控制之外也应该对预算进行控制，让预算在周期内以合理的节奏消耗，这个节奏通常与流量的分布差不多一致。</li>
+</ul>
+</li>
+</ul>
+<h1 id="4-计算广告中的PID成本控制"><a href="#4-计算广告中的PID成本控制" class="headerlink" title="4. 计算广告中的PID成本控制"></a>4. 计算广告中的PID成本控制</h1><p>参考资料：</p>
+<p> <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1745934">干货 | PID算法在广告成本控制领域的应用</a></p>
+<p>背景：</p>
+<ul>
+<li>在实际的广告投放系统中，会包含诸如广告主端的点击率预估模型、用户价值预估模型、竞价算法，媒体端的OCPA、OCPC出价模型，以及多方竞价、二价成交等不可控机制，最终的投放系统十分复杂，影响投放成本的因素过多，造成<strong>用户成交价与实际出价并不相等</strong>，实际投放成本难以契合广告主在投放初期所制定的预算。</li>
+<li>以信息流广告投放为例，广告主通过采买媒体平台广告位进行广告投放。在广告投放前，综合考虑投放目标以及历史投放经验等，会对广告投放预算成本进行控制，希望能够以预先规划的价格拿到广告位资源（即控制广告成交价）。但由于如前所述的广告投放系统中的出价优化模型以及二价成交机制等，<strong>广告主往往不能直接控制成交价</strong>，而需通过调整出价等方式间接控制成交价。</li>
+<li>为了能够实现控制成交价的目的，我们实时监控成交价<strong>（输出）</strong>与预算成本<strong>（目标）</strong>间关系，并通过PID控制算法来动态调整出价<strong>(输入)</strong></li>
+</ul>
+<p><img src="pics/计算广告/image-20210805152419480.png" alt="image-20210805152419480" style="zoom:50%;" /></p>
+<p><img src="pics/计算广告/image-20210805152357961.png" alt="image-20210805152357961" style="zoom:50%;" /></p>
+<p><img src="pics/计算广告/image-20210805152447320.png" alt="image-20210805152447320" style="zoom:50%;" /></p>
+<h1 id="5-其他"><a href="#5-其他" class="headerlink" title="5. 其他"></a>5. 其他</h1><h2 id="CPX与OCPX的区别"><a href="#CPX与OCPX的区别" class="headerlink" title="CPX与OCPX的区别"></a>CPX与OCPX的区别</h2><p>CPX（如CPC,CPM等）是出价点与计费点一致，oCPX_a指的是计费点在X，出价点在a。相较与CPX，相当于媒体帮助广告主预估计费点到出价点的转化率，实现出价点成本控制下的动态竞价。</p>
+<h2 id="eCPM-流量对于媒体的变现能力评估"><a href="#eCPM-流量对于媒体的变现能力评估" class="headerlink" title="eCPM 流量对于媒体的变现能力评估"></a>eCPM 流量对于媒体的变现能力评估</h2><p>eCPM的竞价模式下竞价点都是在<strong>展示</strong>,任何出价计费模式下eCPM的万能公式：</p>
+<blockquote>
+<p>eCPM =P(计费|展示) <em> bid_计费  </em> 1000   </p>
+</blockquote>
+<p>例子：</p>
+<p>eCPM = CTR <em> CPC </em> 1000  #点击出价，点击计费，即CPC模式</p>
+<p>eCPM = CPM  # 展示出价，展示计费，即CPM模式</p>
+<p>eCPM = CTR <em> P(授信|点击) </em>  bid_授信 * 1000  #授信出价，点击计费，即oCPC_a </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/default/" rel="tag"># default</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" rel="tag"># 算法相关</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A%E5%AD%A6%E7%AC%94%E8%AE%B0/" rel="prev" title="计算广告学笔记">
+      <i class="fa fa-chevron-left"></i> 计算广告学笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E8%B0%83%E7%A0%94/" rel="next" title="表示学习调研">
+      表示学习调研 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%A5%BD%E6%96%87"><span class="nav-number">1.</span> <span class="nav-text">1. 好文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%87%BA%E4%BB%B7%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">2. 出价模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-oCPX%E7%9A%84%E6%88%90%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="nav-number">3.</span> <span class="nav-text">3. oCPX的成本控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A%E4%B8%AD%E7%9A%84PID%E6%88%90%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">4. 计算广告中的PID成本控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E5%85%B6%E4%BB%96"><span class="nav-number">5.</span> <span class="nav-text">5. 其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CPX%E4%B8%8EOCPX%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">5.1.</span> <span class="nav-text">CPX与OCPX的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eCPM-%E6%B5%81%E9%87%8F%E5%AF%B9%E4%BA%8E%E5%AA%92%E4%BD%93%E7%9A%84%E5%8F%98%E7%8E%B0%E8%83%BD%E5%8A%9B%E8%AF%84%E4%BC%B0"><span class="nav-number">5.2.</span> <span class="nav-text">eCPM 流量对于媒体的变现能力评估</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dongdong Wang</p>
+  <div class="site-description" itemprop="description">从爪印判断，这是头雄狮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangdongdong122.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="shell日期操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell日期运算">
+<meta property="og:url" content="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/shell%E6%97%A5%E6%9C%9F%E8%BF%90%E7%AE%97/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="shell日期操作">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-01T03:53:52.697Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="代码相关">
+<meta property="article:tag" content="default">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/shell%E6%97%A5%E6%9C%9F%E8%BF%90%E7%AE%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>shell日期运算 | 凛冬将至</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凛冬将至</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">从简单的例子开始</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/shell%E6%97%A5%E6%9C%9F%E8%BF%90%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          shell日期运算
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:53:52" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>shell日期操作</p>
+<span id="more"></span>
+<h2 id="一、date"><a href="#一、date" class="headerlink" title="一、date"></a>一、<a target="_blank" rel="noopener" href="http://man7.org/linux/man-pages/man1/date.1.html">date</a></h2><h3 id="1-查看文档"><a href="#1-查看文档" class="headerlink" title="1. 查看文档"></a>1. 查看文档</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man date</span><br></pre></td></tr></table></figure>
+<h3 id="2-常用用法"><a href="#2-常用用法" class="headerlink" title="2. 常用用法"></a>2. 常用用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setdt=$(date +%Y-%m-01) $=$(date -d <span class="string">&quot;now&quot;</span> +%Y-%m-01)</span><br><span class="line">setdt=<span class="string">&quot;&#x27;`date -d &quot;</span>-1 day <span class="variable">$&#123;setdt&#125;</span><span class="string">&quot; +%Y-%m-%d`&#x27;&quot;</span></span><br><span class="line">today=$(date +%Y-%m-%d)</span><br><span class="line">yesterday=<span class="string">&quot;&#x27;<span class="subst">$(date -d <span class="string">&quot;-1 day <span class="variable">$&#123;today&#125;</span>&quot;</span> +%Y-%m-%d)</span>&#x27;&quot;</span>  <span class="comment">#输出： &#x27;2019-01-01&#x27; </span></span><br><span class="line">yesterday=$(date -d <span class="string">&quot;yesterday&quot;</span> +%Y-%m-%d)</span><br><span class="line">last_week=<span class="string">&quot;&#x27;<span class="subst">$(date -d <span class="string">&quot;-7 day <span class="variable">$&#123;today&#125;</span>&quot;</span> +%Y-%m-%d)</span>&#x27;&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-案例"><a href="#3-案例" class="headerlink" title="3. 案例"></a>3. 案例</h3><p>案例：计算生日还有多少天</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p<span class="string">&quot;Input your birthday(YYYYmmdd):&quot;</span> date1</span><br><span class="line">m=`date --date=<span class="string">&quot;<span class="variable">$date1</span>&quot;</span> +%m` <span class="comment">#得到生日的月</span></span><br><span class="line">d=`date --date=<span class="string">&quot;<span class="variable">$date1</span>&quot;</span> +%d` <span class="comment">#得到生日的日</span></span><br><span class="line">date_now=`date +%s` <span class="comment">#得到当前时间的秒值</span></span><br><span class="line">y=`date +%Y` <span class="comment">#得到当前时间的年</span></span><br><span class="line">birth=`date --date=<span class="string">&quot;$y$m<span class="variable">$d</span>&quot;</span> +%s` <span class="comment">#得到今年的生日日期的秒值</span></span><br><span class="line">internal=$((<span class="variable">$birth</span>-<span class="variable">$date_now</span>)) <span class="comment">#计算今日到生日日期的间隔时间</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$internal</span>&quot;</span> -lt <span class="string">&quot;0&quot;</span> ]; <span class="keyword">then</span> <span class="comment">#判断今天的生日是否已过</span></span><br><span class="line">birth=`date --date=<span class="string">&quot;<span class="subst">$(($y+1)</span>)$m<span class="variable">$d</span>&quot;</span> +%s` <span class="comment">#得到明天的生日日期秒值</span></span><br><span class="line">internal=$((<span class="variable">$birth</span>-<span class="variable">$date_now</span>))<span class="comment">#计算今天到下一个生日的间隔时间</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Thereis :<span class="subst">$(($internal/60/60/24)</span>) days.&quot;</span> <span class="comment">#输出结果，秒换算为天</span></span><br></pre></td></tr></table></figure>
+<p>案例2：循环日期计算</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">set_date=<span class="string">&quot;2017-12-01&quot;</span></span><br><span class="line">last_date=<span class="string">&quot;2017-11-30&quot;</span></span><br><span class="line"><span class="keyword">for</span>((i=0;i&lt;=15;i++));</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">  start_date=`date -d <span class="string">&quot;+<span class="variable">$i</span> month <span class="variable">$&#123;set_date&#125;</span>&quot;</span> +%Y-%m-%d`</span><br><span class="line">  input_date=`date -d <span class="string">&quot;-1 day <span class="variable">$&#123;start_date&#125;</span>&quot;</span> +%Y-%m-%d`</span><br><span class="line">  date_str=`date -d <span class="string">&quot;<span class="variable">$&#123;input_date&#125;</span>&quot;</span> +%Y%m%d`</span><br><span class="line">  sed -i <span class="string">&quot;s/<span class="variable">$&#123;last_date&#125;</span>/<span class="variable">$&#123;input_date&#125;</span>/g&quot;</span> _config.sh </span><br><span class="line"></span><br><span class="line">  last_date=<span class="variable">$input_date</span></span><br><span class="line"></span><br><span class="line">  sh train_pinlist.sh</span><br><span class="line">  sh get_features.sh</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>案例3：循环日期计算</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">START_DATE=<span class="string">&#x27;2018-10-12&#x27;</span></span><br><span class="line">END_DATE=<span class="string">&#x27;2018-12-11&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> [ <span class="string">&quot;<span class="variable">$START_DATE</span>&quot;</span> != <span class="string">&quot;<span class="variable">$END_DATE</span>&quot;</span> ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;****** the date is <span class="variable">$START_DATE</span> !!! ******&quot;</span></span><br><span class="line">    hive -S --hiveconf dt=<span class="variable">$START_DATE</span>  -f  a01_extract_feat_jt_transaction.sql</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;****** <span class="variable">$START_DATE</span> finished !!!!&quot;</span></span><br><span class="line">    NEXT_DATE=`date -d <span class="string">&quot;1 day <span class="variable">$&#123;START_DATE&#125;</span>&quot;</span> +%Y-%m-%d`</span><br><span class="line">    START_DATE=<span class="variable">$NEXT_DATE</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h2 id="二、日期函数"><a href="#二、日期函数" class="headerlink" title="二、日期函数"></a>二、日期函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#1:判断是否闰年check_leap() #</span><br><span class="line">#2:获取月份最大日期get_mon_days() #</span><br><span class="line">#3:检查日期格式check_date() #</span><br><span class="line">#4:返回昨天日期get_before_date() #</span><br><span class="line">#5:返回明天日期get_next_date() #</span><br><span class="line">#6:返回当月月末日期YYYYMMDD get_cur_date()</span><br><span class="line">#7:返回当月月份YYYYMM get_cur_month()</span><br><span class="line">#8:返回上月月末日期YYYYMMDD get_last_date()</span><br><span class="line">#9:返回上月月份YYYYMM get_last_month()</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" rel="tag"># 代码相关</a>
+              <a href="/tags/default/" rel="tag"># default</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/tensorflow/" rel="prev" title="tensorflow">
+      <i class="fa fa-chevron-left"></i> tensorflow
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/shellcheck/" rel="next" title="shellcheck">
+      shellcheck <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81date"><span class="nav-number">1.</span> <span class="nav-text">一、date</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9F%A5%E7%9C%8B%E6%96%87%E6%A1%A3"><span class="nav-number">1.1.</span> <span class="nav-text">1. 查看文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B8%B8%E7%94%A8%E7%94%A8%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">2. 常用用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%A1%88%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3. 案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">二、日期函数</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dongdong Wang</p>
+  <div class="site-description" itemprop="description">从爪印判断，这是头雄狮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

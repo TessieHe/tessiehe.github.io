@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangdongdong122.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Pyspark 入门">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pyspark">
+<meta property="og:url" content="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pyspark/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="Pyspark 入门">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wangdongdong122.github.io/Users/hetianqi/Documents/charging/notes_of_the_world/pyspark.assets/image-20200702140518336.png">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-01T03:52:25.787Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="代码相关">
+<meta property="article:tag" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangdongdong122.github.io/Users/hetianqi/Documents/charging/notes_of_the_world/pyspark.assets/image-20200702140518336.png">
+
+<link rel="canonical" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pyspark/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>pyspark | 凛冬将至</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凛冬将至</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">从简单的例子开始</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pyspark/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pyspark
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:52:25" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">代码相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Pyspark 入门</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="spark-context-和spark-session的关系"><a href="#spark-context-和spark-session的关系" class="headerlink" title="spark context 和spark session的关系"></a>spark context 和spark session的关系</h1><p><img src="/Users/hetianqi/Documents/charging/notes_of_the_world/pyspark.assets/image-20200702140518336.png" alt="image-20200702140518336" style="zoom:50%;" /></p>
+<p>可以由上节图中看出，Application、SparkSession、SparkContext、RDD之间具有包含关系，并且前三者是1对1的关系。</p>
+<p>SparkSession 是 Spark 2.0 版本引入的新入口，在这之前，创建一个 Application 对应的上下文是这样的(创建spark context，创建sqlcontext或者streamingContext或者别的context)：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//set up the spark configuration and create contexts</span></span><br><span class="line"><span class="keyword">val</span> sparkConf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setAppName(<span class="string">&quot;SparkSessionZipsExample&quot;</span>).setMaster(<span class="string">&quot;local&quot;</span>)</span><br><span class="line"><span class="comment">// your handle to SparkContext to access other context like SQLContext</span></span><br><span class="line"><span class="keyword">val</span> sc = <span class="keyword">new</span> <span class="type">SparkContext</span>(sparkConf).set(<span class="string">&quot;spark.some.config.option&quot;</span>, <span class="string">&quot;some-value&quot;</span>)</span><br><span class="line"><span class="keyword">val</span> sqlContext = <span class="keyword">new</span> org.apache.spark.sql.<span class="type">SQLContext</span>(sc)</span><br></pre></td></tr></table></figure>
+<p>现在 SparkConf、SparkContext 和 SQLContext 都已经被封装在 SparkSession 当中，并且可以通过 builder 的方式创建（创建sparkSession，可直接调用sqlContext方法）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Create a SparkSession. No need to create SparkContext</span><br><span class="line">// You automatically get it as part of the SparkSession</span><br><span class="line">val warehouseLocation = &quot;file:$&#123;system:user.dir&#125;/spark-warehouse&quot;</span><br><span class="line">val spark = SparkSession</span><br><span class="line">   .builder()</span><br><span class="line">   .appName(&quot;SparkSessionZipsExample&quot;)</span><br><span class="line">   .config(&quot;spark.sql.warehouse.dir&quot;, warehouseLocation)</span><br><span class="line">   .enableHiveSupport()</span><br><span class="line">   .getOrCreate()</span><br></pre></td></tr></table></figure>
+<h1 id="dataframe-dataset-rdd"><a href="#dataframe-dataset-rdd" class="headerlink" title="dataframe dataset  rdd"></a>dataframe dataset  rdd</h1><p>参考 <a target="_blank" rel="noopener" href="https://www.e-learn.cn/content/qita/784122">https://www.e-learn.cn/content/qita/784122</a></p>
+<p>简单来说，RDD是一种非结构化分部式数据集，每个元素都可以是不同的类型的数，通过sc.parallelize生成RDD。RDD中比较特殊的一种是key-value Pair RDD，即规定RDD的每个元素都是一个二元数组，其中第一个值是key，第二个值是value。</p>
+<p>这种特性就会给Pair RDD赋予一些特殊的操作，例如<code>groupByKey()</code>可以将具有相同key进行分组，其结果仍然得到Pair RDD，然后利用<code>mapValues()</code>对相同key的value进行函数计算；<code>reduceByKey()</code>、<code>countByKey()</code>和<code>sortByKey()</code>等一系列“ByKey()”操作同理。<br>另外，两个Pair RDD具有像SQL一样的连接操作，例如两个Pair RDD进行<code>join()</code>后，具有相同key的元素的value会被放在一个元组里，key不相同的元素会被舍弃。<code>leftOuterJoin()</code>、<code>rightOuterJoin()</code>、<code>fullOuterJoin()</code>等操作同理。</p>
+<p>Pair RDD已经被一定程度的格式化了，它的每个元素会具有key，但是value仍然具有很大的灵活性。DataFrame是一种完全格式化的数据集合，和数据库中的<em>表</em>的概念比较接近，它每列数据必须具有相同的数据类型。也正是由于DataFrame知道数据集合所有的类型信息，DataFrame可以进行列处理优化而获得比RDD更优的性能。<br>在内部实现上，DataFrame是由<code>Row</code>对象为元素组成的集合，每个<code>Row</code>对象存储DataFrame的一行</p>
+<h2 id="RDD和dataframe使用上的的区别"><a href="#RDD和dataframe使用上的的区别" class="headerlink" title="RDD和dataframe使用上的的区别"></a>RDD和dataframe使用上的的区别</h2><ul>
+<li>RDD：没有列名称，只能使用数字来索引；具有<code>map()</code>、<code>reduce()</code>等方法并可指定任意函数进行计算;</li>
+<li>DataFrame：一定有列名称（即使是默认生成的），可以通过<code>.col_name</code>或者<code>[&#39;col_name&#39;]</code>来索引列；具有表的相关操作（例如<code>select()</code>、<code>filter()</code>、<code>where()</code>、<code>join</code>），但是没有<code>map()</code>、<code>reduce()</code>等方法。</li>
+<li>有时候DataFrame的<em>表</em>相关操作不能处理一些问题，例如需要对一些数据利用指定的函数进行计算时，就需要将DataFrame转换为RDD。DataFrame可以直接利用<code>.rdd</code>获取对应的RDD对象，此RDD对象的每个元素使用<code>Row</code>对象来表示，每列值会成为<code>Row</code>对象的一个<code>域=&gt;值</code>映射</li>
+</ul>
+<h2 id="RDD转化为dataframe"><a href="#RDD转化为dataframe" class="headerlink" title="RDD转化为dataframe"></a>RDD转化为dataframe</h2><p>就像之前的例子一样，可以利用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dataframe = spark.createDataFrame(rdd, schema=None, samplingRatio=None)</span><br></pre></td></tr></table></figure>
+<p>来将RDD转换为DataFrame，其中的参数设置需要注意：<br><strong>schema</strong>：DataFrame各列类型信息，在提前知道RDD所有类型信息时设定。例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schema = StructType([StructField(&#x27;col1&#x27;, StringType()),          StructField(&#x27;col2&#x27;, IntegerType())])</span><br></pre></td></tr></table></figure>
+<p><strong>samplingRatio</strong>：推测各列类型信息的采样比例，在未知RDD所有类型信息时，spark需要根据一定的数据量进行类型推测；默认情况下，spark会抽取前100的RDD进行推测，之后在真正将RDD转换为DataFrame时如果遇到类型信息不符会报错 <em>Some of types cannot be determined by the first 100 rows, please try again with sampling</em> 。同理采样比例较低，推测类型信息也可能错误。</p>
+<h1 id="PySpark-SparkContext"><a href="#PySpark-SparkContext" class="headerlink" title="PySpark - SparkContext"></a>PySpark - SparkContext</h1><p>SparkContext是任何spark功能的入口点。当我们运行任何Spark应用程序时，会启动一个驱动程序，它具有main函数，并且此处启动了SparkContext。此类的具体定义如下：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class pyspark.SparkContext (</span><br><span class="line">   master = <span class="literal">None</span>,</span><br><span class="line">   appName = <span class="literal">None</span>, </span><br><span class="line">   sparkHome = <span class="literal">None</span>, </span><br><span class="line">   pyFiles = <span class="literal">None</span>, </span><br><span class="line">   environment = <span class="literal">None</span>, </span><br><span class="line">   batchSize = <span class="number">0</span>, </span><br><span class="line">   serializer = PickleSerializer(), </span><br><span class="line">   conf = <span class="literal">None</span>, </span><br><span class="line">   gateway = <span class="literal">None</span>, </span><br><span class="line">   jsc = <span class="literal">None</span>, </span><br><span class="line">   profiler_cls = &lt;class <span class="symbol">&#x27;pyspark</span>.profiler.BasicProfiler&#x27;&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>以下是SparkContext的参数具体含义：</p>
+<ul>
+<li><code>Master</code>- 它是连接到的集群的URL。</li>
+<li><code>appName</code>- 您的工作名称。</li>
+<li><code>sparkHome</code> - Spark安装目录。</li>
+<li><code>pyFiles</code> - 要发送到集群并添加到PYTHONPATH的.zip或.py文件。</li>
+<li><code>environment</code> - 工作节点环境变量。</li>
+<li><code>batchSize</code> - 表示为单个Java对象的Python对象的数量。设置1以禁用批处理，设置0以根据对象大小自动选择批处理大小，或设置为-1以使用无限批处理大小。</li>
+<li><code>serializer</code>- RDD序列化器。</li>
+<li><code>Conf</code> - L {SparkConf}的一个对象，用于设置所有Spark属性。</li>
+<li><code>gateway</code>  - 使用现有网关和JVM，否则初始化新JVM。</li>
+<li><code>JSC</code> - JavaSparkContext实例。</li>
+<li><code>profiler_cls</code> - 用于进行性能分析的一类自定义Profiler（默认为pyspark.profiler.BasicProfiler）。<br> 在上述参数中，主要使用master和appname。任何PySpark程序的会使用以下两行:<code>控制台启动pyspark的时候本质上也是启动了一个spark context,如果您尝试创建另一个SparkContext对象，您将收到以下错误 - “ValueError：无法一次运行多个SparkContexts”</code>：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext(<span class="string">&quot;local&quot;</span>, <span class="string">&quot;First App&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="读取本地文件"><a href="#读取本地文件" class="headerlink" title="读取本地文件"></a>读取本地文件</h2><ul>
+<li>新建demo.py文件</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext(<span class="string">&quot;local&quot;</span>, <span class="string">&quot;first app&quot;</span>) <span class="comment">#本地模式</span></span><br><span class="line">logFile = <span class="string">&quot;file:////opt/modules/hadoop-2.8.5/README.txt&quot;</span></span><br><span class="line">logData = sc.textFile(logFile).cache() <span class="comment">#对于需要重复用到的且占用内存小的RDD对象，可以通过rdd.cache()存储起来，之后再次使用的时候，直接读取内存中的RDD对象，节省时间</span></span><br><span class="line">numAs = logData.<span class="built_in">filter</span>(<span class="keyword">lambda</span> s: <span class="string">&#x27;a&#x27;</span> <span class="keyword">in</span> s).count()</span><br><span class="line">numBs = logData.<span class="built_in">filter</span>(<span class="keyword">lambda</span> s: <span class="string">&#x27;b&#x27;</span> <span class="keyword">in</span> s).count()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Line with a:%i,lines with b :%i&quot;</span> % (numAs, numBs))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spark-submit demo.py</span><br></pre></td></tr></table></figure>
+<h2 id="RDD（Resilient-Distributed-Dataset）"><a href="#RDD（Resilient-Distributed-Dataset）" class="headerlink" title="RDD（Resilient Distributed Dataset）"></a>RDD（Resilient Distributed Dataset）</h2><p>RDD是在多个节点上运行和操作以在集群上进行并行处理的元素</p>
+<p>要对这些RDD进行操作，有两种方法 :</p>
+<ul>
+<li>Transformation：这些操作应用于RDD以创建新的RDD。Filter，groupBy和map是转换的示例。</li>
+<li>Action：这些是应用于RDD的操作，它指示Spark执行计算并将结果发送回驱动程序。如count()，collect(), foreach(func)</li>
+</ul>
+<p>RDD定义如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">pyspark</span>.<span class="title">RDD</span> (<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="class">   jrdd, </span></span></span><br><span class="line"><span class="params"><span class="class">   ctx, </span></span></span><br><span class="line"><span class="params"><span class="class">   jrdd_deserializer = AutoBatchedSerializer(<span class="params">PickleSerializer(<span class="params"></span>)</span>)</span></span></span><br><span class="line"><span class="params"><span class="class"></span>)</span></span><br></pre></td></tr></table></figure>
+<h1 id="RDD基础操作"><a href="#RDD基础操作" class="headerlink" title="RDD基础操作"></a>RDD基础操作</h1><h2 id="count"><a href="#count" class="headerlink" title="count()"></a>count()</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext(<span class="string">&quot;local&quot;</span>, <span class="string">&quot;count app&quot;</span>)</span><br><span class="line">words = sc.parallelize(</span><br><span class="line">    [<span class="string">&quot;scala&quot;</span>,</span><br><span class="line">     <span class="string">&quot;java&quot;</span>,</span><br><span class="line">     <span class="string">&quot;hadoop&quot;</span>,</span><br><span class="line">     <span class="string">&quot;spark&quot;</span>,</span><br><span class="line">     <span class="string">&quot;akka&quot;</span>,</span><br><span class="line">     <span class="string">&quot;spark vs hadoop&quot;</span>,</span><br><span class="line">     <span class="string">&quot;pyspark&quot;</span>,</span><br><span class="line">     <span class="string">&quot;pyspark and spark&quot;</span></span><br><span class="line">     ])</span><br><span class="line">counts = words.count()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Number of elements in RDD -&gt; %i&quot;</span> % counts)</span><br></pre></td></tr></table></figure>
+<h2 id="collect"><a href="#collect" class="headerlink" title="collect()"></a>collect()</h2><p>返回RDD中的所有元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">----------------------------------------collect.py - --------------------------------------</span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext(<span class="string">&quot;local&quot;</span>, <span class="string">&quot;collect app&quot;</span>)</span><br><span class="line">words = sc.parallelize(</span><br><span class="line">    [<span class="string">&quot;scala&quot;</span>,</span><br><span class="line">     <span class="string">&quot;java&quot;</span>,</span><br><span class="line">     <span class="string">&quot;hadoop&quot;</span>,</span><br><span class="line">     <span class="string">&quot;spark&quot;</span>,</span><br><span class="line">     <span class="string">&quot;akka&quot;</span>,</span><br><span class="line">     <span class="string">&quot;spark vs hadoop&quot;</span>,</span><br><span class="line">     <span class="string">&quot;pyspark&quot;</span>,</span><br><span class="line">     <span class="string">&quot;pyspark and spark&quot;</span></span><br><span class="line">     ])</span><br><span class="line">coll = words.collect()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Elements in RDD -&gt; %s&quot;</span> % coll)</span><br></pre></td></tr></table></figure>
+<p>执行spark-submit collect.py 输出以下结果</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Elements <span class="keyword">in</span> RDD -&gt; [<span class="symbol">&#x27;scala</span>&#x27;, <span class="symbol">&#x27;java</span>&#x27;, <span class="symbol">&#x27;hadoop</span>&#x27;, <span class="symbol">&#x27;spark</span>&#x27;, <span class="symbol">&#x27;akka</span>&#x27;, <span class="symbol">&#x27;spark</span> vs hadoop&#x27;, <span class="symbol">&#x27;pyspark</span>&#x27;, <span class="symbol">&#x27;pyspark</span> and spark&#x27;]</span><br></pre></td></tr></table></figure>
+<h2 id="foreach-func"><a href="#foreach-func" class="headerlink" title="foreach(func)"></a>foreach(func)</h2><p>仅返回满足foreach内函数条件的元素。在下面的示例中，我们在foreach中调用print函数，该函数打印RDD中的所有元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># foreach.py</span></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext(<span class="string">&quot;local&quot;</span>, <span class="string">&quot;ForEach app&quot;</span>)</span><br><span class="line">words = sc.parallelize (</span><br><span class="line">   [<span class="string">&quot;scala&quot;</span>, </span><br><span class="line">   <span class="string">&quot;java&quot;</span>, </span><br><span class="line">   <span class="string">&quot;hadoop&quot;</span>, </span><br><span class="line">   <span class="string">&quot;spark&quot;</span>, </span><br><span class="line">   <span class="string">&quot;akka&quot;</span>,</span><br><span class="line">   <span class="string">&quot;spark vs hadoop&quot;</span>, </span><br><span class="line">   <span class="string">&quot;pyspark&quot;</span>,</span><br><span class="line">   <span class="string">&quot;pyspark and spark&quot;</span>]</span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span> <span class="built_in">print</span>(x)</span><br><span class="line">fore = words.foreach(f)</span><br></pre></td></tr></table></figure>
+<p>执行<code>spark-submit foreach.py</code>，然后输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">scala</span><br><span class="line">java</span><br><span class="line">hadoop</span><br><span class="line">spark</span><br><span class="line">akka</span><br><span class="line">spark vs hadoop</span><br><span class="line">pyspark</span><br><span class="line">pyspark and spark</span><br></pre></td></tr></table></figure>
+<h2 id="filter-f"><a href="#filter-f" class="headerlink" title="filter(f)"></a>filter(f)</h2><p>返回一个包含元素的新RDD，它满足过滤器内部的功能。在下面的示例中，我们过滤掉包含’’spark’的字符串。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># filter.py</span></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext(<span class="string">&quot;local&quot;</span>, <span class="string">&quot;Filter app&quot;</span>)</span><br><span class="line">words = sc.parallelize(</span><br><span class="line">    [<span class="string">&quot;scala&quot;</span>,</span><br><span class="line">     <span class="string">&quot;java&quot;</span>,</span><br><span class="line">     <span class="string">&quot;hadoop&quot;</span>,</span><br><span class="line">     <span class="string">&quot;spark&quot;</span>,</span><br><span class="line">     <span class="string">&quot;akka&quot;</span>,</span><br><span class="line">     <span class="string">&quot;spark vs hadoop&quot;</span>,</span><br><span class="line">     <span class="string">&quot;pyspark&quot;</span>,</span><br><span class="line">     <span class="string">&quot;pyspark and spark&quot;</span>]</span><br><span class="line">)</span><br><span class="line">words_filter = words.<span class="built_in">filter</span>(<span class="keyword">lambda</span> x: <span class="string">&#x27;spark&#x27;</span> <span class="keyword">in</span> x)</span><br><span class="line">filtered = words_filter.collect()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Fitered RDD -&gt; %s&quot;</span> % (filtered))</span><br></pre></td></tr></table></figure>
+<p>执行<code>spark-submit filter.py</code>:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fitered RDD -&gt; [<span class="symbol">&#x27;spark</span>&#x27;, <span class="symbol">&#x27;spark</span> vs hadoop&#x27;, <span class="symbol">&#x27;pyspark</span>&#x27;, <span class="symbol">&#x27;pyspark</span> and spark&#x27;]</span><br></pre></td></tr></table></figure>
+<h2 id="map-f-preservesPartitioning-False"><a href="#map-f-preservesPartitioning-False" class="headerlink" title="map(f, preservesPartitioning = False)"></a>map(f, preservesPartitioning = False)</h2><p>通过将该函数应用于RDD中的每个元素来返回新的RDD。在下面的示例中，我们形成一个键值对，并将每个字符串映射为值1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># map.py</span></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext(<span class="string">&quot;local&quot;</span>, <span class="string">&quot;Map app&quot;</span>)</span><br><span class="line">words = sc.parallelize(</span><br><span class="line">    [<span class="string">&quot;scala&quot;</span>,</span><br><span class="line">     <span class="string">&quot;java&quot;</span>,</span><br><span class="line">     <span class="string">&quot;hadoop&quot;</span>,</span><br><span class="line">     <span class="string">&quot;spark&quot;</span>,</span><br><span class="line">     <span class="string">&quot;akka&quot;</span>,</span><br><span class="line">     <span class="string">&quot;spark vs hadoop&quot;</span>,</span><br><span class="line">     <span class="string">&quot;pyspark&quot;</span>,</span><br><span class="line">     <span class="string">&quot;pyspark and spark&quot;</span>]</span><br><span class="line">)</span><br><span class="line">words_map = words.<span class="built_in">map</span>(<span class="keyword">lambda</span> x: (x, <span class="number">1</span>))</span><br><span class="line">mapping = words_map.collect()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Key value pair -&gt; %s&quot;</span> % (mapping))</span><br></pre></td></tr></table></figure>
+<p>执行spark-submit map.py</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Key <span class="keyword">value</span> pair -&gt; [(<span class="string">&#x27;scala&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;java&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;hadoop&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;spark&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;akka&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;spark vs hadoop&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;pyspark&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;pyspark and spark&#x27;</span>, <span class="number">1</span>)]</span><br></pre></td></tr></table></figure>
+<h2 id="reduce-f"><a href="#reduce-f" class="headerlink" title="reduce(f)"></a>reduce(f)</h2><p>执行指定的可交换和关联二元操作后，将返回RDD中的元素。在下面的示例中，我们从运算符导入add包并将其应用于’num’以执行简单的加法运算。说白了和Python的reduce一样：假如有一组整数[x1,x2,x3]，利用reduce执行加法操作add，对第一个元素执行add后，结果为sum=x1,然后再将sum和x2执行add，sum=x1+x2，最后再将x2和sum执行add，此时sum=x1+x2+x3。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># reduce.py</span><br><span class="line">from pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">from <span class="keyword">operator</span> import add</span><br><span class="line">sc <span class="title">=</span> <span class="type">SparkContext</span>(<span class="string">&quot;local&quot;</span>, <span class="string">&quot;Reduce app&quot;</span>)</span><br><span class="line">nums <span class="operator">=</span> sc.parallelize([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">adding <span class="operator">=</span> nums.reduce(add)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Adding all the elements -&gt; %i&quot;</span> <span class="operator">%</span> (adding))</span><br></pre></td></tr></table></figure>
+<p>执行<code>spark-submit reduce.py</code>:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Adding all the elements -&gt; <span class="number">15</span></span><br></pre></td></tr></table></figure>
+<h2 id="join-other-numPartitions-None"><a href="#join-other-numPartitions-None" class="headerlink" title="join(other, numPartitions = None)"></a>join(other, numPartitions = None)</h2><p>它返回RDD，其中包含一对带有匹配键的元素以及该特定键的所有值。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc <span class="operator">=</span> <span class="type">SparkContext</span>(<span class="string">&quot;local&quot;</span>, <span class="string">&quot;Join app&quot;</span>)</span><br><span class="line">x <span class="operator">=</span> sc.parallelize([(<span class="string">&quot;spark&quot;</span>, <span class="number">1</span>), (<span class="string">&quot;hadoop&quot;</span>, <span class="number">4</span>)])</span><br><span class="line">y <span class="operator">=</span> sc.parallelize([(<span class="string">&quot;spark&quot;</span>, <span class="number">2</span>), (<span class="string">&quot;hadoop&quot;</span>, <span class="number">5</span>)])</span><br><span class="line">joined <span class="operator">=</span> x.join(y)</span><br><span class="line"><span class="keyword">final</span> <span class="operator">=</span> joined.collect()</span><br><span class="line"><span class="built_in">print</span>( <span class="string">&quot;Join RDD -&gt; %s&quot;</span> <span class="operator">%</span> (<span class="keyword">final</span>))</span><br></pre></td></tr></table></figure>
+<p>执行<code>spark-submit join.py</code>:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Join RDD -&gt; [</span><br><span class="line">   (<span class="symbol">&#x27;spark</span>&#x27;, (<span class="number">1</span>, <span class="number">2</span>)),  </span><br><span class="line">   (<span class="symbol">&#x27;hadoop</span>&#x27;, (<span class="number">4</span>, <span class="number">5</span>))</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1 id="RDD转成pandas-dataframe"><a href="#RDD转成pandas-dataframe" class="headerlink" title="RDD转成pandas.dataframe"></a>RDD转成pandas.dataframe</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> HiveContext,SparkSession</span><br><span class="line">sc = SparkContext(<span class="string">&quot;local&quot;</span>, <span class="string">&quot;Map app&quot;</span>)</span><br><span class="line">hiveContext = HiveContext(sc)</span><br><span class="line">sql=<span class="string">&quot;select pin,cpp_base_sex from dmr_c.dmrc_model_t03_market_bt_profile_s_d where dt&gt;&#x27;2020-01-01&#x27; limit 100&quot;</span></span><br><span class="line">read_df=hiveContext.sql(sql) <span class="comment"># spark的dataframe</span></span><br><span class="line">df = read_df.toPandas() <span class="comment">#pandas的dataframe</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><h3 id="内存不足"><a href="#内存不足" class="headerlink" title="内存不足"></a>内存不足</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一：</span></span><br><span class="line">spark.conf.<span class="built_in">set</span>(<span class="string">&quot;spark.sql.execution.arrow.enabled&quot;</span>, <span class="string">&quot;true&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式二：设置多个conf</span></span><br><span class="line"><span class="keyword">from</span> pyspark.conf <span class="keyword">import</span> SparkConf</span><br><span class="line">sparkConf = SparkConf()</span><br><span class="line">sparkConf.<span class="built_in">set</span>(<span class="string">&#x27;spark.driver.maxResultSize&#x27;</span>, <span class="string">&#x27;3G&#x27;</span>)</span><br><span class="line">sc = SparkSession.builder.config(conf=sparkConf).enableHiveSupport().getOrCreate()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="运行太慢"><a href="#运行太慢" class="headerlink" title="运行太慢"></a>运行太慢</h3>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" rel="tag"># 代码相关</a>
+              <a href="/tags/default/" rel="tag"># default</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/python/" rel="prev" title="python">
+      <i class="fa fa-chevron-left"></i> python
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pandas%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="pandas常用命令">
+      pandas常用命令 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spark-context-%E5%92%8Cspark-session%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.</span> <span class="nav-text">spark context 和spark session的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dataframe-dataset-rdd"><span class="nav-number">2.</span> <span class="nav-text">dataframe dataset  rdd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RDD%E5%92%8Cdataframe%E4%BD%BF%E7%94%A8%E4%B8%8A%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.1.</span> <span class="nav-text">RDD和dataframe使用上的的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDD%E8%BD%AC%E5%8C%96%E4%B8%BAdataframe"><span class="nav-number">2.2.</span> <span class="nav-text">RDD转化为dataframe</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PySpark-SparkContext"><span class="nav-number">3.</span> <span class="nav-text">PySpark - SparkContext</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">读取本地文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDD%EF%BC%88Resilient-Distributed-Dataset%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">RDD（Resilient Distributed Dataset）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RDD%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">RDD基础操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#count"><span class="nav-number">4.1.</span> <span class="nav-text">count()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#collect"><span class="nav-number">4.2.</span> <span class="nav-text">collect()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#foreach-func"><span class="nav-number">4.3.</span> <span class="nav-text">foreach(func)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter-f"><span class="nav-number">4.4.</span> <span class="nav-text">filter(f)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map-f-preservesPartitioning-False"><span class="nav-number">4.5.</span> <span class="nav-text">map(f, preservesPartitioning &#x3D; False)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce-f"><span class="nav-number">4.6.</span> <span class="nav-text">reduce(f)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join-other-numPartitions-None"><span class="nav-number">4.7.</span> <span class="nav-text">join(other, numPartitions &#x3D; None)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RDD%E8%BD%AC%E6%88%90pandas-dataframe"><span class="nav-number">5.</span> <span class="nav-text">RDD转成pandas.dataframe</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96"><span class="nav-number">5.1.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3"><span class="nav-number">5.1.1.</span> <span class="nav-text">内存不足</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%A4%AA%E6%85%A2"><span class="nav-number">5.1.2.</span> <span class="nav-text">运行太慢</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dongdong Wang</p>
+  <div class="site-description" itemprop="description">从爪印判断，这是头雄狮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

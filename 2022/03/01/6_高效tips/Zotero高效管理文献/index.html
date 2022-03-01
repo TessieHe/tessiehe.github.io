@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangdongdong122.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Zotero高效管理文献">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zotero高效管理文献">
+<meta property="og:url" content="http://wangdongdong122.github.io/2022/03/01/6_%E9%AB%98%E6%95%88tips/Zotero%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E6%96%87%E7%8C%AE/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="Zotero高效管理文献">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-01T04:05:44.870Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="default">
+<meta property="article:tag" content="高效tips">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://wangdongdong122.github.io/2022/03/01/6_%E9%AB%98%E6%95%88tips/Zotero%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E6%96%87%E7%8C%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Zotero高效管理文献 | 凛冬将至</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凛冬将至</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">从简单的例子开始</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/6_%E9%AB%98%E6%95%88tips/Zotero%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E6%96%87%E7%8C%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Zotero高效管理文献
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：12:05:44" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%AB%98%E6%95%88tips/" itemprop="url" rel="index"><span itemprop="name">高效tips</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Zotero高效管理文献</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h1><p>现在 Zotero 有两种主流的同步方式</p>
+<ul>
+<li>WebDAV 方式</li>
+<li>Zotfile+Onedriver 方式</li>
+</ul>
+<p>两种同步方式源于对文件管理的不同：</p>
+<p>第一种方式：如果直接把论文文件拖入 Zotero 中，它会在数据文件夹自动拷贝一份并建立无意义的文件夹。而 WebDAV 方式就是直接同步数据文件夹。</p>
+<p>第二种方式：由于第一种文件存储方式的原因，拷贝一份浪费空间，也不便查找。因此 Zotfile+Onedriver 同步方式是个人（强迫症）推荐的。Zotfile 用来管理文件的存储路径而 onedriver 则用来同步文件本身。</p>
+<p>两者选择一种即可，如何选择呢？</p>
+<p>如果你完全使用 Zotero 管理论文不在意本地文件夹，那么 WebDAV 方式同步论文就很方便，同时还可以支持移动端预览。如果你忽略文件夹的问题，你会发现这种方式省心省力。</p>
+<p>如果你还想使用本地文件夹管理，zotero 仅仅作为写论文时导入方便那么 Zotfile+Onedrive 的方式最合适（本人也习惯使用这种方式）</p>
+<h2 id="WebDAV-方式"><a href="#WebDAV-方式" class="headerlink" title="WebDAV 方式"></a>WebDAV 方式</h2><p>选用坚果云进行同步配置</p>
+<ul>
+<li>申请坚果云账号 www.jianguoyun.com</li>
+<li>在个人网盘页面右上角账户名找到“帐户信息”-“安全选项”</li>
+<li>在第三方应用管理中添加应用，应用名称随意</li>
+</ul>
+<p>zotero 客户端</p>
+<ul>
+<li>编辑-首选项-同步</li>
+<li>数据同步登录 zotero 账号即可</li>
+<li>文件同步中选择 WebDAV</li>
+<li>URL：使用刚刚坚果云给的服务器地址 dav.jianguoyun.com/dav</li>
+<li>用户名：使用坚果云账号</li>
+<li>密码：使用刚刚坚果云给的的应用密码</li>
+</ul>
+<h2 id="ZotFile-OneDriver"><a href="#ZotFile-OneDriver" class="headerlink" title="ZotFile+OneDriver"></a>ZotFile+OneDriver</h2><p>上文<strong>配置路径</strong>中提到由于 Zotero 下载的文件或者直接通过拖动导入的文件会随机建立文件夹管理。ZotFile 可以转换成正常文件夹。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://zotfile.com/">http://zotfile.com/</a></p>
+<p>在“工具”-“插件”中进行安装</p>
+<h3 id="配置路径"><a href="#配置路径" class="headerlink" title="配置路径"></a>配置路径</h3><p>现存的论文文件可以直接通过拖动到 zotero 中，但是 zotero 会拷贝一份论文文件到数据存储路径并且存储文件夹命名是随机字符。不方便本地管理。</p>
+<p>因此推荐使用导入文件链接的形式导入论文。在此之前</p>
+<ul>
+<li>在设置界面选择“高级”-“文件和文件夹”</li>
+<li>链接附件的根目录设定为你论文存储的最最最根目录，本人使用的是 onedrive 文件夹“E:\下载\OneDrive”。</li>
+<li>设定为相对路径（方便同步）</li>
+</ul>
+<p>设定完成之后就可以通过链接导入。</p>
+<p>如果你在另一台电脑（PC-B）上也是用 onedrive，那么论文文件就可以同步，同时由于我们使用的相对路径，只要在另一台电脑（PC-B）上 zotero 设定“链接附件的根目录”也为这台电脑（PC-B）的 onedrive 根路径，那么 zotero 中也可以直接双击打开附件。</p>
+<h3 id="分类同步配置"><a href="#分类同步配置" class="headerlink" title="分类同步配置"></a>分类同步配置</h3><ul>
+<li><strong>“工具”-“zotfile preference”</strong>打开设置界面</li>
+<li>General Setting 中第一个路径看作你将使用 zotero 下载文件或者拖动文件时的缓存路径</li>
+<li>第二个路径就是你常用的论文文件存储的根路径。（“E:\下载\OneDrive”）</li>
+<li>配置完成后可以测试随意拖动一个文件到 zetero 的分类条目中，zotero 会私自建立乱码文件夹。然后右键条目 Manage attachments-rename attachments 。Zotfile 会自动在刚才设定的根目录根据你的分类建立文件夹并且讲论文文件放置到该目录下并在条目中设定文件链接。</li>
+<li>这样就保持了你文件夹存储方式和 zotero 分类标签的同步</li>
+<li>即使你在 zotero 移动你的论文分类标签，只需要重新执行 rename attachments 就可以再次整理本地文件夹</li>
+<li>你也可以在 Renaming Rules 设定重命名的格式</li>
+</ul>
+<h3 id="几点注意"><a href="#几点注意" class="headerlink" title="几点注意"></a>几点注意</h3><ul>
+<li>如果你选用 WebDAV 方式进行同步，那么如果想在移动端（iPad,手机）查看那么使用 <strong>PaperShip</strong>可以直接同步附件文件你可以理解成移动端的 Zotero</li>
+<li>如果你使用 ZotFile+ 同步盘的方式，如果想在移动端阅读那么可以直接下载你同步盘的客户端，或者使用 zotero 的 Table 功能，移动端 PDF Expert 同步查看</li>
+</ul>
+<h1 id="协同"><a href="#协同" class="headerlink" title="协同"></a>协同</h1><h2 id="与-Word-协同"><a href="#与-Word-协同" class="headerlink" title="与 Word 协同"></a>与 Word 协同</h2><p>使用 word 书写论文配合 zotero 可以方便管理引用</p>
+<ul>
+<li>首先在 zotero 设置界面“引用”-“文字处理软件”安装 word 插件。</li>
+<li>在 word 的 zotero 插件选项卡中，在你想插入的文章位置选择 Add/Edit Citation，选择需要的论文样式，如果没有可以在线搜索。选择要引用的论文就可以了。</li>
+<li>之后在文章末尾，点击 Add/Edit Bibliography 插入参考文献具体内容。</li>
+</ul>
+<h2 id="与-GoogleScholar-协同"><a href="#与-GoogleScholar-协同" class="headerlink" title="与 GoogleScholar 协同"></a>与 GoogleScholar 协同</h2><p>有时候我们需要找一些参考文献，但是我们不需要下载文件内容只是知道引用格式即可。前提已经安装好 Zotero chrome 插件。</p>
+<ul>
+<li>在 Google Scholar 设置界面，找到“参考书目管理软件”选择显示导入 EndNotes(必须)，点击保存。</li>
+<li>我们随便搜索论文，在每个条目下面有个导入 Endnote 按钮，点击会弹出对话框就可以使用 zotero 保存这篇文章的引用了。</li>
+<li>同时你也可以点击 chrome 中的 zotero 插件图标多选保存，如果你在 zotero 设置了保存条目时自动附加 PDF 文档（常规-文字处理），他也会帮你把文件下载下来。</li>
+</ul>
+<h2 id="与-Tablet-协同"><a href="#与-Tablet-协同" class="headerlink" title="与 Tablet 协同"></a>与 Tablet 协同</h2><p>此方法是适用于 ZotFile+ 同步盘文件管理方式。</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAxNzgyMDg0MQ==&amp;mid=2650457410&amp;idx=1&amp;sn=1198b535f1624ff63ff2f544c11e801c&amp;chksm=83d1d884b4a65192a238fd3fc2b0c4241b8768c2fc4e6ab927b8b669d99dcdd185278a83b3ee&amp;scene=158#rd">https://mp.weixin.qq.com/s?__biz=MzAxNzgyMDg0MQ==&amp;mid=2650457410&amp;idx=1&amp;sn=1198b535f1624ff63ff2f544c11e801c&amp;chksm=83d1d884b4a65192a238fd3fc2b0c4241b8768c2fc4e6ab927b8b669d99dcdd185278a83b3ee&amp;scene=158#rd</a></p>
+<h2 id="与Latex协同"><a href="#与Latex协同" class="headerlink" title="与Latex协同"></a>与Latex协同</h2><p>有时候我们用word写完论文需要转为latex格式，其中引用部分很头疼。可以使用下面的工具直接从word中提取引用为bibtex格式，也可以选择在zotero选中引用论文，然后你可以将选中论文拖动到一个单独的分类下面，之后就可以用zotero自带的导出功能生成bibtex文件</p>
+<p><a target="_blank" rel="noopener" href="https://rintze.zelle.me/ref-extractor/">https://rintze.zelle.me/ref-extractor/</a></p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/104848524">https://zhuanlan.zhihu.com/p/104848524</a> </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/default/" rel="tag"># default</a>
+              <a href="/tags/%E9%AB%98%E6%95%88tips/" rel="tag"># 高效tips</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/6_%E9%AB%98%E6%95%88tips/marginnote/" rel="prev" title="marginnote">
+      <i class="fa fa-chevron-left"></i> marginnote
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/3_%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%82%A1%E4%BB%B7%E9%97%AE%E9%A2%98%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="next" title="股价问题动态规划">
+      股价问题动态规划 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5"><span class="nav-number">1.</span> <span class="nav-text">同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebDAV-%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">WebDAV 方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZotFile-OneDriver"><span class="nav-number">1.2.</span> <span class="nav-text">ZotFile+OneDriver</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%B7%AF%E5%BE%84"><span class="nav-number">1.2.1.</span> <span class="nav-text">配置路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.2.</span> <span class="nav-text">分类同步配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E7%82%B9%E6%B3%A8%E6%84%8F"><span class="nav-number">1.2.3.</span> <span class="nav-text">几点注意</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%8F%E5%90%8C"><span class="nav-number">2.</span> <span class="nav-text">协同</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8E-Word-%E5%8D%8F%E5%90%8C"><span class="nav-number">2.1.</span> <span class="nav-text">与 Word 协同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8E-GoogleScholar-%E5%8D%8F%E5%90%8C"><span class="nav-number">2.2.</span> <span class="nav-text">与 GoogleScholar 协同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8E-Tablet-%E5%8D%8F%E5%90%8C"><span class="nav-number">2.3.</span> <span class="nav-text">与 Tablet 协同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8ELatex%E5%8D%8F%E5%90%8C"><span class="nav-number">2.4.</span> <span class="nav-text">与Latex协同</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="nav-number">3.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dongdong Wang</p>
+  <div class="site-description" itemprop="description">从爪印判断，这是头雄狮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

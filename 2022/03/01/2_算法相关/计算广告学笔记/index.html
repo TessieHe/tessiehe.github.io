@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangdongdong122.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="计算广告学笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算广告学笔记">
+<meta property="og:url" content="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A%E5%AD%A6%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="凛冬将至">
+<meta property="og:description" content="计算广告学笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wangdongdong122.github.io/Users/hetianqi/Documents/charging/notes_of_the_world/计算广告学笔记.assets/image-20200414143343558.png">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-01T03:59:30.992Z">
+<meta property="article:author" content="Dongdong Wang">
+<meta property="article:tag" content="default">
+<meta property="article:tag" content="算法相关">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangdongdong122.github.io/Users/hetianqi/Documents/charging/notes_of_the_world/计算广告学笔记.assets/image-20200414143343558.png">
+
+<link rel="canonical" href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A%E5%AD%A6%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算广告学笔记 | 凛冬将至</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凛冬将至</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">从简单的例子开始</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangdongdong122.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A%E5%AD%A6%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dongdong Wang">
+      <meta itemprop="description" content="从爪印判断，这是头雄狮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凛冬将至">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算广告学笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 11:32:38 / 修改时间：11:59:30" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>计算广告学笔记</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="业务知识"><a href="#业务知识" class="headerlink" title="业务知识"></a>业务知识</h1><h2 id="广告分类"><a href="#广告分类" class="headerlink" title="广告分类"></a>广告分类</h2><p>广告的根本目的，是广告主通过媒体达到低成本的用户接触。</p>
+<p>也就是说，按某种市场意图接触相应的人群，进而影响其中的潜在用户，使他们选择广告主产品的机率增加，或者对产品性价比的苛求程度降低，才是广告的根本目的。至于短期内的转化效果，由于市场意图或媒体性质的不同，并不是直接可比。因此ROI中的产出是很难计算的</p>
+<h2 id="广告发展史"><a href="#广告发展史" class="headerlink" title="广告发展史"></a>广告发展史</h2><ul>
+<li><p>售卖模式1：合约式广告(Agreement-based Advertising)</p>
+</li>
+<li><p>广告投放方式：定向广告（Target Ad），是为了<code>拆分流量以获得更高的营收</code>，具体来说：媒体向广告主保证某个投放量，并在此基础上确定合同的总金额以及量未完成情况下的赔偿方案；<strong><code>只卖好苹果</code></strong></p>
+<blockquote>
+<p><code>博弈</code>：定向太准了可能导致尾部流量卖不出去，对媒体不利，但广告主效果好的话整个广告市场规模就会变大，对媒体有利。</p>
+</blockquote>
+</li>
+<li><p>交易方式：<code>担保式投送(Guaranteed Delivery)</code>：媒体向广告主保证某个投放量，并在此基础上确定合同的总金额以及量未完成情况下的赔偿方案<strong><code>保证交易苹果的量</code></strong></p>
+</li>
+<li><p>计费方式：按千次展示付费(Cost Per Mille, CPM)的计费方式</p>
+</li>
+</ul>
+<blockquote>
+<p>难点：一是如何有效地将流量分配到各个合约互相交叉的人群覆盖上；二是要在在线的环境下实时且经济地完成每一次展示决策。</p>
+</blockquote>
+<ul>
+<li>在线分配(Online Allocation):将各<code>合约的量</code>看做约束条件，将某种意义下的质看做目标函数，我们可以利用带约束优化(Constrained Optimization)的数学框架来探索这一问题；搜索排序以优化相关性为目的，在线分配  是以<code>优化投入产出比</code>为目标。</li>
+<li>售卖模式2：<code>竞价广告(Auction-based Advertising)</code>，抛弃量的保证，而采用最唯利是图的策略来进行广告决策，具体来说就是：供给方只向广告主保证质即单位流量的成本，但不再以合约的方式给出量的保证，换言之，对每一次展示，都基本按照收益最高的原则来决策。<strong><code>线下对每批苹果进行出价</code></strong> </li>
+</ul>
+<blockquote>
+<p>由于只能在广告网络定义好的定向标签组合上预先指定出价，而不能控制每一次展示的出价，因此，市场看起来象一个黑盒子，需求方只能靠选择合适的标签组合，以及阶段性调整出价来间接控制效果。</p>
+<p>随着人群定向越来越精准，广告主数量越来越多，一方面担保是投送难以对流量做精确的分配来保证各广告主的投放量，另一方面当同一流量满足多个合约要求时，仅仅考虑量的约束会导致本来可以卖得更高的流量的浪费。</p>
+</blockquote>
+<ul>
+<li>售卖模式3：实时竞价（real time bidding）。竞价广告是在媒体平台上用媒体已有的标签进行人群定向，并对定向人群进行出价。实时竞价是实时判断单个流量是不是自己的定向人群，并进行出价，可以实现更精准的人群定向</li>
+</ul>
+<blockquote>
+<p>所谓实时竞价，就是把拍卖的过程由广告主预先出价，变成每次展示时实时出价。只要把广告展示的上下文页面url，以及访客的cookie等信息传给需求方，它就有充分的信息来完成定制化的人群选择和出价。</p>
+</blockquote>
+<ul>
+<li>需求方平台(Demand Side Platform, DSP) ：通过实时竞价的方式，按照定制化的人群标签购买广告，这样与广告交易平台接口的产品叫做DSP。DSP可以方便的设置对于每个流量的定向于出价，并把结果返回媒体的平台，<code>DSP需要尽可能准确地估计每一次展示带来的期望价值。</code></li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>首先是<code>合约阶段</code>，广告主通过代理公司(Agency)从媒体方采买广告，而媒体方的Ad Server则负责完成和优化各个广告主的合约；</p>
+<p>然后，市场进化出了<code>竞价售卖方式</code>，从而在靠近供给方产生了广告网络(Ad Network)这样的产品形态，而需求方的代理公司为了适应这一市场变化，孵化除了对应的广告采买平台(Media Buying Platform)；</p>
+<p>最后，当市场产生了<code>实时竞价方式交易</code>时，供给方进化出了广告交易平台(Ad Exchange)，而需求方则需要用需求方平台(DSP)与其对接来出价和投送广告。</p>
+<h1 id="计算广告基础"><a href="#计算广告基础" class="headerlink" title="计算广告基础"></a>计算广告基础</h1><p>广告平台优化目标： $ 对1…T次广告选择a_{i…T} \quad s.t. \quad max \sum_i^T r(a_i,u_i,c_i)/\sum_i^Tp_i $</p>
+<p>表达式中的a,u,c三个变量，分别代表广告、用户与上下文，即广告活动的三个参与主体。<em>i</em>代表从第1次到第<em>T</em>次之间的某一次广告展示。我们优化的目标，就是在这<em>T</em>次展示上的总产出(<em>r</em>)与总投入(<em>p</em>)的比，即ROI。</p>
+<p>$eCPM(a,u,c)=r(a,u,c) =点击率<em>点击价值= ctr(a,u,c)</em>v(a,u)$</p>
+<h2 id="广告系统构架图"><a href="#广告系统构架图" class="headerlink" title="广告系统构架图"></a>广告系统构架图</h2><ol>
+<li>广告投放机（Ad Server）：调用哥哥模块返回前端结果</li>
+<li>广告检索：实时接受投放信息，搜索广告备选集</li>
+<li>广告排序，包括Click modeling和Ad ranking。关键技术是1.离线分布式计算平台上的海量数据支持的点击率预测模型的训练；2.线上高效查询用户特征并进行实时计算。在ctr的基础上简历点击价值估计模型，通常是简单的规则</li>
+<li>数据高速公路（Data highway）：将在线数据准实时的传输到离线分部式平台和流计算平台，供后续数据处理和建模</li>
+<li>用户日志生成：收集各渠道日志，整理成kv形式进行存储</li>
+<li>商业智能（Business Inteligence）：看板等对外交流平台</li>
+<li>行为定向：产生结构化标签库</li>
+<li>上下文定向：页面抓取给上下文打标签，与行为定向一起产生定向效果</li>
+<li>定制化用户：接收广告主定向需求（比如推包）</li>
+<li>在线行为反馈：利用日志或买点进行准实时任务，如实时反馈点击，用户行为标签等。在利用日志完成这些逻辑之前，必须要进行的步骤是反作弊(Anti-spam)与计价(Billing)。<code>在很多情形下，把系统信息反馈调整做得更快，比把模型预测做得更准确效果更加显著</code></li>
+<li>广告管理系统：只有这部分是面向用户的。通过广告管理系统定制和调整广告投放，并且与数据仓库交互</li>
+<li>实时竞价接口：对接DSP（竞价平台）的接口。对于媒体即平台的case，不需要</li>
+</ol>
+<p><img src="/Users/hetianqi/Documents/charging/notes_of_the_world/计算广告学笔记.assets/image-20200414143343558.png" alt="image-20200414143343558"></p>
+<h1 id="准备知识"><a href="#准备知识" class="headerlink" title="准备知识"></a>准备知识</h1><h2 id="带约束优化方法和拉格朗日乘子法"><a href="#带约束优化方法和拉格朗日乘子法" class="headerlink" title="带约束优化方法和拉格朗日乘子法"></a>带约束优化方法和拉格朗日乘子法</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/default/" rel="tag"># default</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" rel="tag"># 算法相关</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87/" rel="prev" title="评估指标">
+      <i class="fa fa-chevron-left"></i> 评估指标
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/" rel="next" title="计算广告">
+      计算广告 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">业务知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BF%E5%91%8A%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">广告分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BF%E5%91%8A%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="nav-number">1.2.</span> <span class="nav-text">广告发展史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">计算广告基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BF%E5%91%8A%E7%B3%BB%E7%BB%9F%E6%9E%84%E6%9E%B6%E5%9B%BE"><span class="nav-number">2.1.</span> <span class="nav-text">广告系统构架图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">3.</span> <span class="nav-text">准备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">带约束优化方法和拉格朗日乘子法</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dongdong Wang</p>
+  <div class="site-description" itemprop="description">从爪印判断，这是头雄狮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdong Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
