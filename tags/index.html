@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tessiehe.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"tessiehe.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="缘分让我们相遇">
@@ -105,6 +105,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -119,16 +120,6 @@
     <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
 
   </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
-
-  </li>
         <li class="menu-item menu-item-tags">
 
     <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
@@ -139,11 +130,48 @@
     <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
 
   </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -187,10 +215,10 @@
       <div class="post-body">
           <div class="tag-cloud">
             <div class="tag-cloud-title">
-              目前共计 6 个标签
+              目前共计 12 个标签
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/default/" style="font-size: 30px; color: #111">default</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" style="font-size: 26.4px; color: #363636">代码相关</a> <a href="/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" style="font-size: 19.2px; color: #818181">数理统计</a> <a href="/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" style="font-size: 22.8px; color: #5c5c5c">算法相关</a> <a href="/tags/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83-%E5%AE%89%E8%A3%85%E5%B7%A5%E5%85%B7/" style="font-size: 12px; color: #ccc">配置环境&安装工具</a> <a href="/tags/%E9%AB%98%E6%95%88tips/" style="font-size: 15.6px; color: #a7a7a7">高效tips</a>
+              <a href="/tags/E-commerce/" style="font-size: 12px; color: #ccc">E-commerce</a> <a href="/tags/Intent-Recommendation/" style="font-size: 12px; color: #ccc">Intent Recommendation</a> <a href="/tags/Learning-to-Rank/" style="font-size: 12px; color: #ccc">Learning to Rank</a> <a href="/tags/Multi-Scenario/" style="font-size: 12px; color: #ccc">Multi-Scenario</a> <a href="/tags/Recommender-System/" style="font-size: 12px; color: #ccc">Recommender System</a> <a href="/tags/default/" style="font-size: 30px; color: #111">default</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/" style="font-size: 26.4px; color: #363636">代码相关</a> <a href="/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" style="font-size: 19.2px; color: #818181">数理统计</a> <a href="/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" style="font-size: 22.8px; color: #5c5c5c">算法相关</a> <a href="/tags/%E8%B0%83%E7%A0%94/" style="font-size: 12px; color: #ccc">调研</a> <a href="/tags/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83-%E5%AE%89%E8%A3%85%E5%B7%A5%E5%85%B7/" style="font-size: 12px; color: #ccc">配置环境&安装工具</a> <a href="/tags/%E9%AB%98%E6%95%88tips/" style="font-size: 15.6px; color: #a7a7a7">高效tips</a>
             </div>
           </div>
         
@@ -267,7 +295,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -280,7 +308,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -362,6 +390,10 @@
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
