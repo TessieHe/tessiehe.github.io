@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://tessiehe.github.io/2021/06/23/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-06-23-%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/</loc>
     
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/</loc>
+    <loc>http://tessiehe.github.io/2021/06/23/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/2021-06-23-%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2022-03-04</lastmod>
     
@@ -480,92 +480,92 @@
 
   <url>
     <loc>http://tessiehe.github.io/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://tessiehe.github.io/tags/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <loc>http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/</loc>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/tags/default/</loc>
-    <lastmod>2022-03-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/tags/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83-%E5%AE%89%E8%A3%85%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2022-03-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</loc>
-    <lastmod>2022-03-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/tags/Learning-to-Rank/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/tags/Multi-Scenario/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/tags/Intent-Recommendation/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/tags/Recommender-System/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/tags/E-commerce/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/tags/%E8%B0%83%E7%A0%94/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</loc>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/tags/%E9%AB%98%E6%95%88tips/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/</loc>
+    <lastmod>2022-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83-%E5%AE%89%E8%A3%85%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -573,29 +573,29 @@
 
   
   <url>
-    <loc>http://tessiehe.github.io/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <loc>http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/</loc>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/categories/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</loc>
-    <lastmod>2022-03-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/categories/%E9%AB%98%E6%95%88tips/</loc>
-    <lastmod>2022-03-04</lastmod>
+    <lastmod>2022-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/</loc>
+    <lastmod>2022-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
