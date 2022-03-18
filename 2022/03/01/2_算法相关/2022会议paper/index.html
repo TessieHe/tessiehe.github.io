@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tessiehe.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+
+
+  <meta name="description" content="各家公司在Cikm2021  wsdm2022上的paper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2022机器学习会议paper list">
+<meta property="og:url" content="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022%E4%BC%9A%E8%AE%AEpaper/index.html">
+<meta property="og:site_name" content="天气桑的blog">
+<meta property="og:description" content="各家公司在Cikm2021  wsdm2022上的paper">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-01T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-03-18T03:24:20.716Z">
+<meta property="article:author" content="Tenki San">
+<meta property="article:tag" content="default">
+<meta property="article:tag" content="算法相关">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022%E4%BC%9A%E8%AE%AEpaper/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+      
+
+</script>
+
+  <title>2022机器学习会议paper list | 天气桑的blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+  
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">天气桑的blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">这个人很懒，还没写介绍</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022%E4%BC%9A%E8%AE%AEpaper/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tenki San">
+      <meta itemprop="description" content="缘分让我们相遇">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天气桑的blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2022机器学习会议paper list
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-01 11:32:38" itemprop="dateCreated datePublished" datetime="2022-03-01T11:32:38+08:00">2022-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-18 11:24:20" itemprop="dateModified" datetime="2022-03-18T11:24:20+08:00">2022-03-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>各家公司在Cikm2021  wsdm2022上的paper</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="cikm2021"><a href="#cikm2021" class="headerlink" title="cikm2021"></a>cikm2021</h1><p><a target="_blank" rel="noopener" href="https://www.cikm2021.org/accepted-papers">https://www.cikm2021.org/accepted-papers</a></p>
+<ul>
+<li><h3 id="SimpleX-A-Simple-and-Strong-Baseline-for-Collaborative-Filtering"><a href="#SimpleX-A-Simple-and-Strong-Baseline-for-Collaborative-Filtering" class="headerlink" title="SimpleX: A Simple and Strong Baseline for Collaborative Filtering"></a>SimpleX: A Simple and Strong Baseline for Collaborative Filtering</h3><p>Kelong Mao (Renmin University of China, China), Jieming Zhu (Huawei Noah’s Ark Lab, China), Jinpeng Wang (Tsinghua University, China), Quanyu Dai (Huawei Noah’s Ark Lab, China), Zhenhua Dong (Huawei Noah’s Ark Lab, China), Xi Xiao (Tsinghua University, China), Xiuqiang He (Huawei Noah’s Ark Lab, China)</p>
+</li>
+<li><h3 id="UltraGCN-Ultra-Simplification-of-Graph-Convolutional-Networks-for-Recommendation"><a href="#UltraGCN-Ultra-Simplification-of-Graph-Convolutional-Networks-for-Recommendation" class="headerlink" title="UltraGCN: Ultra Simplification of Graph Convolutional Networks for Recommendation"></a><strong>UltraGCN: Ultra Simplification of Graph Convolutional Networks for Recommendation</strong></h3><p>Kelong Mao (Renmin University of China, China), Jieming Zhu (Huawei Noah’s Ark Lab, China), Xi Xiao (Tsinghua University &amp; Peng Cheng Laboratory, China), Biao Lu (Huawei Noah’s Ark Lab, China), Zhaowei Wang (Huawei Noah’s Ark Lab, China), Xiuqiang He (Huawei Noah’s Ark Lab, China)</p>
+</li>
+<li><h3 id="To-Be-or-not-to-Be-Tail-Labels-in-Extreme-Multi-label-Learning"><a href="#To-Be-or-not-to-Be-Tail-Labels-in-Extreme-Multi-label-Learning" class="headerlink" title="To Be or not to Be, Tail Labels in Extreme Multi-label Learning"></a>To Be or not to Be, Tail Labels in Extreme Multi-label Learning</h3><p>Zhiqi Ge (Jilin University, China), Ximing Li (Jilin University, China)</p>
+</li>
+<li><h3 id="Pre-training-for-Ad-hoc-Retrieval-Hyperlink-is-Also-You-Need"><a href="#Pre-training-for-Ad-hoc-Retrieval-Hyperlink-is-Also-You-Need" class="headerlink" title="Pre-training for Ad-hoc Retrieval: Hyperlink is Also You Need"></a>Pre-training for Ad-hoc Retrieval: Hyperlink is Also You Need</h3><p>Zhengyi Ma (Renmin University of China, China), Zhicheng Dou (Renmin University of China, China), Wei Xu (Renmin University of China, China), Xinyu Zhang (Huawei, China), Hao Jiang (Huawei, China), Zhao Cao (Huawei, China), Ji-Rong Wen (Renmin University of China, China)</p>
+</li>
+<li><h3 id="Pareto-optimal-Community-Search-on-Large-Bipartite-Graphs"><a href="#Pareto-optimal-Community-Search-on-Large-Bipartite-Graphs" class="headerlink" title="Pareto-optimal Community Search on Large Bipartite Graphs"></a><strong>Pareto-optimal Community Search on Large Bipartite Graphs</strong></h3><p>Yuting Zhang (University of New South Wales, Australia), Kai Wang (University of New South Wales, Australia), Wenjie Zhang (University of New South Wales, Australia), Xuemin Lin (University of New South Wales, Australia), Ying Zhang (University of Technology Sydney, Australia)</p>
+</li>
+<li><h3 id="Learning-Implicit-User-Profile-for-Personalized-Retrieval-Based-Chatbot"><a href="#Learning-Implicit-User-Profile-for-Personalized-Retrieval-Based-Chatbot" class="headerlink" title="Learning Implicit User Profile for Personalized Retrieval-Based Chatbot"></a><strong>Learning Implicit User Profile for Personalized Retrieval-Based Chatbot</strong></h3><p>Hongjin Qian (Renmin University of China, China), Zhicheng Dou (Renmin University of China, China), Yutao Zhu (Université de Montréal, Canada), Yueyuan Ma (Renmin University of China, China), Ji-Rong Wen (Renmin University of China &amp; Beijing Key Laboratory of Big Data Management and Analysis Methods, China)</p>
+</li>
+<li><h3 id="Modeling-Heterogeneous-Graph-Network-on-Fraud-Detection-A-Community-based-Framework-with-Attention-Mechanism"><a href="#Modeling-Heterogeneous-Graph-Network-on-Fraud-Detection-A-Community-based-Framework-with-Attention-Mechanism" class="headerlink" title="Modeling Heterogeneous Graph Network on Fraud Detection: A Community-based Framework with Attention Mechanism"></a><strong>Modeling Heterogeneous Graph Network on Fraud Detection: A Community-based Framework with Attention Mechanism</strong></h3><p>Li Wang (JD.com, China), Peipei Li (JD.com, China), Kai Xiong (JD.com, China), Jiashu Zhao (Wilfrid Laurier University, Canada), Rui Lin (JD.com, China)</p>
+</li>
+<li><h3 id="Improving-Chinese-Character-Representation-with-Formation-Graph-Attention-Network"><a href="#Improving-Chinese-Character-Representation-with-Formation-Graph-Attention-Network" class="headerlink" title="Improving Chinese Character Representation with Formation Graph Attention Network"></a><strong>Improving Chinese Character Representation with Formation Graph Attention Network</strong></h3><p>Xiaosu Wang (Fudan University, China), Yun Xiong (Fudan University, China), Hao Niu (Fudan University, China), Jingwen Yue (Fudan University, China), Yangyong Zhu (Fudan University, China), Philip S. Yu (University of Illinois at Chicago, USA)</p>
+</li>
+<li><h3 id="LiteGT-Efficient-and-Lightweight-Graph-Transformers"><a href="#LiteGT-Efficient-and-Lightweight-Graph-Transformers" class="headerlink" title="LiteGT: Efficient and Lightweight Graph Transformers"></a><strong>LiteGT: Efficient and Lightweight Graph Transformers</strong></h3><p>Cong Chen (The University of Hong Kong, China), Chaofan Tao (The University of Hong Kong, Hong Kong), Ngai Wong (The University of Hong Kong, Hong Kong)</p>
+</li>
+<li><h3 id="Top-N-Recommendation-with-Counterfactual-User-Preference-Simulation"><a href="#Top-N-Recommendation-with-Counterfactual-User-Preference-Simulation" class="headerlink" title="Top-N Recommendation with Counterfactual User Preference Simulation"></a><strong>Top-N Recommendation with Counterfactual User Preference Simulation</strong></h3><p>Mengyue Yang (University College London, United Kingdom), Quanyu Dai (Huawei, China), Zhenhua Dong (Huawei, China), Xu Chen (Beijing Key Laboratory of Big Data Management and Analysis Methods &amp; Renmin University of China, China), Xiuqiang He (Huawei, China), Jun Wang (University College London, United Kingdom)</p>
+</li>
+<li><h3 id="Reinforcement-Learning-to-Optimize-Lifetime-Value-in-Cold-Start-Recommendation"><a href="#Reinforcement-Learning-to-Optimize-Lifetime-Value-in-Cold-Start-Recommendation" class="headerlink" title="Reinforcement Learning to Optimize Lifetime Value in Cold-Start Recommendation"></a><strong>Reinforcement Learning to Optimize Lifetime Value in Cold-Start Recommendation</strong></h3><p>Luo Ji (Alibaba Group, China), Qi Qin (Peking University, China), Bingqing Han (Alibaba Group, China), Hongxia Yang (Alibaba Group, China)</p>
+</li>
+<li><h3 id="Zero-Shot-on-the-Cold-Start-Problem-Model-Agnostic-Interest-Learning-for-Recommender-Systems"><a href="#Zero-Shot-on-the-Cold-Start-Problem-Model-Agnostic-Interest-Learning-for-Recommender-Systems" class="headerlink" title="Zero Shot on the Cold-Start Problem: Model-Agnostic Interest Learning for Recommender Systems"></a><strong>Zero Shot on the Cold-Start Problem: Model-Agnostic Interest Learning for Recommender Systems</strong></h3><p>Philip J. Feng (NetEase Inc., China), Pingjun Pan (NetEase Inc., China), Tingting Zhou (NetEase Inc., China), Hongxiang Chen (NetEase Inc., China), Chuanjiang Luo (NetEase Inc., China)</p>
+</li>
+<li><h3 id="Multi-hop-Reading-on-Memory-Neural-Network-with-Selective-Coverage-for-Medication-Recommendation"><a href="#Multi-hop-Reading-on-Memory-Neural-Network-with-Selective-Coverage-for-Medication-Recommendation" class="headerlink" title="Multi-hop Reading on Memory Neural Network with Selective Coverage for Medication Recommendation"></a><strong>Multi-hop Reading on Memory Neural Network with Selective Coverage for Medication Recommendation</strong></h3><p>Yanda Wang (Nanjing University of Aeronautics and Astronautics, China), Weitong Chen (The University of Queensland, Australia), Dechang Pi (Nanjing University of Aeronautics and Astronautics, China), Lin Yue (The University of Queensland, Australia), Miao Xu (The University of Queensland, Australia), Xue Li (The University of Queensland, Australia)</p>
+</li>
+<li><h3 id="DynSTGAT-Dynamic-Spatial-Temporal-Graph-Attention-Network-for-Traffic-Signal-Control"><a href="#DynSTGAT-Dynamic-Spatial-Temporal-Graph-Attention-Network-for-Traffic-Signal-Control" class="headerlink" title="DynSTGAT: Dynamic Spatial-Temporal Graph Attention Network for Traffic Signal Control"></a><strong>DynSTGAT: Dynamic Spatial-Temporal Graph Attention Network for Traffic Signal Control</strong></h3><p>Libing Wu (Wuhan University &amp; Xidian University, China), Min Wang (Wuhan University &amp; Xidian University, China), Dan Wu (University of Windsor, Canada), Jia Wu (Macquarie University, Australia)</p>
+</li>
+<li><h3 id="Are-Negative-Samples-Necessary-in-Entity-Alignment-An-Approach-with-High-Performance-Scalability-and-Robustness"><a href="#Are-Negative-Samples-Necessary-in-Entity-Alignment-An-Approach-with-High-Performance-Scalability-and-Robustness" class="headerlink" title="Are Negative Samples Necessary in Entity Alignment?: An Approach with High Performance, Scalability and Robustness"></a><strong>Are Negative Samples Necessary in Entity Alignment?: An Approach with High Performance, Scalability and Robustness</strong></h3><p>Xin Mao (East China Normal University, China), Wenting Wang (Alibaba Group, Singapore), Yuanbin Wu (East China Normal University, China), Man Lan (East China Normal University, China)</p>
+</li>
+<li><h3 id="Contrastive-Learning-of-User-Behavior-Sequence-for-Context-Aware-Document-Ranking"><a href="#Contrastive-Learning-of-User-Behavior-Sequence-for-Context-Aware-Document-Ranking" class="headerlink" title="Contrastive Learning of User Behavior Sequence for Context-Aware Document Ranking"></a><strong>Contrastive Learning of User Behavior Sequence for Context-Aware Document Ranking</strong></h3><p>Yutao Zhu (University of Montreal, Canada), Jian-Yun Nie (University of Montreal, Canada), Zhicheng Dou (Renmin University of China, China), Zhengyi Ma (Renmin University of China, China), Xinyu Zhang (Distributed and Parallel Software Lab, Huawei, China), Pan Du (University of Montreal, Canada), Xiaochen Zuo (Renmin University of China, China), Hao Jiang (Distributed and Parallel Software Lab, Huawei, China)</p>
+</li>
+<li><h3 id="Deep-Self-Adaptive-Hashing-for-Image-Retrieval"><a href="#Deep-Self-Adaptive-Hashing-for-Image-Retrieval" class="headerlink" title="Deep Self-Adaptive Hashing for Image Retrieval"></a><strong>Deep Self-Adaptive Hashing for Image Retrieval</strong></h3><p>Qinghong Lin (Shenzhen University, China), Xiaojun Chen (Shenzhen University, China), Qin Zhang (Shenzhen University, China), Shangxuan Tian (Tencent, China), Yudong Chen (The University of Queensland, Australia)</p>
+</li>
+<li><h3 id="How-Powerful-is-Graph-Convolution-for-Recommendation"><a href="#How-Powerful-is-Graph-Convolution-for-Recommendation" class="headerlink" title="How Powerful is Graph Convolution for Recommendation"></a><strong>How Powerful is Graph Convolution for Recommendation</strong></h3><p>Yifei Shen (The Hong Kong University of Science and Technology, Hong Kong), Yongji Wu (Duke University, USA), Yao Zhang (Fudan University, China), Caihua Shan (Microsoft Research Asia, China), Jun Zhang (The Hong Kong University of Science and Technology, Hong Kong), B. Khaled Letaief (The Hong Kong University of Science and Technology, Hong Kong), Dongsheng Li (Microsoft Research Asia, China)</p>
+</li>
+<li><h3 id="CBML-A-Cluster-based-Meta-learning-Model-for-Session-based-Recommendation"><a href="#CBML-A-Cluster-based-Meta-learning-Model-for-Session-based-Recommendation" class="headerlink" title="CBML: A Cluster-based Meta-learning Model for Session-based Recommendation"></a><strong>CBML: A Cluster-based Meta-learning Model for Session-based Recommendation</strong></h3><p>Jiayu Song (Soochow University, China), Jiajie Xu (Soochow University, China), Rui Zhou (Swinburne University of Technology, Australia), Lu Chen (Swinburne University of Technology, Australia), Jianxin Li (Deakin University, Australia), Chengfei Liu (Swinburne University of Technology, Australia)</p>
+</li>
+<li><h3 id="AutoIAS-Automatic-Integrated-Architecture-Searcher-for-Click-Trough-Rate-Prediction"><a href="#AutoIAS-Automatic-Integrated-Architecture-Searcher-for-Click-Trough-Rate-Prediction" class="headerlink" title="AutoIAS: Automatic Integrated Architecture Searcher for Click-Trough Rate Prediction"></a><strong>AutoIAS: Automatic Integrated Architecture Searcher for Click-Trough Rate Prediction</strong></h3><p>Zhikun Wei (Tsinghua University, China), Xin Wang (Tsinghua University &amp; Pengcheng Laboratory, China), Wenwu Zhu (Tsinghua University &amp; Pengcheng Laboratory, China)</p>
+</li>
+<li><h3 id="CMML-Contextual-Modulation-Meta-Learning-for-Cold-Start-Recommendation"><a href="#CMML-Contextual-Modulation-Meta-Learning-for-Cold-Start-Recommendation" class="headerlink" title="CMML: Contextual Modulation Meta Learning for Cold-Start Recommendation"></a><strong>CMML: Contextual Modulation Meta Learning for Cold-Start Recommendation</strong></h3><p>Xidong Feng (University College London, United Kingdom), Chen Chen (Noah’s Ark Lab, Huawei, China), Dong Li (Noah’s Ark Lab, Huawei, China), Mengchen Zhao (Noah’s Ark Lab, Huawei, China), Jianye Hao (Noah’s Ark Lab, Huawei, China), Jun Wang (University College London, United Kingdom)</p>
+</li>
+<li><h3 id="Unsupervised-Large-Scale-Social-Network-Alignment-via-Cross-Network-Embedding"><a href="#Unsupervised-Large-Scale-Social-Network-Alignment-via-Cross-Network-Embedding" class="headerlink" title="Unsupervised Large-Scale Social Network Alignment via Cross Network Embedding"></a><strong>Unsupervised Large-Scale Social Network Alignment via Cross Network Embedding</strong></h3><p>Zhehan Liang (Xiamen University, China), Yu Rong (Tencent AI Lab, China), Chenxin Li (Xiamen University, China), Yunlong Zhang (Xiamen University, China), Yue Huang (Xiamen University, China), Tingyang Xu (Tencent AI Lab, China), Xinghao Ding (Xiamen University, China), Junzhou Huang (Tencent AI Lab, China)</p>
+</li>
+<li><h3 id="Learning-Joint-Embedding-with-Modality-Alignments-for-Cross-Modal-Retrieval-of-Recipes-and-Food-Images"><a href="#Learning-Joint-Embedding-with-Modality-Alignments-for-Cross-Modal-Retrieval-of-Recipes-and-Food-Images" class="headerlink" title="Learning Joint Embedding with Modality Alignments for Cross-Modal Retrieval of Recipes and Food Images"></a><strong>Learning Joint Embedding with Modality Alignments for Cross-Modal Retrieval of Recipes and Food Images</strong></h3><p>Zhongwei Xie (Georgia Institute of Technology &amp; Wuhan University of Technology, USA), Ling Liu (Georgia Institute of Technology, USA), Lin Li (Wuhan University of Technology, China), Luo Zhong (Wuhan University of Technology, China)</p>
+</li>
+<li><h3 id="Seq2Bubbles-Region-Based-Embedding-Learning-for-User-Behaviors-in-Sequential-Recommenders"><a href="#Seq2Bubbles-Region-Based-Embedding-Learning-for-User-Behaviors-in-Sequential-Recommenders" class="headerlink" title="Seq2Bubbles: Region-Based Embedding Learning for User Behaviors in Sequential Recommenders"></a><strong>Seq2Bubbles: Region-Based Embedding Learning for User Behaviors in Sequential Recommenders</strong></h3><p>Qitian Wu (Shanghai Jiao Tong University, China), Chenxiao Yang (Shanghai Jiao Tong University, China), Shuodian Yu (Shanghai Jiao Tong University, China), Xiaofeng Gao (Shanghai Jiao Tong University, China), Guihai Chen (Shanghai Jiao Tong University, China)</p>
+</li>
+<li><h3 id="Enhancing-User-Interest-Modeling-with-Knowledge-Enriched-Itemsets-for-Sequential-Recommendation"><a href="#Enhancing-User-Interest-Modeling-with-Knowledge-Enriched-Itemsets-for-Sequential-Recommendation" class="headerlink" title="Enhancing User Interest Modeling with Knowledge-Enriched Itemsets for Sequential Recommendation"></a><strong>Enhancing User Interest Modeling with Knowledge-Enriched Itemsets for Sequential Recommendation</strong></h3><p>Chunyang Wang (Shanghai Jiao Tong University, China), Yanmin Zhu (Shanghai Jiao Tong University, China), Haobing Liu (Shanghai Jiao Tong University, China), Wenze Ma (Shanghai Jiao Tong University, China), Tianzi Zang (Shanghai Jiao Tong University, China), Jiadi Yu (Shanghai Jiao Tong University, China)</p>
+</li>
+<li><h3 id><a href="#" class="headerlink" title="========="></a>=========</h3></li>
+<li><h3 id="Learning-Multiple-Intent-Representations-for-Search-Queries，多表达"><a href="#Learning-Multiple-Intent-Representations-for-Search-Queries，多表达" class="headerlink" title="Learning Multiple Intent Representations for Search Queries，多表达"></a>Learning Multiple Intent Representations for Search Queries，多表达</h3><p>Helia Hashemi (University of Massachusetts Amherst, USA), Hamed Zamani (University of Massachusetts Amherst, USA), W. Bruce Croft (University of Massachusetts Amherst, USA)</p>
+</li>
+</ul>
+<h2 id="阿里"><a href="#阿里" class="headerlink" title="阿里"></a>阿里</h2><ul>
+<li><h3 id="Reinforcement-Learning-to-Optimize-Lifetime-Value-in-Cold-Start-Recommendation-1"><a href="#Reinforcement-Learning-to-Optimize-Lifetime-Value-in-Cold-Start-Recommendation-1" class="headerlink" title="Reinforcement Learning to Optimize Lifetime Value in Cold-Start Recommendation"></a>Reinforcement Learning to Optimize Lifetime Value in Cold-Start Recommendation</h3><p>Luo Ji (Alibaba Group, China), Qi Qin (Peking University, China), Bingqing Han (Alibaba Group, China), Hongxia Yang (Alibaba Group, China)</p>
+</li>
+<li><h3 id="Learning-to-Augment-Imbalanced-Data-for-Re-ranking-Models-‐"><a href="#Learning-to-Augment-Imbalanced-Data-for-Re-ranking-Models-‐" class="headerlink" title="Learning to Augment Imbalanced Data for Re-ranking Models ‐"></a>Learning to Augment Imbalanced Data for Re-ranking Models ‐</h3><p>Zi-Hao Qiu (Nanjing University, China), Ying-Chun Jian (Nanjing University, China), Qing-Guo Chen (Alibaba Group, China), Lijun Zhang (Nanjing University, China)</p>
+</li>
+<li><h3 id="Self-Supervised-Learning-on-Users’-Spontaneous-Behaviors-for-Multi-Scenario-Ranking-in-E-commerce"><a href="#Self-Supervised-Learning-on-Users’-Spontaneous-Behaviors-for-Multi-Scenario-Ranking-in-E-commerce" class="headerlink" title="Self-Supervised Learning on Users’ Spontaneous Behaviors for Multi-Scenario Ranking in E-commerce"></a><strong>Self-Supervised Learning on Users’ Spontaneous Behaviors for Multi-Scenario Ranking in E-commerce</strong></h3><p>Yulong Gu (Alibaba Group, China), Wentian Bao (Alibaba Group, China), Dan Ou (Alibaba Group, China), Xiang Li (Alibaba Group, China), Baoliang Cui (Alibaba Group, China), Biyu Ma (Alibaba Group, China), Haikuan Huang (Alibaba Group, China), Qingwen Liu (Alibaba Group, China), Xiaoyi Zeng (Alibaba Group, China)</p>
+</li>
+<li><h3 id="Heterogeneous-Graph-Neural-Networks-for-Large-Scale-Bid-Keyword-Matching"><a href="#Heterogeneous-Graph-Neural-Networks-for-Large-Scale-Bid-Keyword-Matching" class="headerlink" title="Heterogeneous Graph Neural Networks for Large-Scale Bid Keyword Matching"></a><strong>Heterogeneous Graph Neural Networks for Large-Scale Bid Keyword Matching</strong></h3><p>Zongtao Liu (Alibaba Group, China), Bin Ma (Alibaba Group, China), Quan Liu (Alibaba Group, China), Jian Xu (Alibaba Group, China), Bo Zheng (Alibaba Group, China)</p>
+</li>
+<li><h3 id="Unsupervised-Categorical-Representation-Learning-for-Package-Arrival-Time-Prediction，lbs的特点和eta结合"><a href="#Unsupervised-Categorical-Representation-Learning-for-Package-Arrival-Time-Prediction，lbs的特点和eta结合" class="headerlink" title="Unsupervised Categorical Representation Learning for Package Arrival Time Prediction，lbs的特点和eta结合"></a>Unsupervised Categorical Representation Learning for Package Arrival Time Prediction，lbs的特点和eta结合</h3><p>Yang Li (Alibaba Group, China), Xingyu Wu (Alibaba Group, China), Jinglong Wang (Alibaba Group, China), Yong Liu (Alibaba-NTU Singapore Joint Research Institute, Singapore), Xiaoqing Wang (Alibaba Group, China), Yuming Deng (Alibaba Group, China), Chunyan Miao (Nanyang Technological University, Singapore)</p>
+</li>
+<li><h3 id="Fulfillment-Time-Aware-Personalized-Ranking-for-On-Demand-Food-Recommendation"><a href="#Fulfillment-Time-Aware-Personalized-Ranking-for-On-Demand-Food-Recommendation" class="headerlink" title="Fulfillment-Time-Aware Personalized Ranking for On-Demand Food Recommendation"></a>Fulfillment-Time-Aware Personalized Ranking for On-Demand Food Recommendation</h3><p>Haishuai Wang (Alibaba Group, Fairfield University, China), Zhao Li (Alibaba Group, China), Xuanwu Liu (Alibaba Group, China), Donghui Ding (Alibaba Group, China), Zehong Hu (Alibaba Group, China), Peng Zhang (Guangzhou University, China), Chuan Zhou (Chinese Academy of Sciences, China), Jiajun Bu (Zhejiang University, China)</p>
+</li>
+<li><h3 id="SAR-Net-A-Scenario-Aware-Ranking-Network-for-Personalized-Fair-Recommendation-in-Hundreds-of-Travel-Scenarios"><a href="#SAR-Net-A-Scenario-Aware-Ranking-Network-for-Personalized-Fair-Recommendation-in-Hundreds-of-Travel-Scenarios" class="headerlink" title="SAR-Net: A Scenario-Aware Ranking Network for Personalized Fair Recommendation in Hundreds of Travel Scenarios"></a><strong>SAR-Net: A Scenario-Aware Ranking Network for Personalized Fair Recommendation in Hundreds of Travel Scenarios</strong></h3></li>
+<li><h3 id="SCI-Subspace-Learning-Based-Counterfactual-Inference-for-Individual-Treatment-Effect-Estimation"><a href="#SCI-Subspace-Learning-Based-Counterfactual-Inference-for-Individual-Treatment-Effect-Estimation" class="headerlink" title="SCI: Subspace Learning Based Counterfactual Inference for Individual Treatment Effect Estimation"></a>SCI: Subspace Learning Based Counterfactual Inference for Individual Treatment Effect Estimation</h3><p>Liuyi Yao (Alibaba Group, China), Yaliang Li (Alibaba Group, USA), Sheng Li (University of Georgia, USA), Mengdi Huai (University of Virginia, USA), Jing Gao (Purdue University, USA), Aidong Zhang (University of Virginia, USA)</p>
+</li>
+<li><h3 id="Learning-to-Expand-Reinforced-Response-Expansion-for-Information-seeking-Conversations"><a href="#Learning-to-Expand-Reinforced-Response-Expansion-for-Information-seeking-Conversations" class="headerlink" title="Learning to Expand: Reinforced Response Expansion for Information-seeking Conversations"></a>Learning to Expand: Reinforced Response Expansion for Information-seeking Conversations</h3><p>Haojie Pan (Alibaba Group, China), Cen Chen (East China Normal University, China), Chengyu Wang (Alibaba Group, China), Minghui Qiu (Alibaba Group, Singapore), Liu Yang (University of Massachusetts at Amherst, USA), Feng Ji (Alibaba Group, China), Jun Huang (Alibaba Group, China)</p>
+</li>
+<li><h3 id="Binary-Code-based-Hash-Embedding-for-Web-scale-Applications"><a href="#Binary-Code-based-Hash-Embedding-for-Web-scale-Applications" class="headerlink" title="Binary Code based Hash Embedding for Web-scale Applications"></a>Binary Code based Hash Embedding for Web-scale Applications</h3><p>Bencheng Yan (Alibaba Group, China), Pengjie Wang (Alibaba Group, China), Jinquan Liu (Alibaba Group, China), Wei Lin (Alibaba Group, China), Kuang-Chih Lee (Alibaba Group, China), Jian Xu (Alibaba Group, China), Bo Zheng (Alibaba Group, China)</p>
+</li>
+<li><h3 id="Learning-Effective-and-Efficient-Embedding-via-an-Adaptively-Masked-Twins-based-Layer"><a href="#Learning-Effective-and-Efficient-Embedding-via-an-Adaptively-Masked-Twins-based-Layer" class="headerlink" title="Learning Effective and Efficient Embedding via an Adaptively-Masked Twins-based Layer"></a>Learning Effective and Efficient Embedding via an Adaptively-Masked Twins-based Layer</h3><p>Bencheng Yan (Alibaba Group, China), Pengjie Wang (Alibaba Group, China), Kai Zhang (Alibaba Group, China), Wei Lin (Alibaba Group, China), Kuang-Chih Lee (Alibaba Group, China), Jian Xu (Alibaba Group, China), Bo Zheng (Alibaba Group, China)</p>
+</li>
+<li><h3 id="AutoHERI-Automated-Hierarchical-Representation-Integration-for-Post-Click-Conversion-Rate-Estimation"><a href="#AutoHERI-Automated-Hierarchical-Representation-Integration-for-Post-Click-Conversion-Rate-Estimation" class="headerlink" title="AutoHERI: Automated Hierarchical Representation Integration for Post-Click Conversion Rate Estimation"></a>AutoHERI: Automated Hierarchical Representation Integration for Post-Click Conversion Rate Estimation</h3><p>Penghui Wei (Alibaba Group, China), Weimin Zhang (Alibaba Group, China), Zixuan Xu (Alibaba Group, China), Shaoguo Liu (Alibaba Group, China), Kuang-chih Lee (Alibaba Group, China), Bo Zheng (Alibaba Group, China)</p>
+</li>
+<li><h3 id="SMAD-Scalable-Multi-view-Ad-Retrieval-System-for-E-Commerce-Sponsored-Search"><a href="#SMAD-Scalable-Multi-view-Ad-Retrieval-System-for-E-Commerce-Sponsored-Search" class="headerlink" title="SMAD: Scalable Multi-view Ad Retrieval System for E-Commerce Sponsored Search"></a>SMAD: Scalable Multi-view Ad Retrieval System for E-Commerce Sponsored Search</h3><p>Shiyang Wen (Alibaba Group, China), Yiran Chen (Alibaba Group, China), Zhi Yang (Peking University, China), Yan Zhang (Alibaba Group, China), Di Zhang (Alibaba Group, China), Liang Wang (Alibaba Group, China), Bo Zheng (Alibaba Group, China)</p>
+</li>
+<li><h3 id="From-Community-Search-to-Community-Understanding-A-Multimodal-Community-Query-Engine"><a href="#From-Community-Search-to-Community-Understanding-A-Multimodal-Community-Query-Engine" class="headerlink" title="From Community Search to Community Understanding: A Multimodal Community Query Engine"></a><strong>From Community Search to Community Understanding: A Multimodal Community Query Engine</strong></h3><p>Zhao Li (Alibaba Group, China), Pengcheng Zou (Alibaba Group, China), Xia Chen (Alibaba Group, China), Shichang Hu (Alibaba Group, China), Peng Zhang (Guangzhou University, China), Yumou Zhang (Alibaba Group, China), Bingsheng He (National University of Singapore, Singapore), Yuchen Li (Singapore Management University, Singapore), Xing Tang (Alibaba Group, China)</p>
+</li>
+<li><h3 id="AliMe-MKG-A-Multi-modal-Knowledge-Graph-for-Live-streaming-E-commerce"><a href="#AliMe-MKG-A-Multi-modal-Knowledge-Graph-for-Live-streaming-E-commerce" class="headerlink" title="AliMe MKG: A Multi-modal Knowledge Graph for Live-streaming E-commerce"></a><strong>AliMe MKG: A Multi-modal Knowledge Graph for Live-streaming E-commerce</strong></h3><p>Guohai Xu (Alibaba Group, China), Hehong Chen (Alibaba Group, China), Feng-Lin Li (Alibaba Group, China), Fu Sun (Alibaba Group, China), Yunzhou Shi (Alibaba Group, China), Zhixiong Zeng (Alibaba Group, China), Wei Zhou (Alibaba Group, China), Zhongzhou Zhao (Alibaba Group, China), Ji Zhang (Alibaba Group, China)</p>
+</li>
+<li><h3 id="ECEdgeNet-A-Large-Scale-Edge-Computing-Dataset-in-the-Field-of-E-commerce"><a href="#ECEdgeNet-A-Large-Scale-Edge-Computing-Dataset-in-the-Field-of-E-commerce" class="headerlink" title="ECEdgeNet: A Large Scale Edge Computing Dataset in the Field of E-commerce"></a><strong>ECEdgeNet: A Large Scale Edge Computing Dataset in the Field of E-commerce</strong></h3><p> Liangwei Li (Alibaba Group, China), Chenwei Weng (Alibaba Group, China), Chengfu Huo (Alibaba Group, China), Weijun Ren (Alibaba Group, China)</p>
+</li>
+</ul>
+<h2 id="baidu"><a href="#baidu" class="headerlink" title="baidu"></a>baidu</h2><ul>
+<li><h3 id="Adversarial-Kernel-Sampling-on-Class-imbalanced-Data-Streams"><a href="#Adversarial-Kernel-Sampling-on-Class-imbalanced-Data-Streams" class="headerlink" title="Adversarial Kernel Sampling on Class-imbalanced Data Streams"></a>Adversarial Kernel Sampling on Class-imbalanced Data Streams</h3><p>Peng Yang (Baidu Research, USA), Ping Li (Baidu Research, USA)</p>
+</li>
+<li><h3 id="Efficient-Learning-to-Learn-a-Robust-CTR-Model-for-Web-scale-Online-Sponsored-Search-Advertising"><a href="#Efficient-Learning-to-Learn-a-Robust-CTR-Model-for-Web-scale-Online-Sponsored-Search-Advertising" class="headerlink" title="Efficient Learning to Learn a Robust CTR Model for Web-scale Online Sponsored Search Advertising"></a>Efficient Learning to Learn a Robust CTR Model for Web-scale Online Sponsored Search Advertising</h3><p>Xin Wang (Baidu Research, China), Peng Yang (Baidu Research, USA), Shaopeng Chen (Baidu Sponsored Search (Phoenix Nest), China), Lin Liu (Baidu Sponsored Search (Phoenix Nest), China), Lian Zhao (Baidu Sponsored Search (Phoenix Nest), China), Jiacheng Guo (Baidu Sponsored Search (Phoenix Nest), China), Mingming Sun (Baidu Research, China), Ping Li (Baidu Research, USA)</p>
+</li>
+<li><h3 id="CHASE-Commonsense-Enriched-Advertising-on-Search-Engine-with-Explicit-Knowledge"><a href="#CHASE-Commonsense-Enriched-Advertising-on-Search-Engine-with-Explicit-Knowledge" class="headerlink" title="CHASE: Commonsense-Enriched Advertising on Search Engine with Explicit Knowledge"></a>CHASE: Commonsense-Enriched Advertising on Search Engine with Explicit Knowledge</h3><p>Chao Zhang (Baidu Search Ads (Phoenix Nest), Baidu Inc., China), Jingbo Zhou (Baidu Research, China), Xiaoling Zang (Baidu Search Ads (Phoenix Nest), Baidu Inc., China), Qing Xu (Baidu Search Ads (Phoenix Nest), Baidu Inc., China), Liang Yin (Baidu Search Ads (Phoenix Nest), Baidu Inc., China), Xiang He (Baidu Search Ads (Phoenix Nest), Baidu Inc., China), Lin Liu (Baidu Search Ads (Phoenix Nest), Baidu Inc., China), Haoyi Xiong (Baidu Research, China), Dejing Dou (Baidu Research, China)</p>
+</li>
+<li><h3 id="Multi-modal-Dictionary-BERT-for-Cross-modal-Video-Search-in-Baidu-Advertising"><a href="#Multi-modal-Dictionary-BERT-for-Cross-modal-Video-Search-in-Baidu-Advertising" class="headerlink" title="Multi-modal Dictionary BERT for Cross-modal Video Search in Baidu Advertising"></a>Multi-modal Dictionary BERT for Cross-modal Video Search in Baidu Advertising</h3><p>Tan Yu (Baidu Research, USA), Yi Yang (Baidu Inc., China), Yi Li (Baidu Inc., China), Lin Liu (Baidu Inc., China), Mingming Sun (Baidu Research, China), Ping Li (Baidu Research, USA)</p>
+</li>
+<li><h3 id="MixBERT-for-Image-Ad-Relevance-Scoring-in-Advertising"><a href="#MixBERT-for-Image-Ad-Relevance-Scoring-in-Advertising" class="headerlink" title="MixBERT for Image-Ad Relevance Scoring in Advertising"></a>MixBERT for Image-Ad Relevance Scoring in Advertising</h3><p>Tan Yu (Baidu Research, USA), Xiaokang Li (Baidu Inc., China), Jianwen Xie (Baidu Research, USA), Ruiyang Yin (Baidu Research, China), Qing Xu (Baidu Inc., China), Ping Li (Baidu Research, USA)</p>
+</li>
+</ul>
+<h2 id="腾讯"><a href="#腾讯" class="headerlink" title="腾讯"></a>腾讯</h2><ul>
+<li><h3 id="Fast-Extraction-of-Word-Embedding-from-Q-contexts"><a href="#Fast-Extraction-of-Word-Embedding-from-Q-contexts" class="headerlink" title="Fast Extraction of Word Embedding from Q-contexts"></a>Fast Extraction of Word Embedding from Q-contexts</h3><p>Junsheng Kong (South China University of Technology, China), Weizhao Li (South China University of Technology, China), Zeyi Liu (University of Cambridge, United Kingdom), Ben Liao (Tencent Quantum Lab, China), Jiezhong Qiu (Tsinghua University, China), Chang-Yu Hsieh (Tencent Quantum Lab, China), Yi Cai (School of Software Engineering, South China University of Technology, China), Shengyu Zhang (Tencent Quantum Lab, China)</p>
+</li>
+<li><h3 id="USER-A-Unified-Information-Search-and-Recommendation-Model-based-on-Integrated-Behavior-Sequence"><a href="#USER-A-Unified-Information-Search-and-Recommendation-Model-based-on-Integrated-Behavior-Sequence" class="headerlink" title="USER: A Unified Information Search and Recommendation Model based on Integrated Behavior Sequence"></a><strong>USER: A Unified Information Search and Recommendation Model based on Integrated Behavior Sequence</strong></h3><p>Jing Yao (Renmin University of China &amp; Tencent, China), Zhicheng Dou (Renmin University of China, China), Ruobing Xie (Tencent, China), Yanxiong Lu (Tencent, China), Zhiping Wang (Tencent, China), Ji-Rong Wen (Beijing Key Laboratory of Big Data Management and Analysis Methods &amp; Key Laboratory of Data Engineering and Knowledge Engineering, MOE, China)</p>
+</li>
+<li><h3 id="Dual-Learning-for-Query-Generation-and-Query-Selection-in-Query-Feeds-Recommendation"><a href="#Dual-Learning-for-Query-Generation-and-Query-Selection-in-Query-Feeds-Recommendation" class="headerlink" title="Dual Learning for Query Generation and Query Selection in Query Feeds Recommendation"></a><strong>Dual Learning for Query Generation and Query Selection in Query Feeds Recommendation</strong></h3><p> Kunxun Qi (Sun Yat-sen University&amp;Tencent, China), Ruoxu Wang (Tencent, China), Qikai Lu (University of Alberta, Canada), Xuejiao Wang (Tencent, China), Ning Jing (Tencent, China), Di Niu (University of Alberta, Canada), Haolan Chen (Tencent, China)</p>
+</li>
+<li><h3 id="Influence-Maximization-in-Multi-Relational-Social-Networks"><a href="#Influence-Maximization-in-Multi-Relational-Social-Networks" class="headerlink" title="Influence Maximization in Multi-Relational Social Networks"></a>Influence Maximization in Multi-Relational Social Networks</h3><p> Wei Wang (Tencent Inc. China, China), Haili Yang (Tencent Inc. China, China), Yuanfu Lu (Tencent Inc. China, China), Yuanhang Zou (Tencent Inc. China, China), Xu Zhang (Tencent Inc. China, China), Shuting Guo (Tencent Inc. China, China), Leyu Lin (Tencent Inc. China, China)</p>
+</li>
+<li><h3 id="Spectral-Graph-Attention-Network-with-Fast-Eigen-approximation"><a href="#Spectral-Graph-Attention-Network-with-Fast-Eigen-approximation" class="headerlink" title="Spectral Graph Attention Network with Fast Eigen-approximation"></a><strong>Spectral Graph Attention Network with Fast Eigen-approximation</strong></h3><p>Heng Chang (Tsinghua University, China), Yu Rong (Tencent AI Lab, China), Tingyang Xu (Tencent AI Lab, China), Wenbing Huang (Tsinghua University, China), Somayeh Sojoudi (University of California at Berkeley, USA), Junzhou Huang (Tencent AI Lab, China), Wenwu Zhu (Tsinghua University, China)</p>
+</li>
+</ul>
+<h2 id="Ant-Group"><a href="#Ant-Group" class="headerlink" title="Ant Group"></a>Ant Group</h2><ul>
+<li><h3 id="Conditional-Graph-Attention-Networks-for-Distilling-and-Refining-Knowledge-Graphs-in-Recommendation"><a href="#Conditional-Graph-Attention-Networks-for-Distilling-and-Refining-Knowledge-Graphs-in-Recommendation" class="headerlink" title="Conditional Graph Attention Networks for Distilling and Refining Knowledge Graphs in Recommendation"></a>Conditional Graph Attention Networks for Distilling and Refining Knowledge Graphs in Recommendation</h3><p> Ke Tu (Ant Group, China), Peng Cui (Tsinghua University, China), Daixin Wang (Ant Group, China), Zhiqiang Zhang (Ant Group, China), Jun Zhou (Ant Group, China), Yuan Qi (Ant Group, China), Wenwu Zhu (Tsinghua University, China)</p>
+</li>
+<li><h3 id="Self-supervised-Representation-Learning-on-Dynamic-Graphs"><a href="#Self-supervised-Representation-Learning-on-Dynamic-Graphs" class="headerlink" title="Self-supervised Representation Learning on Dynamic Graphs"></a>Self-supervised Representation Learning on Dynamic Graphs</h3><p>Sheng Tian (Ant Group, China), Ruofan Wu (Ant Group, China), Leilei Shi (Ant Group, China), Liang Zhu (Ant Group, China), Tao Xiong (Ant Group, China)</p>
+</li>
+<li><h3 id="Learning-Representations-of-Inactive-Users-A-Cross-Domain-Approach-with-Graph-Neural-Networks"><a href="#Learning-Representations-of-Inactive-Users-A-Cross-Domain-Approach-with-Graph-Neural-Networks" class="headerlink" title="Learning Representations of Inactive Users: A Cross Domain Approach with Graph Neural Networks"></a>Learning Representations of Inactive Users: A Cross Domain Approach with Graph Neural Networks</h3><p>Ziqi Liu (Ant Group, China), Yue Shen (Ant Group, China), Xiaocheng Cheng (Ant Group, China), Qiang Li (Ant Group, China), Jianping Wei (Ant Group, China), Zhiqiang Zhang (Ant Group, China), Dong Wang (Ant Group, China), Xiaodong Zeng (Ant Group, China), Jinjie Gu (Ant Group, China), Jun Zhou (Ant Group, China)</p>
+</li>
+</ul>
+<h2 id="Microsoft"><a href="#Microsoft" class="headerlink" title="Microsoft"></a>Microsoft</h2><ul>
+<li><h3 id="CoPE-Modeling-Continuous-Propagation-and-Evolution-on-Interaction-Graph"><a href="#CoPE-Modeling-Continuous-Propagation-and-Evolution-on-Interaction-Graph" class="headerlink" title="CoPE: Modeling Continuous Propagation and Evolution on Interaction Graph"></a>CoPE: Modeling Continuous Propagation and Evolution on Interaction Graph</h3><p>Yao Zhang (Fudan University, China), Yun Xiong (Fudan University, China), Dongsheng Li (Microsoft Research Asia, China), Caihua Shan (Microsoft Research Asia, China), Kan Ren (Microsoft Research Asia, China), Yangyong Zhu (Fudan University, China)</p>
+</li>
+<li><h3 id="Improving-Query-Representations-for-Dense-Retrieval-with-Pseudo-Relevance-Feedback"><a href="#Improving-Query-Representations-for-Dense-Retrieval-with-Pseudo-Relevance-Feedback" class="headerlink" title="Improving Query Representations for Dense Retrieval with Pseudo Relevance Feedback"></a>Improving Query Representations for Dense Retrieval with Pseudo Relevance Feedback</h3><p>HongChien Yu (Carnegie Mellon University, USA), Chenyan Xiong (Microsoft Research, USA), Jamie Callan (Carnegie Mellon University, USA)</p>
+</li>
+<li><h3 id="Is-a-Single-Model-Enough-MuCoS-A-Multi-Model-Ensemble-Learning-Approach-for-Semantic-Code-Search"><a href="#Is-a-Single-Model-Enough-MuCoS-A-Multi-Model-Ensemble-Learning-Approach-for-Semantic-Code-Search" class="headerlink" title="Is a Single Model Enough? MuCoS: A Multi-Model Ensemble Learning Approach for Semantic Code Search"></a>Is a Single Model Enough? MuCoS: A Multi-Model Ensemble Learning Approach for Semantic Code Search</h3><p>Lun Du (Microsoft Research Asia, China), Xiaozhou Shi (Beijing University of Technology, China), Yanlin Wang (Microsoft Research Asia, China), Ensheng Shi (Xi’an Jiaotong University, China), Shi Han (Microsoft Research Asia, China), Dongmei Zhang (Microsoft Research Asia, China)</p>
+</li>
+<li></li>
+<li></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<h2 id="Tutorials"><a href="#Tutorials" class="headerlink" title="Tutorials"></a>Tutorials</h2><ul>
+<li><p><strong>CIKM 2021 Tutorial on Fairness of Machine Learning in Recommender Systems</strong> ‐ Yunqi Li (Rutgers University, USA), Yingqiang Ge (Rutgers University, USA), Yongfeng Zhang (Rutgers University, USA)</p>
+</li>
+<li><p><strong>AutoML: From Methodology to Application</strong> ‐ Yaliang Li (Alibaba Group, USA), Zhen Wang (Alibaba Group, China), Yuexiang Xie (Alibaba Group, China), Bolin Ding (Alibaba Group, USA), Kai Zeng (Alibaba Group, China), Ce Zhang (ETH Zürich, Switzerland)</p>
+</li>
+<li><p><strong>IR From Bag-of-words to BERT and Beyond through Practical Experiments</strong> </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/terrier-org/ecir2021tutorial">https://github.com/terrier-org/ecir2021tutorial</a></p>
+<p>Craig Macdonald (University of Glasgow, United Kingdom), Nicola Tonellotto (University of Pisa, Italy), Sean MacAvaney (University of Glasgow, United Kingdom)</p>
+</li>
+</ul>
+<h1 id="wsdm2022"><a href="#wsdm2022" class="headerlink" title="wsdm2022"></a>wsdm2022</h1><p><a target="_blank" rel="noopener" href="https://www.wsdm-conference.org/2022/accepted-papers/">https://www.wsdm-conference.org/2022/accepted-papers/</a></p>
+<h2 id="阿里-1"><a href="#阿里-1" class="headerlink" title="阿里"></a>阿里</h2><ul>
+<li><p>A Cooperative-Competitive Multi-Agent Framework for Auto-bidding in Online Advertising</p>
+<p>Chao Wen (Nanjing University of Aeronautics and Astronautics)*; Miao Xu (Alibaba Group); Zhilin Zhang (Alibaba Group); ZHENZHE ZHENG (Shanghai Jiao Tong University); Yuhui Wang (Nanjing University of Aeronautics and Astronautics, China); Xiangyu Liu (Alibaba Group)</p>
+</li>
+<li><p>Learning-To-Ensemble by Contextual Rank Aggregation in E-Commerce</p>
+<p>Xuesi Wang (Alibaba); Guangda Huzhang (Alibaba); Qianying Lin (Alibaba)*; Qing Da (Alibaba Group)</p>
+</li>
+<li><p>Joint Learning of E-commerce Search and Recommendation with A Unified Graph Neural Network</p>
+<p>Kai Zhao (Alibaba Group)*; Yukun Zheng (Alibaba inc.); Tao Zhuang (Alibaba Group); Xiang Li (Alibaba Group); Xiaoyi Zeng (Alibaba Group)</p>
+</li>
+<li><p>Triangle Graph Interest Network for Click-through Rate Prediction</p>
+<p>Wensen Jiang (Alibaba Group)*; Yizhu Jiao (Fudan University); Qingqin Wang (Fudan University); Chuanming Liang (Alibaba Group); Lijie Guo (Alibaba Group); Yao Zhang (Fudan University); Zhijun Sun (Zhejiang Cainiao Supply Chain Management Co Ltd); Yun Xion</p>
+</li>
+<li><p>Modeling Users’ Contextualized Page-wise Feedback for Click-Through Rate Prediction in E-commerce Search</p>
+<p>Zhifang Fan (Alibaba Group)*; Dan Ou (Alibaba Group); Yulong Gu (Alibaba Group); Bairan Fu (Nanjing University); Xiang Li (Alibaba Group); WenTian Bao (alibaba); Xin-yu Dai (Nanjing University); Xiaoyi Zeng (Alibaba Group); Tao Zhuang (Alibaba Group); Qin</p>
+</li>
+<li><p>Leaving No One Behind: A Multi-Scenario Multi-Task Meta Learning Approach for Advertiser Modeling</p>
+<p>qianqian zhang (Alibaba)*; Xinru Liao (Alibaba Group); Quan Liu (Alibaba Group); Jian Xu (Alibaba Group); Bo Zheng (Alibaba Group)</p>
+</li>
+<li><p>An Adaptive Unified Allocation Framework for Guaranteed Display Advertising</p>
+<p>Xiao Cheng (Alibaba); Chuanren Liu (University of Tennessee)*; Liang Dai (Alibaba); Peng Zhang (Alibaba); Zhen Fang (Alibaba); Zhonglin Zu (alibaba)</p>
+</li>
+<li></li>
+</ul>
+<h2 id="Tencent"><a href="#Tencent" class="headerlink" title="Tencent"></a>Tencent</h2><ul>
+<li><p>RecGURU: Adversarial Learning of Generalized User Representations for Cross-Domain Recommendation</p>
+</li>
+<li><p>Personalized Transfer of User Preferences for Cross-domain Recommendation</p>
+<p>Yongchun Zhu (Institute of Computing Technology, Chinese Academy of Sciences)*; Zhenwei Tang (King Abdullah University of Science and Technology); Yudan Liu (WeChat Search Application Department, Tencent); Fuzhen Zhuang (Institute of Artificial Intelligencem, Beihang University)</p>
+</li>
+<li><p>A Peep into the Future: Adversarial Future Encoding in Recommendation</p>
+<p>Ruobing Xie (WeChat Search Application Department, Tencent)*; Shaoliang Zhang (Tencent); Rui Wang (Tencent); Feng Xia (WeChat Search Application Department, Tencent); Leyu Lin (WeChat Search Application Department, Tencent)</p>
+</li>
+<li><p>Efﬁcient two-stage label noise reduction for retrieval-based tasks</p>
+<p>“Mengmeng Kuang (Tencent Holdings Ltd.)*; Weiyan Wang (HKUST); Zhenhong Chen (Tencent Holdings Ltd. ); Lie Kang (Tencent Holdings Ltd. ); Qiang Yan (Tencent)”</p>
+</li>
+</ul>
+<h2 id="baidu-1"><a href="#baidu-1" class="headerlink" title="baidu"></a>baidu</h2><ul>
+<li><p>Fast Semantic Matching via Flexible Contextualized Interaction</p>
+<p>Wenwen Ye (Baidu Inc.)*; Yiding Liu (Baidu Inc.); Lixin Zou (Baidu Inc.); Hengyi Cai (Baidu Inc.); Suqi Cheng (Baidu Inc.); Shuaiqiang Wang (Baidu Inc.); Dawei Yin (Baidu)</p>
+</li>
+<li><p>A GNN-based Multi-task Learning Framework for Personalized Video Search</p>
+<p>Li Zhang (University of Sheffield)*; Lei Shi ( Baidu); Jiashu Zhao (Wilfrid Laurier University); Juan Yang (Baidu); Tianshu Lyv (Baidu); Dawei Yin (Baidu); Haiping Lu (University of Sheffield)</p>
+</li>
+<li></li>
+</ul>
+<ul>
+<li><h2 id="Bytedance"><a href="#Bytedance" class="headerlink" title="Bytedance"></a>Bytedance</h2></li>
+<li><p>Diversified Query Generation Guided by Knowledge Graph</p>
+<p>Xinyao Shen (Fudan University)*; Jiangjie Chen (Fudan University); Jiaze Chen (Bytedance); Chun Zeng (Fudan University); Yanghua Xiao (Fudan University)</p>
+</li>
+</ul>
+<h2 id="kuaishou"><a href="#kuaishou" class="headerlink" title="kuaishou"></a>kuaishou</h2><ul>
+<li><p>C2-CRS: Coarse-to-Fine Contrastive Learning for Conversational Recommender System</p>
+<p>Yuanhang Zhou (Renmin University of China)*; Kun Zhou (Renmin University of China); Wayne Xin Zhao (Renmin University of China); Cheng Wang (Kuaishou Inc); Peng Jiang (Kuaishou Inc.); He Hu (Renmin University of China)</p>
+</li>
+<li></li>
+</ul>
+<h2 id="Ant-Group-1"><a href="#Ant-Group-1" class="headerlink" title="Ant Group"></a>Ant Group</h2><ul>
+<li><h3 id="Scope-aware-Re-ranking-with-Gated-Attention-in-Feed"><a href="#Scope-aware-Re-ranking-with-Gated-Attention-in-Feed" class="headerlink" title="Scope-aware Re-ranking with Gated Attention in Feed"></a>Scope-aware Re-ranking with Gated Attention in Feed</h3><p>Hao Qian (Ant Services Group)*; Qintong Wu (Ant Group ); Kai Zhang (University of Science and Technology of China); Zhiqiang Zhang (Ant Group); Lihong Gu (Ant Group); Xiaodong Zeng (Ant Services Group ); Jun Zhou (Ant Financial); Jinjie Gu (Ant Group)</p>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><h3 id="Multi-Resolution-Attention-for-Personalized-Item-Search"><a href="#Multi-Resolution-Attention-for-Personalized-Item-Search" class="headerlink" title="Multi-Resolution Attention for Personalized Item Search"></a>Multi-Resolution Attention for Personalized Item Search</h3><p>Furkan Kocayusufoglu (UC, Santa Barbara)*; Tao Wu (Google Research); Anima Singh (Google); Georgios Roumpos (Google Research); Heng-Tze Cheng (Google Research); Sagar Jain (Google); Ed H. Chi (Google); Ambuj K Singh (UCSB)</p>
+</li>
+<li><p>Supervised Advantage Actor-Critic for Recommender Systems</p>
+<p>Xin Xin (Shandong University); Alexandros Karatzoglou (Google Research)*; Ioannis Arapakis (Telefonica Research); Joemon M Jose ( University of Glasgow)</p>
+</li>
+<li><p>Lightweight Composite Re-Ranking for Efficient Keyword Search with BERT</p>
+<p>Yingrui Yang (University of California, Santa Barbara)*; Yifan Qiao (University of California, Santa Barbara); Jinjin Shao (UCSB); Xifeng Yan (University of California, Santa Barbara); Tao Yang (UC Santa Barbara)</p>
+</li>
+<li><p>Unsupervised Cross-Domain Adaptation for Response Selection Using Self-Supervised and Adversarial Training</p>
+<p>Jia Li (Peking University); Chongyang Tao (Microsoft)*; Huang Hu (Microsoft); Can Xu (microsoft); Yining Chen (Microsoft); Daxin Jiang (Microsoft, Beijing, China)</p>
+</li>
+<li><p>GraSP: Optimizing Graph-based Nearest Neighbor Search with Subgraph Sampling and Pruning</p>
+<p>Minjia Zhang (Microsoft AI and Research)*; Wenhan Wang (Microsoft); Yuxiong He (Microsoft)</p>
+</li>
+<li><p>Learning Multi-granularity Consecutive User Intent Unit for Session-based Recommendation</p>
+<p>Jiayan Guo (Peking University)*; Yaming Yang (MSRA); Xiangchen Song (Carnegie Mellon University); Yuan Zhang (Peking University); Yujing Wang (MSRA); Jing Bai (Microsoft); Yan Zhang (Peking University)</p>
+</li>
+<li><p>MtCut: A Multi-Task Framework for Ranked List Truncation</p>
+<p>Jianxin Li (Beihang University)*; Wang Dong (Beihang University); Tianchen Zhu (Beihang University); Qishan Zhu (Beihang University); Yuxin Wen (Beihang University); Piao Hongming (Beihang University)</p>
+</li>
+<li><p>Improving Session Search by Modeling Multi-Granularity Historical Query Change</p>
+<p>Xiaochen Zuo (Renmin University of China)*; Zhicheng Dou (Remin University of China)</p>
+</li>
+<li><p>Learning Discrete Representations via Constrained Clustering for Effective and Efficient Dense Retrieval</p>
+<p>Jingtao Zhan (Tsinghua University)*; Jiaxin Mao (Renmin University of China); Yiqun LIU (Tsinghua University); Jiafeng Guo (Institute of Computing Technology, Chinese Academy of Sciences); Min Zhang (Tsinghua University); Shaoping Ma (Tsinghua University)</p>
+</li>
+<li><p>ST-GSP: Spatial-Temporal Global Semantic Representation Learning for Urban Flow Prediction</p>
+<p>Liang Zhao (Chongqing University); Min Gao (Chongqing University)*; Zongwei Wang (Chongqing University)</p>
+</li>
+<li><p>Improving Personalized Search with Dual-Feedback Network</p>
+<p>Chenlong Deng (Renmin University of China)*; Yujia Zhou (Renmin University of China); Zhicheng Dou (Remin University of China)</p>
+</li>
+<li><p>Sequential Modeling with Multiple Attributes for Watchlist Recommendation in E-Commerce</p>
+<p>Uriel Singer (Technion, Israel Institute of Technology)*; Haggai Roitman (IBM Research Haifa); yotam eshel (eBay); Alexander Nus (eBay); Ido Guy (eBay); Or Levi (eBay); Idan Hasson (eBay ); Eliyahu Kiperwasser (eBay)</p>
+</li>
+<li><p>Heterogeneous Global Graph Neural Networks for Personalized Session-based Recommendation</p>
+<p>Yitong Pang (Tongji University)*; Lingfei Wu (JD.COM Silicon Valley Research Center); Qi Shen (Tongji University); Yiming Zhang (Tongji University); Zhihua Wei (Tongji University); Fangli Xu (College of William and Mary); Ethan Chang (Middlesex School); B</p>
+</li>
+<li><p>Learning Multi-granularity Consecutive User Intent Unit for Session-based Recommendation</p>
+<p>Jiayan Guo (Peking University)*; Yaming Yang (MSRA); Xiangchen Song (Carnegie Mellon University); Yuan Zhang (Peking University); Yujing Wang (MSRA); Jing Bai (Microsoft); Yan Zhang (Peking University)</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/default/" rel="tag"># default</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" rel="tag"># 算法相关</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/" rel="prev" title="Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising">
+      <i class="fa fa-chevron-left"></i> Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/%E6%96%87%E7%8C%AE%E6%9F%A5%E6%89%BETIPS/" rel="next" title="marginnote">
+      marginnote <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cikm2021"><span class="nav-number">1.</span> <span class="nav-text">cikm2021</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SimpleX-A-Simple-and-Strong-Baseline-for-Collaborative-Filtering"><span class="nav-number">1.0.1.</span> <span class="nav-text">SimpleX: A Simple and Strong Baseline for Collaborative Filtering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UltraGCN-Ultra-Simplification-of-Graph-Convolutional-Networks-for-Recommendation"><span class="nav-number">1.0.2.</span> <span class="nav-text">UltraGCN: Ultra Simplification of Graph Convolutional Networks for Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#To-Be-or-not-to-Be-Tail-Labels-in-Extreme-Multi-label-Learning"><span class="nav-number">1.0.3.</span> <span class="nav-text">To Be or not to Be, Tail Labels in Extreme Multi-label Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre-training-for-Ad-hoc-Retrieval-Hyperlink-is-Also-You-Need"><span class="nav-number">1.0.4.</span> <span class="nav-text">Pre-training for Ad-hoc Retrieval: Hyperlink is Also You Need</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pareto-optimal-Community-Search-on-Large-Bipartite-Graphs"><span class="nav-number">1.0.5.</span> <span class="nav-text">Pareto-optimal Community Search on Large Bipartite Graphs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Implicit-User-Profile-for-Personalized-Retrieval-Based-Chatbot"><span class="nav-number">1.0.6.</span> <span class="nav-text">Learning Implicit User Profile for Personalized Retrieval-Based Chatbot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modeling-Heterogeneous-Graph-Network-on-Fraud-Detection-A-Community-based-Framework-with-Attention-Mechanism"><span class="nav-number">1.0.7.</span> <span class="nav-text">Modeling Heterogeneous Graph Network on Fraud Detection: A Community-based Framework with Attention Mechanism</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Improving-Chinese-Character-Representation-with-Formation-Graph-Attention-Network"><span class="nav-number">1.0.8.</span> <span class="nav-text">Improving Chinese Character Representation with Formation Graph Attention Network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LiteGT-Efficient-and-Lightweight-Graph-Transformers"><span class="nav-number">1.0.9.</span> <span class="nav-text">LiteGT: Efficient and Lightweight Graph Transformers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Top-N-Recommendation-with-Counterfactual-User-Preference-Simulation"><span class="nav-number">1.0.10.</span> <span class="nav-text">Top-N Recommendation with Counterfactual User Preference Simulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reinforcement-Learning-to-Optimize-Lifetime-Value-in-Cold-Start-Recommendation"><span class="nav-number">1.0.11.</span> <span class="nav-text">Reinforcement Learning to Optimize Lifetime Value in Cold-Start Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zero-Shot-on-the-Cold-Start-Problem-Model-Agnostic-Interest-Learning-for-Recommender-Systems"><span class="nav-number">1.0.12.</span> <span class="nav-text">Zero Shot on the Cold-Start Problem: Model-Agnostic Interest Learning for Recommender Systems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-hop-Reading-on-Memory-Neural-Network-with-Selective-Coverage-for-Medication-Recommendation"><span class="nav-number">1.0.13.</span> <span class="nav-text">Multi-hop Reading on Memory Neural Network with Selective Coverage for Medication Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DynSTGAT-Dynamic-Spatial-Temporal-Graph-Attention-Network-for-Traffic-Signal-Control"><span class="nav-number">1.0.14.</span> <span class="nav-text">DynSTGAT: Dynamic Spatial-Temporal Graph Attention Network for Traffic Signal Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Are-Negative-Samples-Necessary-in-Entity-Alignment-An-Approach-with-High-Performance-Scalability-and-Robustness"><span class="nav-number">1.0.15.</span> <span class="nav-text">Are Negative Samples Necessary in Entity Alignment?: An Approach with High Performance, Scalability and Robustness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Contrastive-Learning-of-User-Behavior-Sequence-for-Context-Aware-Document-Ranking"><span class="nav-number">1.0.16.</span> <span class="nav-text">Contrastive Learning of User Behavior Sequence for Context-Aware Document Ranking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deep-Self-Adaptive-Hashing-for-Image-Retrieval"><span class="nav-number">1.0.17.</span> <span class="nav-text">Deep Self-Adaptive Hashing for Image Retrieval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-Powerful-is-Graph-Convolution-for-Recommendation"><span class="nav-number">1.0.18.</span> <span class="nav-text">How Powerful is Graph Convolution for Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CBML-A-Cluster-based-Meta-learning-Model-for-Session-based-Recommendation"><span class="nav-number">1.0.19.</span> <span class="nav-text">CBML: A Cluster-based Meta-learning Model for Session-based Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoIAS-Automatic-Integrated-Architecture-Searcher-for-Click-Trough-Rate-Prediction"><span class="nav-number">1.0.20.</span> <span class="nav-text">AutoIAS: Automatic Integrated Architecture Searcher for Click-Trough Rate Prediction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CMML-Contextual-Modulation-Meta-Learning-for-Cold-Start-Recommendation"><span class="nav-number">1.0.21.</span> <span class="nav-text">CMML: Contextual Modulation Meta Learning for Cold-Start Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unsupervised-Large-Scale-Social-Network-Alignment-via-Cross-Network-Embedding"><span class="nav-number">1.0.22.</span> <span class="nav-text">Unsupervised Large-Scale Social Network Alignment via Cross Network Embedding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Joint-Embedding-with-Modality-Alignments-for-Cross-Modal-Retrieval-of-Recipes-and-Food-Images"><span class="nav-number">1.0.23.</span> <span class="nav-text">Learning Joint Embedding with Modality Alignments for Cross-Modal Retrieval of Recipes and Food Images</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Seq2Bubbles-Region-Based-Embedding-Learning-for-User-Behaviors-in-Sequential-Recommenders"><span class="nav-number">1.0.24.</span> <span class="nav-text">Seq2Bubbles: Region-Based Embedding Learning for User Behaviors in Sequential Recommenders</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enhancing-User-Interest-Modeling-with-Knowledge-Enriched-Itemsets-for-Sequential-Recommendation"><span class="nav-number">1.0.25.</span> <span class="nav-text">Enhancing User Interest Modeling with Knowledge-Enriched Itemsets for Sequential Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.0.26.</span> <span class="nav-text">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Multiple-Intent-Representations-for-Search-Queries%EF%BC%8C%E5%A4%9A%E8%A1%A8%E8%BE%BE"><span class="nav-number">1.0.27.</span> <span class="nav-text">Learning Multiple Intent Representations for Search Queries，多表达</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%BF%E9%87%8C"><span class="nav-number">1.1.</span> <span class="nav-text">阿里</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reinforcement-Learning-to-Optimize-Lifetime-Value-in-Cold-Start-Recommendation-1"><span class="nav-number">1.1.1.</span> <span class="nav-text">Reinforcement Learning to Optimize Lifetime Value in Cold-Start Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-to-Augment-Imbalanced-Data-for-Re-ranking-Models-%E2%80%90"><span class="nav-number">1.1.2.</span> <span class="nav-text">Learning to Augment Imbalanced Data for Re-ranking Models ‐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Self-Supervised-Learning-on-Users%E2%80%99-Spontaneous-Behaviors-for-Multi-Scenario-Ranking-in-E-commerce"><span class="nav-number">1.1.3.</span> <span class="nav-text">Self-Supervised Learning on Users’ Spontaneous Behaviors for Multi-Scenario Ranking in E-commerce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heterogeneous-Graph-Neural-Networks-for-Large-Scale-Bid-Keyword-Matching"><span class="nav-number">1.1.4.</span> <span class="nav-text">Heterogeneous Graph Neural Networks for Large-Scale Bid Keyword Matching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unsupervised-Categorical-Representation-Learning-for-Package-Arrival-Time-Prediction%EF%BC%8Clbs%E7%9A%84%E7%89%B9%E7%82%B9%E5%92%8Ceta%E7%BB%93%E5%90%88"><span class="nav-number">1.1.5.</span> <span class="nav-text">Unsupervised Categorical Representation Learning for Package Arrival Time Prediction，lbs的特点和eta结合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fulfillment-Time-Aware-Personalized-Ranking-for-On-Demand-Food-Recommendation"><span class="nav-number">1.1.6.</span> <span class="nav-text">Fulfillment-Time-Aware Personalized Ranking for On-Demand Food Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SAR-Net-A-Scenario-Aware-Ranking-Network-for-Personalized-Fair-Recommendation-in-Hundreds-of-Travel-Scenarios"><span class="nav-number">1.1.7.</span> <span class="nav-text">SAR-Net: A Scenario-Aware Ranking Network for Personalized Fair Recommendation in Hundreds of Travel Scenarios</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SCI-Subspace-Learning-Based-Counterfactual-Inference-for-Individual-Treatment-Effect-Estimation"><span class="nav-number">1.1.8.</span> <span class="nav-text">SCI: Subspace Learning Based Counterfactual Inference for Individual Treatment Effect Estimation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-to-Expand-Reinforced-Response-Expansion-for-Information-seeking-Conversations"><span class="nav-number">1.1.9.</span> <span class="nav-text">Learning to Expand: Reinforced Response Expansion for Information-seeking Conversations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Code-based-Hash-Embedding-for-Web-scale-Applications"><span class="nav-number">1.1.10.</span> <span class="nav-text">Binary Code based Hash Embedding for Web-scale Applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Effective-and-Efficient-Embedding-via-an-Adaptively-Masked-Twins-based-Layer"><span class="nav-number">1.1.11.</span> <span class="nav-text">Learning Effective and Efficient Embedding via an Adaptively-Masked Twins-based Layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoHERI-Automated-Hierarchical-Representation-Integration-for-Post-Click-Conversion-Rate-Estimation"><span class="nav-number">1.1.12.</span> <span class="nav-text">AutoHERI: Automated Hierarchical Representation Integration for Post-Click Conversion Rate Estimation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMAD-Scalable-Multi-view-Ad-Retrieval-System-for-E-Commerce-Sponsored-Search"><span class="nav-number">1.1.13.</span> <span class="nav-text">SMAD: Scalable Multi-view Ad Retrieval System for E-Commerce Sponsored Search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#From-Community-Search-to-Community-Understanding-A-Multimodal-Community-Query-Engine"><span class="nav-number">1.1.14.</span> <span class="nav-text">From Community Search to Community Understanding: A Multimodal Community Query Engine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AliMe-MKG-A-Multi-modal-Knowledge-Graph-for-Live-streaming-E-commerce"><span class="nav-number">1.1.15.</span> <span class="nav-text">AliMe MKG: A Multi-modal Knowledge Graph for Live-streaming E-commerce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ECEdgeNet-A-Large-Scale-Edge-Computing-Dataset-in-the-Field-of-E-commerce"><span class="nav-number">1.1.16.</span> <span class="nav-text">ECEdgeNet: A Large Scale Edge Computing Dataset in the Field of E-commerce</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#baidu"><span class="nav-number">1.2.</span> <span class="nav-text">baidu</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Adversarial-Kernel-Sampling-on-Class-imbalanced-Data-Streams"><span class="nav-number">1.2.1.</span> <span class="nav-text">Adversarial Kernel Sampling on Class-imbalanced Data Streams</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Efficient-Learning-to-Learn-a-Robust-CTR-Model-for-Web-scale-Online-Sponsored-Search-Advertising"><span class="nav-number">1.2.2.</span> <span class="nav-text">Efficient Learning to Learn a Robust CTR Model for Web-scale Online Sponsored Search Advertising</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CHASE-Commonsense-Enriched-Advertising-on-Search-Engine-with-Explicit-Knowledge"><span class="nav-number">1.2.3.</span> <span class="nav-text">CHASE: Commonsense-Enriched Advertising on Search Engine with Explicit Knowledge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-modal-Dictionary-BERT-for-Cross-modal-Video-Search-in-Baidu-Advertising"><span class="nav-number">1.2.4.</span> <span class="nav-text">Multi-modal Dictionary BERT for Cross-modal Video Search in Baidu Advertising</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MixBERT-for-Image-Ad-Relevance-Scoring-in-Advertising"><span class="nav-number">1.2.5.</span> <span class="nav-text">MixBERT for Image-Ad Relevance Scoring in Advertising</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%85%BE%E8%AE%AF"><span class="nav-number">1.3.</span> <span class="nav-text">腾讯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fast-Extraction-of-Word-Embedding-from-Q-contexts"><span class="nav-number">1.3.1.</span> <span class="nav-text">Fast Extraction of Word Embedding from Q-contexts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#USER-A-Unified-Information-Search-and-Recommendation-Model-based-on-Integrated-Behavior-Sequence"><span class="nav-number">1.3.2.</span> <span class="nav-text">USER: A Unified Information Search and Recommendation Model based on Integrated Behavior Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dual-Learning-for-Query-Generation-and-Query-Selection-in-Query-Feeds-Recommendation"><span class="nav-number">1.3.3.</span> <span class="nav-text">Dual Learning for Query Generation and Query Selection in Query Feeds Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Influence-Maximization-in-Multi-Relational-Social-Networks"><span class="nav-number">1.3.4.</span> <span class="nav-text">Influence Maximization in Multi-Relational Social Networks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spectral-Graph-Attention-Network-with-Fast-Eigen-approximation"><span class="nav-number">1.3.5.</span> <span class="nav-text">Spectral Graph Attention Network with Fast Eigen-approximation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ant-Group"><span class="nav-number">1.4.</span> <span class="nav-text">Ant Group</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Conditional-Graph-Attention-Networks-for-Distilling-and-Refining-Knowledge-Graphs-in-Recommendation"><span class="nav-number">1.4.1.</span> <span class="nav-text">Conditional Graph Attention Networks for Distilling and Refining Knowledge Graphs in Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Self-supervised-Representation-Learning-on-Dynamic-Graphs"><span class="nav-number">1.4.2.</span> <span class="nav-text">Self-supervised Representation Learning on Dynamic Graphs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Representations-of-Inactive-Users-A-Cross-Domain-Approach-with-Graph-Neural-Networks"><span class="nav-number">1.4.3.</span> <span class="nav-text">Learning Representations of Inactive Users: A Cross Domain Approach with Graph Neural Networks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Microsoft"><span class="nav-number">1.5.</span> <span class="nav-text">Microsoft</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CoPE-Modeling-Continuous-Propagation-and-Evolution-on-Interaction-Graph"><span class="nav-number">1.5.1.</span> <span class="nav-text">CoPE: Modeling Continuous Propagation and Evolution on Interaction Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Improving-Query-Representations-for-Dense-Retrieval-with-Pseudo-Relevance-Feedback"><span class="nav-number">1.5.2.</span> <span class="nav-text">Improving Query Representations for Dense Retrieval with Pseudo Relevance Feedback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Is-a-Single-Model-Enough-MuCoS-A-Multi-Model-Ensemble-Learning-Approach-for-Semantic-Code-Search"><span class="nav-number">1.5.3.</span> <span class="nav-text">Is a Single Model Enough? MuCoS: A Multi-Model Ensemble Learning Approach for Semantic Code Search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tutorials"><span class="nav-number">1.6.</span> <span class="nav-text">Tutorials</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wsdm2022"><span class="nav-number">2.</span> <span class="nav-text">wsdm2022</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%BF%E9%87%8C-1"><span class="nav-number">2.1.</span> <span class="nav-text">阿里</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tencent"><span class="nav-number">2.2.</span> <span class="nav-text">Tencent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#baidu-1"><span class="nav-number">2.3.</span> <span class="nav-text">baidu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bytedance"><span class="nav-number">2.4.</span> <span class="nav-text">Bytedance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kuaishou"><span class="nav-number">2.5.</span> <span class="nav-text">kuaishou</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ant-Group-1"><span class="nav-number">2.6.</span> <span class="nav-text">Ant Group</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scope-aware-Re-ranking-with-Gated-Attention-in-Feed"><span class="nav-number">2.6.1.</span> <span class="nav-text">Scope-aware Re-ranking with Gated Attention in Feed</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">2.7.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-Resolution-Attention-for-Personalized-Item-Search"><span class="nav-number">2.7.1.</span> <span class="nav-text">Multi-Resolution Attention for Personalized Item Search</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tenki San</p>
+  <div class="site-description" itemprop="description">缘分让我们相遇</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tenki San</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
