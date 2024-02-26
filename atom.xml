@@ -123,6 +123,35 @@
   </entry>
   
   <entry>
+    <title>2021[CL4SRec](SIGIR)(Alibaba)</title>
+    <link href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021%5BCL4SRec%5D(SIGIR)(Alibaba)/"/>
+    <id>http://tessiehe.github.io/2022/05/20/2_算法相关/2021[CL4SRec](SIGIR)(Alibaba)/</id>
+    <published>2022-05-20T03:32:38.000Z</published>
+    <updated>2022-07-27T07:57:53.093Z</updated>
+    
+    <content type="html"><![CDATA[<p>(1) Xie, X.; Sun, F.; Liu, Z.; Wu, S.; Gao, J.; Ding, B.; Cui, B. Contrastive Learning for Sequential Recommendation. <em>arXiv preprint arXiv:2010.14395</em> <strong>2020</strong></p><p>本文来自阿里团队。序列推荐是RS中重要部分，尽管近年来取得了很大成功，但仍然因为数据稀疏难以通过优化大量的参数来学习高质量的用户表征。为了解决这个问题，受CV领域CL的启发，我们提出基于CL的多任务模型CL4SRec,一方面能通过CL的框架从用户自身行为中获取自监督信号，从而更高效的编码用户行为模式。另一方面通过3中数据增强方式构建自监督信号。</p><span id="more"></span><h3 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h4><p>本文来自阿里团队。序列推荐是RS中重要部分，尽管近年来取得了很大成功，但仍然因为数据稀疏难以通过优化大量的参数来学习高质量的用户表征。为了解决这个问题，受CV领域CL的启发，我们提出基于CL的多任务模型CL4SRec,一方面能通过CL的框架从用户自身行为中获取自监督信号，从而更高效的编码用户行为模式。另一方面通过3中数据增强方式构建自监督信号。</p><h5 id="贡献："><a href="#贡献：" class="headerlink" title="贡献："></a>贡献：</h5><ol><li>第一次把CL引入sequence recommendation</li><li>通过3种方式构建自监督信号</li></ol><h5 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h5><ol><li><p>Sequence Recommendation</p><p>RNN,LSTM,GRU,Caser,Transformer,GNN</p></li><li><p>Self-supervised Learning</p><p>CV/NLP</p></li></ol><p><strong>解法</strong></p><p><img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021[CL4SRec](SIGIR)(Alibaba)/image-20220727144809769.png" alt="image-20220727144809769" style="zoom:50%;"></p><ul><li><p>问题定义</p></li><li><p>CL4SRec框架</p><ul><li><p>数据增强</p><p>Crop: 是用户行为的一个局部表示，在没有全面信息的情况下学习用户的广义表示；无关的局部可以看做是next item预测的变种</p><p>mask：防止编码器的过拟合</p><p>reorder：推荐场景下用户行为顺序概念较弱，减轻编码器对顺序的依赖</p></li></ul></li></ul><p><strong>评论</strong></p><h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul><li><p>dif- ferent from dot product, distances typically satisfy triangle inequal- ity1, which transits additional collaborative closeness and benefits a lot in item cold start issue.</p><p>用距离代替点击能缓解协同传递性问题，因为距离满足三角不等式。这在冷启动场景有为有用</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;(1) Xie, X.; Sun, F.; Liu, Z.; Wu, S.; Gao, J.; Ding, B.; Cui, B. Contrastive Learning for Sequential Recommendation. &lt;em&gt;arXiv preprint arXiv:2010.14395&lt;/em&gt; &lt;strong&gt;2020&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;本文来自阿里团队。序列推荐是RS中重要部分，尽管近年来取得了很大成功，但仍然因为数据稀疏难以通过优化大量的参数来学习高质量的用户表征。为了解决这个问题，受CV领域CL的启发，我们提出基于CL的多任务模型CL4SRec,一方面能通过CL的框架从用户自身行为中获取自监督信号，从而更高效的编码用户行为模式。另一方面通过3中数据增强方式构建自监督信号。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="论文阅读" scheme="http://tessiehe.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="用户行为建模" scheme="http://tessiehe.github.io/tags/%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/"/>
+    
+      <category term="对比学习" scheme="http://tessiehe.github.io/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="序列推荐" scheme="http://tessiehe.github.io/tags/%E5%BA%8F%E5%88%97%E6%8E%A8%E8%8D%90/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2020[S3-Rec](ICKM)</title>
     <link href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BS3-Rec%5D(ICKM)/"/>
     <id>http://tessiehe.github.io/2022/05/20/2_算法相关/2020[S3-Rec](ICKM)/</id>
@@ -156,35 +185,6 @@
   </entry>
   
   <entry>
-    <title>2021[CL4SRec](SIGIR)(Alibaba)</title>
-    <link href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021%5BCL4SRec%5D(SIGIR)(Alibaba)/"/>
-    <id>http://tessiehe.github.io/2022/05/20/2_算法相关/2021[CL4SRec](SIGIR)(Alibaba)/</id>
-    <published>2022-05-20T03:32:38.000Z</published>
-    <updated>2022-07-27T07:57:53.093Z</updated>
-    
-    <content type="html"><![CDATA[<p>(1) Xie, X.; Sun, F.; Liu, Z.; Wu, S.; Gao, J.; Ding, B.; Cui, B. Contrastive Learning for Sequential Recommendation. <em>arXiv preprint arXiv:2010.14395</em> <strong>2020</strong></p><p>本文来自阿里团队。序列推荐是RS中重要部分，尽管近年来取得了很大成功，但仍然因为数据稀疏难以通过优化大量的参数来学习高质量的用户表征。为了解决这个问题，受CV领域CL的启发，我们提出基于CL的多任务模型CL4SRec,一方面能通过CL的框架从用户自身行为中获取自监督信号，从而更高效的编码用户行为模式。另一方面通过3中数据增强方式构建自监督信号。</p><span id="more"></span><h3 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h4><p>本文来自阿里团队。序列推荐是RS中重要部分，尽管近年来取得了很大成功，但仍然因为数据稀疏难以通过优化大量的参数来学习高质量的用户表征。为了解决这个问题，受CV领域CL的启发，我们提出基于CL的多任务模型CL4SRec,一方面能通过CL的框架从用户自身行为中获取自监督信号，从而更高效的编码用户行为模式。另一方面通过3中数据增强方式构建自监督信号。</p><h5 id="贡献："><a href="#贡献：" class="headerlink" title="贡献："></a>贡献：</h5><ol><li>第一次把CL引入sequence recommendation</li><li>通过3种方式构建自监督信号</li></ol><h5 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h5><ol><li><p>Sequence Recommendation</p><p>RNN,LSTM,GRU,Caser,Transformer,GNN</p></li><li><p>Self-supervised Learning</p><p>CV/NLP</p></li></ol><p><strong>解法</strong></p><p><img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021[CL4SRec](SIGIR)(Alibaba)/image-20220727144809769.png" alt="image-20220727144809769" style="zoom:50%;"></p><ul><li><p>问题定义</p></li><li><p>CL4SRec框架</p><ul><li><p>数据增强</p><p>Crop: 是用户行为的一个局部表示，在没有全面信息的情况下学习用户的广义表示；无关的局部可以看做是next item预测的变种</p><p>mask：防止编码器的过拟合</p><p>reorder：推荐场景下用户行为顺序概念较弱，减轻编码器对顺序的依赖</p></li></ul></li></ul><p><strong>评论</strong></p><h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul><li><p>dif- ferent from dot product, distances typically satisfy triangle inequal- ity1, which transits additional collaborative closeness and benefits a lot in item cold start issue.</p><p>用距离代替点击能缓解协同传递性问题，因为距离满足三角不等式。这在冷启动场景有为有用</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;(1) Xie, X.; Sun, F.; Liu, Z.; Wu, S.; Gao, J.; Ding, B.; Cui, B. Contrastive Learning for Sequential Recommendation. &lt;em&gt;arXiv preprint arXiv:2010.14395&lt;/em&gt; &lt;strong&gt;2020&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;本文来自阿里团队。序列推荐是RS中重要部分，尽管近年来取得了很大成功，但仍然因为数据稀疏难以通过优化大量的参数来学习高质量的用户表征。为了解决这个问题，受CV领域CL的启发，我们提出基于CL的多任务模型CL4SRec,一方面能通过CL的框架从用户自身行为中获取自监督信号，从而更高效的编码用户行为模式。另一方面通过3中数据增强方式构建自监督信号。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-    
-      <category term="论文阅读" scheme="http://tessiehe.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
-    
-      <category term="用户行为建模" scheme="http://tessiehe.github.io/tags/%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/"/>
-    
-      <category term="对比学习" scheme="http://tessiehe.github.io/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="序列推荐" scheme="http://tessiehe.github.io/tags/%E5%BA%8F%E5%88%97%E6%8E%A8%E8%8D%90/"/>
-    
-  </entry>
-  
-  <entry>
     <title>2021[NOVA](AAAI)</title>
     <link href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021%5BNOVA%5D/"/>
     <id>http://tessiehe.github.io/2022/05/20/2_算法相关/2021[NOVA]/</id>
@@ -211,6 +211,34 @@
       <category term="辅助信息融合" scheme="http://tessiehe.github.io/tags/%E8%BE%85%E5%8A%A9%E4%BF%A1%E6%81%AF%E8%9E%8D%E5%90%88/"/>
     
       <category term="行为序列建模" scheme="http://tessiehe.github.io/tags/%E8%A1%8C%E4%B8%BA%E5%BA%8F%E5%88%97%E5%BB%BA%E6%A8%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2022[ContraRec](TOIS)(Tsinghua)</title>
+    <link href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022%5BContraRec%5D(TOIS)(Tsinghua)/"/>
+    <id>http://tessiehe.github.io/2022/05/20/2_算法相关/2022[ContraRec](TOIS)(Tsinghua)/</id>
+    <published>2022-05-20T03:32:38.000Z</published>
+    <updated>2022-07-27T08:00:08.684Z</updated>
+    
+    <content type="html"><![CDATA[<p>(1)Wang, C.; Ma, W.; Chen, C. Sequential Recommendation with Multiple Contrast Signals. <em>ACM Trans. Inf. Syst.</em> <strong>2022</strong>, 3522673. <a href="https://doi.org/10.1145/3522673">https://doi.org/10.1145/3522673</a>.</p><p><strong>简介</strong>：</p><p>代码：<a href="https://github.com/THUwangcy/ReChorus/tree/TOIS22">https://github.com/THUwangcy/ReChorus/tree/TOIS22</a></p><span id="more"></span><h3 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h3><p><strong>动机</strong></p><p><strong>解法</strong></p><p><strong>实验</strong></p><p><img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[ContraRec](TOIS)(Tsinghua)/image-20220718211321196.png" alt="image-20220718211321196" style="zoom:50%;"></p><p><img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[ContraRec](TOIS)(Tsinghua)/image-20220718211436859.png" alt="image-20220718211436859" style="zoom:50%;"></p><h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul><li>ContraRec和CL4SRec相比，有几个不同点：<ol><li>正样本的构造处理增强的序列，还有同target的序列</li><li>主loss由softmax cross entropy改为InfoNce</li></ol></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;(1)Wang, C.; Ma, W.; Chen, C. Sequential Recommendation with Multiple Contrast Signals. &lt;em&gt;ACM Trans. Inf. Syst.&lt;/em&gt; &lt;strong&gt;2022&lt;/strong&gt;, 3522673. &lt;a href=&quot;https://doi.org/10.1145/3522673&quot;&gt;https://doi.org/10.1145/3522673&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;简介&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;代码：&lt;a href=&quot;https://github.com/THUwangcy/ReChorus/tree/TOIS22&quot;&gt;https://github.com/THUwangcy/ReChorus/tree/TOIS22&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="论文阅读" scheme="http://tessiehe.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="用户行为建模" scheme="http://tessiehe.github.io/tags/%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/"/>
+    
+      <category term="对比学习" scheme="http://tessiehe.github.io/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -271,34 +299,6 @@
       <category term="不确定性建模" scheme="http://tessiehe.github.io/tags/%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%BB%BA%E6%A8%A1/"/>
     
       <category term="度量学习" scheme="http://tessiehe.github.io/tags/%E5%BA%A6%E9%87%8F%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2022[ContraRec](TOIS)(Tsinghua)</title>
-    <link href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022%5BContraRec%5D(TOIS)(Tsinghua)/"/>
-    <id>http://tessiehe.github.io/2022/05/20/2_算法相关/2022[ContraRec](TOIS)(Tsinghua)/</id>
-    <published>2022-05-20T03:32:38.000Z</published>
-    <updated>2022-07-27T08:00:08.684Z</updated>
-    
-    <content type="html"><![CDATA[<p>(1)Wang, C.; Ma, W.; Chen, C. Sequential Recommendation with Multiple Contrast Signals. <em>ACM Trans. Inf. Syst.</em> <strong>2022</strong>, 3522673. <a href="https://doi.org/10.1145/3522673">https://doi.org/10.1145/3522673</a>.</p><p><strong>简介</strong>：</p><p>代码：<a href="https://github.com/THUwangcy/ReChorus/tree/TOIS22">https://github.com/THUwangcy/ReChorus/tree/TOIS22</a></p><span id="more"></span><h3 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h3><p><strong>动机</strong></p><p><strong>解法</strong></p><p><strong>实验</strong></p><p><img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[ContraRec](TOIS)(Tsinghua)/image-20220718211321196.png" alt="image-20220718211321196" style="zoom:50%;"></p><p><img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[ContraRec](TOIS)(Tsinghua)/image-20220718211436859.png" alt="image-20220718211436859" style="zoom:50%;"></p><h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul><li>ContraRec和CL4SRec相比，有几个不同点：<ol><li>正样本的构造处理增强的序列，还有同target的序列</li><li>主loss由softmax cross entropy改为InfoNce</li></ol></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;(1)Wang, C.; Ma, W.; Chen, C. Sequential Recommendation with Multiple Contrast Signals. &lt;em&gt;ACM Trans. Inf. Syst.&lt;/em&gt; &lt;strong&gt;2022&lt;/strong&gt;, 3522673. &lt;a href=&quot;https://doi.org/10.1145/3522673&quot;&gt;https://doi.org/10.1145/3522673&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;简介&lt;/strong&gt;：&lt;/p&gt;
-&lt;p&gt;代码：&lt;a href=&quot;https://github.com/THUwangcy/ReChorus/tree/TOIS22&quot;&gt;https://github.com/THUwangcy/ReChorus/tree/TOIS22&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法相关" scheme="http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    
-    
-      <category term="论文阅读" scheme="http://tessiehe.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
-    
-      <category term="用户行为建模" scheme="http://tessiehe.github.io/tags/%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/"/>
-    
-      <category term="对比学习" scheme="http://tessiehe.github.io/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
