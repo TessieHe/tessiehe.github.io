@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tessiehe.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+
+
+  <meta name="description" content="用户行为可以按照置信度分为显示反馈和隐式反馈，显示反馈是能直接反映用户对于item的偏好的信息（如评分、点赞）；隐式反馈则是间接的暗示了用户的偏好（如点击、不点击）。 目前大多数搜索推荐算法只关注正反馈（点击、加购、下单等），忽略了用户其他丰富的隐式负反馈，这回存在3个问题： 1.仅知道用户喜欢什么，而不知道用户不喜欢什么，这会导致模型的短视（myopic） 2.用户需要和推荐系统有高效的互动机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="推荐模型中的负反馈处理">
+<meta property="og:url" content="http://tessiehe.github.io/2022/04/27/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%8F%8D%E9%A6%88%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="天气桑的blog">
+<meta property="og:description" content="用户行为可以按照置信度分为显示反馈和隐式反馈，显示反馈是能直接反映用户对于item的偏好的信息（如评分、点赞）；隐式反馈则是间接的暗示了用户的偏好（如点击、不点击）。 目前大多数搜索推荐算法只关注正反馈（点击、加购、下单等），忽略了用户其他丰富的隐式负反馈，这回存在3个问题： 1.仅知道用户喜欢什么，而不知道用户不喜欢什么，这会导致模型的短视（myopic） 2.用户需要和推荐系统有高效的互动机制">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tessiehe.github.io/2022/04/27/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%8F%8D%E9%A6%88%E5%A4%84%E7%90%86/image-20220427153641627.png">
+<meta property="og:image" content="http://tessiehe.github.io/2022/04/27/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%8F%8D%E9%A6%88%E5%A4%84%E7%90%86/image-20220427194105718.png">
+<meta property="article:published_time" content="2022-04-27T04:03:30.244Z">
+<meta property="article:modified_time" content="2024-02-26T12:35:18.934Z">
+<meta property="article:author" content="Tenki San">
+<meta property="article:tag" content="算法相关">
+<meta property="article:tag" content="Recommender System">
+<meta property="article:tag" content="E-commerce">
+<meta property="article:tag" content="Implicit Feedback">
+<meta property="article:tag" content="Negative Feedback">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tessiehe.github.io/2022/04/27/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%8F%8D%E9%A6%88%E5%A4%84%E7%90%86/image-20220427153641627.png">
+
+<link rel="canonical" href="http://tessiehe.github.io/2022/04/27/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%8F%8D%E9%A6%88%E5%A4%84%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+      
+
+</script>
+
+  <title>推荐模型中的负反馈处理 | 天气桑的blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+  
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">天气桑的blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">这个人很懒，还没写介绍</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/04/27/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%8F%8D%E9%A6%88%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tenki San">
+      <meta itemprop="description" content="缘分让我们相遇">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天气桑的blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          推荐模型中的负反馈处理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-27 12:03:30" itemprop="dateCreated datePublished" datetime="2022-04-27T12:03:30+08:00">2022-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-02-26 20:35:18" itemprop="dateModified" datetime="2024-02-26T20:35:18+08:00">2024-02-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>用户行为可以按照置信度分为显示反馈和隐式反馈，显示反馈是能直接反映用户对于item的偏好的信息（如评分、点赞）；隐式反馈则是间接的暗示了用户的偏好（如点击、不点击）。</p>
+<p>目前大多数搜索推荐算法只关注正反馈（点击、加购、下单等），忽略了用户其他丰富的隐式负反馈，这回存在3个问题：</p>
+<p>1.仅知道用户喜欢什么，而不知道用户不喜欢什么，这会导致模型的短视（myopic）</p>
+<p>2.用户需要和推荐系统有高效的互动机制，而不是被动接受模型的结果。</p>
+<p>3.用户的隐反馈存在大量噪音。</p>
+<p>用户的各种反馈相辅相成，共同表征了其无偏兴趣。</p>
+<p>本文列举了负反馈相关的业界工作，包括XDM(2022,阿里)，DFN(2020,腾讯),FeedRec(2022,阿里）<br><span id="more"></span></p>
+<h3 id="2020-IJCAI-Tencent-DFN-—-可借鉴强信息序列对弱信息序列的增强"><a href="#2020-IJCAI-Tencent-DFN-—-可借鉴强信息序列对弱信息序列的增强" class="headerlink" title="2020(IJCAI)(Tencent)[DFN]—-可借鉴强信息序列对弱信息序列的增强"></a>2020(IJCAI)(Tencent)[DFN]—-可借鉴强信息序列对弱信息序列的增强</h3><p> Xie R, Ling C, Wang Y, Wang R, Xia F, Lin L. Deep Feedback Network for Recommendation. In: <em>Proceedings of the Twenty-Ninth International Joint Conference on Artificial Intelligence</em>. International Joint Conferences on Artificial Intelligence Organization; 2020:2519-2525. doi:<a target="_blank" rel="noopener" href="https://doi.org/10.24963/ijcai.2020/349">10.24963/ijcai.2020/349</a></p>
+<p><strong>代码链接</strong>：<a target="_blank" rel="noopener" href="https://github.com/qqxiaochongqq/DFN">https://github.com/qqxiaochongqq/DFN</a></p>
+<p><strong>简介</strong>：用户的显式、隐式反馈都反映了其兴趣偏好。但是目前大多数推荐模型都只利用了用户的隐式正反馈（点击）。本文综合利用用户的[显式，隐式]×[正反馈，负反馈]联合建模用户的<strong>无偏兴趣</strong>（unbiased preference）。</p>
+<p><img src="/2022/04/27/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%8F%8D%E9%A6%88%E5%A4%84%E7%90%86/image-20220427153641627.png" alt="image-20220427153641627" style="zoom:50%;"></p>
+<p><strong>总结</strong>：微信头条（WeChat Top Stories ）的精排模型。用点击、曝光未点击、不喜欢三个序列，序列内部用transformer编码，<strong>序列间用点击和不喜欢两个序列对曝光未点击序列进行增强和过滤</strong>，优化目标中预估点击、曝光未点击、不喜欢三种行为。实验时仅用了微信自己的数据集。</p>
+<h3 id="2022-Alibaba-XDM"><a href="#2022-Alibaba-XDM" class="headerlink" title="2022(Alibaba)[XDM]"></a>2022(Alibaba)[XDM]</h3><p>Lv, F.; Li, M.; Guo, T.; Yu, C.; Sun, F.; Jin, T.; Ng, W. XDM: Improving Sequential Deep Matching with Unclicked User Behaviors for Recommender System. <em>arXiv:2010.12837 [cs]</em> <strong>2022</strong>.</p>
+<p><strong>简介</strong>：阿里向量召回模型。核心思想就是通过三元损失使得点击序列的向量表示远离未点击序列的向量表示；点击序列向量靠近点击label item向量；未点击序列向量靠近未点击label item向量。</p>
+<p>TIPS:</p>
+<ul>
+<li><p>曝光未点击的item并非是用户完全不感兴趣的，只是相对于点击不感兴趣的。相对于随件的item来说还是用户感兴趣的（因为推荐系统只会展示用户感兴趣的item）。所以曝光未点击可以看做是用户感兴趣和不感兴趣之间的一种中间态。</p>
+</li>
+<li><p>序列是历史点击序列和历史曝光未点击序列，标签是t时刻后k次点击（只有正样本）</p>
+</li>
+<li><p>对称三元损失（symmetrical triplet constraint ）: 三元包括历史点击和标签的距离（e_hc）,历史点击和历史未点击（e_hn）,历史未点击和标签（e_nc）。核心思想就是e_hc要近，e_hn和e_nc要远。三元损失就是e_hn &gt; e_hc+m1 ,e_nc &gt; e_hc + m2。</p>
+<p><img src="/2022/04/27/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%8F%8D%E9%A6%88%E5%A4%84%E7%90%86/image-20220427194105718.png" alt="image-20220427194105718" style="zoom:50%;"></p>
+</li>
+</ul>
+<h3 id="2022-WWW-Alibaba-FeedRec"><a href="#2022-WWW-Alibaba-FeedRec" class="headerlink" title="2022(WWW)(Alibaba)[FeedRec]"></a>2022(WWW)(Alibaba)[FeedRec]</h3><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/394751885">知乎：推荐系统 用户序列行为建模</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" rel="tag"># 算法相关</a>
+              <a href="/tags/Recommender-System/" rel="tag"># Recommender System</a>
+              <a href="/tags/E-commerce/" rel="tag"># E-commerce</a>
+              <a href="/tags/Implicit-Feedback/" rel="tag"># Implicit Feedback</a>
+              <a href="/tags/Negative-Feedback/" rel="tag"># Negative Feedback</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/24/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/tensorflow%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="prev" title="tensorflow常用函数">
+      <i class="fa fa-chevron-left"></i> tensorflow常用函数
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%96%87%E7%8C%AE%E7%AC%94%E8%AE%B0%E6%A8%A1%E6%9D%BF/" rel="next" title="2022[STOSA](WWW)(spotity)">
+      2022[STOSA](WWW)(spotity) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2020-IJCAI-Tencent-DFN-%E2%80%94-%E5%8F%AF%E5%80%9F%E9%89%B4%E5%BC%BA%E4%BF%A1%E6%81%AF%E5%BA%8F%E5%88%97%E5%AF%B9%E5%BC%B1%E4%BF%A1%E6%81%AF%E5%BA%8F%E5%88%97%E7%9A%84%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.</span> <span class="nav-text">2020(IJCAI)(Tencent)[DFN]—-可借鉴强信息序列对弱信息序列的增强</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2022-Alibaba-XDM"><span class="nav-number">2.</span> <span class="nav-text">2022(Alibaba)[XDM]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2022-WWW-Alibaba-FeedRec"><span class="nav-number">3.</span> <span class="nav-text">2022(WWW)(Alibaba)[FeedRec]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number"></span> <span class="nav-text">参考资料</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tenki San</p>
+  <div class="site-description" itemprop="description">缘分让我们相遇</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tenki San</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

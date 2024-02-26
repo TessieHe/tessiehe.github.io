@@ -212,129 +212,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2024/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tenki San">
-      <meta itemprop="description" content="缘分让我们相遇">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天气桑的blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-02-25 15:13:09" itemprop="dateCreated datePublished" datetime="2024-02-25T15:13:09+08:00">2024-02-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-26 13:51:45" itemprop="dateModified" datetime="2024-02-26T13:51:45+08:00">2024-02-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li><strong>transformer是什么？用于处理什么问题？长什么样？</strong><br>transformer是一种深度学习模型，由Google Brain团队在2017年《attention is all you need 》中首次提出，用于解决自然语言处理中的Seq2Seq类任务，如机器翻译任务。</li>
-</ol>
-<p>其核心创新点是完全采用注意力机制处理序列类数据，该方法能有效解决传统的RNN和CNN类序列处理方法存在的梯度消失/爆炸和无法并行的问题。</p>
-<p>具体来说，transformer包括编码器和解码器两个部分，编码器通过自注意力机制对输入序列进行编码，核心思想是用输入序列中的上下文的加权表示当前字（Multi-head Attention）；解码器先用生成的前序序列表示当前词(Masked Multi-head Attention), 再用编码器编码过的输入序列表示当前字（Multi-head Attention）,最后以当前词的表示作为输入，预测下一个词。 </p>
-<p>由于attention机制没有序的概念，还会通过position embedding的方式将词的位置信息融入词的编码中。同时会增加LayerNorm和ResNet时模型更容易收敛；通过FFN对每个词的编码先升维再降维，增加模型表达能力。<img src="/2024/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/20240225-大模型100问/image-20240225155727980.png" alt="|250"><br>transformer模型的提出不仅在机器翻译任务上取得突破性性能，其构架也称为了后续很多NLP模型的基础，如Bert、GPT等，甚至是CV领域。<br>transformer在CV领域的成功运用通常归功于Google Research在2020年提出的Vision Transformer[1]，用于图片分类任务，其核心思想是把图片分成很多个小块(patch)，每个patch是一个向量，拼接后一张图片的表示就类似于一个句子的表示，通过transformer进行编码，然后预测目标类别。</p>
-<ol>
-<li><strong>如何计算大模型参数计算量</strong><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/624740065">分析transformer模型的参数量、计算量、中间激活、KV cache</a><br>gpt参数量计算方法</li>
-</ol>
-<ul>
-<li>MHA：4个h×h的矩阵（QKV的三个和最后线性变换的一个）</li>
-<li>AddAndNorm 忽略不计</li>
-<li>feed forward： h先升维到4h再降维到h,  8hxh+5h<br>L个transformer堆叠的模型参数量$L(12h^2+5h+Vh)$  V是词表大小。忽略一次项即12Lh^2<br><img src="/2024/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/20240225-大模型100问/image-20240225200352419.png" alt><br><img src="/2024/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/20240225-大模型100问/image-20240225194708508.png" alt></li>
-</ul>
-<p>上面是一个简化的算法，multi-head attention也符合这个参数量，但实际上需要分head计算再组合，即还是通过同样大小的三个W矩阵对QKV进行线性变换后拆分成n_head组QKV，每一组的h’=h/n_head, 每组attention后得到n_head个维度为h’的向量，concat到一起后进行一个线性变换。</p>
-<p>gpt3 L=96，h=12288，词表 计算得到1.74×10^11</p>
-<ol>
-<li><strong>GPT系列的参数量是多少</strong><br>参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/656192138">GPT系列解读（一）</a><br>GPT系列有大大小小很多个模型，175B参数的是GPT3的参数量，GPT3.5是在GPT3的基础上+指令调优和RLHF，参数量估计也是175B。gpt-3.5-turbo是经过蒸馏的，实际参数可能十几亿。<img src="/2024/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/image-20240225201622511-8926674.png" class title="image-20240225201622511.png">
-<img src="/2024/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/image-20240225202845150.png" class title="GPT系列技术对比">
-</li>
-</ol>
-<p>L: transformer block数，n_head:头数，V:词表大，h:隐层大小，max_token：最长上下文长度</p>
-<ul>
-<li>GPT-1：      L=12,n_head=12,h=768,V=50257,max_token=512,参数量0.1B</li>
-<li>GPT-2(XL): L=48,n_head=64,h=1600, V=50257,  max_token=1024, 参数量1.5B</li>
-<li>GPT-3：     L=96,n_head=96,h=12288, V=50257,  max_token=4K/16K(3.5-turbo)/32K?, 参数量1.5B，训练数据45T<img src="/2024/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/image-20240225203858573.png" class title="image-20240225203858573.png"></li>
-</ul>
-<ol>
-<li><p><strong>手写GPT代码</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LlamaAttention</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Multi-headed attention from &#x27;Attention Is All You Need&#x27; paper&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, config: LlamaConfig</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.config = config</span><br><span class="line">        self.hidden_size = config.hidden_size</span><br><span class="line">        self.num_heads = config.num_attention_heads</span><br><span class="line">        self.head_dim = self.hidden_size // self.num_heads</span><br><span class="line">        self.max_position_embeddings = config.max_position_embeddings</span><br><span class="line"></span><br><span class="line">        self.q_proj = nn.Linear(self.hidden_size, self.num_heads * self.head_dim, bias=<span class="literal">False</span>)</span><br><span class="line">        self.k_proj = nn.Linear(self.hidden_size, self.num_heads * self.head_dim, bias=<span class="literal">False</span>)</span><br><span class="line">        self.v_proj = nn.Linear(self.hidden_size, self.num_heads * self.head_dim, bias=<span class="literal">False</span>)</span><br><span class="line">        self.o_proj = nn.Linear(self.num_heads * self.head_dim, self.hidden_size, bias=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="function">        self,</span></span></span><br><span class="line"><span class="params"><span class="function">        hidden_states: torch.Tensor,</span></span></span><br><span class="line"><span class="params"><span class="function">        attention_mask: <span class="type">Optional</span>[torch.Tensor] = <span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        position_ids: <span class="type">Optional</span>[torch.LongTensor] = <span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        past_key_value: <span class="type">Optional</span>[<span class="type">Tuple</span>[torch.Tensor]] = <span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        output_attentions: <span class="built_in">bool</span> = <span class="literal">False</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        use_cache: <span class="built_in">bool</span> = <span class="literal">False</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">    </span>) -&gt; <span class="type">Tuple</span>[torch.Tensor, <span class="type">Optional</span>[torch.Tensor], <span class="type">Optional</span>[<span class="type">Tuple</span>[torch.Tensor]]]:</span></span><br><span class="line">        bsz, q_len, _ = hidden_states.size()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获得qkv向量</span></span><br><span class="line">        query_states = self.q_proj(hidden_states).view(bsz, q_len, self.num_heads, self.head_dim).transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">        key_states = self.k_proj(hidden_states).view(bsz, q_len, self.num_heads, self.head_dim).transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">        value_states = self.v_proj(hidden_states).view(bsz, q_len, self.num_heads, self.head_dim).transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 拼接kvcache</span></span><br><span class="line">        kv_seq_len = key_states.shape[-<span class="number">2</span>]</span><br><span class="line">        <span class="keyword">if</span> past_key_value <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            kv_seq_len += past_key_value[<span class="number">0</span>].shape[-<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> past_key_value <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="comment"># reuse k, v, self_attention</span></span><br><span class="line">            key_states = torch.cat([past_key_value[<span class="number">0</span>], key_states], dim=<span class="number">2</span>)</span><br><span class="line">            value_states = torch.cat([past_key_value[<span class="number">1</span>], value_states], dim=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        past_key_value = (key_states, value_states) <span class="keyword">if</span> use_cache <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 计算attention权重</span></span><br><span class="line">        attn_weights = torch.matmul(query_states, key_states.transpose(<span class="number">2</span>, <span class="number">3</span>)) / math.sqrt(self.head_dim)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 加入mask矩阵，decoder-only为下三角</span></span><br><span class="line">        <span class="keyword">if</span> attention_mask <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            attn_weights = attn_weights + attention_mask</span><br><span class="line">            dtype_min = torch.tensor(</span><br><span class="line">                torch.finfo(attn_weights.dtype).<span class="built_in">min</span>, device=attn_weights.device, dtype=attn_weights.dtype</span><br><span class="line">            )</span><br><span class="line">            attn_weights = torch.<span class="built_in">max</span>(attn_weights, dtype_min)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 计算softmax，这里需要从fp16升为fp32</span></span><br><span class="line">        <span class="comment"># upcast attention to fp32</span></span><br><span class="line">        attn_weights = nn.functional.softmax(attn_weights, dim=-<span class="number">1</span>, dtype=torch.float32).to(query_states.dtype)</span><br><span class="line">        attn_output = torch.matmul(attn_weights, value_states)</span><br><span class="line"></span><br><span class="line">        attn_output = attn_output.transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">        attn_output = attn_output.reshape(bsz, q_len, self.hidden_size)</span><br><span class="line"></span><br><span class="line">        attn_output = self.o_proj(attn_output)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> output_attentions:</span><br><span class="line">            attn_weights = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> attn_output, attn_weights, past_key_value</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>NLU和NLG的区别</strong><br>NLU（Neural Language Understanding）是自然语言理解，通常是分类模型：文本分类，意图识别，关系抽取，阅读理解等<br>NLG(Neural Language Genaration )是自然语言生成，通常是生成模型：机器翻译、文本摘要、故事续写、问答等</p>
-</li>
-<li><p><strong>BPE 和BBPE的区别是什么</strong><br>二者都是NLP领域的分词方法（tokenization）.BPE（Byte Pair Encoding）是字符级别的分词方法，即以字符为最小单位，逐步合并频率最高的字符对，直到达到预设词表大小。可有效减少词表的大小。BBPE（Byte-level Byte Pair Encoding）是以字节为单位，UTF-8中每个字符可以用1~4个字节表示，在字节粒度进行合并生成词表，该方法理论上可以表示任何字符，对多语言支持好，可有效解决OOV（Out Of Vocalbulary）问题.</p>
-</li>
-<li><p><strong>bert参数量计算</strong><br>bert-base: L=12，h=768,V=30522,max_token=512,参数量110M<br>bert-Large: L=24, h=1024,</p>
-</li>
-<li><p><strong>参数量和显存、模型大小之间的关系</strong><br>参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/624740065">分析transformer模型的参数量、计算量、中间激活、KV cache</a></p>
-</li>
-</ol>
-<ul>
-<li>推理时显存的下限是 2n GB ，至少要把模型加载完全。</li>
-<li>训练时，如果用Adam优化器，有个<strong>2+2+12</strong>的公式，<strong>训练时显存下限是16n GB</strong>，需要把模型参数、梯度和优化器状态（4+4+4），保持在显存，具体可以参考微软的ZeRO论文。</li>
-</ul>
-<ol>
-<li><p><strong>attention为什么要进行scaling?</strong><br>防止随着h增大导致内积QK内积过大</p>
-</li>
-<li><p><strong>为什么transformer要用LayerNorm,可以用BatchNorm吗？</strong><br>norm是为了防止梯度爆炸或小时，不能用batchNorm, LayerNorm是每个样本的每一层进行归一化，保证各个特征之间的相对大小；batchNorm是batch内样本间同一个特征的归一化，保证样本间的相对大小。NLP的样本间没有关系，输入的词序列间有关系，所以应该用LayerNorm</p>
-</li>
-<li><p>transformer为什么要用三个不一样的QKV</p>
-</li>
-<li>Bert中为什么要在开头加个[CLS]?</li>
-<li>有什么技术降低复杂度提升输入长度的？</li>
-<li>Bert是如何处理传统方法难以搞定的溢出词表词(oov)的语义学习的？</li>
-<li>中文是如何处理溢出词表词(oov)的语义学习的？</li>
-<li>Bert如何处理一词多义？</li>
-<li>Bert中的transformer和原生的transformer有什么区别？</li>
-</ol>
-<p>[1]: |Dosovitskiy A, Beyer L, Kolesnikov A, et al. An image is worth 16x16 words: Transformers for image recognition at scale[J]. arXiv preprint arXiv:2010.11929, 2020</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/07/24/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pytorch%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -556,6 +433,88 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[S3-Rec](ICKM)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tenki San">
+      <meta itemprop="description" content="缘分让我们相遇">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天气桑的blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BS3-Rec%5D(ICKM)/" class="post-title-link" itemprop="url">2020[S3-Rec](ICKM)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-20 11:32:38" itemprop="dateCreated datePublished" datetime="2022-05-20T11:32:38+08:00">2022-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-24 16:12:57" itemprop="dateModified" datetime="2022-06-24T16:12:57+08:00">2022-06-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Zhou K, Wang H, Zhao W X, et al. S3-rec: Self-supervised learning for sequential recommendation with mutual information maximization[C]//Proceedings of the 29th ACM International Conference on Information &amp; Knowledge Management. 2020: 1893-1902 </p>
+<p><strong>简介</strong>：本文来自美团和人大，采用预训练+微调的方式训练序列推荐模型。序列预测任务中通常用预测任务相关的loss进行优化，这会导致模型过分强调最终性能，没有很好的捕捉上下文和序列之间的关联。S3-Rec基于互信息最大化（mutual information maximization ,MIM）的思想，通过在预训练中引入4个互信息相关的任务来自监督挖掘数据内在关联，优化最终的表征。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BS3-Rec%5D(ICKM)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -618,170 +577,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021[CL4SRec](SIGIR)(Alibaba)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tenki San">
-      <meta itemprop="description" content="缘分让我们相遇">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天气桑的blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021%5BCL4SRec%5D(SIGIR)(Alibaba)/" class="post-title-link" itemprop="url">2021[CL4SRec](SIGIR)(Alibaba)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-20 11:32:38" itemprop="dateCreated datePublished" datetime="2022-05-20T11:32:38+08:00">2022-05-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-27 15:57:53" itemprop="dateModified" datetime="2022-07-27T15:57:53+08:00">2022-07-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>(1) Xie, X.; Sun, F.; Liu, Z.; Wu, S.; Gao, J.; Ding, B.; Cui, B. Contrastive Learning for Sequential Recommendation. <em>arXiv preprint arXiv:2010.14395</em> <strong>2020</strong></p>
-<p>本文来自阿里团队。序列推荐是RS中重要部分，尽管近年来取得了很大成功，但仍然因为数据稀疏难以通过优化大量的参数来学习高质量的用户表征。为了解决这个问题，受CV领域CL的启发，我们提出基于CL的多任务模型CL4SRec,一方面能通过CL的框架从用户自身行为中获取自监督信号，从而更高效的编码用户行为模式。另一方面通过3中数据增强方式构建自监督信号。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021%5BCL4SRec%5D(SIGIR)(Alibaba)/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[S3-Rec](ICKM)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tenki San">
-      <meta itemprop="description" content="缘分让我们相遇">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天气桑的blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BS3-Rec%5D(ICKM)/" class="post-title-link" itemprop="url">2020[S3-Rec](ICKM)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-20 11:32:38" itemprop="dateCreated datePublished" datetime="2022-05-20T11:32:38+08:00">2022-05-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-24 16:12:57" itemprop="dateModified" datetime="2022-06-24T16:12:57+08:00">2022-06-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Zhou K, Wang H, Zhao W X, et al. S3-rec: Self-supervised learning for sequential recommendation with mutual information maximization[C]//Proceedings of the 29th ACM International Conference on Information &amp; Knowledge Management. 2020: 1893-1902 </p>
-<p><strong>简介</strong>：本文来自美团和人大，采用预训练+微调的方式训练序列推荐模型。序列预测任务中通常用预测任务相关的loss进行优化，这会导致模型过分强调最终性能，没有很好的捕捉上下文和序列之间的关联。S3-Rec基于互信息最大化（mutual information maximization ,MIM）的思想，通过在预训练中引入4个互信息相关的任务来自监督挖掘数据内在关联，优化最终的表征。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BS3-Rec%5D(ICKM)/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -890,7 +685,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[CML](WSDM)/">
+    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021[CL4SRec](SIGIR)(Alibaba)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -904,7 +699,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022%5BCML%5D(WSDM)/" class="post-title-link" itemprop="url">2022[CML](WSDM)(Baidu)</a>
+            <a href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021%5BCL4SRec%5D(SIGIR)(Alibaba)/" class="post-title-link" itemprop="url">2021[CL4SRec](SIGIR)(Alibaba)</a>
         </h2>
 
         <div class="post-meta">
@@ -921,7 +716,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-27 19:18:38" itemprop="dateModified" datetime="2022-06-27T19:18:38+08:00">2022-06-27</time>
+                <time title="修改时间：2022-07-27 15:57:53" itemprop="dateModified" datetime="2022-07-27T15:57:53+08:00">2022-07-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -944,14 +739,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>link：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2202.08523.pdf">https://arxiv.org/pdf/2202.08523.pdf</a></p>
-<p>code：<a target="_blank" rel="noopener" href="https://github.com/weiwei1206/CML.git">https://github.com/weiwei1206/CML.git</a></p>
-<p>Wei, Wei, et al. “Contrastive meta learning with behavior multiplicity for recommendation.” <em>Proceedings of the Fifteenth ACM International Conference on Web Search and Data Mining</em>. 2022</p>
-<p><strong>简介</strong>：本文来自百度搜索团队.通过对比元学习为不同用户维护专用的跨类型行为依赖模型，从而建模个性化的用户-商品间的多重关系。借助对比学习的思想，通过将辅助行为信息作为监督信号引入，能建模不同行为间的依赖性。</p>
-<p>后续研究方向有1. 用CML框架预训练建模用户画像，服务于线上模型; 2.CML解耦用户兴趣向量</p>
+          <p>(1) Xie, X.; Sun, F.; Liu, Z.; Wu, S.; Gao, J.; Ding, B.; Cui, B. Contrastive Learning for Sequential Recommendation. <em>arXiv preprint arXiv:2010.14395</em> <strong>2020</strong></p>
+<p>本文来自阿里团队。序列推荐是RS中重要部分，尽管近年来取得了很大成功，但仍然因为数据稀疏难以通过优化大量的参数来学习高质量的用户表征。为了解决这个问题，受CV领域CL的启发，我们提出基于CL的多任务模型CL4SRec,一方面能通过CL的框架从用户自身行为中获取自监督信号，从而更高效的编码用户行为模式。另一方面通过3中数据增强方式构建自监督信号。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022%5BCML%5D(WSDM)/#more" rel="contents">
+              <a class="btn" href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021%5BCL4SRec%5D(SIGIR)(Alibaba)/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1054,10 +846,178 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[CML](WSDM)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tenki San">
+      <meta itemprop="description" content="缘分让我们相遇">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天气桑的blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022%5BCML%5D(WSDM)/" class="post-title-link" itemprop="url">2022[CML](WSDM)(Baidu)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-20 11:32:38" itemprop="dateCreated datePublished" datetime="2022-05-20T11:32:38+08:00">2022-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-27 19:18:38" itemprop="dateModified" datetime="2022-06-27T19:18:38+08:00">2022-06-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>link：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2202.08523.pdf">https://arxiv.org/pdf/2202.08523.pdf</a></p>
+<p>code：<a target="_blank" rel="noopener" href="https://github.com/weiwei1206/CML.git">https://github.com/weiwei1206/CML.git</a></p>
+<p>Wei, Wei, et al. “Contrastive meta learning with behavior multiplicity for recommendation.” <em>Proceedings of the Fifteenth ACM International Conference on Web Search and Data Mining</em>. 2022</p>
+<p><strong>简介</strong>：本文来自百度搜索团队.通过对比元学习为不同用户维护专用的跨类型行为依赖模型，从而建模个性化的用户-商品间的多重关系。借助对比学习的思想，通过将辅助行为信息作为监督信号引入，能建模不同行为间的依赖性。</p>
+<p>后续研究方向有1. 用CML框架预训练建模用户画像，服务于线上模型; 2.CML解耦用户兴趣向量</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022%5BCML%5D(WSDM)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[ContraRec](TOIS)(Tsinghua)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tenki San">
+      <meta itemprop="description" content="缘分让我们相遇">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天气桑的blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022%5BContraRec%5D(TOIS)(Tsinghua)/" class="post-title-link" itemprop="url">2022[ContraRec](TOIS)(Tsinghua)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-20 11:32:38" itemprop="dateCreated datePublished" datetime="2022-05-20T11:32:38+08:00">2022-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-27 16:00:08" itemprop="dateModified" datetime="2022-07-27T16:00:08+08:00">2022-07-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>(1)Wang, C.; Ma, W.; Chen, C. Sequential Recommendation with Multiple Contrast Signals. <em>ACM Trans. Inf. Syst.</em> <strong>2022</strong>, 3522673. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/3522673">https://doi.org/10.1145/3522673</a>.</p>
+<p><strong>简介</strong>：</p>
+<p>代码：<a target="_blank" rel="noopener" href="https://github.com/THUwangcy/ReChorus/tree/TOIS22">https://github.com/THUwangcy/ReChorus/tree/TOIS22</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022%5BContraRec%5D(TOIS)(Tsinghua)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1123,7 +1083,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1136,7 +1096,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
