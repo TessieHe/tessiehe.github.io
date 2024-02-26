@@ -2,16 +2,198 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tessiehe.github.io/2024/02/25/obsidian/20240225-%E5%A4%A7%E6%A8%A1%E5%9E%8B100%E9%97%AE/</loc>
+    
+    <lastmod>2024-02-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/shell/</loc>
+    
+    <lastmod>2023-07-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/anaconda+tensorflow%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2023-01-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/git%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2022-08-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[ContraRec](TOIS)(Tsinghua)/</loc>
+    
+    <lastmod>2022-07-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021[CL4SRec](SIGIR)(Alibaba)/</loc>
+    
+    <lastmod>2022-07-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/07/24/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/pytorch%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</loc>
+    
+    <lastmod>2022-07-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[FeedRec](WWW)(Microsoft)/</loc>
+    
+    <lastmod>2022-07-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[Re4](WWW)/</loc>
+    
+    <lastmod>2022-07-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[MISS](ICDE)(HUAWEI)/</loc>
+    
+    <lastmod>2022-07-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[DIHN](WWW)(Alibaba)/</loc>
+    
+    <lastmod>2022-07-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[ICL](WWW)/</loc>
+    
+    <lastmod>2022-07-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E6%96%87%E7%8C%AE%E7%AC%94%E8%AE%B0%E6%A8%A1%E6%9D%BF/</loc>
+    
+    <lastmod>2022-07-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[DIF](SIGIR)/</loc>
+    
+    <lastmod>2022-07-04</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[CML](WSDM)/</loc>
+    
+    <lastmod>2022-06-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[S3-Rec](ICKM)/</loc>
+    
+    <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[RACP](WSDM)/</loc>
+    
+    <lastmod>2022-06-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/06/14/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[XDM](Alibaba)/</loc>
+    
+    <lastmod>2022-06-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021[NOVA]/</loc>
+    
+    <lastmod>2022-06-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/</loc>
+    
+    <lastmod>2022-06-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[DFN](IJCAI)(Tencent)/</loc>
+    
+    <lastmod>2022-06-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[Learning%20List-wise%20Representation%20in%20Reinforcement%20Learning%20for%20Ads%20Allocation%20with%20Multiple%20Auxiliary%20Tasks%20]/</loc>
+    
+    <lastmod>2022-06-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[STOSA]/</loc>
+    
+    <lastmod>2022-06-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[FMLP-Rec]/</loc>
+    
+    <lastmod>2022-05-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2022[CIM]/</loc>
+    
+    <lastmod>2022-05-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/%E3%80%90%E4%B8%93%E9%A2%98%E8%B0%83%E7%A0%94%E3%80%91%E6%90%9C%E5%B9%BF%E6%8E%A8%E4%B8%AD%E7%9A%84context%E5%A4%84%E7%90%86/</loc>
+    
+    <lastmod>2022-05-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Awesome-Deep-Learning-Papers-for-Search-Recommendation-Advertising/</loc>
     
-    <lastmod>2022-04-20</lastmod>
+    <lastmod>2022-04-22</lastmod>
     
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/tensorflow/</loc>
     
-    <lastmod>2022-04-14</lastmod>
+    <lastmod>2022-04-22</lastmod>
     
   </url>
   
@@ -19,20 +201,6 @@
     <loc>http://tessiehe.github.io/2022/03/01/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/Learning%20to%20Rank%EF%BC%9APoint-wise%E3%80%81Pair-wise%20%E5%92%8C%20List-wise%E5%8C%BA%E5%88%AB/</loc>
     
     <lastmod>2022-04-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/anaconda+tensorflow%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2022-04-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/git%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2022-04-06</lastmod>
     
   </url>
   
@@ -359,13 +527,6 @@
   </url>
   
   <url>
-    <loc>http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/shell/</loc>
-    
-    <lastmod>2022-03-01</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tessiehe.github.io/2022/03/01/0_%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/scala/</loc>
     
     <lastmod>2022-03-01</lastmod>
@@ -494,92 +655,267 @@
 
   <url>
     <loc>http://tessiehe.github.io/</loc>
-    <lastmod>2022-04-22</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://tessiehe.github.io/tags/%E9%AB%98%E6%95%88tips/</loc>
-    <lastmod>2022-04-22</lastmod>
+    <loc>http://tessiehe.github.io/tags/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/</loc>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/tags/default/</loc>
-    <lastmod>2022-04-22</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/tags/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83-%E5%AE%89%E8%A3%85%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2022-04-22</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://tessiehe.github.io/tags/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/</loc>
-    <lastmod>2022-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/</loc>
-    <lastmod>2022-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/tags/Learning-to-Rank/</loc>
-    <lastmod>2022-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/tags/Multi-Scenario/</loc>
-    <lastmod>2022-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/tags/Intent-Recommendation/</loc>
-    <lastmod>2022-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/tags/Recommender-System/</loc>
-    <lastmod>2022-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/tags/E-commerce/</loc>
-    <lastmod>2022-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tessiehe.github.io/tags/%E8%B0%83%E7%A0%94/</loc>
-    <lastmod>2022-04-22</lastmod>
+    <loc>http://tessiehe.github.io/tags/%E9%AB%98%E6%95%88tips/</loc>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</loc>
-    <lastmod>2022-04-22</lastmod>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E8%B4%9F%E5%8F%8D%E9%A6%88%E5%BB%BA%E6%A8%A1/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E5%BC%82%E6%9E%84%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/attention/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E5%BA%8F%E5%88%97%E6%8E%A8%E8%8D%90/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E9%A2%84%E8%AE%AD%E7%BB%83/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E8%87%AA%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E4%BA%92%E4%BF%A1%E6%81%AF%E6%9C%80%E5%A4%A7%E5%8C%96/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E8%BE%85%E5%8A%A9%E4%BF%A1%E6%81%AF%E8%9E%8D%E5%90%88/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E8%A1%8C%E4%B8%BA%E5%BA%8F%E5%88%97%E5%BB%BA%E6%A8%A1/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%BB%BA%E6%A8%A1/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E5%BA%A6%E9%87%8F%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E8%BE%85%E5%8A%A9%E4%BF%A1%E6%81%AF%E5%BB%BA%E6%A8%A1/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%8E%BB%E5%99%AA/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E5%A4%9A%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E8%AF%B1%E5%8F%91%E6%8E%A8%E8%8D%90/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E7%BB%84%E5%90%88%E9%A2%84%E4%BC%B0/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E5%A4%9A%E5%85%B4%E8%B6%A3%E5%BB%BA%E6%A8%A1/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3-%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0-%E8%B4%9F%E5%8F%8D%E9%A6%88-%E5%8F%AC%E5%9B%9E-E-commerce-categories-%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/Learning-to-Rank/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/Multi-Scenario/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/Intent-Recommendation/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/Recommender-System/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/E-commerce/</loc>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/tags/%E8%B0%83%E7%A0%94/</loc>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -587,29 +923,29 @@
 
   
   <url>
-    <loc>http://tessiehe.github.io/categories/%E9%AB%98%E6%95%88tips/</loc>
-    <lastmod>2022-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://tessiehe.github.io/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/</loc>
-    <lastmod>2022-04-22</lastmod>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/</loc>
-    <lastmod>2022-04-22</lastmod>
+    <loc>http://tessiehe.github.io/categories/%E9%AB%98%E6%95%88tips/</loc>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://tessiehe.github.io/categories/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</loc>
-    <lastmod>2022-04-22</lastmod>
+    <lastmod>2024-02-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tessiehe.github.io/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/</loc>
+    <lastmod>2024-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

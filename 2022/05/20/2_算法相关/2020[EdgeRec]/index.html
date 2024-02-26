@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tessiehe.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+
+
+  <meta name="description" content="(1) Gong Y, Jiang Z, Feng Y, et al. EdgeRec: recommender system on edge in Mobile Taobao[C]&#x2F;&#x2F;Proceedings of the 29th ACM International Conference on Information &amp; Knowledge Management. 2020: 2477-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021[EdgeRec](Alibaba)(CIKM)">
+<meta property="og:url" content="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/index.html">
+<meta property="og:site_name" content="天气桑的blog">
+<meta property="og:description" content="(1) Gong Y, Jiang Z, Feng Y, et al. EdgeRec: recommender system on edge in Mobile Taobao[C]&#x2F;&#x2F;Proceedings of the 29th ACM International Conference on Information &amp; Knowledge Management. 2020: 2477-">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/image-20220526183035304.png">
+<meta property="og:image" content="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/image-20220614145858688.png">
+<meta property="og:image" content="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/image-20220527094756107.png">
+<meta property="og:image" content="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/image-20220527095112504.png">
+<meta property="og:image" content="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/image-20220527095218176.png">
+<meta property="og:image" content="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/image-20220527100225837.png">
+<meta property="article:published_time" content="2022-05-20T03:32:38.000Z">
+<meta property="article:modified_time" content="2022-06-14T07:16:22.056Z">
+<meta property="article:author" content="Tenki San">
+<meta property="article:tag" content="论文阅读">
+<meta property="article:tag" content="用户行为建模">
+<meta property="article:tag" content="异构用户行为建模">
+<meta property="article:tag" content="attention">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/image-20220526183035304.png">
+
+<link rel="canonical" href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+      
+
+</script>
+
+  <title>2021[EdgeRec](Alibaba)(CIKM) | 天气桑的blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+  
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">天气桑的blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">这个人很懒，还没写介绍</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tessiehe.github.io/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tenki San">
+      <meta itemprop="description" content="缘分让我们相遇">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天气桑的blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2021[EdgeRec](Alibaba)(CIKM)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-20 11:32:38" itemprop="dateCreated datePublished" datetime="2022-05-20T11:32:38+08:00">2022-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-14 15:16:22" itemprop="dateModified" datetime="2022-06-14T15:16:22+08:00">2022-06-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">算法相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>(1) Gong Y, Jiang Z, Feng Y, et al. EdgeRec: recommender system on edge in Mobile Taobao[C]//Proceedings of the 29th ACM International Conference on Information &amp; Knowledge Management. 2020: 2477-2484.</p>
+<p><strong>简介</strong></p>
+<p>首次尝试设计和实现新颖的端上推荐系统（EdgeRec），它实现了实时用户感知和实时系统反馈。此外，我们提出了<strong>异构行为建模（Heterogeneous User Behavior Sequence Modeling）</strong>对曝光页和商品详情页用户行为进行编码，<strong>上下文感知重排（ Context-aware Reranking with Behavior Attention Network）</strong>对历史兴趣向量进行聚合，以捕捉用户的不同兴趣并相应地调整推荐结果。应用在淘宝首页feed流场景重排阶段。</p>
+<p>文章内容比较充实，在架构设计、特征系统设计、负反馈利用方面都值得参考。</p>
+<img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/image-20220526183035304.png" class title="image-20220526183035304">
+<span id="more"></span>
+<h3 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h3><p>第一部分介绍了整个推荐系统框架，包括客户端（CN），模型服务（MS），推荐系统(RS)，离线训练（OT）。</p>
+<ul>
+<li>MS是端上的重排模块，也是系统的核心，接收CN的触发请求（三种触发请求）并进行实时重排。</li>
+<li>CN负责前端展现和信息手机</li>
+<li>RS是云上的推荐系统，包括召回和排序，返回客户端一个分页内的初始排序</li>
+<li>OT：端上的模型训练。embedding存储在云上，其他模型结构存储在端上（3M左右大小）</li>
+</ul>
+<p>计算效率优化：用户行为建模和基于上下文的重排模型是异步进行的，用户行为建模因为是GRU，通过流式计算复杂度为O(1)</p>
+<p>存储优化：embedding矩阵存储在云端，以特征形式下发到客户端</p>
+<p>整个推荐流程为：</p>
+<ol>
+<li><p>请求服务器—服务器召回和排序模型得到一个page内的初始item排序（50个item）</p>
+</li>
+<li><p>客户端接收触发器信号对页面内item进行重排</p>
+</li>
+<li>触发重排的行为包括：1）点击item; 2）删除item ; 3）k次曝光未点击</li>
+</ol>
+<p>第二部分介绍了重排模型。</p>
+<h4 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h4><p>信息流广告推荐在能效方面存在3个痛点：</p>
+<ol>
+<li>用户实时感知/决策弱：分页请求导致页内无法实时调整；数据延迟导致实时性较弱</li>
+<li>云端存储和计算瓶颈</li>
+<li>千人一模的局限性：对长尾数据拟合较弱</li>
+</ol>
+<p>根本原因是<strong>用户意图的变化</strong>与<strong>推荐系统的请求时机</strong>和<strong>商品展现时机</strong>不匹配。因此，我们希望将<strong>请求决策</strong>和<strong>展现决策</strong>这两项最接近用户的任务放到端上，利用端智能的能力，进行进一步的优化</p>
+<h4 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h4><p><strong>问题定义</strong>：已知初始排序$S_r$,预估每个item在当前上下文下的评分$\phi(x_i,s,c)$，其中$x_i$是item特征，s是原始上下文特征（local ranking context）,c是用户实时行为特征（real-time user behavior context），主要工作是对c的编码</p>
+<p><strong>特征体系</strong>：特征包括曝光页面action、商详页页面action、item特征</p>
+<img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/image-20220614145858688.png" class title="image-20220614145858688">
+<p><strong>异构行为建模 (Heterogeneous User Behavior SequenceModeling, HUBSM）</strong>:即模型图中左右两个框内结构。</p>
+<p>用户行为包含两种异构性（heterogeneity）。第一种是瀑布流页面行为和商品详情页行为。由于商品详情页行为更密集，所以两种行为分开建模。第二种异构性是用户的行为和商品属性。用户行为动作特征揭示了用户对物品的行为分布，而物品特征表示相应物品特征的分布。对二者分别编码（本文采用GRU）再进行融合（本文采用concat）。</p>
+<ul>
+<li>曝光页行为编码</li>
+</ul>
+<img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/image-20220527094756107.png" class title="image-20220527094756107">
+<ul>
+<li><p>详情页行为编码</p>
+<p><img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/image-20220527095112504.png" alt="image-20220527095112504" style="zoom:100%;"></p>
+</li>
+</ul>
+<p><strong>上下文感知的行为编码Context-aware Reranking with Behavior Attention Networks</strong></p>
+<ul>
+<li><p>candidate编码（初始序列）</p>
+<img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/image-20220527095218176.png" class title="image-20220527095218176">
+</li>
+<li><p>behavior attention：candidate为Q，历史item为K，历史item和action的融合embedding为value进行attention</p>
+<img src="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020[EdgeRec]/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BEdgeRec%5D/image-20220527100225837.png" class title="image-20220527100225837">
+</li>
+</ul>
+<p><strong>在线实验</strong>：实验表明曝光页更多捕捉用户不感兴趣的程度，详情页更多捕捉用户感兴趣的程度</p>
+<h4 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h4><p>本文算法部分包括两个创新点，一个是异构用户行为建模—即对action和item分别编码再进行融合。另一个是上下文感知的行为建模—-即以item相关信息为Q，K，以融合item和action的向量作为V对用户历史行为进行attention聚合。action和item分别建模除了因为action和item不在一个向量空间，也因为淘宝场景下action种类众多，包含更多信息，需要进行独立编码。</p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul>
+<li><p>Our work, to our best knowledge, is the first attempt to design and implement the novel Recommender System on Edge (EdgeRec), which achieves Real-time User Perception and Real-time System Feedback</p>
+<p>我们的工作首次尝试设计和实现端上推荐系统，实现实时的用户感知和系统反馈。</p>
+</li>
+<li><p>Moreover, we propose Heterogeneous User Behavior Sequence Modeling and Context-aware Reranking with Behavior Attention Networks to cap- ture user’s diverse interests and adjust recommendation results accordingly.</p>
+<p>我们提出异构的用户行为序列建模和上下文感知的attention进行重排序，来捕捉用户丰富的行为并对推荐结果进行重排序</p>
+</li>
+<li><p>To summarize, feature system in our work is novel and pro- moted (1) from “relying on only positive feedback interactions” to “simultaneously paying attention to positive and negative feedback interactions”, (2) from “concerning on only interacted items” to “considering both interacted items and their corresponding actions”, and (3) from “in quasi real-time way” to “in ultra real-time way”.</p>
+<p>特征系统的新颖性体现在：1)正反馈-&gt;同时关注正负反馈； 2)仅关注交互的item-&gt;关注item及其动作（收藏，加购等 3）；从准实时-&gt;超实时</p>
+</li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/LgF3FkLCid4tv_zKjU1C3g">双11专栏 | EdgeRec：电商信息流的端上推荐系统</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"># 论文阅读</a>
+              <a href="/tags/%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/" rel="tag"># 用户行为建模</a>
+              <a href="/tags/%E5%BC%82%E6%9E%84%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/" rel="tag"># 异构用户行为建模</a>
+              <a href="/tags/attention/" rel="tag"># attention</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2021%5BCL4SRec%5D(SIGIR)(Alibaba)/" rel="prev" title="2021[CL4SRec](SIGIR)(Alibaba)">
+      <i class="fa fa-chevron-left"></i> 2021[CL4SRec](SIGIR)(Alibaba)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/20/2_%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/2020%5BDFN%5D(IJCAI)(Tencent)/" rel="next" title="2020[DFN](IJCAI)(Tencent)">
+      2020[DFN](IJCAI)(Tencent) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">解读</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.1.</span> <span class="nav-text">动机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA"><span class="nav-number">1.3.</span> <span class="nav-text">评论</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%87%E6%B3%A8"><span class="nav-number">2.</span> <span class="nav-text">备注</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tenki San</p>
+  <div class="site-description" itemprop="description">缘分让我们相遇</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:wangdongdong122@163.com" title="E-Mail → mailto:wangdongdong122@163.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        <div class="wechat_OA">
+            <span>欢迎加微信讨论</span>
+            <br>
+            <!-- 这里添加你的二维码图片 -->
+            <img src ="/images/wechat.png" style="zoom:40%;" />
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tenki San</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
